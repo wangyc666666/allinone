@@ -1,0 +1,448 @@
+{% extends 'mobile_docindex.html' %}
+{% block header %}
+{% load seo %}
+<head>
+ {% get_metadata %}
+<link rel="stylesheet" href="/statics/css/code.css">
+<meta name="Keywords" content="580网站 {{docnews.title}}" />
+<meta name="Description" content="580网站 {{docnews.title}}" />
+<title>{{docnews.title}}</title>
+<link rel="icon" style="max-height: 50%" href="/statics/images/logo_icon.jpg" type="img/x-ico" />
+        <meta name="baidu-site-verification" content="MpNz3dx7EI" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+                <link rel="stylesheet" href="/statics/mobile_index/base.css">
+        <link rel="stylesheet" href="/statics/mobile_index/iconfont.css">
+    <link rel="stylesheet" href="/statics/mobile_index/wap-work.css">
+
+    <script src="/statics/mobile_index/jquery.js"></script>
+    <script src="/statics/mobile_index/wap-work.js"></script>
+    <script src="/statics/mobile_index/touchslider.dev.js"></script>
+<script src="/statics/js/cart/jquery.min.js"></script>
+<script src="/statics/js/cloudcollege/doccloudcollege.js"></script>
+        <script src="/statics/js/cloudcollege/videocloudcollege.js"></script>
+        <script src="/statics/js/cloudcollege/index.js"></script>
+
+</head>
+{% endblock %}
+{% block page-all %}
+<style type="text/css">
+img{max-width:100% ;max-height: 280px; } .contents{ width:auto; }
+.wrap{word-wrap:break-word;word-break:break-all; overflow: hidden;width: 100%; height: auto; }
+iframe{max-width:100%}
+</style>
+<script src="/statics/js/cart/jquery.min.js"></script>
+    <script src="/statics/mobile_index/jquery.js"></script>
+<script src="/statics/js/cloudcollege/doccloudcollege.js"></script>
+<script type="text/javascript">
+// window.onload = function (){
+// 	document.getElementById('divContent').scrollTop = 0
+//
+// }
+
+
+function docFavor(doc,id,detail_type){
+
+
+$.ajax({
+url:'/addfavor/',
+data:{nid:id},
+type:'POST',
+
+success:function(callback){
+
+	var obj = jQuery.parseJSON(callback);
+	if (obj.status==1){
+		if (obj.username=='None'){
+		location.href = "/login/?"+detail_type+'='+id;
+						alert("请先登入再点赞");
+						}else{
+
+		var temp =  obj.data;
+		$('#favnum').text(temp);
+		if(getCookie("doc"+id)==null){
+					setCookie("doc"+id,"www.ais580.com");
+					//alert("设置cookie成功");
+				}else{
+					if(getCookie("doc"+id)=="www.ais580.com"){
+						alert("请勿重复点赞");
+						return ;
+					 }
+			}
+		}
+	}else{
+		alert(obj.message);
+	}
+}
+});
+}
+</script>
+<script type="text/javascript">
+		function redicturl(url) {
+			console.log(url)
+			window.location.href=url;
+		}
+		function KeepScrollBar() {
+			// var scrollPos;
+			// // if (typeof document.body != 'undefined') {
+			// // 			scrollPos = document.getElementById('divContent').scrollTop;
+			// // }
+			// // else{
+			// //     scrollPos = 600;
+			// // }
+			// scrollPos = 600;
+			// document.cookie = "scrollTop=" + scrollPos;
+			console.log('test')
+		}
+
+        window.onload = function (){
+		    console.log("1111")
+		    document.getElementById('divContent').scrollTop ="{{scroll}}";
+		    console.log("{{scroll}}")
+            // if (document.cookie.match(/scrollTop=([^;]+)(;|$)/)){
+		     //    		if (document.cookie.match(/scrollTop=([^;]+)(;|$)/)[1] == 0){
+			// 				document.getElementById('divContent').scrollTop =600;
+			// 					                document.cookie = "scrollTop=" + 600;
+			// 			}else{
+		     //            document.cookie = "scrollTop=" + 600;
+			// 			console.log('exist',document.cookie.match(/scrollTop=([^;]+)(;|$)/))
+  			// 			document.getElementById('divContent').scrollTop =600;
+			// 			}
+            //
+			// }else{
+		     //    	document.getElementById('divContent').scrollTop =0;
+			// 	    document.cookie = "scrollTop=" + 600
+			// 		console.log('not exist',document.cookie.match(/scrollTop=([^;]+)(;|$)/))
+            //
+			// }
+            //
+
+
+			//
+		    	// 	        console.log('autoonload')
+            // console.log(document.cookie.match(/scrollTop=([^;]+)(;|$)/))
+            // if (document.cookie.match(/scrollTop=([^;]+)(;|$)/) != null) {
+		     //    console.log('auto')
+		     //    var arr = document.cookie.match(/scrollTop=([^;]+)(;|$)/);
+		     //    	        console.log('value')
+			// 		        console.log(arr[1])
+             //    document.getElementById('divContent').scrollTop = parseInt(arr[1]);
+            //
+            // }
+            // else{
+            //
+		    	// 	                document.getElementById('divContent').scrollTop = 600;
+			//
+            //
+			// }
+        }
+
+    </script>
+<body class="has-panel" style="height: 1058px ">
+	<div id="ajax-hook"></div>
+	<div class="wp cl pos">
+		<div class="pos" >
+			<div class="hd-user">
+				<a class="avatar" href="#" target="_blank">
+					<img src="/medias/{{docnews.user.userpic}}" onerror="this.src='/statics/images/userpic.jpg'"></a>
+				<div class="hd-user-t">
+					<h3 id="p-author"><a href="#" target="_blank">{{docnews.user.username}}</a></h3>
+					<p>{{docnews.create_date|date:"Y-m-d H:i:s"  }}</p>
+				</div>
+
+                <!--i class="iconfont icon-down y"></i-->
+				<!--<span class="tag y">原创作品</span>-->
+
+			</div>
+			<!--div class="hd-info">
+				<div class="hd-info-i">
+					<p><i class="iconfont icon-eye"></i><span>5</span></p>
+					<p><i class="iconfont icon-comment"></i><span class="comnum">6</span></p>
+					<p id="likenum"><i class="iconfont icon-leaf"></i><span>0</span></p>
+				</div>
+				<div class="hd-info-t">
+					<p>作品分类：<span>其他设计/原创作品</span></p>
+									</div>
+			</div-->
+		</div>
+
+		<div class="contents wrap">
+			<p></p>
+<div style="padding-left:1.3em;padding-right:1.3em;font-size:20px;">
+			<h3 >{{docnews.title}}</h3>
+</div>
+		<br>
+<div style="padding-left:1.6em;padding-right:1.6em;font-size:16px;">
+
+			<p></p>
+                  {% autoescape off %}
+
+		 <p >{{docnews.content }}     </p>
+		{% endautoescape %}
+
+	 <!--<div>-->
+    <!--<p>目录</p>-->
+    <!--{{ toc|safe }}-->
+    <!--<a href="javascript:void(0);" class="top">返回顶部</a>-->
+ <!--</div>-->
+            <!--{% csrf_token %}-->
+            <!--{{ docnews.content }}-->
+            <!--{{ docnews.as_p }}-->
+	     <script>
+	function zanshan() {
+		$('#modal-pay2').toggle();
+    }
+
+    	function redicturl(url) {
+			console.log(url)
+			window.location.href=url;
+		}
+	</script>
+
+
+
+
+
+		</div>
+
+		</div>
+
+
+
+    <link rel="stylesheet" type="text/css" href="/statics/tuijian/css/index1.css" >
+
+
+     <script type="text/javascript" src="/statics/tuijian/js/drop-down-collapse.js">
+    </script>
+
+
+			<!--先隐藏-->
+	<!--<div  class="alltuijian"id="alltuijian" style="background-color:#DC143C;margin-top:20px;position: fixed;z-index:1000">-->
+			<!--<div  class="action"id="action">-->
+				 <!--<a  style="display:block;color:white;widthtext-decoration:none;text-align:center;color:white;">推荐阅读</a>-->
+
+			<!--</div>-->
+			<!--<div style="display:none;text-align:center"  id="Sty" class="odiv">-->
+
+			 <!--<ul>-->
+				 <!--<li id="sendinfor">-->
+					  <!--{% for yuedu in carousel_data %}-->
+					 <!--<div style="padding: 3px;text-align: center">-->
+						 <!--{% if yuedu.newlink %}-->
+							 <!--<a href="{{yuedu.newlink}}">  {{yuedu.summary}}</a>-->
+						 <!--{% else %}-->
+								 <!--<a href="/mobile_carousel_docdetail/{{yuedu.id}}">  {{yuedu.summary}}</a>-->
+						 <!--{% endif %}-->
+					 <!--</div>-->
+					 <!--{% endfor %}-->
+
+
+				 <!--</li>-->
+			<!--</ul>-->
+
+			 <!--<a style="display:block; width:100%;color:white; text-align:center;" class="collpse" id="collpse" >收起</a>-->
+			<!--</div>-->
+	<!--</div>-->
+
+
+<div style="border-radius: 10px;background:#fff;padding:10px;font-size:14px;margin-right: 18px;
+		margin-left: 18px;margin-top:10px;margin-bottom: 20px">
+	<h3>推荐阅读：</h3>
+		 {% for yuedu in carousel_data %}
+		 <div>
+			 <ul style="margin-top: 10px">
+			 {% if yuedu.newlink %}
+				 <li> <a href="{{yuedu.newlink}}"> <u>  {{yuedu.title}}</u> </a></li>
+
+			 {% else %}
+				  <li><a href="/mobile_carousel_docdetail/{{yuedu.id}}">  <u> {{yuedu.title}}</u> </a></li>
+			 {% endif %}
+			 </ul>
+		 </div>
+		 {% endfor %}
+		</div>
+		<div style="border-radius: 10px;background:#eee;padding:10px;font-size:14px;margin-right: 26px;
+		margin-left: 26px;margin-top:28px;margin-bottom: 30px">
+			<div>上一篇: <a href="/mobile_docdetail/{{predoc.id}}"> {{predoc.title}}</a></div>
+
+			<div>下一篇:<a href="/mobile_docdetail/{{nextdoc.id}}">{{nextdoc.title}}</a></div>
+
+		</div>
+
+		<!--<h3  style="margin-left: 30px;margin-top:30px;margin-bottom: 20px">标签：-->
+		<!--</h3>-->
+				<!--<h3 style="border-radius: 10px;background:#eee;padding:10px;margin-right: 30px;-->
+				<!--margin-left: 30px;margin-top:0px;margin-bottom: 20px">-->
+			<!--{% for ntype in new_type  %}-->
+
+			<!--<a style="margin-left: 5px" href="/mobile_search/?type=tag&keywords={{ntype.display}}"> {{ntype.display}}</a>-->
+
+			<!--{% endfor  %}-->
+				<!--</h3>-->
+
+		<div class="share cl">
+            <ul class="cl" style="margin-left: 0px;margin-right: 0px">
+							<!--li class="ishare"><a href="javascript:;"><i class="iconfont icon-share"></i>分享</a></li>
+							<li class="icomment">
+							<a href="http://ui.cn/login.html"><i class="iconfont icon-comment"></i>评论</a>			</li-->
+							<li class="istar" data="addfav">
+							<a onclick="doc_collect(this,'{{ docnews.id }}')" style="margin-left: 18px" id="fav" rel="301730" _rel="1071158">
+								<!--<i class="iconfont icon-star"></i>-->
+								{{if_collect}}
+
+								<em id="focususer">{{docnews.focususer.count}}</em></a>
+				</li>
+				<li class="iheart" data="like" id="like" rel="301730" _rel="1071158">
+					<a onclick="docFavor(this,'{{ docnews.id }}','{{detail_type}}')">
+						<!--<i class="iconfont icon-heart"></i>赞-->赞
+						<em id="favnum">{{docnews.favor_count}}</em>
+
+					</a>
+				</li>            </ul>
+		</div>
+
+		<!--div class="comment cl">
+			<h2>全部评论：<span class="comnum">6</span>条</h2>
+			<ul id="c-comlist">
+				<li class="pos cl" id="com-">
+						<a class="avatar" href="http://i.ui.cn/ucenter/1024199"><img src="/statics/mobile_detail/1024199.gif"></a>
+						<div class="comm-info">
+							<h3><a href="http://i.ui.cn/ucenter/1024199" target="_blank">嘉雷</a></h3>
+							<span>今天 17:34</span>
+							<p>
+																脱缰的哈士奇 <img src="/statics/mobile_detail/sum024.gif" style="width: 22px;">							</p>
+						</div>
+											</li><li class="pos cl" id="com-">
+						<a class="avatar" href="http://i.ui.cn/ucenter/908020"><img src="/statics/mobile_detail/908020.jpg"></a>
+						<div class="comm-info">
+							<h3><a href="http://i.ui.cn/ucenter/908020" target="_blank">初薰浮浮</a></h3>
+							<span>今天 15:49</span>
+							<p>
+																私以为，动图的里面动作不能太大，否则就会有点生硬（是不是因为帧数不能太多？），像666和流氓就是这样
+哈哈，吃瓜群众一枚，或许想法不成熟							</p>
+						</div>
+											</li><li class="pos cl" id="com-">
+						<a class="avatar" href="http://i.ui.cn/ucenter/264378"><img src="/statics/mobile_detail/264378.jpg"></a>
+						<div class="comm-info">
+							<h3><a href="http://i.ui.cn/ucenter/264378" target="_blank">想飞的胖猪</a></h3>
+							<span>今天 14:47</span>
+							<p>
+																厉害了							</p>
+						</div>
+											</li><li class="pos cl" id="com-">
+						<a class="avatar" href="http://i.ui.cn/ucenter/301693"><img src="/statics/mobile_detail/301693.gif"></a>
+						<div class="comm-info">
+							<h3><a href="http://i.ui.cn/ucenter/301693" target="_blank">OneBee</a></h3>
+							<span>今天 13:47</span>
+							<p>
+																666666  这套好棒啊  有提到微信表情么，想下了用							</p>
+						</div>
+											</li><li class="pos cl" id="com-">
+						<a class="avatar" href="http://i.ui.cn/ucenter/272047"><img src="/statics/mobile_detail/272047.jpeg"></a>
+						<div class="comm-info">
+							<h3><a href="http://i.ui.cn/ucenter/272047" target="_blank">烨翔君</a></h3>
+							<span>今天 11:32</span>
+							<p>
+																贼~魔~性~							</p>
+						</div>
+											</li><li class="pos cl" id="com-">
+						<a class="avatar" href="http://i.ui.cn/ucenter/282503"><img src="/statics/mobile_detail/282503.jpg"></a>
+						<div class="comm-info">
+							<h3><a href="http://i.ui.cn/ucenter/282503" target="_blank">Alice段</a></h3>
+							<span>今天 11:28</span>
+							<p>
+																哈哈  那个称····							</p>
+						</div>
+											</li>
+
+			</ul>
+		</div>
+
+		<div class="more">
+				<h2>更多作品</h2>
+				<div class="cl">
+					<a href="http://m.ui.cn/details/288417"><img src="/statics/mobile_detail/1413180.jpg"></a>				</div>
+			</div>	</div><!-- .wp -->
+
+
+<h2 style="margin-left:20px;margin-top: 15px;margin-bottom: 13px">猜你喜欢</h2>
+
+	<div class="body pos">
+
+
+					{% for one_tujian in tuijian  %}
+				<ul class="study-list cl">
+			<!--{% if  one_tujian.newlink  %}-->
+			<!--<li class="cl">-->
+					<!--<div class="img" ><a href="{{one_tujian.newlink}}">-->
+						<!--<img  src="/medias/{{one_tujian.newpic}}" title="PS星空特效。"></a></div>-->
+					<!--<div class="det">-->
+						<!--<h1><a href="{{one_tujian.newlink}}">{{one_tujian.title}}</a></h1>-->
+						<!--<p>-->
+							<!--&lt;!&ndash;<a href="{{one_tujian.newlink}}" target="_blank">{{one_tujian.summary}}</a>&ndash;&gt;-->
+							<!--<span style="float: left;color: #8e8e8e"">{{ one_tujian.create_date|date:"Y-m-d H:i:s" }}</span>-->
+						<!--</p>-->
+
+					<!--</div>-->
+				<!--</li>-->
+			<!--{% else %}-->
+			<li class="cl" onclick="redicturl('/mobile_docdetail/{{one_tujian.id}}')">
+					<div class="img"><a href="/mobile_docdetail/{{one_tujian.id}}">
+						<img src="/medias/{{one_tujian.newpic}}" title="PS星空特效。"></a></div>
+					<div class="det">
+
+						<h1><a href="/mobile_docdetail/{{one_tujian.id}}">{{one_tujian.title}}</a></h1>
+						<p>
+							<!--<a href="/mobile_docdetail/{{one_tujian.id}}" target="_blank">{{one_tujian.summary}}</a>-->
+							<span style="float: left;color: #8e8e8e">{{ one_tujian.create_date|date:"Y-m-d H:i:s" }}</span>
+						</p>
+
+					</div>
+				</li>
+			<!--{% endif %}-->
+			<hr style="height:1px;border:none;border-top:1px solid #eee;" />
+			</ul>
+					{% endfor %}
+
+
+	</div>
+
+	</div>
+
+	<!--&lt;!&ndash; 遮罩层 &ndash;&gt;-->
+	<!--<div class="shade"></div>-->
+
+	<!--&lt;!&ndash; 评论 &ndash;&gt;-->
+	<!--<div class="comment-pop">-->
+		<!--<h1>发表评论</h1>-->
+		<!--<textarea></textarea>-->
+		<!--<div class="btn">-->
+			<!--<a class="cancel" href="javascript:;">取消</a>-->
+			<!--<button id="c-submit">评论</button>-->
+		<!--</div>-->
+	<!--</div>-->
+
+	<!-- 分享弹出 微信下 -->
+	<!--<div class="share-pop-w">-->
+		<!--<p>点击右上角<br>分享给朋友吧</p>-->
+	<!--</div>-->
+
+	<!-- 分享弹出 浏览器下 -->
+    <!--div class="share-pop">
+        <h1>分享到</h1>
+        <a href="javascript:;" class="share-weibo"><i class="iconfont icon-sina1"></i></a>
+        <a href="javascript:;" class="share-douban"><i class="iconfont icon-douban"></i></a>
+        <p class="cancel">取消</p>
+    </div-->
+
+
+
+
+<!--div style="display:none;">
+	<img src="/statics/mobile_detail/wapstat.php" width="0" height="0">
+</div-->
+
+
+{%endblock %}

@@ -1,0 +1,289 @@
+button  {padding: 10px 20px;line-height: 1;}
+.c3 {color: #333}
+.Infos  {position: relative;}
+  .Infos .Portrait  {width: 88px;height: 88px;padding:25px 20px 20px 0px;}
+    .Infos .Portrait img  {display: block;border-radius: 55px;background: #EEE;height: 80px;width: 80px;border:4px solid #99e3fa}
+  .Infos .Portrait.other  {width: 110px;height: 110px;padding:25px 20px 20px 0px;}
+    .Infos .Portrait.other img  {height: 110px;width: 110px;border:none;}
+
+  .Infos .Main  {color: #FFF;padding:20px 0;font-size: 12px;}
+    .Infos .Main .name  {padding-top: 10px;margin-bottom: 20px;}
+    .Infos .Main .name h2 {font-size: 18px;font-weight: normal;line-height: 1;}
+    .Infos .Main .name i.vip  {margin:2px 8px;cursor: pointer;}
+    .Infos .Main .name a.Prepaid  {border:1px solid #FFF;color: #FFF;padding:0 5px;line-height: 20px;margin-left: 10px;margin-top: -2px;border-radius: 3px;}
+  .property {overflow: hidden;}
+    .property li  {float: left;text-align: center;position: relative;font-size: 14px;padding:0px 30px;}
+    .property li.money  {margin-left: -30px;}
+      .property li h2 {font-size: 20px;margin-bottom: 10px;line-height: 1;font-weight: normal;}
+      .property li p  {opacity: 0.9;filter:alpha(opacity=90)}
+      .property li i.line {width: 1px;height: 30px;background: #FFF;opacity: 0.6;filter:alpha(opacity=60);position: absolute;right:0;top:10px;}
+  .Infos .others  {padding-top: 20px;}
+    .Infos .others a {color:#FFF;font-size: 16px;line-height: 20px;padding-left: 25px;margin-left: 20px;position: relative;}
+    .Infos .others i.icon  {display: block;position: absolute;left:0;top:0;width: 18px;height: 18px;}
+
+  .Infos .tips{position: absolute;bottom:-35px;right: 0px;}
+    .Infos .tips a  {width: 152px;height: 106px;display: block;background: url(../images/xiaoxiong.gif) no-repeat right bottom;}
+    .Infos .tips a:hover  {background-image: url(../images/xiaoxiong2.gif);opacity: 1}
+
+.userTabs {background: #FFF;border-bottom: 1px solid #DDD;height: 60px;}
+  .userTabs ul  {line-height: 58px;height: 59px;padding-top: 2px;float: left;overflow: visible;}
+  .userTabs li  {float: left;line-height: 58px;}
+    .userTabs li a  {display: block;padding:0 20px;color:#666;font-size: 16px; position:relative;}
+.userTabs li a .signdot{ position: absolute;width: 6px;height: 6px;display: block;background: #f75c5c;border-radius: 6px;top: 15px;right: 15px;
+}
+    .userTabs li.cur a,.userTabs li a:hover  {color: #00baf2;border-bottom: 2px solid #00baf2;opacity: 1;}
+      .userTabs li a span {font-size: 20px;display: block;line-height: 54px;padding-bottom: 4px;}
+  .userTabs .ads  {line-height: 60px;max-width: 650px;overflow: hidden;}
+
+.pageTabs {font-size: 18px;line-height: 20px;padding: 30px 0px;height: 20px;}
+.pageTabs.bg  {background: #efefef;padding:8px 0;margin: 20px 0;border:1px solid #DDD;font-size: 16px;padding-left: 20px;}
+  .pageTabs li  {float: left;margin:0 40px 0 20px;cursor: pointer;max-width: 1040px;}
+    .pageTabs li p  {color: #000;}
+    .pageTabs li.cur,.pageTabs li:hover,.pageTabs li a.cur,.pageTabs li p.cur  {color: #00baf2;}
+    .pageTabs.bg a  {color:#818181;}
+    .pageTabs.bg li a.cur,.pageTabs.bg li p.cur  {color: #000;}
+    .pageTabs li .subTabs {overflow: hidden;line-height: 16px;padding-top: 4px;margin-left: -20px;}
+      .pageTabs li .subTabs p {color: #818181;float: left;font-size: 14px;margin-right: 25px;cursor: pointer;margin-bottom: 10px;}
+      .pageTabs li .subTabs p.cur {color: #00baf2;}
+.Page.Stu {min-height: 300px;}
+
+.cList .pic img {display: block;}
+.cList .progress  {background: #D8D8D8;}
+  .cList .progress div  {background: #00baf2;height: 100%;width: 0;overflow: hidden;transition: width 2s;}
+.cList li {position: relative;color: #818181;}
+  .cList li .pic img {display: block;width: 100%;background:#FFF url(../images/loading.gif) no-repeat center;min-height: 100%;}
+  .cList i.icon.del2 {position: absolute;right: 0px;top:0px;display: none;}
+  .cList li:hover i.icon.del2 {display: block;}
+
+.cList1,.cList3 {margin-top: -30px;}
+  .cList1>li  {border-bottom: 1px solid #DDD;padding:30px 0;height: 180px;}
+  .cList1 li:last-child,.cList3 li:last-child {border:none;}
+    .cList1 li .pic {width: 300px;height: 180px;overflow: hidden;}
+    .cList1 li .main  {margin-left: 330px;}
+      .cList1 li .main h2 {font-size: 20px;color: #000;font-weight: normal;}
+      .cList1 li .main p  {line-height: 30px;}
+      .cList1 li .main .step  {overflow: hidden;}
+        .cList1 li .main .step .progress  {width: 300px;height: 10px;margin-top: 10px;margin-right: 10px;display: block;margin-left: 0;}
+        .cList1 li .main .step p  {margin-right: 10px;}
+      .cList1 li .main a.study  {display: block;background: #00baf2;color:#FFF;width: 120px;text-align: center;line-height: 32px;margin-top: 14px;}
+
+  .cList3>li  {border-bottom: 1px solid #DDD;padding:30px 0;}
+    .cList3 li .pic {width: 250px;height: 150px;overflow: hidden;}
+    .cList3 li .main  {margin-left: 280px;min-height: 150px;}
+      .cList3 li .main .cTitle  {line-height: 1;margin-bottom: 20px;}
+      .cList3 li .main .lTitle  {font-size: 20px;line-height: 1;}
+      .cList3 li .main .courseLsesson {overflow: hidden;}
+        .cList3 li .main .courseLsesson p {white-space: nowrap;overflow: hidden;width: 50%;text-overflow:ellipsis;}
+      .cList3 li .main .questCon  {width: 100%;padding: 20px 0;font-size: 16px;}
+      .cList3 li .main .replyCon  {overflow: hidden;background: #F5F5F5;padding: 8px 20px;color:#818181;}
+        .cList3 li .main .replyCon span {color: #333;}
+      .cList3 li .main .content {font-size: 16px;color: #333;padding-top:20px;border-bottom:1px solid #DDD;word-wrap: break-word;}
+      .cList3 li .main .content:last-child  {border:none;}
+        .cList3 li .main .content>p {line-height: 24px;margin-bottom: 12px;}
+        .cList3 li .main .content textarea  {width: 910px;padding:3px 4px;line-height: 20px;height: 40px;}
+      .cList3 li .main .intro {line-height: 16px;font-size: 14px;color:#818181;}
+        .cList3 li .main .intro p  {line-height: 18px;}
+        .cList3 li .main .intro p.btn   {font-size: 16px;margin-left: 20px;cursor: pointer;display: none;}
+        .cList3 li .main .intro p.btn:hover {color: #00baf2;}
+        .cList3 li:hover .main .intro p.btn {display: block;}
+        .cList3 li .main .intro button  {height: 24px;line-height: 1;margin-left: 20px;margin-top: -5px;padding: 0 10px;border-radius: 3px;}
+      .cList3 li .main a.playTime  {border:1px solid #00baf2;position: relative;padding-left: 20px;padding-right: 5px;margin-right: 15px;border-radius: 3px;}
+        i.icon.play {width: 16px;height: 16px;background-color: #00baf2;background-position: -95px -47px;position: absolute;left: 0px;top:0px;}
+      .cList3 li .reply {padding-left:20px;padding-top: 10px;font-size: 16px;}
+        .cList3 li .reply li{margin-bottom: 5px;padding-right: 140px;position: relative;}
+          .cList3 li .reply li span.fr {font-size: 14px;position: absolute;right: 0px;text-align: right;}
+          .cList3 li .reply li span.c3  {color: #333;}
+
+.cList2,.cList4 {margin: 0 -10px;display: inline-block;font-size: 12px;}
+  .cList2 li,.cList4 li  {width: 224px;margin:0 10px 20px 10px;background: #FFF;float: left;}
+    .cList2 li .pic {height: 134px;overflow: hidden;}
+    .cList2 li .main  {padding: 10px;line-height: 20px;overflow: hidden;}
+      .cList2 li .main h2 {height: 44px;line-height: 22px;font-size: 14px;font-weight: normal;overflow: hidden;margin-bottom: 25px;}
+      .cList2 li .main .progress  {height: 5px;margin:0;margin-bottom: 5px;display: block;width: auto;border: none;}
+      .cList li .main .discount,.cList2 li .main .discount  {background: #DA291A;color: #FFF;border-radius: 100%;width: 20px;line-height:20px;height:20px;text-align: center;margin-right: 2px;}
+      .cList2 li .main p.fr {max-width: 80px;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+      .cList2 li .main p.fr.lecname {max-width: 50px;}
+.cList4 {font-size: 12px;color:#818181;}
+  .cList4 li .main  {height: 110px;background: url(../images/coupon_bg.png) no-repeat;color:#FFF;text-align: center;padding-top: 26px;line-height: 1;}
+  .cList4.used li .main {background-image: url(../images/coupon_bg_used.png);}
+    .cList4 li .main h3 {font-size: 46px;padding-left: 20px;position: relative;display: inline-block;font-weight: normal;}
+    .cList4 li .main h3 {*display:inline;}
+      .cList4 li .main h3 span  {position: absolute;font-size: 20px;top:5px;left: 0px;}
+    .cList4 li .main *  {margin-bottom: 10px;}
+  .cList4 li .info  {padding: 10px 0 0 10px;height: 120px;line-height: 30px;}
+
+.myInfo {background-color: #FFF;padding:30px;font-size: 16px;margin-bottom: 30px;}
+  .myInfo h4  {font-size: 18px;font-weight: normal;margin-bottom: 20px;}
+  .myInfo dl.tables {margin-bottom: 15px;line-height: 36px;display: inline-block;width: 100%;}
+    .myInfo dl.tables>dt  {width: 33%;float: left;text-align: right;color: #818181;}
+    .myInfo dl.tables>dd  {width: 65%;float: right;min-height: 36px;}
+      .myInfo dl.tables dd .Avatar  {width: 66px;height: 66px;overflow: hidden;position: relative;}
+        .myInfo dl.tables dd .Avatar img  {height: 100%;display: block;}
+        .myInfo dl.tables dd .Avatar p  {line-height: 20px;margin-top: -20px;background:url(../images/bg50.png);color:#FFF;font-size: 12px;text-align: center;position: relative;z-index: 2;}
+        .myInfo dl.tables dd .Avatar div {position: absolute;top: 0px;left: 0px;width: 100%;height: 100%;cursor: pointer;z-index: 3;}
+      .myInfo dl.tables dd button {font-size: 16px;margin-right: 10px;border:1px solid #00baf2;border-radius: 3px;float: left;height: 40px;width: 150px;line-height: 1;}
+      .myInfo dl.tables dd button.type2 {background-color: #FFF;color:#00baf2;}
+      .myInfo dl.tables dd input[type="text"]  {width: 200px;padding: 0px 20px;line-height: 24px;border:1px solid #DDD;padding:5px 10px;height: 24px;border-radius: 3px;}
+      .myInfo dl.tables dd p.error  {margin-left: 20px;display: none;}
+      .myInfo dl.tables dd textarea {width: 600px;height: 60px;border:1px solid #DDD;border-radius: 3px;line-height: 20px;padding:3px;}
+      .myInfo dl.tables dd input[type="radio"]  {margin-top: 10px;margin-right: 5px;}
+      .myInfo dl.tables dd label  {margin-right: 20px;}
+      .myInfo dl.tables dd .SelectDL  {margin-right: 10px;height: 34px;line-height: 34px;border-radius: 3px;min-width: 90px;}
+        .myInfo dl.tables dd .SelectDL dd {top: 36px;}
+      .myInfo dl.tables dd>.SelectDL  {width: 220px;}
+  .myInfo.edit .show  {display: none;}
+  .myInfo .edit  {display: none;}
+  .myInfo.edit .edit  {display: block;}
+
+  .table  {overflow: hidden;text-align: center;margin-bottom: 20px;}
+  .tableCapion  {background-color: #efefef;line-height: 40px;color: #818181;margin-bottom: 30px;}
+    .table>p  {float: left;}
+    .table .name  {width: 540px;padding:0 20px;text-align: left;}
+    .table .lec   {width: 155px;}
+    .table .money {width: 155px;}
+    .table .state {width: 155px;}
+    .table .actions{width: 149px;}
+
+  table.table {border:1px solid #DDD;overflow: visible;}
+    .table th  {background-color: #efefef;padding:5px 20px;font-weight: normal;}
+      .table th p {float: left;margin-right: 40px;color:#818181;}
+      .table th i.icon  {float: right;display: none;cursor: pointer;}
+      .table:hover th i.icon  {display: block;}
+      .table th i.icon:hover  {background-color: #DDD;}
+    .table td {border:1px solid #DDD;}
+      .table td.name {padding:20px;}
+        .table td.name>div {float: left;}
+          .table td.name>div a {display: block;line-height: 20px;}
+        .table td.name .pic  {width: 100px;overflow: hidden;height: 60px;margin-right: 15px;}
+          .table td.name .pic img {max-width: 100%;display: block;}
+        .table td.name .title  {width: 225px;margin-right: 65px;}
+        .table td.name .tags {float: none;}
+          .table td.name .tags p {background-color: #00baf2;float: left;color:#FFF;line-height:20px;border-radius: 3px;font-size: 12px;padding: 0 5px;}
+      .table td.actions  a.btn {border:1px solid #c01920;color:#c01920;background: none;line-height: 30px;border-radius: 3px;margin:0 20px;}
+
+  .activation {border:1px solid #DDD;margin-top: 30px;}
+    .activation dt  {padding: 10px 20px;overflow: hidden;background-color: #efefef;border-bottom: 1px solid #DDD;}
+    .activation dd  {padding:30px;}
+      .activation dd input  {height: 36px;width: 550px;border:1px solid #DDD;margin-left: 200px;border-radius: 3px;text-indent: 20px;}
+      .activation dd button {width: 120px;height: 38px;margin:0 20px;line-height: 1;font-size: 16px;}
+      .activation dd p  {line-height: 38px;padding-left: 20px;position: relative;display: none;}
+        .activation dd p i.icon  {position: absolute;left: 0px;top:11px;}
+
+
+
+.otherUserStudyInfo {float: right;background:url(../images/bg70.png); color: #999;padding: 15px 0px;text-align: center;margin-top: 25px;line-height: 1;}
+  .otherUserStudyInfo>div  {float: right;padding: 0 30px;}
+  .otherUserStudyInfo h6  {font-size: 42px;color: #FFF;font-weight: normal;margin-bottom: 5px;}
+
+.otherUserTabs  {background: #F5F5F5;line-height: 50px;font-size: 16px;overflow: hidden;}
+  .otherUserTabs a  {float: left;padding: 0 30px;}
+  .otherUserTabs a.cur,.otherUserTabs a:hover {background-color: #FFF;color: #000;}
+.otherUserCon {background: #FFF;padding-bottom: 30px;}
+  .otherUserCates {border-bottom:1px solid #DDD;widows: 100%;line-height: 50px;overflow: hidden;margin-bottom: 30px;}
+    .otherUserCates li  {float: left;margin: 0px 20px;font-size: 16px;cursor: pointer;}
+    .otherUserCates li.cur,.otherUserCates li:hover {border-bottom: 2px solid #00baf2;line-height: 48px;}
+  .otherUserCon .cList  {margin: 0 -10px;display: inline-block;}
+    .otherUserCon .cList li {float: left;width: 224px;margin: 0px 10px 30px 10px;/*padding-bottom: 10px;*/}
+    .otherUserCon .cList li:hover {box-shadow: 0px 0px 4px #BBB;transition: all .2s;}
+      .otherUserCon .cList li .pic  {height: 134px;position: relative;overflow: hidden;}
+      .otherUserCon .cList li img {display: block;width: 100%;background: #F5F5F5;display: block;}
+      .otherUserCon .cList li .main {padding: 10px;}
+        .otherUserCon .cList li .main a.tit {height: 48px;overflow: hidden;display: block;line-height: 24px;}
+      .otherUserCon .cList li .main .rate {border-radius: 4px;margin: 10px 0;background-color: #EEE;}
+      .otherUserCon .cList li .main .rate div {height: 8px;width: 1px;background: #00baf2;border-radius: 4px;}
+      .otherUserCon .cList li .main .rate.ed div  {background: #00D1B1;}
+
+.appendappraise {margin: 20px;width: 460px;}
+  .appendappraise td  {padding:5px 10px;vertical-align: top;line-height: 30px;}
+  .appendappraise textarea  {height: 80px;width: 90%;padding: 4px;border:1px solid #DDD;}
+  .appendappraise button  {margin-right:20px;border:1px solid #00baf2;}
+  .appendappraise button.white{background: #FFF;color:#00BAF2;}
+
+/*学习记录 zjf20170604*/
+.study_info {}
+.study_info h2 {font-size: 14px;color: #333;line-height: 50px;margin-left: 40px;}
+.study_info_list {margin-bottom: 20px;}
+.study_info_list li {}
+.study_info_list .left {position: relative;}
+.study_info_list .left strong {position: absolute;right: 0;top: 8px;display: inline-block;width: 2px;height: 132px;/*height: 64px;*/border-right: 2px solid #02a6e3;}
+.study_info_list .left span {display: block;width: 48px;height: 20px;text-align: center;line-height: 20px;margin-right: 16px;}
+.study_info_list .left .dTime {position: relative;color: #fff;background: #02a6e2;/*margin-top: -8px;*/}
+.study_info_list .left .dTime b {position: absolute;right: -4px;top: 6px;display: inline-block;width: 4px;height: 8px;background: url(../images/s_01.png) no-repeat;}
+.study_info_list .left .sTime {font-size: 12px;color: #333;margin-top: 38px;}
+.study_info_list .left i {display: block;}
+.study_info_list .left .dTime_icon {position: absolute;right: -2px;top: 8px;/*right: -4px;top: 0px;*/width: 6px;height: 6px;background: url(../images/s_02.png) no-repeat;}
+.study_info_list .left .sTime_icon {position: absolute;right: -4px;top: 62px;/*right: -6px;top: 54px;*/width: 10px;height: 10px;background: #fff url(../images/s_03.png) no-repeat;z-index: 1;}
+.study_info_list .right {position: relative;width: 724px;height: 52px;padding: 14px 12px;background: #f5f5f5;margin-left: 20px;margin-top: 26px;margin-bottom: 26px;}
+.study_info_list .right p {font-size: 12px;color: #999;}
+.study_info_list .right span {font-size: 12px;color: #666;}
+.study_info_list .right span.tit {color: #02a6e3;}
+.study_info_list .right .open_btn {position: absolute;top: 0;right: 0;display: inline-block;width: 80px;height: 30px;line-height: 30px;text-align: center;padding-top: 50px;background: #dedede url(../images/s_04.png) no-repeat;font-size: 12px;color: #999;cursor: pointer;}
+
+.study_info_list li .study_info_list_box.show .left .sTime {margin-top: 57px;}
+
+.study_info_list div.check {float: left;margin-left: 20px;height: 80px;background: #F5F5F5;width: 80px;margin-top: 26px;}
+  .study_info_list div.check i.icon  {margin: 33px auto;}
+
+
+
+/*new study center user @2017-06-26 By Ravens*/
+.nscu {}
+  .nscu h2.Til  {font-size: 16px;font-weight: normal;margin-bottom: 30px;line-height: 1;margin-top: 20px;color: #000;}
+  .nscu ul.cates  {overflow: hidden;padding:10px;background: #F5F5F5;margin-bottom: 30px;}
+    .nscu ul.cates li {margin: 5px 10px;padding: 0 5px;line-height: 25px;float: left;cursor: pointer;color:#666;}
+    .nscu ul.cates li.cur,.nscu ul.cates li:hover {background:#02a6e3;color:#FFF;border-radius: 3px;}
+  .nscu .cl {overflow: hidden;padding-bottom: 10px;position: relative;z-index:3;height: 150px;}
+    .nscu .cl ul  {margin: 0 -10px;}
+      .nscu .cl li {float: left;width: 180px;padding:20px 22px 5px 22px;margin:0 10px;background: #F5F5F5;position: relative;height: 125px;}
+        .nscu .cl li p.con  {line-height: 24px;height: 48px;overflow: hidden;margin-top: 20px;padding: 0;margin-bottom: 10px;}
+        .nscu .cl li .pr  {height: 25px;}
+        .nscu .cl li .progress  {height: 6px;width:180px;border-radius:5px;border:none;background:#DDD;display: block;overflow: hidden;margin: 0;}
+          .nscu .cl li .progress div  {width: 5%;}
+        .nscu .cl li p.pt {font-size: 12px;color: #666;line-height: 22px;}
+        .nscu .cl li .layer {position: absolute;left: 0;top: 0;right: 0;bottom:0;border:1px solid #02a6e3;display: none;}
+        .nscu .cl li:hover .layer,.nscu .cl li.cur .layer {display: block;}
+          .nscu .cl li .layer p {float: right;margin:10px;display: none;border:1px solid #00BAF2;color: #02a6e3;padding: 0 5px;cursor: pointer;border-radius: 2px;line-height: 18px;font-size: 12px;}
+          .nscu .cl li .layer:hover p {display: block;}
+          .nscu .cl li .layer .ty {width: 20px;height: 10px;background: url(../images/cl_ty1.png) no-repeat center;position: absolute;bottom: -10px;left: 50%;margin-left: -10px;}
+        .nscu .cl li .isSpec  {display: block;width: 39px;height: 45px;position: absolute;left: 0;top: 0;background: url(../images/zt_jb.png) no-repeat;}
+      .nscu .cl li.cur  {background: #02a6e3;color:#FFF;}
+        .nscu .cl li.cur .progress  {display: none;}
+        .nscu .cl li.cur p.pt {color: #FFF;opacity: 0.8;}
+        .nscu .cl li.cur .layer p {color: #FFF;border-color: #FFF;}
+        .nscu .cl li.cur .layer .ty {background-image: url(../images/cl_ty2.png);}
+  .cl_btns  {height: 0;position: relative;display: none;}
+  .nscu:hover .cl_btns  {display: block;}
+    .cl_btns button {height: 150px;width: 30px;position: absolute;top: -160px;}
+    .cl_btns button:hover {opacity: 0.8;}
+    .cl_btns button.prev  {left: -40px;background: url(../images/prev.png) no-repeat center;}
+    .cl_btns button.next  {right: -40px;background: url(../images/next.png) no-repeat center;}
+  .nscu .ls {border:1px solid #DDD;padding: 0px 40px 40px 20px;margin-top: -10px;position: relative;z-index: 2;font-size: 16px;margin-bottom: 80px;}
+    .nscu .ls>h2  {line-height: 1;margin: 40px 0 20px 0;font-size: 16px;}
+    .nscu .ls .lsList div {overflow: hidden;line-height: 30px;}
+      .nscu .ls .lsList div p {float: left;}
+      .nscu .ls .lsList div span,.nscu .ls>div a  {float: right;margin-left: 20px;font-size: 14px;color: #999;}
+      .nscu .ls .lsList div span  {text-align: right;}
+      .nscu .ls .lsList div a {display: block;width: 100px;background: #02a6e3;color:#FFF;border-radius: 3px;text-align: center;}
+      .nscu .ls .lsList div a:hover {opacity: 1;}
+      .nscu .ls i.icon {display: block;width: 30px;height: 30px;float: left;margin-left: -35px;}
+
+      .nscu .ls div.Lv1 {padding-left: 35px;margin-bottom: 10px;}
+      .nscu .ls div.Lv2 {padding: 5px 20px 5px 40px;margin-left: 35px;background: #F5F5F5;position: relative;margin-bottom: 10px;}
+        .nscu .ls div.Lv2 .act  {position: absolute;right: 20px;top: 5px;display: none;}
+        .nscu .ls div.Lv2:hover .act,.nscu .ls div.Lv2.cur .act  {display: block;}
+        .nscu .ls .Lv1 i.icon {background-position: -447px -47px;}
+        i.type1.icon {background-position: -294px -95px;}
+        i.type2.icon {background-position: -294px -145px;}
+        i.type3.icon {background-position: -294px -195px;}
+      .nscu .ls div.Lv2:hover {background: #02a6e3;color:#FFF;}
+        .nscu .ls div.Lv2:hover span    {color:#FFF;}
+        .nscu .ls div.Lv2:hover a    {background:#FFF53B;color:#02a6e3;}
+        .nscu .ls div.Lv2:hover i.type1 {background-position: -294px -245px;}
+        .nscu .ls div.Lv2:hover i.type2 {background-position: -294px -295px;}
+        .nscu .ls div.Lv2:hover i.type3 {background-position: -294px -345px;}
+
+  .nscu .ls.sp{}
+    .nscu .ls.sp .Lv0 {padding-left: 35px;margin-bottom: 15px;margin-top: 15px;cursor: default;}
+      .nscu .ls.sp .Lv0 i.icon  {background: url(../images/icon_c.png) no-repeat center;}
+    .nscu .ls.sp .Lv1 {margin-left: 35px;}
+    .nscu .ls.sp .Lv2 {margin-left: 70px;}

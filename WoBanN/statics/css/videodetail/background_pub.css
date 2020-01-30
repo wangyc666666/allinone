@@ -1,0 +1,65 @@
+.user_Top {padding: 20px 0;height: 155px;background: url(../images/bgpt_bg.png) no-repeat center center;position: relative;z-index: 10;}
+  .Conditional  {}
+    .Conditional button {height: 36px;line-height: 1;padding: 0 20px;}
+    .Conditional>p  {line-height: 38px;margin-right: 10px;}
+    .Conditional input {height: 36px;border:1px solid #DDD;line-height: 34px;text-indent: 15px;}
+    .Conditional div.title  {width: 270px;height: 38px;position: relative;right: 0px;top: 0px;}
+      .Conditional div.title input  {height: 36px;border:1px solid #DDD;line-height: 34px;text-indent: 15px;padding-right: 34px;width: 234px;}
+      .Conditional div.title i.icon{height: 36px;width: 34px;background-position: 8px -91px;display: block;position: absolute;top:1px;right: 1px;cursor: pointer;}
+    .Conditional .more  {line-height: 36px;margin-left: 20px;position: relative;padding-right: 20px;cursor: pointer;}
+    .Conditional .more:hover  {color: #000;}
+    .Conditional .more i.icon {width: 10px;height: 7px;display: block;background-position: 0px -200px;position: absolute;right: 5px;top: 13px;}
+    .Conditional.open .more i.icon  {background-position: -50px -200px;}
+    .Conditional .btn  {line-height: 36px;background:#00BAF2;color:#FFF;height: 36px;overflow: hidden;width: 110px;text-align: center;}
+    .Conditional .btn.fr {margin-left: 20px;}
+    .Conditional .other {margin-top: 20px;display: none;}
+    .Conditional.open .other  {display: block;}
+    .Conditional .SelectDL {line-height: 34px;height: 34px;width: 130px;margin-right:20px;}
+      .Conditional .SelectDL dt {position: relative;}
+      .Conditional .SelectDL dd {top:36px;text-align: center;text-indent: 0}
+    .Conditional .condition {margin-right: 40px;overflow: hidden;}
+      .Conditional .condition>*  {float: left;}
+      .Conditional .condition dt  {line-height: 36px;margin-right: 10px;}
+      .Conditional .condition dd p  {margin: 0px 5px ;line-height:34px;}
+      .Conditional .condition input {line-height: 34px;height: 34px;border:1px solid #DDD;line-height: 34px;width: 130px;text-indent: 5px;float: left;}
+      .Conditional .condition input.w200 {width: 200px;}
+
+.userTabs {background: #f5f5f5;}
+  .userTabs ul  {overflow: hidden;}
+  .userTabs li  {float: left;position: relative;line-height: 50px;}
+    .userTabs li i.icon {width: 5px;height: 5px;border-radius: 100%;background:#b02f29;position: absolute;right: 10px;top:15px;}
+    .userTabs li a  {display: block;padding:0 20px;}
+    .userTabs li.cur a  {background-color: #FFF;font-size: 16px;color:#000;}
+
+a:hover  {opacity: 0.8}
+
+
+i.look {background-position: -50px -100px;}
+i.look:hover {background-position: -50px -150px;}
+i.edit {background-position: -100px -100px;}
+i.edit:hover {background-position: -100px -150px;}
+i.del {background-position: -150px -100px;}
+i.del:hover {background-position: -150px -150px;}
+i.Directory {background-position: -250px -100px;width: 22px !important;}
+i.Directory:hover {background-position: -250px -150px;}
+i.vip {width: 15px;height: 15px;background-position: -150px 0px;display: block;}
+i.vip.gray {background-position: -170px 0px;}
+i.sign  {background-position: -200px 0}
+i.user  {background-position: -250px 0}
+i.stuCenter  {background-position: -300px 0}
+i.del2 {background-position: -150px -50px;width: 24px;height: 24px;}
+i.del3 {background-position: -194px -44px;width: 24px;height: 24px;}
+i.error {background-position: -300px -50px;width: 15px;height: 15px;}
+i.upload {background-position: -200px -100px;}
+i.upload:hover {background-position: -200px -150px;}
+i.check {width: 16px;height: 16px;display: block;background-position: 0 -400px;}
+i.check:hover {background-position: -50px -400px;}
+i.check.ed  {background-position: 0 -350px;}
+i.check.ed:hover  {background-position: -50px -350px;}
+
+p.tag {float: left;background: #DDD;line-height: 18px;padding: 0 5px 0 20px;margin-top: 7px;margin-left: 10px;font-size: 12px;background:#FEB97E url(../images/honor_icons2.png) no-repeat;color:#A5571B;}
+.tag.lv1 {background-position: 3px 4px;}
+.tag.lv2 {background-position: 3px -23px;}
+.tag.lv3 {background-position: 4px -52px;}
+.tag.lv4 {background-position: 3px -78px;}
+.tag.lv5,.tag.lv6,.tag.lv7 {background-position: 3px -107px;}

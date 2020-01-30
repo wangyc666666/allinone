@@ -1,0 +1,589 @@
+{% extends 'index.html' %}
+{% block page-content %}
+
+<link href="/statics/css/usercenter/base.css" rel="stylesheet">
+<link href="/statics/css/usercenter/activity_tab.css" rel="stylesheet">
+<link href="/statics/images/usercenter/gen_top.css" rel="stylesheet">
+<link href="/statics/css/usercenter/nice_select.css" rel="stylesheet">
+<link href="/statics/css/usercenter/background_pub.css" rel="stylesheet">
+<link href="/statics/css/usercenter/background_stu.css" rel="stylesheet">
+
+<body>
+
+    <div style="margin-top: 60px"></div>
+
+<div class="user_Top" STYLE="BACKGROUND-COLOR:#0080FF;">
+  <div class="Page Infos">
+    <div class="Portrait fl">
+      <a title="去学习中心"><img src="/medias/{{ username.userpic }}"></a>
+    </div>
+    <div class="Main fl">
+      <div class="name">
+          <a  title="去学习中心"> <h2 class="fl" style="color:#fff"> {{ username }}</h2></a>
+                <i class="icon vip gray fl"></i>
+                <!--a href="http://pay.51cto.com/index.php?do=gold" target="_blank" class="Prepaid fl">充值余额</a-->
+        <div class="clear"></div>
+      </div>
+      <!--ul class="property">
+        <li class="money">
+          <h2> 0 </h2>
+          <p>余额</p>
+          <i class="line"></i>
+        </li>
+        <li>
+          <h2 id="crd">107</h2>
+          <p>学分</p>
+          <i class="line"></i>
+        </li>
+        <li>
+          <h2>1</h2>
+          <p>学习课程</p>
+          <i class="line"></i>
+        </li>
+        <li>
+          <h2>6077分钟</h2>
+          <p>学习时长</p>
+        </li>
+      </ul-->
+    </div>
+    <div class="others fr">
+              <!--a class="fr" href="http://edu.51cto.com/center/course/user/get-study-course">学习中心<i class="icon stuCenter"></i></a>
+            <a class="fr" href="javascript:void(0);" id="signToday">签到<i class="icon sign"></i></a-->
+    </div>
+    <div class="clear"></div>
+    <div class="tips"><a href="http://51edu.blog.51cto.com/8899635/1945925" target="_blank">　　　　　　　　　　　</a></div>
+  </div>
+</div>
+<script type="text/javascript">
+
+function user_pic_change(fileDom){
+    //判断是否支持FileReader
+    if (window.FileReader) {
+        var reader = new FileReader();
+    } else {
+        alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+    }
+
+    //获取文件
+    var file = fileDom.files[0];
+    var imageType = /^image\//;
+    //是否是图片
+    if (!imageType.test(file.type)) {
+        alert("请选择图片！");
+        return;
+    }
+    //读取完成
+    reader.onload = function(e) {
+        //获取图片dom
+        var img = document.getElementById("userpic_preview");
+        //图片路径设置为读取的图片
+        img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+    //上传图片
+    //var callback = jQuery.parseJSON(callback);
+    var imgageFileId = document.getElementById('user_pic_change').files[0];
+    var fd = new FormData();
+    fd.append('username','root');
+    fd.append('imgage_file_id',imgageFileId);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/uploadimg/',true);
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4){
+            // 接收完毕
+            var obj = JSON.parse(xhr.responseText);
+            var image_url_now = obj.image_url
+            console.log(image_url_now);
+            console.log('ok');
+            document.getElementById("userpic_preview").src=image_url_now;
+
+
+        }
+    };
+    xhr.send(fd);
+
+}
+
+function base_info_change(doc,type){
+        var usernameId = $('#check1').val();
+        var personId = $('#check2').val();
+        var telephoneNumId = $('#check3').val();
+        var qqNumId = $('#check4').val();
+        var emailId = $('#check5').val();
+        var userpicPreview = document.getElementById("userpic_preview").src;
+        var type = type;
+        var usernameIdNum = $('#username-id').attr("value");
+
+        $.ajax({
+                url:'/user_save/',
+                data:{
+                    usernameIdNum:usernameIdNum,
+                    usernameId:usernameId,
+                    personId:personId,
+                    telephoneNumId:telephoneNumId,
+                    qqNumId:qqNumId,
+                    emailId:emailId,
+                    userpicPreview:userpicPreview,
+                    type:type,
+                },
+
+                type:'POST',
+
+		success:function(callback) {
+            var callback = jQuery.parseJSON(callback);
+
+            console.log(callback.status)
+            if(callback.status==1){
+
+                 alert(callback.message+"信息填写不完整");
+                 document.getElementById("userpicPreview").src="";
+
+
+					}
+            if(callback.status==0 && callback.message=="Title already exist"){
+
+                 alert("发布标题已存在,请修改标题名称");
+
+					}
+             if(callback.status==0 && callback.message=="ok"){
+
+                 alert("更新成功");
+
+					}
+
+
+        }
+
+        });
+	}
+
+
+function showTime(){
+  var now = new Date(),hours = now.getHours(),x = '';
+  if(hours<9){x = '早上'}
+  else if(hours<12){x = '上午'}
+  else if(hours<18){x = '下午'}
+  else{x = '晚上'}
+  return x;
+}
+$("#signToday").click(function(){
+  var dom = $(this)
+  Introduce.show()
+  $.get(_centerURL+'user/sign/index',function(res){
+    Introduce.hide()
+    if(res.status==1){
+      dom.html('已签到')
+      var closeBtn = $('<button style="width:100px;height:32px;line-height:1;display:block;margin:auto;margin-top:20px;">确定</button>')
+      var main = $('<div style="padding:20px;padding-bottom:0;"></div>').append('<p>亲爱的段子乔布斯，'+showTime()+'好！</p>')
+      .append('你已连续签到 '+res.data.join_sign+' 天，获得 '+res.data.crd+' 学分').append('<p class="red">会员领双倍学分</p>')
+      .append(closeBtn)
+      var signMsg = new AutoBox({
+        noCon:true,
+        ADD:main,
+        W:400,
+        mask:"#000"
+      })
+      closeBtn.click(function(){
+        signMsg.close()
+      })
+      $("#crd").html(parseInt($("#crd").html())+res.data.crd)
+    }else{
+      new AutoBox({content:res.msg,img:'remind',autoClose:2,mask:"#000"})
+    }
+  },'json')
+})
+</script>
+<div class="userTabs">
+  <div class="Page">
+    <ul class="fl">
+            <li class="cur"><a href="#">个人信息</a></li>
+            </ul>
+        <div class="fr ads">
+      <!--a target="_blank" href="http://edu.51cto.com/activity/3.html?qd=notice" style="color:red" ;="">【9月来开黑】最强王者，你有一份福利礼包未领取</a-->
+    </div>
+        <div class="clear"></div>
+  </div>
+</div>
+
+
+    <div class="Page Stu">
+      <ul class="pageTabs">
+        <li>
+          <p class="cur">个人信息</p>
+        </li>
+        <li>
+          <a href="/resetpassword" target="_blank">修改密码</a>
+        </li>
+      </ul>
+      <div class="myInfo" id="myInfo">
+        <h4>基本信息</h4>
+        <dl class="tables">
+          <dl class="tables">
+             <dt>ID:</dt>
+            <dd id="username-id" value="{{username.id}}">
+             {{username.id |safe}}
+            </dd>
+          </dl>
+          <dt>当前头像</dt>
+          <dd>
+            <div class="Avatar show2"><img id="userpic_preview" src="/medias/{{ username.userpic }}">
+
+            </div>
+            <div class="Avatar edit">
+              <a href="http://home.51cto.com/info/face">
+                   <a>修改头像</a>
+ <input id= 'user_pic_change' type="file" name="file" onchange="user_pic_change(this)"  placeholder="修改头像"/>
+
+              </a>
+
+            </div>
+
+          </dd>
+        </dl>
+
+        <dl class="tables">
+          <dt>用户名</dt>
+          <dd>
+            <p class="show" id="real_name">{{ username }}</p>
+            <input type="text" class="edit fl" name="real_name" id="check1" value="{{ username }}" maxlength="20" min="2">
+            <p class="error fl red">error</p>
+          </dd>
+        </dl>
+        <dl class="tables">
+          <dt>出生日期</dt>
+          <dd>
+            <p id="birthday">-</p>
+          </dd>
+        </dl>
+
+    <dl class="tables">
+      <dt>邮箱</dt>
+      <dd>
+        <p class="show" id="mail">{{ username.email }}</p>
+        <input type="text" class="edit fl" name="mail" rule="isEmail" id="check5" value="{{ username.email }}">
+        <p class="error fl red">error</p>
+      </dd>
+    </dl>
+
+    <dl class="tables">
+      <dt></dt>
+      <dd>
+        <button id="edit_info" class="show">编辑资料</button>
+        <button class="edit_save edit" onclick="base_info_change(this,'base_save')">保 存</button>
+        <button class="edit_cancel edit type2">取 消</button>
+      </dd>
+    </dl>
+  </div>
+  <!--div class="myInfo" id="studyInfo">
+    <h4>学习档案</h4>
+    <dl class="tables">
+      <dt>毕业学校</dt>
+      <dd>
+        <p class="show" id="university">福建师范大学</p>
+        <input type="text" class="edit" name="university" id="check6" value="福建师范大学" maxlength="30">
+        <p class="error fl red">error</p>
+      </dd>
+    </dl>
+    <dl class="tables">
+      <dt>学历</dt>
+      <dd>
+        <p class="show" id="qual_school">本科</p>
+        <dl class="SelectDL fl edit">
+          <dt><p>本科</p><input type="hidden" name="qual_school" value="1"></dt>
+          <dd tabindex="3" style="overflow: hidden; outline: none;">
+            <ul>
+            <li>学历 </li><li val="1">本科</li><li val="2">大专</li><li val="3">中专</li><li val="4">在读大学生</li><li val="5">本科以上</li>            </ul>
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+    <dl class="tables">
+      <dt>职务</dt>
+      <dd>
+        <p class="show" id="work_position">开发工程师/程序员</p>
+        <dl class="SelectDL fl edit">
+          <dt><p>开发工程师/程序员</p><input type="hidden" name="work_position" value="8"></dt>
+          <dd tabindex="4" style="overflow: hidden; outline: none;">
+            <ul>
+            <li>职务</li><li val="1">项目经理</li><li val="2">产品经理</li><li val="3">架构师</li><li val="4">数据库工程师</li><li val="5">安全工程师</li><li val="6">系统/运维工程师</li><li val="7">网络工程师</li><li val="8">开发工程师/程序员</li><li val="9">测试工程师</li><li val="10">技术支持/售前/售后</li><li val="11">IT顾问/咨询/分析</li><li val="12">前端设计师(UI/UE)</li><li val="13">非IT部门经理</li><li val="14">非IT部门员工</li><li val="15">销售/市场</li><li val="16">HR</li><li val="17">科研人员/教师</li><li val="18">学生</li><li val="19">其它</li>            </ul>
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+    <dl class="tables">
+      <dt>工作时间</dt>
+      <dd>
+        <p class="show" id="work_age">4年</p>
+        <dl class="SelectDL fl edit">
+          <dt><p>4年</p><input type="hidden" name="work_age" value="2014"></dt>
+          <dd tabindex="5" style="overflow: hidden; outline: none;">
+            <ul>
+            <li>工作时间</li><li val="2017">2017</li><li val="2016">2016</li><li val="2015">2015</li><li val="2014">2014</li><li val="2013">2013</li><li val="2012">2012</li><li val="2011">2011</li><li val="2010">2010</li><li val="2009">2009</li><li val="2008">2008</li><li val="2007">2007</li><li val="2006">2006</li><li val="2005">2005</li><li val="2004">2004</li><li val="2003">2003</li><li val="2002">2002</li><li val="2001">2001</li><li val="2000">2000</li><li val="1999">1999</li><li val="1998">1998</li><li val="1997">1997</li><li val="1996">1996</li><li val="1995">1995</li><li val="1994">1994</li><li val="1993">1993</li><li val="1992">1992</li><li val="1991">1991</li><li val="1990">1990</li><li val="1989">1989</li><li val="1988">1988</li><li val="1987">1987</li><li val="1986">1986</li><li val="1985">1985</li><li val="1984">1984</li><li val="1983">1983</li><li val="1982">1982</li><li val="1981">1981</li><li val="1980">1980</li><li val="1979">1979</li><li val="1978">1978</li><li val="1977">1977</li><li val="1976">1976</li><li val="1975">1975</li><li val="1974">1974</li><li val="1973">1973</li><li val="1972">1972</li><li val="1971">1971</li><li val="1970">1970</li><li val="1969">1969</li><li val="1968">1968</li>            </ul>
+          </dd>
+        </dl>
+      </dd>
+    </dl>
+    <dl class="tables">
+      <dt>工作单位</dt>
+      <dd>
+        <p class="show" id="work_unit">某大型公司</p>
+        <input type="text" class="edit" name="work_unit" value="某大型公司">
+      </dd>
+    </dl>
+    <dl class="tables">
+      <dt>有无计算机基础(擅长技术)或相关工作经验</dt>
+      <dd>
+        <p class="show" id="technology">云计算开发　　</p>
+        <div class="edit">
+          <input type="text" class="edit fl" name="technology" value="云计算开发">
+        </div>
+      </dd>
+    </dl>
+    <dl class="tables">
+      <dt></dt>
+      <dd>
+        <button id="edit_archives" class="show">编辑档案</button>
+        <button class="edit_save edit">保 存</button>
+        <button class="edit_cancel edit type2">取 消</button>
+      </dd>
+    </dl>
+  </div>
+</div-->
+
+<script type="text/javascript">
+
+  var work_position = {"1":"\u9879\u76ee\u7ecf\u7406","2":"\u4ea7\u54c1\u7ecf\u7406","3":"\u67b6\u6784\u5e08","4":"\u6570\u636e\u5e93\u5de5\u7a0b\u5e08","5":"\u5b89\u5168\u5de5\u7a0b\u5e08","6":"\u7cfb\u7edf\/\u8fd0\u7ef4\u5de5\u7a0b\u5e08","7":"\u7f51\u7edc\u5de5\u7a0b\u5e08","8":"\u5f00\u53d1\u5de5\u7a0b\u5e08\/\u7a0b\u5e8f\u5458","9":"\u6d4b\u8bd5\u5de5\u7a0b\u5e08","10":"\u6280\u672f\u652f\u6301\/\u552e\u524d\/\u552e\u540e","11":"IT\u987e\u95ee\/\u54a8\u8be2\/\u5206\u6790","12":"\u524d\u7aef\u8bbe\u8ba1\u5e08(UI\/UE)","13":"\u975eIT\u90e8\u95e8\u7ecf\u7406","14":"\u975eIT\u90e8\u95e8\u5458\u5de5","15":"\u9500\u552e\/\u5e02\u573a","16":"HR","17":"\u79d1\u7814\u4eba\u5458\/\u6559\u5e08","18":"\u5b66\u751f","19":"\u5176\u5b83"} , qual_school = {"1":"\u672c\u79d1","2":"\u5927\u4e13","3":"\u4e2d\u4e13","4":"\u5728\u8bfb\u5927\u5b66\u751f","5":"\u672c\u79d1\u4ee5\u4e0a"};
+  $("#edit_info,#edit_archives").click(function(){
+    $(this).parents('.myInfo').addClass('edit')
+  })
+  $("button.edit_cancel").click(function(){
+    $(this).parents('.myInfo').removeClass('edit')
+  })
+  $("button.edit_save").click(function(){
+      var ps = {},parentDOM = $(this).parents('.myInfo');
+      var bcDatas = [],cantSubmit=false;
+      parentDOM.find('input[name]').each(function(i,e){
+        ps[e.name] = $.trim(e.value).replace(/<\/?[^>]*>/g,'');
+        var t = [e.id]
+        var mobile_rule_flag = (e.name == 'mobile' && e.value.indexOf('*')>-1); 
+        if($(e).attr('rule') && !mobile_rule_flag ){
+          var cr = $(e).attr('rule').split(',');
+          for(var i=0;i<cr.length;i++){
+            t.push(cr[i]);
+          }
+        }
+        if($(e).attr('maxlength')) t.push('max:'+$(e).attr('maxlength')+':不能大于'+$(e).attr('maxlength')+'位')
+        if($(e).attr('min')) t.push('min:'+$(e).attr('min')+':不能小于'+$(e).attr('min')+'位')
+        bcDatas.push(t)
+      })
+      console.log(bcDatas)
+      BatchCheck(bcDatas,function(s,dom){
+        var id = dom.attr('id'),name = dom.parents('dd').prev().html()
+        var statusTxT = (s.indexOf('请输入')>-1||s.indexOf('请选择')>-1)?s+name:name+s
+        dom.focus().next('p.error').show().html(statusTxT)
+        cantSubmit = true;
+      });
+      if(cantSubmit){
+        return false
+      }
+      $.post(_centerURL+'user/info/update-user-info',ps,function(res){
+        if(res.status){
+          var img = 'ok'
+          if(parentDOM.attr('id')=='myInfo'){
+            var address = $("#text_p").html()+' '+$("#text_c").html()+' '+ps.address
+            $("#TotalAddress").html(address)
+          }
+          parentDOM.removeClass('edit')
+          for(var d in ps){
+            $("#"+d).html(ps[d]?ps[d]:'-')
+            var next = $("#"+d).next()
+            if(next.hasClass('SelectDL')){
+              var vv = ps[d]?(next.find('[val="'+ps[d]+'"]').html()):'-'
+              $("#"+d).html()
+            }
+            if(d=='work_age'){
+              var startYear = parseInt(ps[d]),nowYear = new Date().getFullYear()
+              var years = startYear?((parseInt(nowYear-startYear)+1)+'年'):'-'
+              $("#"+d).html(years);
+            }
+            if(d == 'qual_school'){
+                $("#"+d).html(qual_school[ps[d]]);
+            }
+            if(d == 'work_position'){
+                $("#"+d).html(work_position[ps[d]]);
+            }    
+          }
+          if(ps['id_number']){ 
+              $("#birthday").html(ps['id_number'].substr(6,4)+'-'+ps['id_number'].substr(10,2)+'-'+ps['id_number'].substr(12,2)+'日') }
+          if(ps['id_number'] && ps['id_number'].indexOf('*') ==  -1){
+              $("#id_number").html(ps['id_number'].substr(0,10)+'********');
+          }    
+          if(ps['mobile'] && ps['mobile'].indexOf('*') ==  -1){
+              $("#mobile").html(ps['mobile'].substr(0,3)+'****'+ps['mobile'].substr(-4,4));
+          }
+          var showAddress = ''
+          if($("#provinceVal").val()!='') showAddress+=$("#text_p").html()+' '
+          if($("#cityVal").val()!='') showAddress+=$("#text_c").html()+' '
+          if($("#areaVal").val()!='') showAddress+=$("#text_a").html()+' '
+          showAddress+=ps['address']
+          $("#TotalAddress").html(showAddress)
+        }else{
+          var img = 'error'
+        }
+        new AutoBox({content:res.msg,mask:"#000",autoClose:2,img:img})
+      },'json')
+  })
+
+
+
+  $("#provinces,#citys").click(function(e){
+    if(e.target.tagName!='LI') return false;
+    var li = $(e.target),id = li.attr('val'),thisID = this.id
+    Introduce.show()
+    $.post(_centerURL+'common/area/getarea?pid='+id,function(res){
+      Introduce.hide()
+      if(res.status != 1){
+        console&&console.warn(res.msg)
+        return false;
+      }
+      if(thisID=='provinces'){
+        resetNextLv($("#citys"),res.data)
+      }
+      if(thisID=='citys'){
+        resetNextLv($("#areas"),res.data)
+      }
+    },'json')
+  })
+  function resetNextLv(list,v){
+    var n = 0;
+    list.empty()
+    for(var e in v){
+      var item = $('<li val="'+e+'">'+v[e]+'</li>')
+      list.append(item)
+      if(n==0) item.click()
+      n++;
+    }
+  }
+
+  $('.myInfo').find('input').focus(function(){
+    $(this).next('p.error').hide()
+  })
+  $('.myInfo').find('input').keyup(function(){
+    $(this).next('p.error').hide()
+  })
+
+</script>
+    <script src="/statics/js/usercenter/jquery.nicescroll.min.js"></script><script src="/statics/js/usercenter/nice_select.js"></script>
+<!--div class="footer_bg">
+  <div class="footer">
+    <ul class="footer_list">
+      <li><h2>新手指南</h2></li>
+      <li><a href="http://edu.51cto.com/center/about/index/help" target="_blank">如何购买</a></li>
+      <li><a href="http://edu.51cto.com/center/about/index/help" target="_blank">如何使用优惠券</a></li>
+      <li><a href="http://edu.51cto.com/center/about/index/help" target="_blank">如何开发票</a></li>
+      <li><a href="http://edu.51cto.com/center/about/index/help" target="_blank">退款政策</a></li>
+    </ul>
+    <ul class="footer_list">
+      <li><h2>关于课程</h2></li>
+      <li><a href="http://edu.51cto.com/center/about/index/help" target="_blank">手机上如何看课程</a></li>
+      <li><a href="http://edu.51cto.com/center/about/index/help" target="_blank">如何下载资料</a></li>
+      <li><a href="http://edu.51cto.com/contactqq.html" target="_blank">视频卡顿反馈</a></li>
+      <li><a href="http://bbs.51cto.com/thread-1113045-1.html" target="_blank">课程登记</a></li>
+    </ul>
+    <ul class="footer_list">
+      <li><h2>互动交流</h2></li>
+      <li><a href="http://51edu.blog.51cto.com/8899635/1862738" target="_blank">学员QQ群</a></li>
+      <li><a href="http://edu.51cto.com/center/about/index/feedback" target="_blank">意见反馈</a></li>
+      <li><a href="http://bbs.51cto.com/" target="_blank">论坛交流</a></li>
+      <li><a href="http://down.51cto.com/" target="_blank">资料下载</a></li>
+    </ul>
+    <ul class="footer_list">
+      <li><h2>关于我们</h2></li>
+      <li><a href="http://edu.51cto.com/center/about/index/about" target="_blank">关于我们</a></li>
+      <li><a href="http://edu.51cto.com/center/about/index/contactus" target="_blank">联系我们</a></li>
+      <li><a href="http://edu.51cto.com/lecturer/lectopics" target="_blank">内容合作</a></li>
+      <li><a href="http://edu.51cto.com/friendlink" target="_blank">友情链接</a></li>
+    </ul>
+    <ul class="footer_last">
+      <li><h2>客服热线</h2>09:00-19:00</li>
+      <li><h3>400-851-9651</h3></li>
+      <li>
+        <div class="sbox_more">
+          <a class="sina fl" href="http://weibo.com/51ctoedu?refer_flag=1001030101_&is_hot=1" target="_blank"></a>
+          <div class="wechat_bg fl" style="z-index:2;">
+            <a class="wechat" href="javascript:;"></a>
+            <div class="wechat_box">
+              <img src="/statics/images/usercenter/qrcode2.png" alt="官方二维码">
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="footer_company">
+    <a href="http://edu.51cto.com/" target="_blank" title="cloud学院_中国最大的IT技能学习平台"><img src="/statics/images/usercenter/logo_f2.png" alt="cloud学院_中国最大的IT技能学习平台"></a>
+    <div>Copyright © 2005-2017 <a href="http://www.51cto.com/" target="_blank">51CTO.com</a></div>
+  </div>
+</div-->
+<div class="qqbm_bs_box" style="position: fixed;right:10px;top:42%;width: 60px;z-index: 999;cursor: pointer;opacity: .8;filter: opacity(80);">
+  <a href="#" style="display: block;" target="_blank"><img src="/statics/images/usercenter/1a462b7e409d220b47e8f1608cba8a51.png" style="display: block;"></a>
+  <img src="/statics/images/usercenter/slider_02.png" onclick="$(&#39;#AdviceMask&#39;).show();$(&#39;#Advice&#39;).show();" style="display: block;margin-top: 6px;">
+  <a href="#" style="display: block;margin-top: 2px;" target="_blank">
+    <p onmousemove="$(this).children().eq(1).show();" onmouseout="$(this).children().eq(1).hide();" style="position: relative;width: 58px;height: 58px;">
+      <img src="/statics/images/usercenter/slider_05.png" style="position: absolute;left: 0;top: 0;display: block;">
+      <img src="/statics/images/usercenter/slider_05s.png" style="position: absolute;left: 0;top: 0;display: none;">
+    </p>
+  </a>
+  <div onmousemove="$(this).children().eq(1).show();" onmouseout="$(this).children().eq(1).hide();" onclick="$(window).scrollTop(0);" style="position: relative;width: 58px;height: 58px;margin-top: 2px;">
+      <img src="/statics/images/usercenter/slider_03.png" style="position: absolute;left: 0;top: 0;display: block;">
+      <img src="/statics/images/usercenter/slider_03s.png" style="position: absolute;left: 0;top: 0;display: none;">
+  </div>
+</div>
+<div class="mask disp-n" id="AdviceMask"></div>
+<div class="Advice disp-n" id="Advice">
+    <div class="Main">
+        <button class="close" onclick="$(&#39;#AdviceMask&#39;).hide();$(&#39;#Advice&#39;).hide();">&nbsp;</button>
+
+        <h3>购买的课程可以下载么？</h3>
+        <p>目前PC端暂不支持下载课程视频，请手机或者平板电脑下载“{{web_name}}”APP后再下载视频哦！</p>
+        <h3>优惠券如何使用？</h3>
+        <p>非折扣课程（不包含1元课程/套餐）可使用，一个订单（可包含多个课程）只可使用一张；优惠券一经使用，不再返还；若被冻结请在PC端删除订单即可返还。</p>
+        <p class="mt20">更多问题查询点击 <a href="#" target="_blank">帮助中心</a></p>
+        <p class="mt10">欢迎您提供宝贵意见，对于您的意见我们都会认真、慎重的讨论，每一个意见都是我们更好为您服务的鞭策和激励，感谢您帮助学院成长，<a href="#" target="_blank">我要反馈意见</a></p>
+        <button id="bizQQ_WPA">&nbsp;</button>
+    </div>
+</div>
+<script type="text/javascript">
+$("#bizQQ_WPA,#qqwaps").click(function(){
+    window.open('http://edu.51cto.com/contactqq.html')
+})
+//百度统计代码
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?8c8abdb71d78d33dfdb885e0bc71dae0";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+
+})();
+
+
+</script>
+<span style="display:none;">
+<script src="/statics/js/usercenter/count.js"></script><script src="/statics/images/usercenter/count.php"></script>
+</span><div style="position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 10000000; display: none; background: url(https://static1.51cto.com/edu/center/images/bg50.png);"><div style="z-index:10000001;width:200px;height:100px;background:#FFF url(https://static1.51cto.com/edu/images/whitestyle/../../center/images/loading.gif) no-repeat center;position:absolute;left:50%;top:50%;margin-left:-100px;margin-top:-50px;"></div></div>
+<script type="text/javascript"> document.write(unescape("%3Cscript src='https://tongji.51cto.com/cto.js/b57176900a4805e17afc7b8e25a43abf' type='text/javascript'%3E%3C/script%3E")); </script><script src="/statics/images/usercenter/b57176900a4805e17afc7b8e25a43abf" type="text/javascript"></script>
+
+<div style="display:none">
+    <iframe frameborder="0" scrolling="no" width="0" height="0" src="/statics/images/usercenter/pageview.html"></iframe>
+</div>    <script type="text/javascript"> document.write(unescape("%3Cscript src='https://tongji.51cto.com/cto.js/d54cb05adfc38c1804f9ee1cf9ade6e0' type='text/javascript'%3E%3C/script%3E")); </script><script src="/statics/images/usercenter/d54cb05adfc38c1804f9ee1cf9ade6e0" type="text/javascript"></script>
+
+
+<div id="ascrail2000" class="nicescroll-rails nicescroll-rails-vr" style="width: 8px; z-index: 100; cursor: default; position: absolute; top: 1px; left: 93px; height: 0px; display: none;">
+    <div class="nicescroll-cursors" style="position: relative; top: 0px; float: right; width: 6px; height: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2000-hr" class="nicescroll-rails nicescroll-rails-hr" style="height: 8px; z-index: 100; top: -7px; left: 1px; position: absolute; cursor: default; display: none;"><div class="nicescroll-cursors" style="position: absolute; top: 0px; height: 6px; width: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2001" class="nicescroll-rails nicescroll-rails-vr" style="width: 8px; z-index: 100; cursor: default; position: absolute; top: 1px; left: 93px; height: 0px; display: none;"><div class="nicescroll-cursors" style="position: relative; top: 0px; float: right; width: 6px; height: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2001-hr" class="nicescroll-rails nicescroll-rails-hr" style="height: 8px; z-index: 100; top: -7px; left: 1px; position: absolute; cursor: default; display: none;"><div class="nicescroll-cursors" style="position: absolute; top: 0px; height: 6px; width: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2002" class="nicescroll-rails nicescroll-rails-vr" style="width: 8px; z-index: 100; cursor: default; position: absolute; top: 1px; left: 93px; height: 0px; display: none;"><div class="nicescroll-cursors" style="position: relative; top: 0px; float: right; width: 6px; height: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2002-hr" class="nicescroll-rails nicescroll-rails-hr" style="height: 8px; z-index: 100; top: -7px; left: 1px; position: absolute; cursor: default; display: none;"><div class="nicescroll-cursors" style="position: absolute; top: 0px; height: 6px; width: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2003" class="nicescroll-rails nicescroll-rails-vr" style="width: 8px; z-index: 100; cursor: default; position: absolute; top: 1px; left: 93px; height: 0px; display: none;"><div class="nicescroll-cursors" style="position: relative; top: 0px; float: right; width: 6px; height: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2003-hr" class="nicescroll-rails nicescroll-rails-hr" style="height: 8px; z-index: 100; top: -7px; left: 1px; position: absolute; cursor: default; display: none;"><div class="nicescroll-cursors" style="position: absolute; top: 0px; height: 6px; width: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2004" class="nicescroll-rails nicescroll-rails-vr" style="width: 8px; z-index: 100; cursor: default; position: absolute; top: 1px; left: 93px; height: 0px; display: none;"><div class="nicescroll-cursors" style="position: relative; top: 0px; float: right; width: 6px; height: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2004-hr" class="nicescroll-rails nicescroll-rails-hr" style="height: 8px; z-index: 100; top: -7px; left: 1px; position: absolute; cursor: default; display: none;"><div class="nicescroll-cursors" style="position: absolute; top: 0px; height: 6px; width: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2005" class="nicescroll-rails nicescroll-rails-vr" style="width: 8px; z-index: 100; cursor: default; position: absolute; top: 1px; left: 93px; height: 0px; display: none;"><div class="nicescroll-cursors" style="position: relative; top: 0px; float: right; width: 6px; height: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2005-hr" class="nicescroll-rails nicescroll-rails-hr" style="height: 8px; z-index: 100; top: -7px; left: 1px; position: absolute; cursor: default; display: none;"><div class="nicescroll-cursors" style="position: absolute; top: 0px; height: 6px; width: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div></body></html>
+
+
+{% endblock %}

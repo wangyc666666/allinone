@@ -1,0 +1,265 @@
+{% extends 'mobile_docindex.html' %}
+{% block page-all %}
+	<title>{{docnews.title}}</title>
+ <style type="text/css"> img{max-width:100% } .contents{ width:auto; }
+ .wrap{word-wrap:break-word;word-break:break-all; overflow: hidden;width: 100%; height: auto; } </style>
+
+
+
+
+
+
+
+
+
+<script src="/statics/js/cloudcollege/doccloudcollege.js"></script>
+
+     <script type="text/javascript">
+		 function docFavor(doc,id){
+
+	    if(getCookie("doc"+id)==null){
+                				setCookie("doc"+id,"www.icloudcollege.com");
+                				//alert("设置cookie成功");
+          					}else{
+           						if(getCookie("doc"+id)=="www.icloudcollege.com"){
+               						alert("请勿重复点赞");
+               						return ;
+           						 }
+						}
+		$.ajax({
+			url:'/addfavor/',
+			data:{nid:id},
+			type:'POST',
+
+			success:function(callback){
+
+				var obj = jQuery.parseJSON(callback);
+				if (obj.status==1){
+				    if (obj.username=='None'){
+					location.href = "/login/";
+                                   	alert("请先登入再点赞");
+                                	}else{
+
+				   	var temp =  obj.data;
+				   	$('#favnum').text(temp);
+					}
+				}else{
+					alert(obj.message);
+				}
+			}
+		});
+	}
+		 </script>
+<body class="has-panel" style="height: 1058px;">
+	<div id="ajax-hook"></div>
+	<div class="wp cl pos">
+
+		<div class="pos">
+			<!--<div class="hd-user">-->
+
+				<!--<a class="avatar" href="#" target="_blank">-->
+					<!--<img src="/medias/{{docnews.user.userpic}}" onerror="this.src='/medias/images/yonhu.jpg'"></a>-->
+				<!--<div class="hd-user-t">-->
+					<!--<h2 id="p-author"><a href="#" target="_blank">{{docnews.user.username}}</a></h2>-->
+					<!--<p>{{docnews.create_date|date:"Y-m-d H:i:s"  }}</p>-->
+				<!--</div>-->
+				<!---->
+                <!--&lt;!&ndash;i class="iconfont icon-down y"></i&ndash;&gt;-->
+				<!--<span class="tag y">原创作品</span>-->
+
+			<!--</div>-->
+			<!--div class="hd-info">
+				<div class="hd-info-i">
+					<p><i class="iconfont icon-eye"></i><span>5</span></p>
+					<p><i class="iconfont icon-comment"></i><span class="comnum">6</span></p>
+					<p id="likenum"><i class="iconfont icon-leaf"></i><span>0</span></p>
+				</div>
+				<div class="hd-info-t">
+					<p>作品分类：<span>其他设计/原创作品</span></p>
+									</div>
+			</div-->
+		</div>
+
+		<div class="contents wrap">
+
+<div style="padding-left:2em;padding-right:2em;font-size:20px;">
+			<h3>{{docnews.title}}</h3>
+
+</div>
+		<br>
+<div style="padding-left:2em;padding-right:2em;font-size:16px;">
+			<p></p>
+                  {% autoescape off %}
+		 <p>{{docnews.content }} </p>
+		{% endautoescape %}
+		<div style="padding-bottom: 30px"></div>
+	<div class="hd-user-t">
+					<!--<h2 id="p-author"><a href="#" target="_blank">{{docnews.user.username}}</a></h2>-->
+					<p style="margin-left: 0px">{{docnews.create_date|date:"Y-m-d "  }}</p>
+				</div>
+	<div style="padding-bottom: 50px"></div>
+	     <script>
+	function zanshan() {
+		$('#modal-pay2').toggle();
+    }
+
+	</script>
+
+
+
+            <!--<button class="fl ml20 buyThisClass buyVip" onclick="zanshan()">打赏</button>-->
+                 <!--<div class="fr edu-ad txt_ad" ad_id="10" info_id="4676" type="course">-->
+            <!--</div>-->
+
+      	<!--&lt;!&ndash; 支付弹出框 &ndash;&gt;-->
+<!--&lt;!&ndash; 打开弹框按钮  data-target="#modal-pay" &ndash;&gt;-->
+<!--<div id="modal-pay2" class="modal2" element hidden>-->
+	<!--<div class="modal-effect">-->
+		<!--<div class="modal-pay">-->
+            <!--<br>-->
+			<!--<p>你的打赏就是我的动力！</p>-->
+			<!--<p class="word-warn">悄悄说，听说打赏的人收入都比我高，不信你试试。 </p>-->
+			<!--<div class="mtm cl">-->
+				<!--<img  height="150" width="150" src="/statics/images/docdetail/zhifupay.jpg" class="z">-->
+				<!--<img  height="150" width="150" src="/statics/images/docdetail/weixinpay.jpg" class="y">-->
+			<!--</div>-->
+			<!--<p>注: 打赏金额随意，完成后，请再次点击打赏关闭本窗口。</p>-->
+		<!--</div>-->
+	<!--</div>-->
+<!--</div>-->
+
+
+
+		</div>
+		</div>
+		<div class="share cl">
+
+            <ul class="cl">
+		<!--li class="ishare"><a href="javascript:;"><i class="iconfont icon-share"></i>分享</a></li>
+			<li class="icomment">
+									<a href="http://ui.cn/login.html"><i class="iconfont icon-comment"></i>评论</a>			</li-->
+							<!--li class="istar" data="addfav">
+					<a onclick="doc_collect(this,{{ docnews.id }})" id="fav" rel="301730" _rel="1071158"><i class="iconfont icon-star"></i>收藏<em id="focususer">{{docnews.focususer.count}}</em></a>
+				</li>							<li class="iheart" data="like" id="like" rel="301730" _rel="1071158">
+					<a onclick="docFavor(this,{{ docnews.id }})">
+						<i class="iconfont icon-heart"></i>赞
+						<em id="favnum">{{docnews.favor_count}}</em>
+
+					</a>
+				</li-->            </ul>
+		</div>
+
+		<!--div class="comment cl">
+			<h2>全部评论：<span class="comnum">6</span>条</h2>
+			<ul id="c-comlist">
+				<li class="pos cl" id="com-">
+						<a class="avatar" href="http://i.ui.cn/ucenter/1024199"><img src="/statics/mobile_detail/1024199.gif"></a>
+						<div class="comm-info">
+							<h3><a href="http://i.ui.cn/ucenter/1024199" target="_blank">嘉雷</a></h3>
+							<span>今天 17:34</span>
+							<p>
+																脱缰的哈士奇 <img src="/statics/mobile_detail/sum024.gif" style="width: 22px;">							</p>
+						</div>
+											</li><li class="pos cl" id="com-">
+						<a class="avatar" href="http://i.ui.cn/ucenter/908020"><img src="/statics/mobile_detail/908020.jpg"></a>
+						<div class="comm-info">
+							<h3><a href="http://i.ui.cn/ucenter/908020" target="_blank">初薰浮浮</a></h3>
+							<span>今天 15:49</span>
+							<p>
+																私以为，动图的里面动作不能太大，否则就会有点生硬（是不是因为帧数不能太多？），像666和流氓就是这样
+哈哈，吃瓜群众一枚，或许想法不成熟							</p>
+						</div>
+											</li><li class="pos cl" id="com-">
+						<a class="avatar" href="http://i.ui.cn/ucenter/264378"><img src="/statics/mobile_detail/264378.jpg"></a>
+						<div class="comm-info">
+							<h3><a href="http://i.ui.cn/ucenter/264378" target="_blank">想飞的胖猪</a></h3>
+							<span>今天 14:47</span>
+							<p>
+																厉害了							</p>
+						</div>
+											</li><li class="pos cl" id="com-">
+						<a class="avatar" href="http://i.ui.cn/ucenter/301693"><img src="/statics/mobile_detail/301693.gif"></a>
+						<div class="comm-info">
+							<h3><a href="http://i.ui.cn/ucenter/301693" target="_blank">OneBee</a></h3>
+							<span>今天 13:47</span>
+							<p>
+																666666  这套好棒啊  有提到微信表情么，想下了用							</p>
+						</div>
+											</li><li class="pos cl" id="com-">
+						<a class="avatar" href="http://i.ui.cn/ucenter/272047"><img src="/statics/mobile_detail/272047.jpeg"></a>
+						<div class="comm-info">
+							<h3><a href="http://i.ui.cn/ucenter/272047" target="_blank">烨翔君</a></h3>
+							<span>今天 11:32</span>
+							<p>
+																贼~魔~性~							</p>
+						</div>
+											</li><li class="pos cl" id="com-">
+						<a class="avatar" href="http://i.ui.cn/ucenter/282503"><img src="/statics/mobile_detail/282503.jpg"></a>
+						<div class="comm-info">
+							<h3><a href="http://i.ui.cn/ucenter/282503" target="_blank">Alice段</a></h3>
+							<span>今天 11:28</span>
+							<p>
+																哈哈  那个称····							</p>
+						</div>
+											</li>
+				
+			</ul>
+		</div>
+
+		<div class="more">
+				<h2>更多作品</h2>
+				<div class="cl">
+					<a href="http://m.ui.cn/details/288417"><img src="/statics/mobile_detail/1413180.jpg"></a>				</div>
+			</div>	</div><!-- .wp -->
+
+
+
+
+	<div class="footer">
+
+		<p>Powered by © 2017-2018 www.ais580.com 反馈 官方QQ群:717527289</p>
+	</div>
+
+
+	<!-- 遮罩层 -->
+	<div class="shade"></div>
+
+	<!-- 评论 -->
+	<div class="comment-pop">
+		<h1>发表评论</h1>
+		<textarea></textarea>
+		<div class="btn">
+			<a class="cancel" href="javascript:;">取消</a>
+			<button id="c-submit">评论</button>
+		</div>
+	</div>
+
+	<!-- 分享弹出 微信下 -->
+	<div class="share-pop-w">
+		<p>点击右上角<br>分享给朋友吧</p>
+	</div>
+
+	<!-- 分享弹出 浏览器下 -->
+    <!--div class="share-pop">
+        <h1>分享到</h1>
+        <a href="javascript:;" class="share-weibo"><i class="iconfont icon-sina1"></i></a>
+        <a href="javascript:;" class="share-douban"><i class="iconfont icon-douban"></i></a>
+        <p class="cancel">取消</p>
+    </div-->
+<script>
+
+	var uid = "";
+	var ownerid = "1071158";
+	
+
+</script>
+
+
+
+<!--div style="display:none;">
+	<img src="/statics/mobile_detail/wapstat.php" width="0" height="0">
+</div-->
+
+
+
+{%endblock %}

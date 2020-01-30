@@ -1,0 +1,10 @@
+/*sunyy*/
+/*学习超过30分钟*/
+.pop_tosignbox{position:fixed; width:346px; min-height:100px;top:20px; background:#fff;z-index: 1000; border-radius: 5px; color:#333; z-index: 999999; display:none;}
+.pop_tosign{ position:relative; padding-top: 25px; }
+.pop_tosignbox .off{ position:absolute; right:0; top:0; z-index: 999; display:inline-block; width:10px; height:10px; padding:10px; cursor:pointer;background: url(../images/sign/off2.png) no-repeat center center;}
+.pop_tosignbox .line_tit{ text-align: center;line-height: 25px; margin-bottom: 10px;}
+.pop_tosignbox .line_tit span{ padding-left: 35px;background: url(../images/sign/dui.png) no-repeat left center; display:inline-block; height:25px;}
+.torperbtn{ padding-right: 35px;}
+.torperbtn .tosigns{width:78px; height:32px; line-height: 32px; text-align: center;background:#00a8e9; color:#fff;display:inline-block; border-radius: 3px; margin-left: 20px;}
+.torperbtn .noprompt{ margin-top: 5px; color:#999; font-size: 12px;}

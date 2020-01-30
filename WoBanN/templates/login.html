@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<!-- saved from url=(0023)http://ui.cn/login.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>{{web_name}}</title>
+        
+         <meta name="Keywords" content="云计算">
+        <meta name="Description" content="云计算 创造价值">
+        <link rel="stylesheet" href="/statics/css/base.css">
+        <link rel="stylesheet" href="/statics/css/iconfont.css">
+        <link rel="stylesheet" href="/statics/css/login-fluid.css">
+        <script type="text/javascript" src="/statics/js/jquery.js"></script>
+        <meta property="qc:admins" content="172174204536747716">
+        <script type="text/javascript" src="/statics/jss/md5.min.js"></script>
+        <script type="text/javascript" src="/statics/js/login.js"></script>
+        <script type="text/javascript">
+               $(function(){
+                   if(1 == 0){verify = true;$('#verify').removeClass('hide');}
+               })
+       </script>
+       <script type="text/javascript" src="/statics/js/msgTip.js"></script>
+    </head>
+    <body>
+        <div id="ajax-hook"></div>
+        <div class="wp cl">
+            <div class="log-wrap cl">
+                <div class="log-hd">
+    <div class="wpl cl">
+        <div class="log-row cl">
+            <div class="log-logo"><a href="/"> <img src="/statics/images/mao.jpg" > </a></div>
+            <div class="log-title">
+                <strong>580资讯网</strong>
+                <p>轻松生活</p>
+            </div>
+
+           <ul class="log-nav">
+               <li><a href="/" target="_blank">首页</a> </li>
+               {% for cate in category %}
+               <li><a href="/category/{{ cate.id }}/" target="_blank">{{cate.name}}</a> </li>
+                     {%endfor%}
+
+
+            </ul>
+        </div>
+    </div>
+</div>
+                <div class="log-content cl">
+                    <div class="wpl pos cl">
+                        <div-- class="log-row-cx cl">
+                            <div class="login_left">
+                                <div class="lr_title_txt">
+                                    <h2>欢迎回来</h2>
+                                    <span>还没有账号？<a href="/register/">立即注册</a></span>
+                                </div>
+                                 <form id="LoginForm" action="/login/" method="post">
+                                        <label class="login-icon pos">
+
+                                            <input style="display:none"><!-- for disable autocomplete on chrome -->
+                                            <input id="username" type="text" name="username" class="log-input login-name mls" placeholder="请输入用户名" autocomplete="off">
+                                        </label>
+                                        <label class="login-icon pos">
+
+
+                                            <!-- <input type="text" name="placeholderpwd" class="log-input mls" value="请输入密码" style="display: none;"> -->
+                                            <input style="display:none"><!-- for disable autocomplete on chrome -->
+                                            <input id="password" type="password" name="password" autocomplete="off" class="log-input login-pwd mls" placeholder="请输入密码">
+                                        </label>
+                                        <div class="hide" id="verify">
+                                        <label class="login-icon fg-code pos">
+                                            <i class="icon-captcha fss log-i"></i>
+                                            <input type="text" name="code" autocomplete="off" class="log-input login-pwd mls" style="width: 180px;" placeholder="请输证码">
+                                        </label>
+                                        <div class="fg-code-wp">
+                                            <span class="fg-code-pic">
+                                                <img src="/statics/images/code" onclick="this.src=&#39;/code?&#39;+Math.random()" alt="换一张">
+                                            </span>
+                                                <a class="fg-code-t" href="javascript:;" onclick="$(&#39;.fg-code-pic img&#39;).attr(&#39;src&#39;,&#39;/code?&#39;+Math.random())">换一张</a>
+                                        </div>
+                                        </div>
+                                        <button id="login-button" class="lang-btn lang-btn-huge mtw lang-btn-fixed-Large" style="margin-top: 30px !important;">
+                                            <span class="lang-btn-content">登录</span>
+                                        </button>
+                                      <label style="color:#FF0000">{{message}} </label>
+                                        <p class="login-msg"><a class="y login-forget" href="/resetpassword" target="_blank">忘记密码?</a> 如登录出现异常,请清理浏览器缓存后再尝试。</p>
+                                </form>
+                            </div>
+                                 <br><br>
+                            <div class="login-wrap-party z">
+
+                                <!--<a href="http://www.ais580.com/"  title="大话手游项目作品">-->
+                                    <!--<img width="280" height="210" src="/statics/images/386723363cfb5bc7e76523761d17c4deba2520.jpg"  class="imgloadinglater" alt="大话手游项目作品" rel="nofollow" style="display: inline;">-->
+                                <!--</a>-->
+
+                            </div>
+                            <!--div class="login-wrap-party z">
+                                <h2>第三方账号登录</h2>
+                                <div class="login-party cl">
+                                    <a href="http://ui.cn/oauth/qq/" class="log-qq">
+                                        <span><p>QQ帐号登录</p></span>
+                                    </a>
+                                    <a href="https://open.weixin.qq.com/connect/qrconnect?appid=wx35a49bedd2f3b4fa&redirect_uri=http://ui.cn/oauth/weixin/index.php&scope=snsapi_login&response_type=code&state=STATE#wechat_redirect" class="log-weixin">
+                                        <span><p>微信帐号登录</p></span>
+                                    </a>
+                                    <a href="http://ui.cn/oauth/sina/" class="log-sina">
+                                        <span><p>新浪微博登录</p></span>
+                                    </a>
+                                    <a href="http://ui.cn/oauth/mi/" class="log-mi">
+                                        <span><p>小米帐号登录</p></span>
+                                    </a>
+                                </div>
+                            </div-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="log-footer cl">
+    <div class="wpl cl">
+        <div class="log-row cl">
+            <p style="display:block;width:100%;text-align:center;">580网创建于2018年06月06日，推荐的项目100%免费。
+联系ais580com@foxmail.com，不接任何非正规擦边广告，仅限正规公司合作（个人项目请勿联系）！
+备案号：闽ICP备19017760号</p>
+        </div>
+    </div>
+</div>
+<div style="display:none">
+	<a href="http://www.cnzz.com/stat/website.php?web_id=5726673" target="_blank" title="站长统计">站长统计</a>
+</div>
+
+        </div>
+
+
+    
+</body></html>

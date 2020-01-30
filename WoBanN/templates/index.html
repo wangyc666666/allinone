@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+{% load seo %}
+<html>
+ {% block header %}
+<head>
+    <meta name="baidu-site-verification" content="MpNz3dx7EI" />
+    <link rel="icon" href="/statics/images/logo_icon.jpg" style="max-height: 50%" type="img/x-ico" />
+  {% get_metadata as my_meta %}
+  {{ my_meta }}
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta property="qc:admins" content="1721742224651636">
+<meta property="wb:webmaster" content="69e23ac12c635da9">
+<meta name="baidu-site-verification" content="sSrE9nFHHr">
+<meta baidu-gxt-verify-token="0cedd8469f067b548e2e2a19a196c16e">
+<meta name="360-site-verification" content="5dcd724ad92b8bba9adf192b493f6586">
+<meta name="viewport" content="width=1180, user-scalable=no, target-densitydpi=device-dpi">
+<title>{{web_name}}</title>
+
+<meta name="Keywords" content="{{web_name}}">
+<meta name="Description" content="{{web_name}}">
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="/statics/css/iconfont.css">
+<link rel="stylesheet" href="/statics/css/uicn.v1.css">
+<link rel="stylesheet" href="/statics/css/header.v1.css">
+<link rel="stylesheet" href="/statics/css/footer.v1.css">
+<link rel="stylesheet" href="/statics/css/nivo-slider.css">
+<link rel="stylesheet" href="/statics/css/modal.css">
+<link rel="stylesheet" href="/statics/css/post.css">
+<link rel="stylesheet" href="/statics/css/simditor.css">
+<link rel="stylesheet" href="/statics/css/ui-theme.css">
+<link rel="stylesheet" href="/statics/css/contentover.css">
+<link rel="stylesheet" href="/statics/css/page.css">
+<link rel="stylesheet" href="/statics/css/min_page.css">
+<link rel="stylesheet" href="/statics/css/home.v1.css">
+<link rel="stylesheet" href="/statics/css/exp.css">
+<link rel="stylesheet" type="text/css" href="/statics/css/new.css">
+
+<!-- JS -->
+<script src="/statics/js/hm.js"></script><script src="/statics/js/jquery.js"></script>
+<script src="/statics/js/msgTip.js"></script>
+<script src="/statics/js/header.v1.js"></script>
+<script src="/statics/js/home.v1.js"></script>
+<script src="/statics/js/works.js"></script>
+
+<script src="/statics/js/footer.v1.js"></script>
+<script src="/statics/js/post.js"></script>
+
+<script src="/statics/js/LazyLoad.js"></script>
+<script src="/statics/js/contentover.js"></script>
+<script src="/statics/js/cnzz.js"></script>
+
+<!--下雪js-->
+<!--<script src="/Public/js/snow.js"></script>-->
+<!--[if lt IE 9]>
+
+<![endif]-->
+<!--[if (gte IE 6)&(lte IE 8)]>
+
+<![endif]-->
+<script src="/statics/js/cloudcollege/index.js"></script>
+</head>
+{% endblock %}
+
+<body>
+{{ my_meta.heading }}
+	<div id="ajax-hook"></div>
+    <div class="bg-white" >
+	<div class="wpn cl bg-white"   style="text-align:center;position: fixed;top:0;z-index: 999;text-align: center;width: 100%;">
+<img class="icon-uimini logo-hd" href="/" src='/statics/images/logo_01.png' alt="Cloud学院" title="Cloud学院" />
+
+			<ul class="nav-hd cl">
+				<li id="nav-index-one"  class="{{index_selected}}"><a href="/">首页</a></li>
+
+                {% for cate in category %}
+                {% ifequal cate_id cate.id %}
+				<li class="on"><a href="/category/{{ cate.id }}/" >{{cate.name}}<i class="icon-down-one"></i></a></li>
+                {% else %}
+                <li class=""><a href="/category/{{ cate.id }}/" >{{cate.name}}<i class="icon-down-one"></i></a></li>
+                {% endifequal %}
+                 {%endfor%}
+
+<!-- 先隐藏 -->
+                <!--{% for cate in category %}-->
+                                <!--{% if cate.id == 1 or cate.id == 2 or cate.id == 3 or cate.id == 5 %}-->
+                                    <!--{% ifequal cate_id cate.id %}-->
+                            <!--<li class="on"><a href="/category/{{ cate.id }}/" >{{cate.name}}<i class="icon-down-one"></i></a></li>-->
+                                    <!--{% else %}-->
+                            <!--<li class=""><a href="/category/{{ cate.id }}/" >{{cate.name}}<i class="icon-down-one"></i></a></li>-->
+                                    <!--{% endifequal %}-->
+                                <!--{% endif %}-->
+
+					<!--{%endfor%}-->
+               <!--<li ><a href="/">更多</a></li>-->
+
+                <!-- class="">
+						<a href="javascript:;" target="_blank">更多	<i class="icon-down-one"></i>			</a>
+						<div class="subnav-hd cl" style="display: none;">
+								<ul class="subnav-ct-hd">
+								<li>
+								        <a href="/public_course/" target="_blank">公开课</a>
+
+									</li>								</ul>
+							</div>					</li-->
+
+        </ul>
+        <!-- 先隐藏 -->
+
+			<div class="y cl">
+				<div class="search-hd cl">
+					<form action="/search/" method="get" id="searchForm">
+						<div class="search-status">
+							<div class="search-filter">
+								<a href="javascript:;"><span class="tit" data-rel="article">请选择</span></a>
+								<!--a href="javascript:;"><span class="tit" data-rel="all">请选择</span></a-->
+								<ul class="options">
+									<!--li><a href="javascript:;" data-rel="video">视频教程</a></li-->
+									<li><a href="javascript:;" data-rel="article">文章</a></li>
+									<!--li><a href="javascript:;" data-rel="doc">文档资料</a></li>
+                                    <li><a href="javascript:;" data-rel="source">源文件</a></li-->
+									<!--li><a href="javascript:;" data-rel="teacher">讲师</a></li-->
+
+								</ul>
+							</div>
+							<div class="search-select">
+
+								<input type="text" class="search-val" placeholder="请输入您要查找的内容" autocomplete="off" value="" name="keywords" id="keywords">
+								<ul class="options">
+									<li><a href="javascript:;">赚钱</a></li><li>
+                                    <a href="javascript:;">游戏</a></li>
+                                    <li><a href="javascript:;">生活</a></li>
+                                    <li><a href="javascript:;">......</a></li>								</ul>
+							</div>
+						</div>
+						<input type="hidden" name="type" value="project" id="sType">
+
+
+                        <img class="search-hd-btn icon-search" height="20" width="20" src="/statics/images/sou.jpg">
+
+					</form>
+
+				</div>
+
+					<ul class="quick-hd cl">
+						<li class="quick-item">
+
+							<a  href="/uploadindex/" class="quick-toggles" href="javascript:;" >
+                                <img class="avatar" src="/statics/images/timg.jpg" alt="">
+
+							</a>
+                            <ul class="quick-menu quick-list" style="display: none;">
+								<li id="upload_id" ><a href="/uploadindex"  style="padding-left:70px">上传作品</a></li>
+
+							</ul>
+							<ul class="quick-menu1 quick-list1" style="display: none;">
+								<li><a href="/uploadindex/"><i class="icon-up-pic"></i>上传作品</a></li>
+
+							</ul>
+
+						</li><!-- quick-item -->
+
+						       <!--li class="quick-item">
+
+                                <a class="quick-toggle" href="/">
+								<img class="avatar" src="/statics/images/timg2.jpg" alt="">
+							</a>
+
+
+
+																					</a>
+							<div id="quickTab" class="quick-menu quick-tab" style="display: none;">
+								<ul class="tab-bar cl">
+									<li rel="letter" class="on">
+										<a href="javascript:;">
+											<i class="icon-envelope-thin"></i>
+											<span class="sup">1</span>										</a>
+									</li>
+
+								</ul>
+						<div class="tab-wrap">
+
+									<ul class="tab-cont" style="display: block;">
+																					<li>
+				    <a class="tab-info" href="http://i.icloudcollege.com/publicletterlink?id=32&random=0.4447780130431056" target="_blank">
+                                                        <p>没有消息</p>
+
+                                                   <time>8-28 11:08</time>
+													</a>
+                                                    												</li>
+																			</ul>
+
+
+
+							</div>
+								</div>
+						</li-->
+
+                        						<!--li class="quick-item">
+							<a class="quick-toggle" href="/my_shopping_cart">
+	<img class="avatar" src="/statics/images/cart/timg.jpg"  alt="">
+							</a>
+							<ul class="quick-menu quick-list" style="display: none;">
+								<li id="cart_id" ><a href="/my_shopping_cart"  style="padding-left:70px">购物车</a></li>
+
+							</ul>
+						</li-->
+
+
+						<li class="quick-item">
+							<a class="quick-toggle" href="/login/?{{detail_type}}={{docnews.id}}">
+	<img class="avatar" src="/medias/{{ username.userpic }}" onerror="this.onerror=null;this.src='/statics/images/yonhu.jpg'" alt="">
+							</a>
+							<ul class="quick-menu quick-list" style="display: none;">
+								<li id="login-id" ><a href="/login/?{{detail_type}}={{docnews.id}}"  style="padding-left:70px">登入</a></li>
+								<div  id="userlogin" element hidden><li><a href="/com_collectbox/" style="padding-left:50px">我的收藏</a></li>
+                                  <!--li><a href="/user_center/" style="padding-left:50px">我的订单</a></li-->
+								<li><a href="/usercenter/" style="padding-left:50px">修改资料</a></li>
+								<li><a href="/logout/" style="padding-left:50px">退出登录</a></li>
+                                </div>
+							</ul>
+						</li><!-- quick-item -->
+					</ul>
+			 				</div>
+	</div><!-- wpn -->
+</div><!-- 	bg-white -->
+	
+	{% block page-content %}
+<script>
+    function doc_show() {
+    document.getElementById('doc_sellected_id').className = "on" ;
+    document.getElementById('video_sellected_id').className = "off" ;
+    $("#videos_list_data_id").hide();
+    document.getElementById("doc_lists_id").style.display="";
+    //$('#doc_lists_id').toggle();
+
+
+
+}
+
+    function doc_hidden() {
+    document.getElementById('doc_sellected_id').className = "off" ;
+    document.getElementById('video_sellected_id').className = "on" ;
+   $("#videos_list_data_id").show();
+    document.getElementById("doc_lists_id").style.display="none";
+}
+</script>
+<script>
+	//动态默认显示
+	var nav_loc='';
+	//var navuid='';
+	//以下兼容个人中心 立即激活
+	  $(".jsemailverify").parent('div').parent('li').css("background","#fff7e7").find('a').addClass('f14').css('display','block');
+</script>
+
+
+
+<script>
+
+        $('#nav-index').addClass('on');
+
+    </script>    <!-- 轮播统计 -->
+    <div style="display:none;">
+
+    </div>
+        <script type="text/javascript">
+        $(function() {
+            var Li=$("#slider>a");
+            Li.click(function(){
+                var index=Li.index(this)+1;
+                _czc.push(["_trackEvent","轮播统计","点击",index]);
+            });
+        })
+    </script>
+    <!--  -->
+            		<div style="padding-bottom: 60px"></div>
+    <div class="slider-wrapper mtw">
+        <div id="slider" class="nivoSlider">
+{% for carousel in carousel_data  %}
+            <a href="{{carousel.newlink}}" class="adv_img nivo-imageLink" rel="734" target="_blank" title="搜狗输入法首届表情大奖赛" style="display: block;">
+                <img src="/medias/{{carousel.newpic}}" alt"{{carousel_data.title}}" style="width: 1180px; visibility: hidden; display: inline;"></a>
+
+  <!--img src="/statics/images/1502880532_436.jpg" alt="搜狗输入法首届表情大奖赛" style="width: 1180px; visibility: hidden; display: inline;"></a><a href="/" class="adv_img niv
+o-imageLink" rel="737" target="_blank" title="懂点设计" style="display: block;">
+            <img src="/statics/images/1503023398_766.webp" onerror="this.onerror=null;this.src='/statics/images/1503023398_766.jpeg'"  alt="懂点设计" style="width: 1180px; visibility: hidden; display: inline;"></a><a href="/" class="adv_img nivo-imageLink" rel="725" target="_blank" title="咪咕爱看UI/UE创意设计大赛" style="display: none;">
+            <img src="/statics/images/1500965523_658.webp" onerror="this.onerror=null;this.src='/statics/images/1500965523_658.jpeg'"  alt="咪咕爱看UI/UE创意设计大赛" style="width: 1180px; visibility: hidden; display: inline;"></a><a href="/" class="adv_img nivo-imageLink" rel="741" target="_blank" title="每周临摹-药瓶" style="display: none;">
+
+            <img src="/statics/images/1504233281_278.webp" onerror="this.onerror=null;this.src='/statics/images/1504233281_278.jpeg'" alt="每周临摹-药瓶" style="width: 1180px; visibility: hidden; display: inline;"></a><a href="/docdetail/42/" class="adv_img nivo-imageLink" rel="740" target="_blank" title="每周临摹-像素" style="display: none;">
+
+
+            <img src="/statics/images/1503973774_307.webp" onerror="this.onerror=null;this.src='/statics/images/1503973774_307.jpeg'"  alt="每周临摹-像素" style="width: 1180px; visibility: hidden; display: inline;" -->
+        </a>
+{% endfor %}
+          </div></div>
+
+    </div>
+    <!--  -->
+
+    <!--  -->
+    <div class="wpn" id="project">
+        <!--  -->
+        <div class="cl pos" style="margin-top: 10px">
+            <ul class="h-screen">
+                <!--li id='video_sellected_id' class="{{video_selected}}"><a  onclick="doc_hidden(this)"  title="视频教程">视频教程</a></li-->
+
+                <li id="doc_sellected_id" class="{{doc_selected}}"><a onclick="doc_show(this)" title="文章">热点资讯</a></li>                            </ul>
+            <!--  -->
+            <!--<ul class="h-soup cl">-->
+
+                                            <!--<li>                            <i class="icon-star1" title="更新"></i>-->
+                            <!--<a class="txt" href="/system.html" target="_blank">“鸡汤”栏目正式更新为 “每日一条”，大家可以互动啦！ </a>-->
+                        <!--</li><li class="open">-->
+                                                    <!--<i class="icon-heart-round" title="一条"></i>-->
+                            <!--<a class="txt" href="/" target="_blank">你们要确保爱上的都是本来的对方，而不是被改造或者造假后的那个人~ </a>-->
+                        <!--</li>                            <li>                            <i class="icon-warn" title="公告"></i>-->
+                            <!--<a class="txt" href="/site.html" target="_blank">Cloud学院新增功能：预览、隐藏、个人主页编辑删除作品，体验起来！ </a>-->
+                        <!--</li>                -->
+            <!--</ul>-->
+        </div>
+        <!--  -->
+        <!--  -->
+        <div id="videos_list_data_id" style="display:{{vio_visibility}}">
+            <ul class="post post-works mtw cl" >
+
+                {% for news_list in data  %}
+                        <li>
+                            <!--  -->
+                            <div class="shade" style="opacity: 0;"></div>
+                            <!--  -->
+                            <div class="cover pos">
+                                <a href="/{{detail_url}}{{news_list.id}}/"  title="{{news_list.title}}">
+                                    <img width="280" height="210" src="/medias/{{news_list.newpic_webp}}" onerror="this.onerror=null;this.src='/medias/{{news_list.newpic}}'" class="imgloadinglater" alt="{{news_list.title}}" rel="nofollow" style="display: inline;">
+                                </a>
+                            </div>
+                            <div class="info">
+                                <h4 class="title ellipsis download">
+                                {{news_list.title}}                              </h4>
+                                                                <div class="msg mtn cl">
+                                    <span class="classify">原创</span>
+                                    <span><em>关注{{news_list.focususer.count}}</em></span>
+
+                     <!--span><em>评论{{news_list.reply_count}}</em></span-->
+                        <span></i><em>点赞{{ news_list.favor_count}}</em></span>
+                                </div>
+                                <p class="user cl">
+                                    <a href="http://i.icloudcollege.com/ucenter/1060864.html" target="_blank"><img src="/medias/{{news_list.user.userpic}}" title="zengtaofrank"> <strong class="name">
+                                        <em>{{news_list.user.username}}</em>
+                                                                                                            </strong></a>
+                                </p>
+                            </div>
+                            <!--  分隔线  -->
+                            <div class="line"></div>
+                        </li>
+                		{% endfor %}
+
+                        <li>
+                            <!--  -->
+
+
+
+                            <!--  分隔线  -->
+                            <div class="line"></div>
+                        </li>
+                </ul>
+            <div class="h_page mtn mbw">
+                <ul class="cl">
+                   {{ page }}
+                    <!--li><a href="/list.html?r=main&p=2" target="_blank">...</a></li-->
+                </ul>
+            </div>
+        </div>
+            <!--  -->
+            </div>
+    <!--  -->
+
+    <!--  -->
+    <div class="bg-white" id="article">
+    <div id='doc_lists_id' class="wpn cl"  style="display:{{doc_visibility}}" >
+        <div class="w820 z" >
+            <!--<h1 class="h-tit mtv h-article-btn pos">-->
+                <!--&lt;!&ndash;a class="on" href="javascript:;" title="最新文档">最新文档</a&ndash;&gt;-->
+                <!---->
+                                    <!--&lt;!&ndash;a href="/?art=article#article" title="推荐文档">推荐文档</a&ndash;&gt;            </h1>-->
+
+            <div class="h-article-box">
+                <ul class="h-article-list">
+
+                    {% for docu_list in document_data  %}
+                    <li class="cl">
+                  <a href="/docdetail/{{docu_list.id}}/" title="{{ docu_list.title }}" >
+                                <div class="shade"></div>
+                                <div class="showd">
+                                    <span class="cover">
+                                        <img width="160" height="120" src='/medias/{{docu_list.newpic}}' alt="杂文丨互联网设计师如何处理知识焦虑。" rel="nofollow">
+                                    </span>
+                                    <div class="h-article-info">
+                                        <h1 class="cl">
+                                            <span class="tag bg-red" target="_blank" href="/exp.html?scatid=17">标题</span>
+                           <span class="ellipsis" href="/docdetail/{{docu_list.id}}/" title="{{ docu_list.title }}" target="_blank">{{ docu_list.title }}</span>
+                                        </h1>
+                                        <p>{{ docu_list.summary }}</p>
+                                        <div class="mtm cl">
+                                            <span class="avatar z" >
+                                                <img width="20" height="20" src="/medias/{{docu_list.user.userpic}}" onerror="this.src='/statics/images/userpic.jpg'" alt="Seany" rel="nofollow">
+                                                <strong class="name">{{docu_list.user}}                                                                                                                                                  </strong>
+
+                                            </span>
+                                            <div class="msg z cl">
+                                                <span><em>点赞：{{ docu_list.favor_count }}</em></span>
+                                                <span><em>收藏：{{docu_list.focususer.count}}</em></span>
+                                                <span><em>{{ docu_list.create_date|date:"Y-m-d H:i:s" }}</em></span>
+                                                <!--span><em>评论：{{ docu_list.focus_count }}</em></span-->
+                                            </div>
+                                        </div>
+                                        <!--<div class="data">{{ docu_list.create_date|date:"Y-m-d H:i:s" }}</div>-->
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+	        {% endfor %}
+
+                <div class="h_page mtw mbw">
+                    <ul class="cl">
+                       {{ doc_page }}
+                    </ul>
+                </div>
+
+        <div class="w280 y mtv">
+            <h1 class="h-tit-aside">广告位</h1>
+            <ul class="h-aside-list">
+ {% for advertising in advertising_data  %}
+                <li class="pos">
+                        <a href="{{advertising.newlink}}" target="_blank">
+                            <img class="cover" width="280" height="125" src="/medias/{{advertising.newpic}}" alt="" rel="nofollow">
+                            <div class="h-aside-show">
+                                <p class="item ellipsis">{{advertising.title}}</p>                            </div>
+                        </a>
+                    </li>
+{% endfor %}
+		<!--li class="pos">
+                        <a href="http://zhaopin.icloudcollege.com/prev/pid/322.html" target="_blank">
+                            <img class="cover" width="280" height="125" src="/statics/images/1474862195_107.jpeg" alt="" rel="nofollow">
+                            <div class="h-aside-show">
+                                <p class="item ellipsis">[上海市] 视觉设计师 [10k-25k]</p><p class="item ellipsis">[上海市] 高级交互设计师 [15k-25k]</p>                            </div>
+                        </a>
+                    </li><li class="pos">
+                        <a href="http://zhaopin.icloudcollege.com/prev/pid/481.html" target="_blank">
+                            <img class="cover" width="280" height="125" src="/statics/images/1482144673_737.jpeg" alt="" rel="nofollow">
+                            <div class="h-aside-show">
+                                <p class="item ellipsis">[西安] 交互设计师 [5k-15k]</p><p class="item ellipsis">[西安] 视觉设计师 [5k-15k]</p><p class="item ellipsis">[西安] 设计实习生 [3k-5k]</p>                            </div>
+                        </a>
+                    </li-->        
+
+	    </ul>
+            <!--a class="more" href="http://zhaopin.icloudcollege.com/" title="招聘" target="_blank">更多</a>
+
+            <h1 class="h-tit-aside mtw">热门课程</h1>
+            <ul class="h-aside-list">
+                <li class="pos">
+                        <a href="http://peixun.icloudcollege.com/detail/415.html" target="_blank">
+                            <img class="cover" width="280" height="125" src="/statics/images/1496306905_332.png" alt="" rel="nofollow">
+                        </a>
+                    </li><li class="pos">
+                        <a href="http://peixun.icloudcollege.com/detail/363.html" target="_blank">
+                            <img class="cover" width="280" height="125" src="/statics/images/1487744828_327.jpeg" alt="" rel="nofollow">
+                        </a>
+                    </li><li class="pos">
+                        <a href="http://peixun.icloudcollege.com/detail/390.html" target="_blank">
+                            <img class="cover" width="280" height="125" src="/statics/images/1487908457_191.jpeg" alt="" rel="nofollow">
+                        </a>
+                    </li>            </ul>
+            <a class="more" href="http://peixun.icloudcollege.com/" title="培训" target="_blank">更多</a-->
+
+        </div>
+    </div>
+    </div>
+    <!--  -->
+
+
+
+
+    <!--div class="wpn ">
+
+        <h1 class="h-tit ptv h-member-btn pos">
+            <a class="on" href="javascript:;" title="推荐讲师">推荐讲师</a>
+            <a href="javascript:;" title="认证设计师">认证讲师</a>
+            <a href="javascript:;" title="活跃设计师">活跃讲师</a>
+        </h1>
+        <div class="h-member-box">
+            <ul class="h-member cl" style="display: block;">
+                <li class="cl">
+                    <a class="avatar-sm" title="" href="http://i.icloudcollege.com/ucenter/93876.html" target="_blank">
+                        <img rel="nofollow" src="/statics/images/93876.100x100.png" alt="可乐橙">
+                    </a>
+                    <div class="cont">
+                        <h5 class="user"><a target="_blank" href="http://i.icloudcollege.com/ucenter/93876.html">可乐橙</a></h5>
+                        <p class="text">UI/UX设计师，现居杭州</p>
+                    </div>
+                    </li><li class="cl">
+                    <a class="avatar-sm" title="" href="http://i.icloudcollege.com/ucenter/160727.html" target="_blank">
+                        <img rel="nofollow" src="/statics/images/160727.png" alt="飞屋睿">
+                    </a>
+                    <div class="cont">
+                        <h5 class="user"><a target="_blank" href="http://i.icloudcollege.com/ucenter/160727.html">飞屋睿</a></h5>
+                        <p class="text">http://www.ifeiwu.com</p>
+                    </div>
+                    </li><li class="cl">
+                    <a class="avatar-sm" title="" href="http://i.icloudcollege.com/ucenter/129823.html" target="_blank">
+                        <img rel="nofollow" src="/statics/images/129823(1).jpg" alt="王M争">
+                    </a>
+                    <div class="cont">
+                        <h5 class="user"><a target="_blank" href="http://i.icloudcollege.com/ucenter/129823.html">王M争</a></h5>
+                        <p class="text">微信公众号：王M争，Learning by writing</p>
+                    </div>
+                    </li><li class="cl">
+                    <a class="avatar-sm" title="" href="http://i.icloudcollege.com/ucenter/255110.html" target="_blank">
+                        <img rel="nofollow" src="/statics/images/255110.jpg" alt="MarinaRen">
+                    </a>
+                    <div class="cont">
+                        <h5 class="user"><a target="_blank" href="http://i.icloudcollege.com/ucenter/255110.html">MarinaRen</a></h5>
+                        <p class="text">用画作诗，这里尽是故事！Taobao店铺名：MarinaRen</p>
+                    </div>
+                    </li><li class="cl">
+                    <a class="avatar-sm" title="" href="http://i.icloudcollege.com/ucenter/91236.html" target="_blank">
+                        <img rel="nofollow" src="/statics/images/91236(1).jpg" alt="Here180">
+                    </a>
+                    <div class="cont">
+                        <h5 class="user"><a target="_blank" href="http://i.icloudcollege.com/ucenter/91236.html">Here180</a></h5>
+                        <p class="text">开始很容易，放弃很简单，坚持才可贵</p>
+                    </div>
+                    </li><li class="cl">
+                    <a class="avatar-sm" title="" href="http://i.icloudcollege.com/ucenter/912186.html" target="_blank">
+                        <img rel="nofollow" src="/statics/images/912186.gif" alt="成瘾少年铁托">
+                    </a>
+                    <div class="cont">
+                        <h5 class="user"><a target="_blank" href="http://i.icloudcollege.com/ucenter/912186.html">成瘾少年铁托</a></h5>
+                        <p class="text">YoungStonerTito</p>
+                    </div>
+                    </li><li class="cl">
+                    <a class="avatar-sm" title="" href="http://i.icloudcollege.com/ucenter/141001.html" target="_blank">
+                        <img rel="nofollow" src="/statics/images/141001.jpg" alt="Ninaaaa">
+                    </a>
+                    <div class="cont">
+                        <h5 class="user"><a target="_blank" href="http://i.icloudcollege.com/ucenter/141001.html">Ninaaaa</a></h5>
+                        <p class="text">专注矢量插画、吉祥物、表情设计。合作qq：1320878603</p>
+                    </div>
+                    </li><li class="cl">
+                    <a class="avatar-sm" title="" href="http://i.icloudcollege.com/ucenter/909388.html" target="_blank">
+                        <img rel="nofollow" src="/statics/images/909388.jpg" alt="插画师卷耳">
+                    </a>
+                    <div class="cont">
+                        <h5 class="user"><a target="_blank" href="http://i.icloudcollege.com/ucenter/909388.html">插画师卷耳</a></h5>
+                        <p class="text">微信：mjyjys</p>
+                    </div>
+                    </li>            </ul>
+            <ul class="h-member cl" style="display: none;">
+                <li class="cl">
+                        <a class="avatar-sm" title="半半只鸡" href="http://i.icloudcollege.com/ucenter/290167.html" target="_blank">
+                            <img rel="nofollow" src="/statics/images/290167.jpeg" alt="半半只鸡">
+                        </a>
+                        <div class="cont">
+                            <h5 class="user">
+                                <a target="_blank" href="http://i.icloudcollege.com/ucenter/290167.html">半半只鸡                                    <i class="icon-certified2" title="Cloud学院认证设计师"></i>
+                                                                    </a>
+                            </h5>
+                            <p class="text"></p>
+                        </div>
+                    </li><li class="cl">
+                        <a class="avatar-sm" title="wujingaga" href="http://i.icloudcollege.com/ucenter/291204.html" target="_blank">
+                            <img rel="nofollow" src="/statics/images/291204.jpg" alt="wujingaga">
+                        </a>
+                        <div class="cont">
+                            <h5 class="user">
+                                <a target="_blank" href="http://i.icloudcollege.com/ucenter/291204.html">wujingaga                                    <i class="icon-certified2" title="Cloud学院认证设计师"></i>
+                                                                    </a>
+                            </h5>
+                            <p class="text">手艺人</p>
+                        </div>
+                    </li><li class="cl">
+                        <a class="avatar-sm" title="Miffy2016" href="http://i.icloudcollege.com/ucenter/291230.html" target="_blank">
+                            <img rel="nofollow" src="/statics/images/291230.png" alt="Miffy2016">
+                        </a>
+                        <div class="cont">
+                            <h5 class="user">
+                                <a target="_blank" href="http://i.icloudcollege.com/ucenter/291230.html">Miffy2016                                    <i class="icon-certified2" title="Cloud学院认证设计师"></i>
+                                                                    </a>
+                            </h5>
+                            <p class="text">用心做设计</p>
+                        </div>
+                    </li><li class="cl">
+                        <a class="avatar-sm" title="Sunny100" href="http://i.icloudcollege.com/ucenter/291540.html" target="_blank">
+                            <img rel="nofollow" src="/statics/images/291540.jpg" alt="Sunny100">
+                        </a>
+                        <div class="cont">
+                            <h5 class="user">
+                                <a target="_blank" href="http://i.icloudcollege.com/ucenter/291540.html">Sunny100                                    <i class="icon-certified2" title="Cloud学院认证设计师"></i>
+                                                                    </a>
+                            </h5>
+                            <p class="text">设计源于生活，细节成就品质</p>
+                        </div>
+                    </li><li class="cl">
+                        <a class="avatar-sm" title="如昂宁" href="http://i.icloudcollege.com/ucenter/292137.html" target="_blank">
+                            <img rel="nofollow" src="/statics/images/292137.jpeg" alt="如昂宁">
+                        </a>
+                        <div class="cont">
+                            <h5 class="user">
+                                <a target="_blank" href="http://i.icloudcollege.com/ucenter/292137.html">如昂宁                                    <i class="icon-certified2" title="Cloud学院认证设计师"></i>
+                                                                    </a>
+                            </h5>
+                            <p class="text"></p>
+                        </div>
+                    </li><li class="cl">
+                        <a class="avatar-sm" title="UIrookie" href="http://i.icloudcollege.com/ucenter/292847.html" target="_blank">
+                            <img rel="nofollow" src="/statics/images/292847.jpeg" alt="UIrookie">
+                        </a>
+                        <div class="cont">
+                            <h5 class="user">
+                                <a target="_blank" href="http://i.icloudcollege.com/ucenter/292847.html">UIrookie                                    <i class="icon-certified2" title="Cloud学院认证设计师"></i>
+                                                                    </a>
+                            </h5>
+                            <p class="text">没计帅</p>
+                        </div>
+                    </li><li class="cl">
+                        <a class="avatar-sm" title="设计师孟凡涛" href="http://i.icloudcollege.com/ucenter/293741.html" target="_blank">
+                            <img rel="nofollow" src="/statics/images/293741.jpg" alt="设计师孟凡涛">
+                        </a>
+                        <div class="cont">
+                            <h5 class="user">
+                                <a target="_blank" href="http://i.icloudcollege.com/ucenter/293741.html">设计师孟凡涛                                    <i class="icon-certified2" title="Cloud学院认证设计师"></i>
+                                                                    </a>
+                            </h5>
+                            <p class="text">理想主义的心学走狗</p>
+                        </div>
+                    </li><li class="cl">
+                        <a class="avatar-sm" title="珂珂就是珂珂" href="http://i.icloudcollege.com/ucenter/294076.html" target="_blank">
+                            <img rel="nofollow" src="/statics/images/294076.jpg" alt="珂珂就是珂珂">
+                        </a>
+                        <div class="cont">
+                            <h5 class="user">
+                                <a target="_blank" href="http://i.icloudcollege.com/ucenter/294076.html">珂珂就是珂珂                                    <i class="icon-certified2" title="Cloud学院认证设计师"></i>
+                                                                    </a>
+                            </h5>
+                            <p class="text">云赞校园研发主管</p>
+                        </div>
+                    </li>            </ul>
+            <ul class="h-member cl" style="display: none;">
+                <li class="cl">
+                        <a class="avatar-sm" title="Flora.L" href="http://i.icloudcollege.com/ucenter/1058378.html" target="_blank">
+                            <img rel="nofollow" src="/statics/images/1058378.png" alt="Flora.L">
+                        </a>
+                        <div class="cont">
+                            <h5 class="user"><a target="_blank" href="http://i.icloudcollege.com/ucenter/1058378.html">Flora.L                                                                                    </a>
+                            </h5>
+                            <p class="text"></p>
+                            <div class="date">最近一周:发布15,被赞2,评论1</div>
+                        </div>
+                    </li><li class="cl">
+                        <a class="avatar-sm" title="王雪琴" href="http://i.icloudcollege.com/ucenter/320812.html" target="_blank">
+                            <img rel="nofollow" src="/statics/images/320812.jpg" alt="王雪琴">
+                        </a>
+                        <div class="cont">
+                            <h5 class="user"><a target="_blank" href="http://i.icloudcollege.com/ucenter/320812.html">王雪琴                                                                                    </a>
+                            </h5>
+                            <p class="text"></p>
+                            <div class="date">最近一周:发布15,被赞0,评论0</div>
+                        </div>
+                    </li><li class="cl">
+                        <a class="avatar-sm" title="小草niudecao" href="http://i.icloudcollege.com/ucenter/334803.html" target="_blank">
+                            <img rel="nofollow" src="/statics/images/334803.jpg" alt="小草niudecao">
+                        </a>
+                        <div class="cont">
+                            <h5 class="user"><a target="_blank" href="http://i.icloudcollege.com/ucenter/334803.html">小草niudecao                                                                                    </a>
+                            </h5>
+                            <p class="text">动画/动效设计师 </p>
+                            <div class="date">最近一周:发布14,被赞0,评论0</div>
+                        </div>
+                    </li><li class="cl">
+                        <a class="avatar-sm" title="小小破孩" href="http://i.icloudcollege.com/ucenter/995215.html" target="_blank">
+                            <img rel="nofollow" src="/statics/images/995215.jpg" alt="小小破孩">
+                        </a>
+                        <div class="cont">
+                            <h5 class="user"><a target="_blank" href="http://i.icloudcollege.com/ucenter/995215.html">小小破孩                                                                                    </a>
+                            </h5>
+                            <p class="text"></p>
+                            <div class="date">最近一周:发布13,被赞1,评论0</div>
+                        </div>
+                    </li><li class="cl">
+                        <a class="avatar-sm" title="云艺帆" href="http://i.icloudcollege.com/ucenter/246094.html" target="_blank">
+                            <img rel="nofollow" src="/statics/images/246094.jpg" alt="云艺帆">
+                        </a>
+                        <div class="cont">
+                            <h5 class="user"><a target="_blank" href="http://i.icloudcollege.com/ucenter/246094.html">云艺帆                                                                                    </a>
+                            </h5>
+                            <p class="text">让你学UI更简单，请加QQ群：550464983</p>
+                            <div class="date">最近一周:发布12,被赞4,评论0</div>
+                        </div>
+                    </li><li class="cl">
+                        <a class="avatar-sm" title="湘西扛把子" href="http://i.icloudcollege.com/ucenter/1040845.html" target="_blank">
+                            <img rel="nofollow" src="/statics/images/1040845.png" alt="湘西扛把子">
+                        </a>
+                        <div class="cont">
+                            <h5 class="user"><a target="_blank" href="http://i.icloudcollege.com/ucenter/1040845.html">湘西扛把子                                                                                    </a>
+                            </h5>
+                            <p class="text">学习AE C4D加QQ  502310866</p>
+                            <div class="date">最近一周:发布11,被赞11,评论2</div>
+                        </div>
+                    </li><li class="cl">
+                        <a class="avatar-sm" title="brat123" href="http://i.icloudcollege.com/ucenter/276429.html" target="_blank">
+                            <img rel="nofollow" src="/statics/images/276429.jpg" alt="brat123">
+                        </a>
+                        <div class="cont">
+                            <h5 class="user"><a target="_blank" href="http://i.icloudcollege.com/ucenter/276429.html">brat123                                                                                    </a>
+                            </h5>
+                            <p class="text">唯有爱与设计不可辜负</p>
+                            <div class="date">最近一周:发布9,被赞4,评论1</div>
+                        </div>
+                    </li><li class="cl">
+                        <a class="avatar-sm" title="晴老爷" href="http://i.icloudcollege.com/ucenter/1055622.html" target="_blank">
+                            <img rel="nofollow" src="/statics/images/1055622.jpg" alt="晴老爷">
+                        </a>
+                        <div class="cont">
+                            <h5 class="user"><a target="_blank" href="http://i.icloudcollege.com/ucenter/1055622.html">晴老爷                                                                                    </a>
+                            </h5>
+                            <p class="text">三良云鬼</p>
+                            <div class="date">最近一周:发布9,被赞0,评论0</div>
+                        </div>
+                    </li>            </ul>
+        </div>
+        <div class="line"></div>
+
+        <h1 class="h-tit2">合作伙伴</h1>
+
+
+    </div-->
+
+
+
+<script src="/statics/js/jquery.nivo.slider.js"></script>
+<script type="text/javascript">
+    $('#slider').nivoSlider({
+        effect: 'boxRandom',   // 效果
+        animSpeed: 500,        // 动画速度
+        pauseTime: 3000,       // 暂停时间
+        slices: 10,            // 分为10列
+    });
+    // 设置小圆点偏移值，使居中
+    var  sliderOffset = $(".nivo-controlNav").width()*(-0.5)-16;
+    $(".nivo-controlNav").css("marginLeft",sliderOffset);
+
+	//下载附件
+	//p-down0: 已验证注册用户
+    //p-down1: 未登录用户
+    //p-down2: 未验证用户，可下载
+    //p-down3: 未验证用户，不可下载
+
+    $("a[name='p-down0']").click(function(){
+        var url = $(this).attr("src");
+        globalTip({'msg':'正在为您准备下载','setTime':2});
+        updateTime();
+        window.open(url);
+        return false;
+    });
+
+    $("a[name='p-down1']").click(function(){
+        globalTip({'msg':'请登录后再下载素材','setTime':3,'URL':'http://icloudcollege.com/login.html','jump':true});
+        return false;
+    });
+
+    $("a[name='p-down2']").click(function(){
+        var url = $(this).attr("src");
+        globalTip({'msg':'您的邮箱或电话还未进行验证，每小时仅可下载1个素材','setTime':3});
+        updateTime();
+        window.open(url);
+        return false;
+    });
+
+    $("a[name='p-down3']").click(function(){
+        globalTip({'msg':'您的邮箱或电话还未进行验证，每小时仅可下载1个素材','setTime':3,'URL':'http://account.icloudcollege.com/accountinfo.html','jump':true});
+        return false;
+    });
+
+    function updateTime() {
+        $.ajax({
+            url:"http://icloudcollege.com/updateLastDownloadTime",
+            type:'post',
+            data:{
+                time:0            },
+            dataType:'JSONP',
+            success:function(data){
+                globalTip({"msg":"开始下载","setTime":3});
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                globalTip({"msg":"下载错误,请重试！","setTime":3});
+            },
+
+        });
+    }
+
+</script>
+<!--script src="/statics/js/new-ad.js"></script>
+<script src="/statics/js/recommend.js"></script>
+<script type="text/javascript" src="/statics/js/danmu.js"></script>
+        <script src="/statics/images/jquery.cookie.js"></script>
+        <script src="/statics/js/_init.js"></script-->
+<!---footer---->
+
+
+
+    		{% endblock %}
+        <div class="ft-wp">
+    <div class="wpn cl">
+        <div class="ft cl">
+
+            <div class="ft-info">
+
+                <p class="copy">
+                 580网创建于2018年06月06日，推荐的项目100%免费。
+联系ais580com@foxmail.com，不接任何非正规擦边广告，仅限正规公司合作（个人项目请勿联系）！
+备案号：闽ICP备19017760号</p>
+
+        </div><!-- ft -->
+    </div><!-- wpn -->
+</div>
+    </div></div>
+
+</body></html>

@@ -1,0 +1,237 @@
+
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-param" content="_csrf">
+
+  <title>{{web_name}}</title>
+  <meta name="keywords" content="实验环境建设,vmtion,存储,vsphere,虚拟化">
+
+
+    <script src="/statics/mobile_index/jquery.js"></script>
+
+	<link rel="stylesheet" href="/statics/videoplayer_statics/video-js.css">
+	<script src="/statics/videoplayer_statics/video.js"></script>
+
+
+<script type="text/javascript">
+
+function web_video_src_chage(source,title) {
+
+    $('#cloud_video').attr('src',source);
+    $('#cloud_video_html5_api').attr('src',source);
+
+    var obj;
+	obj=document.getElementById("new_title_id");
+	obj.innerHTML=title;
+
+	//$('#display-id').toggle();
+
+}
+    </script>
+	<style>
+		.user-name {
+			display: none;
+			position: absolute;
+			top: 5px;
+			right: 10px;
+            left: 10px;
+			z-index: 10;
+			min-width: 150px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			color: red;
+			border: 1px solid red;
+		}
+		#cloud_video {
+			width: 72%;
+			height: 85%;
+		}
+	</style>
+
+     <link href="/statics/css/videoplayer/base.css" rel="stylesheet">
+    <link href="/statics/css/videoplayer/activity_tab.css" rel="stylesheet">
+    <link href="/statics/css/videoplayer/gen_top.css" rel="stylesheet">
+    <link href="/statics/css/videoplayer/play.css" rel="stylesheet">
+    <link href="/statics/css/videoplayer/background_stu.css" rel="stylesheet">
+    <link href="/statics/css/videoplayer/popsign.css" rel="stylesheet">
+    <link href="/statics/css/videoplayer/bdsstyle.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/statics/css/videoplayer/share_style0_16.css"></head>
+
+<body><iframe frameborder="0" style="display: none;"></iframe>
+<div class="PlayPage">
+  <div class="Top">
+    <a href="/" class="fl">&lt;返回</a>
+    <h1 id="new_title_id" class="fl ml20">{{ news.title }}</h1>
+          <div class="fl lookDescribe">
+      查看简介 &gt;&gt;
+      <div class="describe">{{ news.summary |safe }}</div>
+    </div>
+
+      <script>
+	function zanshan() {
+		$('#modal-pay2').toggle();
+    }
+
+	</script>
+
+
+
+            <!--<button class="fl ml20 buyThisClass buyVip" onclick="zanshan()">打赏</button>-->
+                 <!--<div class="fr edu-ad txt_ad" ad_id="10" info_id="4676" type="course">-->
+      <!--<a href="#" target="_blank" style="font-size:20px; color:#ff0000; font-weight:bold;" title="软考秘籍&gt;&gt;&gt;注意力集中">注意力集中&gt;&gt;&gt;&gt;&gt;注意课程顺序 &gt;&gt;&gt;&gt;&gt;&gt; </a>-->
+            <!--</div>-->
+
+      	<!--&lt;!&ndash; 支付弹出框 &ndash;&gt;-->
+<!--&lt;!&ndash; 打开弹框按钮  data-target="#modal-pay" &ndash;&gt;-->
+<!--<div id="modal-pay2" class="modal2" element hidden>-->
+	<!--<div class="modal-effect">-->
+		<!--<div class="modal-pay">-->
+            <!--<br>-->
+			<!--<p>你的打赏就是我的动力！</p>-->
+			<!--<p class="word-warn">悄悄说，听说打赏的人收入都比我高，不信你试试。 </p>-->
+			<!--<div class="mtm cl">-->
+				<!--<img src="/statics/images/docdetail/zhifupay.jpg" class="z">-->
+				<!--<img src="/statics/images/docdetail/weixinpay.jpg" class="y">-->
+			<!--</div>-->
+			<!--<p>注: 打赏金额随意，完成后，请手动关闭本窗口。</p>-->
+		<!--</div>-->
+	<!--</div>-->
+<!--</div>-->
+
+
+
+
+        </div>
+
+
+
+
+
+<video id="cloud_video" class="video-js vjs-default-skin" poster="/medias/{{ news.newpic }}" controls preload="auto" width="640" height="264" data-setup="{}">
+    	<source id="source_video_id" src="{{ news.videourl }}"  type="video/mp4">
+  	</video>
+
+
+	<script>
+	//传入视频ID,适用于页面上只有一个播放器的情况
+	//teachOrder 采用哪种播放方式，默认采用html5的video标签播放，苹果不支持flash
+	//mydata 是要传给播放器上显示的用户名
+	var player = videojs('#cloud_video',{
+	    techOrder: ["html5","flash"],
+	    mydata: {
+		    username: 'cloud college'
+		},
+	   	controlBar: {
+			//fullscreenToggle:false,
+			volumeMenuButton:false
+		}
+	},function(){
+		//这里是播放器初始化之后放置要显示的内容
+		//更高级的应用可以创建一个组件(component)
+		// var textNode = document.createElement('div');
+		// textNode.className = 'user-name';
+		// //textNode.innerHTML = this.options().mydata.username||'';
+		// this.el().appendChild(textNode);
+		// this.userName = textNode;
+		// console.log(this)
+		//this.play()
+	});
+
+	//var volumeMenuButton  = player.controlBar.getChild('volumeMenuButton').el();
+	//volumeMenuButton.style.display='none'
+
+	</script>
+
+
+
+    </div>
+
+    <div class="tool_middle_bar" id="v_middle">
+      <span></span>
+    </div>
+    <div class="Tools" id="v_right">
+      <dl class="">
+        <dt class="tabs">
+          <p class="cur">目录</p>
+                        <p class="center">笔记</p>
+            <p>提问</p>
+                    </dt>
+        <dd class="tabsCon">
+          <div class="lessonList cc" tabindex="0" style="overflow: hidden; outline: none;">
+            <ul style="height:800px;overflow-y:scroll;">
+              <li class="lesson cur">
+                  <a href="#" title="虚拟化入门（定义、功能、组件、课程目标）">
+
+
+                      {% for course_name,video_link in course_list.items %}
+
+					<li><a id="01" onclick="web_video_src_chage('{{video_link}}','{{course_name}}')">{{course_name}}</a></li>
+
+
+						{% endfor %}
+
+              </li>
+                                                                                   </ul>
+          </div>
+          <div class="noteCon disp-n cc">
+            <div class="sendCon">
+              <textarea placeholder="开始记笔记" id="noteText"></textarea>
+              <p class="RecordTime fl"><i class="icon check fl"></i>记录时间点</p>
+              <p class="playingTime disp-n fl" time="0"><i class="icon play fl"></i><span class="nowPlayingTime">00:00</span></p>
+              <button class="fr" id="sendNote">发布</button>
+            </div>
+            <div class="listTitle">
+              <p>笔记列表</p>
+            </div>
+            <div class="listList">
+              <ul id="NoteList"></ul>
+              <div class="getMote" id="NoteList_getMote">点击获取更多</div>
+              <div class="loadingMore tc" id="NoteList_loading"></div>
+              <div class="noMore" id="NoteList_Empty">没有更多了</div>
+            </div>
+            <div class="mask show"></div>
+                        <div class="notPay">
+                                                      <p>购买会员后，就可以记笔记了</p>
+                      <button class="buyThisClass buyVip">购买会员</button>
+                                            </div>
+                      </div>
+          <div class="questCon disp-n cc">
+            <div class="sendCon">
+              <textarea placeholder="开始提问" id="questText" maxlength="300"></textarea>
+              <p class="RecordTime fl"><i class="icon check fl"></i>记录时间点</p>
+              <p class="playingTime disp-n fl" time="0"><i class="icon play fl"></i><span class="nowPlayingTime">00:00</span></p>
+              <button class="fr" id="sendQuest">发布</button>
+              <div class="sendLoading fr"></div>
+            </div>
+            <div class="listTitle">
+              <p class="fl">同学的问题</p>
+              <p class="cur fl">我的问题</p>
+            </div>
+            <div class="listList">
+              <ul id="questList"></ul>
+              <div class="getMote" id="questList_getMote">点击获取更多</div>
+              <div class="loadingMore tc" id="questList_loading"></div>
+              <div class="noMore" id="questList_Empty">没有更多了</div>
+            </div>
+            <div class="mask show"></div>
+                        <div class="notPay">
+                                              <p>购买会员后，就可以提问题了</p>
+                <button class="buyThisClass buyVip">购买会员</button>
+                                          </div>
+                      </div>
+          <div class="success" id="success">发布成功</div>
+          <div class="success" id="sending">Loading...</div>
+        <div id="ascrail2000" class="nicescroll-rails nicescroll-rails-vr" style="width: 8px; z-index: auto; cursor: default; position: absolute; top: 0px; left: 372px; height: 485px; display: none; opacity: 0;"><div class="nicescroll-cursors" style="position: relative; top: 0px; float: right; width: 6px; height: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div><div id="ascrail2000-hr" class="nicescroll-rails nicescroll-rails-hr" style="height: 8px; z-index: auto; top: 477px; left: 0px; position: absolute; cursor: default; display: none; opacity: 0;"><div class="nicescroll-cursors" style="position: absolute; top: 0px; height: 6px; width: 0px; border: 1px solid rgb(255, 255, 255); border-radius: 5px; left: 0px; background-color: rgb(66, 66, 66); background-clip: padding-box;"></div></div></dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+
+<a href="#" class="disp-n" id="nextUrl"></a>
+
+
+
+</body></html>

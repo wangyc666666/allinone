@@ -1,0 +1,223 @@
+button  {padding: 0 20px;}
+.line-through {text-decoration: line-through;}
+.course.Top {background: #00baf2;padding: 10px 0 20px 0;position: relative;}
+  .course.Top .edu-ad img {display: block;}
+  .course.Top .Info {background: #FFF;padding: 20px;}
+  .roadLink {color: #333;line-height: 1;margin-bottom: 20px;}
+    .roadLink a,.roadLink span  {color: #818181;}
+    .roadLink a:hover {color: #333;}
+    .course.Top .pic  {width: 500px;height: 300px;position: relative;overflow: hidden;}
+      .course.Top .pic img  {display: block;width: 100%;}
+      .course.Top .pic p  {position: absolute;right: 0;top:0;background: url(../images/bg70.png);color: #FFF;padding:0 5px;}
+      .course.Top .pic a.play  {position: absolute;left: 0px;top: 0px;right:0px;bottom:0px;width: 100%;height: 300px;display: block;z-index: 2;word-wrap: break-word;word-break:break-all;background: url(../images/freelook.png) no-repeat center;}
+      /*.course.Top .pic a:hover.play  {}*/
+      .acts {margin-top: 10px; }
+        .acts .download {height: 24px;position: relative;z-index: 100;}
+          .acts .download p {cursor: default;}
+          .acts .download div.qrcode  {position: absolute;left: 0px;top:24px;width: 90px;padding: 10px;background:#FFF;border:1px solid #DDD;font-size: 12px;display: none;}
+            .acts .download:hover div.qrcode,.acts .download div.qrcode img  {display: block;}
+      .acts>.fr {position: relative;padding-left: 25px;line-height: 20px;margin-left: 20px;cursor: pointer;}
+    .course.Top .main {width: 640px;padding-top: 10px;line-height: 1.7;}
+      .course.Top .main h2  {font-size: 20px;font-weight: normal;}
+      /*.course.Top .main .CourseTime {height: 24px;}*/
+        .course.Top .main .CourseTime span {float: left;margin-left: 20px;color: #999;}
+        .course.Top .main .CourseTime span:first-child {margin-left: 0;}
+      .course.Top .main .price  {padding: 10px;background:#F5F5F5;margin: 20px 0;line-height: 1.5;}
+        .course.Top .main .price dl {padding:5px 10px;overflow: hidden;}
+          .course.Top .main .price dt {float: left;width: 80px;}
+          .course.Top .main .price dd {float: left;}
+            .course.Top .main .price dd p.f26.red  {margin-top: -10px;}
+            .course.Top .main .price dd p span  {background: #c01920;margin-right: 5px;color:#FFF;padding: 0 2px;}
+      .course.Top .main .serve  {}
+        .course.Top .main .serve p  {float: left;margin-right: 30px;}
+          .course.Top .main .serve p span {border:1px solid #999;padding:0 1px;margin-right: 5px;}
+          .course.Top .main .serve p.hasIcon span {width: 14px;height: 16px;overflow: hidden;position:relative;float: left;margin-top: 2px;}
+          .serve i.icon  {display:block;width: 6px;height: 9px;position: absolute;left: 5px;top:3px;background-position: -450px -100px;}
+      .course.Top .main .Btns {margin-top: 20px;position: relative;}
+        .course.Top .main .Btns button,.Fixed button  {border:1px solid #00baf2;padding: 0px 25px;height: 45px;line-height: 1;font-size: 20px;display: block;float: left;margin-right: 20px;}
+        .course.Top .main .Btns button.red2,.Fixed button.red2 {border-color:#c93d29;color:#c93d29;background: #ffd8d2;}
+        .course.Top .main .Btns button.red3,.Fixed button.red3 {border-color:#ff4a56;color:#fff;background: #ff4a56;min-width: 82px;}
+        .course.Top .main .Btns button.red,.Fixed button.red  {border-color:#c93d29;background: #c93d29;color: #FFF;}
+        .course.Top .main .Btns button.gray,.Fixed button.gray  {background: #999;border-color:#999;color:#FFF;}
+          .course.Top .main .Btns .quickPay {position: absolute;bottom:44px;padding-bottom: 10px;z-index: 10;left: 0;display: none;}
+          .course.Top .main .Btns .quickPay.show {display: block;}
+          .course.Top .quickPay div.icon {position: absolute;bottom: 2px;left:50px;width: 16px;height: 10px;background: url(../images/hidearro2.png) no-repeat;}
+          .course.Top .quickPay .main {border:2px solid #DDD;background: #FFF;padding: 10px;float: left;width: 320px;}
+          .course.Top .quickPay .main table {width: 100%;}
+          .course.Top .quickPay .main th  {font-weight: normal;text-align: left;}
+          .course.Top .quickPay .main td  {text-align: right;}
+          .course.Top .quickPay .main .ifVip {border-top: 1px solid #DDD;margin-top: 10px;padding-top: 10px;}
+            .course.Top .quickPay .main .ifVip a  {background: #c93d29;color:#FFF;width: 94px;text-align: center;display: inline-block;line-height: 32px;padding: 0;}
+          .payQrcode {background:url(../images/quickpay_bg.png) no-repeat;width: 90px;height: 90px;float: right;padding: 2px;}
+            .payQrcode img  {display: block;width: 100%;height: 100%;background: url(../images/loading.gif) no-repeat center;}
+
+.Page.course  {padding-top: 30px;margin-bottom: 30px;position: relative;}
+.topic  {margin-bottom: 40px;display: none;}
+  .topic dt {background: #F5F5F5;line-height: 40px;font-size: 16px;height: 40px;}
+    .topic dt p {float: left;padding: 0 30px;cursor: pointer;display: none;}
+    .topic dt p:hover,.topic dt p.cur {border-bottom: 2px solid #00baf2;height: 38px;color: #000;}
+      .topic i.icon {width: 30px;height: 30px;float: right;cursor: pointer;margin-top: 5px;}
+      .topic i.icon:hover {opacity: .5;}
+      .topic i.icon.prev{background-position: 10px -290px;}
+      .topic i.icon.next{background-position: -40px -290px;margin-right: 10px;}
+  .topic dd {}
+    .topicList  {padding:20px 10px;display: none;overflow: hidden;}
+      .topicList ul {overflow: hidden;}
+      .topicList li {width: 375px;margin: 0 10px;overflow: hidden;float: left;}
+      /*小角标 zjf20170614*/
+        .topicList li .pic {position: relative;width: 150px;height: 90px;}
+          .topicList li .pic img  {background:#FFF url(../images/loading.gif) no-repeat center;width: 100%;height: 100%;display: block;}
+        .topicList li .main {width: 205px;padding-left: 20px;}
+          .topicList li .main a.title {line-height: 20px;height: 40px;display: block;margin-top: 5px;margin-bottom: 15px;overflow: hidden;}
+          .topicList li .main a.btn {background: #c93d29;color: #FFF;}
+.Course {overflow: hidden;}
+  .Course .Left {width: 850px;}
+    .tabsTil  {border-bottom: 1px solid #DDD;line-height: 40px;height: 40px;}
+      .tabsTil p  {float: left;padding: 0 25px;font-size: 16px;cursor: pointer;}
+      .tabsTil p.cur,.tabsTil p:hover {border-bottom: 2px solid #00baf2;height: 39px;}
+    .tabsCon  {padding: 25px;}
+      .tabsConItem  {display: none;}
+      .tabsConItem.intro,.tabsConItem.intro * {word-break: break-all;word-wrap: break-word;overflow: hidden;}
+        .tabsConItem.intro img  {max-width: 100%;}
+      .tabsConItem:first-child  {display: block;}
+      .intro dt {margin-bottom: 10px;color: #818181}
+      .intro dd {margin-bottom: 20px;}
+      .syllabus {/*display: block;*/}
+        .syllabus li  {overflow: hidden;margin-bottom:8px;}
+        .syllabus li.chapter  {line-height:40px;}
+        .syllabus li.lesson  {margin-left: 40px;}
+          .syllabus li div.main  {padding: 5px 20px;overflow: hidden;position: relative;line-height: 36px;padding-left: 45px;cursor: default;}
+          .syllabus li.lesson div.main {background: #F5F5F5;}
+          .syllabus li.lesson:hover div.main  {background: #10a8e0;color:#FFF;}
+          .syllabus li.lesson>p {padding: 5px 20px;font-size: 14px;margin-top: 8px;display: none;}
+        .syllabus .noChapter li.lesson {margin-left: 0;}
+          .syllabus li.lesson span.look {color:#10a8e0;background: #fff462;padding:0 20px;display: none;}
+          .syllabus li.lesson:hover span.look   {display: block;}
+          .syllabus li.lesson:hover span.time   {display: none;}
+          .syllabus li p  {float: left;margin-right: 5px;font-size: 16px;}
+          .syllabus li p b {font-weight: normal;}
+          .syllabus li span  {float: right;margin-left: 10px;color: #818181;}
+          .syllabus li a.play {position: absolute;width: 100%;height: 100%;left: 0px;top: 0px;}
+          .syllabus li i.icon {display: block;width: 35px;height: 35px;float: left;margin-left: -40px;}
+          .syllabus li.chapter i.icon {background-position: -444px -44px;}
+          i.type1.icon {background-position: -292px -93px;}
+          i.type2.icon {background-position: -292px -143px;}
+          i.type3.icon {background-position: -292px -193px;}
+          .syllabus li.lesson:hover i.type1 {background-position: -292px -243px;}
+          .syllabus li.lesson:hover i.type2 {background-position: -292px -293px;}
+          .syllabus li.lesson:hover i.type3 {background-position: -292px -343px;}
+  .Interested dt  {border-bottom: 1px solid #DDD;font-size: 16px;margin-top: 20px;padding-left: 20px;line-height: 40px;color: #414141;}
+  .Interested dd ul {overflow: hidden;margin-top: 0;}
+    .Interested li{width: 197px;margin-top: 20px;border:none;}
+      .Interested li .pic {width: 197px;margin:0;height:118px;}
+      .Interested li .pic img {width: 197px;height:118px;display: block;}
+
+  .Course .Right{width: 310px;}
+    .Pack {border-top: 1px solid #DDD;padding: 20px 0;}
+    .Pack:first-child {border-top:0;}
+    #bookListPack,#studentsTop,#students,#Interested {display: none;}
+      .Pack .tit  {font-size: 16px;line-height: 1;padding-left: 10px;border-left: 5px solid #00baf2;margin-bottom: 20px;}
+        .Pack .tit span {font-size: 14px;color: #818181;margin-left: 10px;}
+      .lecInfo  {overflow: hidden;padding: 20px 0;}
+        .lecInfo img.avatar {width: 70px;height: 70px;border-radius: 100%;background: #F5F5F5;}
+        .lecInfo .main {width: 220px;}
+          .lecInfo .main h2 {font-size: 16px;}
+      .uList  {}
+        .uList .avatar  {width: 60px;height: 60px;border-radius: 100%;background: #F5F5F5;position: relative;}
+          .uList .avatar img  {display: block;border-radius: 100%;}
+          .uList .avatar i.vipSmall {right: 5px;bottom:0;display: block;position: absolute;}
+      .uList1 {margin:0 -12px 0 -11px;text-align: center;line-height: 30px;}
+        .uList1 .item {float: left;width: 60px;margin: 0px 12px 12px 11px;overflow: hidden;text-align: center;}
+          .uList1 .avatar img  {width: 100%;height: 100%;}
+          .uList1 .item p {white-space: nowrap;text-overflow:ellipsis;overflow: hidden;}
+      .uList2 {line-height: 50px;}
+        .uList2 .item {overflow: hidden;margin-bottom: 20px;}
+          .uList2 .Sort  {float: left;font-style: italic;font-size: 22px;font-weight: bold;color:#818181;}
+          .uList2 .Sort.s1 {color: #7eb865;}
+          .uList2 .Sort.s2 {color: #cb4634;}
+          .uList2 .Sort.s3 {color: #f76728;}
+          .uList2 .avatar {float: left;margin: 0 10px;width: 50px;height: 50px;}
+          .uList2 .studyed  {color: #818181;}
+      .book {}
+        .book .item{margin-bottom: 20px;}
+        .book .pic  {width: 100px;height: 145px;overflow: hidden;}
+          .book .pic img  {display: block;width: 100%;height:100%;background: url(../images/loading.gif) no-repeat center;}
+        .book .main {width: 190px;position: relative;height: 145px;color:#818181;}
+          .book .main .name {font-size: 16px;line-height: 1.3;margin-bottom: 10px;color:#414141;}
+          .book .main .price  {position: absolute;left: 0;bottom: 0;font-weight: bold;line-height: 1;}
+            .book .main .price span {font-size: 18px;}
+
+table.fileList {}
+  table.fileList  {width: 100%;}
+  table.fileList thead  {font-weight: bold;}
+  table.fileList td  {padding: 0 20px;height: 50px;}
+  table.fileList .bg  {background: #F5F5F5;}
+.files .information  {margin-top: 20px;}
+  .files .information dt {background: #F5F5F5;line-height: 35px;padding-left: 20px;font-weight: bold;}
+  .files .information dd {padding-left: 20px;line-height: 32px;padding-top: 10px;}
+    .files .information dd a {display: block;}
+
+.Ar_Tab {background: #F5F5F5;line-height: 40px;overflow: hidden;}
+  .Ar_Tab p {padding:0 20px;float: left;cursor: pointer;}
+  .Ar_Tab p:hover,.Ar_Tab p.cur {color: #00baf2;}
+
+#arList {margin-bottom: 20px;}
+  #arList li.item {overflow: hidden;padding-top:20px;}
+    #arList li.item .pic  {width: 72px;}
+      #arList li.item .pic img  {display: block;height: 72px;width: 72px;border-radius: 100%;}
+      #arList li.item .pic i.vipBig {float: right;margin-top:-26px;z-index: 2;position: relative;}
+      #arList li.item .pic p  {text-align: center;    word-wrap: break-word;}
+    #arList li.item .main {width: 715px;float: right;word-wrap: break-word;}
+    #arList li.item .main .stars  {margin-bottom: 5px;}
+    #arList li.item .main .ess  {background-color: #a4312f;color:#FFF;padding: 0 2px;line-height: 16px;margin-top: 3px;float: left;font-size: 12px;margin-left:5px;}
+
+.myAppraise {padding-bottom: 30px;}
+  .myAppraise .L1 {width: 270px;padding-left: 20px;color: #818181;}
+    .myAppraise .L1 .color42  {margin-bottom: 10px;}
+    .myAppraise .L1 .stars  {margin-bottom: 5px;}
+  .myAppraise .L2 {width: 380px;}
+    .myAppraise .L2 p {margin-top: 10px;}
+  .myAppraise .L3 {padding-top: 35px;}
+    .myAppraise .L3 button  {width:  120px;height: 40px;line-height: 1;padding: 0;font-size: 18px;/*display: none;*/}
+
+.evaluate {position: fixed;width: 800px;top:50%;left: 50%;margin-left: -400px;margin-top: -220px;background-color: #FFF;z-index: 50001;display: none;}
+  .evaluate .title  {background: #F5F5F5;padding: 10px 20px;}
+    .evaluate .title h2 {font-size: 18px;float: left;font-weight: normal;}
+    .evaluate .title p  {float: left;color: #818181;margin-top: 3px;margin-left: 10px;}
+      .evaluate .title p span {background: #00baf2;color:#FFF;padding: 0 4px;margin-left: 5px;}
+  .evaluate .main {padding: 20px;}
+    .evaluate .main .classInfo  {overflow: hidden;}
+      .evaluate .main .classInfo img.fl {width: 150px;height: 90px;margin-right: 15px;}
+      .evaluate .main .classInfo h3 {font-size: 16px;margin-bottom: 5px;}
+    .evaluate .main .setStars {overflow: hidden;margin-top: 15px;margin-bottom: 15px;}
+      .evaluate .main .setStars p {margin-right: 5px;}
+      .evaluate .main .setStars .stars  {margin-top: 3px;}
+  .evaluate textarea  {width: 730px;padding: 4px;border:1px solid #DDD;height: 100px;}
+  .evaluate i.check {margin-top: 4px;}
+  .evaluate p.check {cursor: default;}
+  .evaluate .btns button  {width: 120px;font-size: 16px;margin: 0 20px;border:1px solid #00BAF2;margin-top: 20px;}
+  .evaluate .btns button.white  {background: #FFF;color: #00baf2;}
+
+.Fixed  {position: fixed;width: 100%;padding: 5px 0;left: 0;top: 0;z-index: 999;background: #FFF;box-shadow: 1px 1px 2px #999;display: none;border-bottom: 1px solid #EEE;}
+  .Fixed .Page  {height: 45px;}
+  .Fixed .tabsTil {border:none;}
+    .Fixed .tabsTil p {line-height: 16px;border:none;margin: 17px 0;border-right: 1px solid #DDD;}
+    .Fixed .tabsTil p:last-child  {border:0;}
+    .Fixed .tabsTil p.cur,.Fixed .tabsTil p:hover {line-height: 16px;border-bottom:none;height: 16px;color:#00baf2;}
+.Fixed button {float: right;}
+.Fixed p.fr {line-height: 45px;margin-right: 20px;}
+
+.couponList .cp  {width: 310px;height: 90px;margin-bottom: 20px;background: url(../images/coupon_bg3.png) no-repeat;cursor: pointer;}
+.couponList .cp:hover  {opacity: 0.8;}
+.couponList .cp.lock {background-image: url(../images/coupon_bg3_lock.png);}
+  .couponList .cp .fl  {padding: 20px;font-size: 12px;width: 145px;}
+    .couponList .cp .fl h2 {font-size: 16px;    white-space: nowrap;overflow: hidden;text-overflow:ellipsis;}
+    .couponList .cp .fl p  {font-size: 12px;color: #818181;}
+  .couponList .cp .fr  {padding: 20px 10px;width: 105px;line-height: 1;text-align: center;}
+    .couponList .cp .fr p  {text-indent: -10px;margin-bottom: 5px;}
+    .couponList .cp.lock .fr p  {color: #818181;}
+      .couponList .cp .fr p span {font-size: 30px;font-weight: bold;}
+      .couponList .cp .fr>span {background: #d32f24;border:10px;line-height: 1;padding: 3px 10px;color:#FFF;font-size: 12px;border-radius: 10px;}
+      .couponList .cp.lock .fr>span  {background:#999;}
+/*课程详情页限免提示 zjf20170815*/
+.course_time_free_msg {font-size: 12px;color: #ff4a56;margin-top: -14px;}

@@ -1,0 +1,412 @@
+{% load seo %}
+<html>
+{% block header %}
+<head>
+  {% get_metadata %}
+	    <link rel="icon" style="max-height: 50%" href="/statics/images/logo_icon.jpg" type="img/x-ico" />
+	<meta name="baidu-site-verification" content="MpNz3dx7EI" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="/statics/mobile_index/base.css">
+	<link rel="stylesheet" href="/statics/mobile_index/iconfont.css">
+    <link rel="stylesheet" href="/statics/mobile_index/wap-work.css">
+
+    <script src="/statics/mobile_index/jquery.js"></script>
+    <script src="/statics/mobile_index/wap-work.js"></script>
+    <script src="/statics/mobile_index/touchslider.dev.js"></script>
+<script src="/statics/js/cart/jquery.min.js"></script>
+<script src="/statics/js/cloudcollege/doccloudcollege.js"></script>
+	<script src="/statics/js/cloudcollege/videocloudcollege.js"></script>
+	<script src="/statics/js/cloudcollege/index.js"></script>
+	<script>
+	function submit_message(data) {
+	    document.getElementById("myform").submit();
+        }
+
+</script>
+	<script type="text/javascript">
+		function redicturl(url) {
+			console.log(url)
+			window.location.href=url;
+		}
+		function KeepScrollBar() {
+			// var scrollPos;
+			// // if (typeof document.body != 'undefined') {
+			// // 			scrollPos = document.getElementById('divContent').scrollTop;
+			// // }
+			// // else{
+			// //     scrollPos = 600;
+			// // }
+			// scrollPos = 600;
+			// document.cookie = "scrollTop=" + scrollPos;
+			console.log('test')
+		}
+
+        // window.onload = function (){
+		//     console.log("1111")
+		//     document.getElementById('divContent').scrollTop ="{{scroll}}";
+		//     console.log("{{scroll}}")
+        //     // if (document.cookie.match(/scrollTop=([^;]+)(;|$)/)){
+		//      //    		if (document.cookie.match(/scrollTop=([^;]+)(;|$)/)[1] == 0){
+		// 	// 				document.getElementById('divContent').scrollTop =600;
+		// 	// 					                document.cookie = "scrollTop=" + 600;
+		// 	// 			}else{
+		//      //            document.cookie = "scrollTop=" + 600;
+		// 	// 			console.log('exist',document.cookie.match(/scrollTop=([^;]+)(;|$)/))
+  		// 	// 			document.getElementById('divContent').scrollTop =600;
+		// 	// 			}
+        //     //
+		// 	// }else{
+		//      //    	document.getElementById('divContent').scrollTop =0;
+		// 	// 	    document.cookie = "scrollTop=" + 600
+		// 	// 		console.log('not exist',document.cookie.match(/scrollTop=([^;]+)(;|$)/))
+        //     //
+		// 	// }
+        //     //
+		//
+		//
+		// 	//
+		//     	// 	        console.log('autoonload')
+        //     // console.log(document.cookie.match(/scrollTop=([^;]+)(;|$)/))
+        //     // if (document.cookie.match(/scrollTop=([^;]+)(;|$)/) != null) {
+		//      //    console.log('auto')
+		//      //    var arr = document.cookie.match(/scrollTop=([^;]+)(;|$)/);
+		//      //    	        console.log('value')
+		// 	// 		        console.log(arr[1])
+        //      //    document.getElementById('divContent').scrollTop = parseInt(arr[1]);
+        //     //
+        //     // }
+        //     // else{
+        //     //
+		//     	// 	                document.getElementById('divContent').scrollTop = 600;
+		// 	//
+        //     //
+		// 	// }
+        // }
+
+    </script>
+</head>
+{% endblock %}
+<body  data-role="tab-content" data-id="course-a" runat="server" id="divContent"
+	   style="height: 365px; overflow-y: scroll" onscroll= "KeepScrollBar()" class="has-panel" style="height: 826px;">
+<!-- 先隐藏 -->
+		<div class="header" style="position:fixed;top:0;left:0; z-index:9999">
+			<i id="panelSwitch" class="icon-nav"></i>
+			<h1>
+				<a href="/mobile_index/" >
+				<img height="35px"  style="margin-top: 8px"  src="/statics/images/logo_02.png" >
+				</a>
+			</h1>
+
+			<a class="avatar" href="/mobile_user_center">
+			<img class="avatar" src="/medias/{{ username.userpic }}" onerror="this.src='/statics/mobile_index/user.png'" alt="">
+			</a>
+		</div>
+		<div style="padding-bottom: 60px"></div>
+
+			{% block page-all %}
+
+		<link href="/statics/css/mobile_search/search.css" rel="stylesheet">
+
+	{% if toutiaos  %}
+         <header class="search-hd" >
+       <form id="myform" method="get" action="/mobile_search/" id="search_form">
+	<input type="text" class="search-val" placeholder="{{keyword}}" autocomplete="off" value="" name="keywords" id="keywords">
+<input type="hidden" name="type" value="article" id="sType">
+ 		 <input type="hidden" name="page" value="1">
+			 <img onclick="submit_message(this)" class="search-hd-btn icon-search"
+				  style="margin-left: 10px;background: #eee" height="30" width="30" src="/statics/images/sou.jpg">
+        </form>
+      </header>
+{% endif %}
+	<!-- 轮播图 -->
+
+<div class="body line">
+					<!--<ul class="nav">-->
+			<!--&lt;!&ndash;li><a class="{{video_selected}}" href="/mobile_index/">视频教程</a></li&ndash;&gt;-->
+
+				<!--<h2 style="margin-right: 36px;margin-top: 18px" class="{{doc_selected}}" href="/mobile_docindex/">今日头条</h2>-->
+
+
+		<!--</ul>-->
+	<div class="swipe" style="overflow: hidden; visibility: visible; list-style: none; position: relative;">
+	    <ul id="slider" style="position: relative; overflow: hidden; transition: left 0ms ease; width: 8550px; left: -1330.37px;">
+{% for carousel in carousel_data  %}
+	<li style="float: left; display: block; width: 1425px;"><a href="{{carousel.newlink}}">
+	<img height="160" src="/medias/{{carousel.newpic}}" title="{{carousel.title}}"></a></li>
+{% endfor %}
+ </ul>
+	    <div id="pagenavi">
+	    	<a href="javascript:;" class="" id="782"></a><a href="javascript:;" id="771" class=""></a>
+			<a href="javascript:;" id="795" class=""></a><a href="javascript:;" id="794" class=""></a>
+			<a href="javascript:;" id="793" class="active"></a><a href="javascript:;" id="767"></a>		</div>
+	</div>
+		</div>
+	<!--<div class="swipe body line" style="overflow: hidden; visibility: visible; list-style: none; position: relative;margin-top:15px">-->
+	    <!--<ul id="slider" style="position: relative; overflow: hidden; transition: left 0ms ease; width: 8550px; left: -1330.37px;">-->
+<!--{% for carousel in carousel_data  %}-->
+	<!--<li style="float: left; display: block; width: 1425px;"><a href="{{carousel.newlink}}">-->
+	<!--<img height="150" style="border-radius:5%;" src="/medias/{{carousel.newpic}}" title="{{carousel.title}}"></a></li>-->
+<!--{% endfor %}-->
+	    	<!--&lt;!&ndash;li style="float: left; display: block; width: 1425px;">-->
+<!--<a href="http://wxdd.ecloudcollege.com/zhishi.html">-->
+				<!--<img src="/statics/mobile_index/1510207879_222.jpeg" title="10000个知识点"></a>-->
+
+
+<!--</li>-->
+
+
+<!--<li style="float: left; display: block; width: 1425px;"><a href="http://www.zigeer.com/Comm/Allproductlist?producttype=5600009&amp;from=41"><img src="/statics/mobile_index/1512702584_478.jpeg" title="用你的设计创造独一无二的手机壳"></a></li><li style="float: left; display: block; width: 1425px;"><a href="http://study.ecloudcollege.com/detail/176.html"><img src="/statics/mobile_index/1513049075_901.jpeg" title="每周临摹-炫彩PhoneX music app设计"></a></li><li style="float: left; display: block; width: 1425px;"><a href="http://study.ecloudcollege.com/detail/175.html"><img src="/statics/mobile_index/1512700623_172.jpeg" title="每周临摹-扁平插画"></a></li><li style="float: left; display: block; width: 1425px;"><a href="http://wxdd.ecloudcollege.com/dongdian.html"><img src="/statics/mobile_index/1512644633_507.png" title="懂点设计"></a></li><li style="float: left; display: block; width: 1425px;"><a href="http://peixun.ecloudcollege.com/detail/376.html"><img src="/statics/mobile_index/1511949064_176.png" title="没有实战的python都是假python"></a>-->
+<!--</li&ndash;&gt;-->
+
+<!--</ul>-->
+	    <!--<div id="pagenavi">-->
+	    	<!--<a href="javascript:;" class="" id="782"></a><a href="javascript:;" id="771" class=""></a><a href="javascript:;" id="795" class=""></a><a href="javascript:;" id="794" class=""></a><a href="javascript:;" id="793" class="active"></a><a href="javascript:;" id="767"></a>		</div>-->
+	<!--</div>-->
+	<script>
+
+		console=window.console || {dir:new Function(),log:new Function()};
+		var active=0,
+		as=document.getElementById('pagenavi').getElementsByTagName('a');
+		for(var i=0;i<as.length;i++){
+			(function(){
+				var j=i;
+				as[i].onclick=function(){
+					t4.slide(j);
+					return false;
+				}
+			})();
+		}
+
+		var t4=new TouchSlider({id:'slider', speed:600, timeout:6000, before:function(index){
+			as[active].className='';
+			active=index;
+			as[active].className='active';
+		}});
+	</script>
+	<!-- 轮播图 END -->
+
+
+<link rel="stylesheet" href="/statics/mobile_index/daohan/css/pgwmenu.css">
+
+<style>
+
+.dowebok-explain { margin-top: 20px; font-size: 14px; text-align: center; color: #f50;}
+
+.pgwMenu a { padding: 0 13px;}
+
+/* 自定义样式 */
+.pgwMenuCustom { background: #f1941c; height: 40px; position: relative; list-style: none }
+.pgwMenuCustom ul { list-style: none; white-space: nowrap; margin: 0; padding: 0 }
+.pgwMenuCustom .pm-links.mobile, .pgwMenuCustom .pm-viewMore>ul { background: #f1941c; box-shadow: 2px 2px 4px #777; position: absolute; left: 0; top: 100%; z-index: 1000 }
+.pgwMenuCustom .pm-links.mobile li, .pgwMenuCustom .pm-viewMore>ul>li { display: block; clear: both; width: 175px }
+.pgwMenuCustom li { float: left }
+.pgwMenuCustom a { display: block; color: #fff; line-height: 40px; padding: 0 30px; text-decoration: none }
+.pgwMenuCustom a.selected { background: #e5601d }
+.pgwMenuCustom li a:hover { background: #e86f2e; text-decoration: none }
+.pgwMenuCustom .pm-dropDown, .pgwMenuCustom .pm-viewMore, .pgwMenuCustom .pm-viewMore>ul { display: none }
+.pgwMenuCustom .pm-dropDown a { display: inline-block; background: #e86f2e }
+.pgwMenuCustom .pm-dropDown a.active, .pgwMenuCustom .pm-viewMore a.active { background: #e5601d }
+.pgwMenuCustom .pm-dropDown span.icon, .pgwMenuCustom .pm-dropDown span.black { background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOvgAADr4B6kKxwAAAABZ0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMDvo9WkAAABpSURBVEhL7ZPLCcAwDEM9jefI/ks1Hyj2QbiGSLcKHggl8sEktjTc/WGyZxo6YKAbrFzFoav3/hdhmsrlijBN5XJFmKZyuSJMU7lcsfV/kIN0FRJgyACGDGDIAIYMpK8CHt6iG6xZhY0JIJ+6AHGbUFsAAAAASUVORK5CYII=) no-repeat; display: block; height: 22px; width: 22px; margin: 9px 5px }
+.pgwMenuCustom .pm-dropDown span.white { background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAOwQAADsEBuJFr7QAAABZ0RVh0U29mdHdhcmUAcGFpbnQubmV0IDQuMDvo9WkAAABKSURBVEhL7ZOxDQAwCMN6O4/T0tmjsxHJDB4yROJ0dz3s1BRHEi2OTREBpQFKA5QGKA3m7IP8RKeIgNIApQFKA5QGc/ZBfkJTdF0oUafLBAFNbAAAAABJRU5ErkJggg==) no-repeat; display: block; height: 22px; width: 22px; margin: 9px 5px }
+.pgwMenuCustom .pm-viewMore { display: none; position: relative }
+.pgwMenuCustom .pm-viewMore>a { display: inline-block }
+.pgwMenuCustom .pm-viewMore>ul { left: auto; right: 0 }
+.pgwMenuCustom .pm-viewMore li { float: none }
+.pgwMenuCustom .pm-viewMore span.icon, .pgwMenuCustom .pm-viewMore span.white { border-color: #fff transparent; border-style: solid; border-width: 8px 6px 0; margin-left: 3px; display: inline-block }
+.pgwMenuCustom .pm-viewMore span.black { border-color: #000 transparent; border-style: solid; border-width: 8px 6px 0; margin-left: 3px; display: inline-block }
+</style>
+<script type="text/javascript" src="/statics/mobile_index/daohan/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/statics/mobile_index/daohan/js/pgwmenu.min.js"></script>
+<script type="text/javascript">
+	// function gundon(){
+	//     console.log('gundon')
+	//   	$('.help-gundongtiao').scrollTop($('.help-gundongtiao')[0].scrollHeight);
+	// }
+ // window.onload = gundon;
+// $(function() {
+// 	$('.pgwMenu').pgwMenu({
+// 		dropDownLabel: '菜单',
+// 		viewMoreLabel: '更多<span class="icon"></span>'
+// 	});
+//
+// 	$('.pgwMenuCustom').pgwMenu({
+// 		mainClassName: 'pgwMenuCustom',
+// 		dropDownLabel: '菜单',
+// 		viewMoreLabel: '更多<span class="icon"></span>'
+// 	});
+// });
+</script>
+
+			{% if search != 'search'  %}
+
+
+	{% if toutiaos  %}
+<div  style="margin-top: 10px">
+	<h2 class=" body line">今日头条</h2>
+		</div>
+		<div  style="margin-top: 20px"></div>
+	{% endif %}
+
+	<div class="body pos">
+
+		<ul class="list cl">
+
+			    {% for toutiao in toutiaos  %}
+			<li><a href="/mobile_docdetail/{{toutiao.id}}/">
+				<img style="width:100%;height:100px;border-radius:10%;"
+					 src='/medias/{{toutiao.newpic}}'  title="mobile_new"> <h3 style="margin-top: 15px;">{{toutiao.title}}</h3></a>
+			</li>
+				{% endfor %}
+		</ul>
+			</div>
+{% endif %}
+		<div class="body line">
+						{% if search != 'search'  %}
+
+					{% for cate in category %}
+						{% ifequal cate_id cate.id %}
+						<h2 style="margin-left: 0px" class="{{doc_selected}}" href="/mobile_docindex/">{{cate.name}}</h2>
+						{% endifequal %}
+
+					{%endfor%}
+
+				{% if toutiaos  %}
+								<h2 style="margin-right: 0px;" class="{{doc_selected}}" href="/mobile_docindex/">综合热点</h2>
+				{% else %}
+							{% if new_doc_selected %}
+							<h2 style="margin-right: 0px;" class="{{doc_selected}}" href="/mobile_docindex/">综合热点</h2>
+						    {% endif %}
+				{% endif %}
+
+
+<!--						<h2 style="margin-right: 45px;margin-top: 12px" class="{{doc_selected}}" href="/mobile_docindex/">热点资讯</h2>-->
+<!--			<div style="margin-top:6px"></div>-->
+
+			<!--先隐藏-->
+<!--			<ul class="pgwMenu light" style="font-size: 13px">-->
+<!--				&lt;!&ndash;<li><a class= "help-gundongtiao"  onclick="gundon()" href="/mobile_doccategory/1/">2019风口</a></li>&ndash;&gt;-->
+<!--				&lt;!&ndash;<li><a class= "help-gundongtiao"  onclick="gundon()" href="/mobile_doccategory/3/">赚钱app</a></li>&ndash;&gt;-->
+<!--				&lt;!&ndash;<li><a class= "help-gundongtiao"  onclick="gundon()" href="/mobile_doccategory/2/">行业热点</a></li>&ndash;&gt;-->
+<!--				&lt;!&ndash;<li><a class= "help-gundongtiao"  onclick="gundon()" href="/mobile_doccategory/5/">生活杂谈</a></li>&ndash;&gt;-->
+<!--			<li><a class="{{new_doc_selected}}" href="/mobile_docindex/1"><i class="icon-home-line"></i><span>首页</span></a></li>-->
+<!--				{% for cate in category %}-->
+
+<!--					{% if cate.id == 1 or cate.id == 4 or cate.id == 3 %}-->
+
+<!--						{% ifequal cate_id cate.id %}-->
+<!--						<li><a  class="selected" href="/mobile_doccategory/{{ cate.id }}/">{{cate.name}}</a></li>-->
+<!--						{% else %}-->
+<!--						<li><a  href="/mobile_doccategory/{{ cate.id }}/">{{cate.name}}</a></li>-->
+<!--						{% endifequal %}-->
+<!--					{% endif %}-->
+
+<!--					{%endfor%}-->
+<!--			</ul>-->
+
+		<div class="body line"></div>
+
+
+
+
+
+			<!--li><a class="{{video_selected}}" href="/mobile_index/">视频教程</a></li-->
+
+
+
+
+{% endif %}
+<!--			<div style="margin-top: 10px"> </div>-->
+						<!--<hr style="height:1px;border:none;border-top:1px solid #eee;" />-->
+				{% if search_result  %}
+			<h2 style="padding-bottom: 6px">{{search_result}}</h2>
+			{% endif %}
+		{% for news_list in data  %}
+	<div>
+		<ul class="study-list cl" onclick="redicturl('/mobile_docdetail/{{news_list.id}}')">
+			<li>
+					<div class="img">
+						<a href="/mobile_docdetail/{{news_list.id}}">
+						<img height="100" src="/medias/{{news_list.newpic}}" title="{{news_list.title}}"></a></div>
+				<div class="det" style="margin-top: 10px"></div>
+
+						<h3><a href="/mobile_docdetail/{{news_list.id}}">{{news_list.title}}</a></h3>
+						<p>
+							<!--<a href="/mobile_docdetail/{{news_list.id}}" target="_blank">{{news_list.summary}}</a>-->
+							<div style="float: left;color: #8e8e8e">{{ news_list.create_date|date:"Y-m-d H:i:s" }}</div>
+
+						</p>
+				<br>
+							  <div style="color: #8e8e8e ;display:inline"> 标签:
+
+							  </div>
+								{% for new_type in news_list.news_type.all  %}
+								   <div  style="color: #8e8e8e ;display:inline"> {{new_type}}</div>
+
+								{% endfor %}
+
+
+
+
+				</li>
+
+		</ul>
+
+	</div>
+			<div style="margin-top: 12px"></div>
+			<hr style="height:1px;border:none;border-top:1px solid #eee;" />
+		{% endfor %}
+
+			<div style="margin-top: 50px"></div>
+		<div class="page cl">
+
+		{{page}}
+
+
+		</div>
+	</div>
+
+
+
+
+
+	
+{% endblock %}
+<div style="background:#222; color:#FFF;padding: 10px;bottom:0;">
+		<div style="margin-left: 20px;margin-right: 20px">580网创建于2018年06月06日，推荐的项目100%免费。
+联系ais580com@foxmail.com，不接任何非正规擦边广告，仅限正规公司合作（个人项目请勿联系）！
+备案号：闽ICP备19017760号</div>
+</div>
+		<!-- 先隐藏 -->
+	<div class="side" >
+		<div>
+
+		<ul class="main-nav cl">
+			{% if cate_id %}
+				<li><a  href="/mobile_docindex/{{1}}"><span>首页</span></a></li>
+			{% else %}
+			<li><a class="{{index_doc_selected}}" href="/mobile_docindex/{{1}}"><span>首页</span></a></li>
+				{% endif %}
+
+		{% for cate in category %}
+			{% ifequal cate_id cate.id %}
+			<li><a  class="active" href="/mobile_doccategory/{{ cate.id }}/"><span>{{cate.name}}</span></a></li>
+			{% else %}
+			<li><a  href="/mobile_doccategory/{{ cate.id }}/"><span>{{cate.name}}</span></a></li>
+			{% endifequal %}
+		{%endfor%}
+			<!--li><a class="" href="/uploadindex/"><i class="icon-home-line"></i><span>上传</span></a></li>
+			<li><a class="" href="/collectbox/"><i class="icon-home-line"></i><span>我的收藏</span></a></li>
+
+			<li><a class="" href="/mobile_logout/"><i class="icon-home-line"></i><span>退出</span></a></li-->
+		</ul>
+		</div>
+	</div>
+	 <!--侧边栏 END-->
+<div style="display:none;">
+	<img src="/statics/mobile_index/wapstat.php" width="0" height="0">
+</div>
+
+</body></html>

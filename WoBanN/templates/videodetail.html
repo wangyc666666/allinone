@@ -1,0 +1,565 @@
+{% extends 'index.html' %}
+{% block page-content %}
+
+
+<!-- saved from url=(0037)http://edu.51cto.com/course/7207.html -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="baidu-site-verification" content="I4Hb0KGrvc">
+    <meta name="csrf-param" content="_csrf">
+    <meta name="csrf-token" content="dk1MajZYQWU8EnskXht1LwAsBhgbKQxWNzUnAkYBIgsiKT0uAQ92IQ==">
+    <title>{{ new.title }}</title>
+    <meta name="keywords" content="{{ news.title }}">
+<meta name="description" content=" {{ news.title }} {{ news.summary }}">
+
+    <link href="/statics/css/videodetail/base.css" rel="stylesheet"><link href="/statics/css/videodetail/activity_tab.css" rel="stylesheet"><link href="/statics/css/videodetail/gen_top.css" rel="stylesheet"><link href="/statics/css/videodetail/background_pub.css" rel="stylesheet"><link href="/statics/css/videodetail/frontend_pub.css" rel="stylesheet"><link href="/statics/css/videodetail/clist.css" rel="stylesheet">
+    <link href="/statics/css/videodetail/course.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/statics/css/videodetail/share_style0_16.css">
+ <style type="text/css"> img{max-width:100% !important; height:auto !important;} .contents{ width:auto; }
+ .wrap{word-wrap:break-word;word-break:break-all; overflow: hidden;width: 100%; height: auto; } </style>
+</head>
+
+<!-- CSS -->
+
+<link rel="stylesheet" href="/statics/css/docdetail/iconfont.css">
+<link rel="stylesheet" href="/statics/css/docdetail/uicn.v1.css">
+<link rel="stylesheet" href="/statics/css/docdetail/header.v1.css">
+<script src="/statics/js/cloudcollege/videocloudcollege.js"></script>
+
+
+
+
+<body>
+
+
+
+<div class="course Top" style="z-index: 10;">
+  <div class="Page">
+    <div class="edu-ad" ad_id="231" info_id="7207" type="course" style="margin-bottom: 10px;"><a href="#" title="大数据">
+        <img src="/statics/images/videodetail/8ec0fd9923a99d8d17c3ec66340f956a.png" alt="大数据" width="1200" height="100"></a></div>
+    <div class="Info">
+        <p class="roadLink">
+            <a href="/category/{{ news.category.id }}">{{ news.category }}</a>
+            <span>&gt;</span>
+            <a id="videoplayer_new_id" href="/videoplayer/{{news.id}}/">{{ news.title }}</a>
+
+
+        </p>
+
+      <div class="fl" style="width:500px;">
+        <div class="pic">
+            <img width="500" height="300" src="/medias/{{ news.newpic }}"  onerror="this.onerror=null;this.src='/{{news.newpic}}'" alt="Openstack从入门到放弃视频课程">
+                                <a href="javascript:void(0);" class="play"></a>
+                              <p>独家</p>
+                  </div>
+        <div class="acts">
+          <div class="download fl">
+            <a href="/videoplayer/{{news.id}}/">观看课程</a>
+            <!--div class="qrcode tc">
+              <img class="mb10" src="/statics/images/videodetail/appdownload90.png">
+              <p>下载学院APP</p>
+              <p>缓存视频离线看</p>
+            </div-->
+          </div>
+          <a href="" target="_blank" class="fl"></a>
+                      <a  onclick="Favor(this,{{news.id}});" class="fav fr " id="favo"><i class="icon"></i><span id="favor">点赞</span>(<span id="favorNum">{{news.favor_count}}</span>)</a>
+          <a onclick="collection_video_news({{newss.id}})" class="fav fr " id="fav">
+              <i class="icon"></i>
+              <span id="favFont">收藏</span>
+              (<span id="favNum">{{news.focususer.count}}</span>)
+          </a>
+          <div class="bdsharebuttonbox fr bdshare-button-style0-16" data-bd-bind="1504420274710">
+            <!--a class="bds_more share" data-cmd="more" name="" style="line-height: 20px;margin: 0;padding-left: 24px;background: none;display: block;height: 20px;position: relative;font-size: 14px;">
+              <i class="icon"></i>分享
+            </a-->
+          </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="main fr">
+        <h2 id="CourseTitle">{{ news.title }}</h2>
+        <p>{{ news.summary }}</p>
+        <div class="CourseTime">
+          <span>共33课时</span>
+          <span>共14小时12分钟</span>
+          <span>更新时间：{{ news.create_date|date:"Y-m-d H:i:s" }}</span>
+          <div class="clear"></div>
+        </div>
+                  <p class="red">
+                  </p>
+        <div class="price">
+          <dl>
+            <dt>价　　格</dt>
+            <dd>
+                                                
+                               <p class="red fl f26"> ¥{{ news.course_price }}</p>
+                                                                
+                                            <div class="clear"></div>
+            </dd>
+          </dl>
+                                                <!-- 会员95折 zjf20170605 -->
+            <dl>
+              <dt>优惠活动</dt>
+              <dd>
+                <p><span>会</span>会员95折</p>
+              </dd>
+            </dl>
+            
+                  </div>
+                                    <div class="serve">
+            <p><span>24</span>24小时内答疑</p>
+            <p class="hasIcon"><span><i class="icon"></i></span>课时永久观看</p>
+
+            <div class="clear"></div>
+          </div>
+                                    <div class="Btns" id="buyBtns">
+            
+                              <!--button class="red buyBtn" onclick="buy_now(this,{{ news.id}})">立即购买</button>
+                              <button class="red2 addCart"  onclick="add_to_cart(this,{{ news.id}})" >加入购物车</button-->
+                                                        
+              
+         <button id="collection_id" onclick="collection_video_news({{ news.id}})" >收藏</button>
+                                        <button><a href="/videoplayer/{{news.id}}/">播放</a></button>
+
+           <div class="clear"></div>
+        </div>
+                          </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<div class="Page course" style="z-index: 9;">
+  <!--div class="topic" style="display: block;">
+    <dl>
+      <dt>
+        <p class="cur spec" style="display: block;">相关专题</p>
+        <p class="pxb">微职位学习</p>
+        
+      </dt>
+      <dd>
+        <div class="topicList spec" style="display: block;">
+          <ul id="Spec" style="width: 1185px;">
+              <li><a href="http://edu.51cto.com/topic/670.html" class="pic fl"><img src="/statics/images/videodetail/31d0a3c017a7cc87357133149e88248109d987.jpg"></a><div class="fl main"><a href="http://edu.51cto.com/topic/670.html" class="f16 title" title="Python高级自动化开发工程师微职位套餐（培训班课程，请勿购买）">Python高级自动化开发工程师微职位套餐（培训班课程，请勿购买）</a><div class="clear"></div><p class="fl">立省<span class="red">￥10591</span></p><a href="http://edu.51cto.com/topic/670.html" class="btn fr">去购买</a><div class="clear"></div></div></li>
+
+</ul>
+        </div>
+      </dd>
+    </dl>
+  </div-->
+  <div class="Course">
+    <div class="Left">
+      <dl class="tabs">
+        <dt class="tabsTil" id="tabsTil">
+          <p class="cur">课程介绍</p>
+          <!--p>课程大纲</p>
+          <p>学习资料</p>
+          <p>学员评价</p-->
+        </dt>
+        <dd class="tabsCon">
+          <div class="tabsConItem intro wrap contents">
+              <div style="padding-left:2em;padding-right:2em;font-size:12px;">
+            <dl>
+             {{ news.content|safe }}
+            </dl>
+              </div>
+          </div>
+          <div class="tabsConItem syllabus">
+            <ul id="syList"><li class="item chapter"><div class="main"><i class="icon"></i><p>第1章</p><p>Openstack从入门到放弃视频课程</p><span>14小时12分钟</span><span>33节</span></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-1</p><p title="云计算介绍">云计算介绍</p><p class="look red">[免费观看]</p><span class="time">29:35</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127539" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-2</p><p>openstack各组件基本介绍</p><span class="time">43:22</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127540" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-3</p><p>keystone详解</p><span class="time">45:43</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127541" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-4</p><p>glance组件详解</p><span class="time">09:09</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127542" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-5</p><p>三种存储补充</p><span class="time">02:26</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127543" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-6</p><p>rpc机制介绍</p><span class="time">17:35</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127544" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-7</p><p>nova组件详解</p><span class="time">28:14</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127545" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-8</p><p>消息队列补充</p><span class="time">03:18</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127546" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-9</p><p>neutron组件详解</p><span class="time">14:37</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127547" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-10</p><p>openstack通信流程详解</p><span class="time">11:14</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127548" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-11</p><p>网络模式的作用</p><span class="time">05:51</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127549" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-12</p><p>OSI七层介绍</p><span class="time">28:04</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127550" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-13</p><p>vlan网络模式上</p><span class="time">41:55</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127551" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-14</p><p>vlan网络模式中</p><span class="time">12:04</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127552" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-15</p><p>vlan网络模式下</p><span class="time">19:26</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127553" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-16</p><p>vlan模式补充</p><span class="time">05:27</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127554" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-17</p><p>gre网络模式</p><span class="time">52:48</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127555" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-18</p><p>vxlan网络模式</p><span class="time">13:13</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127556" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-19</p><p>作业讲解</p><span class="time">06:37</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127557" target="_blank"><span class="look">开始学习</span></a></div></li><li class="item lesson"><div class="main"><i class="icon type1"></i><p>1-20</p><p>上节课回顾</p><span class="time">24:46</span><a href="http://edu.51cto.com/center/course/lesson/index?id=127558" target="_blank"><span class="look">开始学习</span></a></div></li></ul>
+            <div id="syList_loading" class="loading">正在加载</div>
+            <div id="syList_Empty" class="Empty" style="display: none;"><table><tbody><tr><td>童鞋，没检测到相关信息，去看看其他内容吧</td></tr></tbody></table></div>
+          </div>
+
+
+        </dd>
+      </dl>
+      <dl class="Interested" id="Interested" style="display: block;">
+        <dt>你可能还感兴趣的课程</dt>
+        <dd>
+          <ul class="cList" id="InterestedList">
+    {%for same_video in news_type_video%}
+            <li class="cList_Item"><div class="pic"><a href="/videodetail/{{same_video.id}}" target="_blank">
+                <img src="/medias/{{same_video.newpic}}" onerror="this.onerror=null;this.src='/{{same_video.newpic}}'"></a></div><div class="main">
+                <h3><a href="http://edu.51cto.com/course/5651.html" title="2-c{{web_name}}" target="_blank">{{same_video.title}}</a></h3></div></li>
+
+{%endfor%}
+          </ul>
+        </dd>
+      </dl>
+      <!--dl class="edu-ad" ad_id="240" info_id="7207" type="course"><a href="http://edu.51cto.com/px/train/94?xiabanner" target="_blank" title="微职位"><img src="/statics/images/videodetail/22feb6075e589035f87a10dfb67fd818.png" alt="微职位" width="850" height="350"></a></dl-->
+    </div>
+    <div class="Right">
+      <div class="Pack">
+        <div class="couponList" id="couponList"></div>
+      </div>
+      <!--div class="Pack">
+        <p class="tit">讲师介绍</p>
+        <div class="lecInfo">
+          <a href="http://edu.51cto.com/lecturer/3050674.html" target="_blank">
+                        <img class="fl avatar" alt="{{news.user}}" src="/medias/{{news.user.userpic}}">
+                    </a>
+          <div class="main fr">
+            <h2><a href="http://edu.51cto.com/lecturer/3050674.html" target="_blank">{{news.user}}</a></h2>
+
+                            <p>好评率：<span class="red">95%</span></p>
+                              <p>所属机构：<span>北京cloud云学院Linux运维实战培训</span></p>
+                                    </div>
+          <div class="clear"></div>
+          <p>CrazyEye,MadKing,TriAquae三款开源软件作者，cloud云学院教育Python教学总监，多年IT自动化运维及开发经验</p>
+        </div>
+      </div>
+                    <div class="Pack">
+                <p class="tit">官方交流群</p>
+                <div>
+                    <p class="fl">ecloou学院 (499053655)</p>
+
+                    <div class="clear"></div>
+                </div>
+            </div-->
+        
+      <div class="Pack" id="students" style="display: block;">
+        <!--p class="tit">14457人学习过</p>
+        <div class="uList uList1" id="studentsList"><div class="item"><div class="avatar"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=10601032" target="_blank"><img src="/statics/images/videodetail/avatar(20).php"></a></div><p class="name"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=10601032" target="_blank">zhangpei张沛</a></p></div><div class="item"><div class="avatar"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=12528347" target="_blank"><img src="/statics/images/videodetail/avatar(21).php"></a></div><p class="name"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=12528347" target="_blank">流浪蛙</a></p></div><div class="item"><div class="avatar"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=1159474" target="_blank"><img src="/statics/images/videodetail/avatar(22).php"></a><i class="vipSmall"></i></div><p class="name"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=1159474" target="_blank">xxl714</a></p></div><div class="item"><div class="avatar"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=11063047" target="_blank"><img src="/statics/images/videodetail/avatar(23).php"></a><i class="vipSmall"></i></div><p class="name"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=11063047" target="_blank">CZXDZM</a></p></div><div class="item"><div class="avatar"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=12946947" target="_blank"><img src="/statics/images/videodetail/avatar(24).php"></a><i class="vipSmall"></i></div><p class="name"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=12946947" target="_blank">wx59278654e000b</a></p></div><div class="item"><div class="avatar"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=11768256" target="_blank"><img src="/statics/images/videodetail/avatar(25).php"></a></div><p class="name"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=11768256" target="_blank">a鱼鱼</a></p></div><div class="item"><div class="avatar"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=12268992" target="_blank"><img src="/statics/images/videodetail/avatar(26).php"></a><i class="vipSmall"></i></div><p class="name"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=12268992" target="_blank">创业者_老鞠</a></p></div><div class="item"><div class="avatar"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=706472" target="_blank"><img src="/statics/images/videodetail/avatar(27).php"></a></div><p class="name"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=706472" target="_blank">fiercerich</a></p></div><div class="item"><div class="avatar"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=13247770" target="_blank"><img src="/statics/images/videodetail/avatar(28).php"></a></div><p class="name"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=13247770" target="_blank">有时候你</a></p></div><div class="item"><div class="avatar"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=2417111" target="_blank"><img src="/statics/images/videodetail/avatar(29).php"></a><i class="vipSmall"></i></div><p class="name"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=2417111" target="_blank">wanggppppp</a></p></div><div class="item"><div class="avatar"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=3411233" target="_blank"><img src="/statics/images/videodetail/avatar(30).php"></a><i class="vipSmall"></i></div><p class="name"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=3411233" target="_blank">bigbugbb</a></p></div><div class="item"><div class="avatar"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=12165831" target="_blank"><img src="/statics/images/videodetail/avatar(31).php"></a></div><p class="name"><a href="http://edu.51cto.com/center/user/user-index/index?user_id=12165831" target="_blank">杨VictorQiang</a></p></div><div class="clear"></div></div>
+      </div>
+      <div class="Pack" id="bookListPack" style="display: block;">
+        <p class="tit">推荐图书</p>
+        <div class="book" id="bookList"><div class="item"><div class="pic fl"><a href="http://book.51cto.com/art/201511/497143.htm" target="_blank"><img src="/statics/images/videodetail/wKioL1mgBUKi3TT1AAAdui3oPyE752.gif"></a></div><div class="main fr"><p class="name"><a href="http://book.51cto.com/art/201511/497143.htm" target="_blank">微软云计算：Microsoft Azure部署与管理指南</a></p><p class="author">作者：任发科</p><p class="author">人民邮电出版社</p><p class="price red">￥<span>59</span></p></div><div class="clear"></div></div></div>
+      </div>
+      <div class="Pack" id="studentsTop">
+        <p class="tit">7日学霸榜 <span>有14457人与你一起学习</span></p>
+        <div class="uList uList2" id="studentsTopList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="Fixed" style="display: none;">
+  <div class="Page">
+    <dt class="tabsTil fl">
+      <p class="cur">课程介绍</p>
+      <p>课程大纲</p>
+      <p>学习资料</p>
+      <p>学员评价</p>
+    </dt>
+                
+                <button class="red buyBtn" onclick="setGoCat()">立即购买</button>
+                              <button class="red2 addCart">加入购物车</button>
+                                                        
+                                      <button id="qqwaps">学习咨询</button>                                                                          <p class="red fr f26">¥399</p>
+            
+                          </div>
+</div>
+
+<div class="mask" id="EvaluateMask"></div>
+<div class="evaluate" id="Evaluate">
+  <div class="title">
+    <h2>课程评价</h2>
+    <p>综合评价在4颗星及以上最高可获得35分奖励</p>
+    <div class="clear"></div>
+  </div>
+  <div class="main">
+    <div class="classInfo">
+      <img src="/statics/images/videodetail/651212277ce4c2a828f005d7b943f091279e88.png" class="fl">
+      <h3>Openstack从入门到放弃视频课程</h3>
+      <p class="color81">该课程已有 <span id="totalNum">24</span> 人评价</p>
+    </div>
+    <div class="setStars">
+      <p class="fl">课程与描述相符</p>
+      <div class="stars small set fl" id="stars1">
+        <i class="icon star full"></i>
+        <i class="icon star full"></i>
+        <i class="icon star full"></i>
+        <i class="icon star full"></i>
+        <i class="icon star full"></i>
+      </div>
+      <p class="fl ml30">老师的讲解表达</p>
+      <div class="stars small set fl" id="stars2">
+        <i class="icon star full"></i>
+        <i class="icon star full"></i>
+        <i class="icon star full"></i>
+        <i class="icon star full"></i>
+        <i class="icon star full"></i>
+      </div>
+      <p class="fl ml30">老师的答疑服务</p>
+      <div class="stars small set fl" id="stars3">
+        <i class="icon star full"></i>
+        <i class="icon star full"></i>
+        <i class="icon star full"></i>
+        <i class="icon star full"></i>
+        <i class="icon star full"></i>
+      </div>
+    </div>
+    <textarea id="appContent" placeholder="赠人玫瑰，手有余香，分享，帮助更多学员，200字以内" maxlength="200"></textarea>
+    <i class="icon check fl mr5"></i>
+    <p class="fl check">匿名</p>
+    <div class="clear"></div>
+    <div class="tc btns">
+      <button class="white" id="closeEvaluate">关闭</button>
+      <button id="saveEvaluate">提交</button>
+    </div>
+  </div>
+</div-->
+<!-- 页面统计 -->
+<div style="display:none">
+    <iframe scrolling="no" src="/statics/images/videodetail/edu-page-view.html" width="0" height="0" frameborder="0"></iframe>
+</div>
+<pre id="content_temp" style="display:none"><p>&nbsp;开元金融云计算部主管<br><br>openstack从入门到放弃<br><br></p><ol class=" list-paddingleft-2" style="list-style-type: decimal;"><li><p>云计算是什么<br>2.openstack各组件详解及通信流程详解<br> &nbsp; &nbsp;&nbsp; &nbsp;a.horizon讲解<br> &nbsp; &nbsp;&nbsp; &nbsp;b.nova讲解及openstack与虚拟化有何关联<br> &nbsp; &nbsp;&nbsp; &nbsp;c.neutron讲解，及网络虚拟化初探<br> &nbsp; &nbsp;&nbsp; &nbsp;d.keystone认证流程详解<br> &nbsp; &nbsp;&nbsp; &nbsp;e.glance讲解<br> &nbsp; &nbsp;&nbsp; &nbsp;f.块存储cinder与对象存储swift<br> &nbsp; &nbsp;&nbsp; &nbsp;g.AMQP模型之发布订阅模式<br>3.openstack五种网络模式深入讲解：local,flat,vlan,gre,vxlan<br>4.分布式存储ceph<br> &nbsp; &nbsp;&nbsp; &nbsp;a.分布式存储ceph介绍<br> &nbsp; &nbsp;&nbsp; &nbsp;b.ceph逻辑概念深入讲解<br> &nbsp; &nbsp;&nbsp; &nbsp;c.ceph存储流程<br> &nbsp; &nbsp;&nbsp; &nbsp;d.ceph网络架构<br> &nbsp; &nbsp;&nbsp; &nbsp;e.缓存机制之rbd与cache&nbsp;tiering<br> &nbsp; &nbsp;&nbsp;&nbsp; f.pg概念及状态详解<br> &nbsp; &nbsp;&nbsp; &nbsp;g.ceph部署及疑难杂症解决方案<br> &nbsp; &nbsp;&nbsp; &nbsp;h.ceph在壹号车架构详解<br> &nbsp; &nbsp;&nbsp; &nbsp;<br>5.openstack部署及配置文件详解<br>6.openstack在生产环境中应用实战演示</p><p>课程资料在最后一个课时</p></li></ol><p><a href="http://edu.51cto.com/mic-position/94.html?sp" target="_self">
+    <img src="/statics/images/videodetail/1501657184656338.jpg" title="1501657184656338.jpg" alt="python.jpg"></a></p></pre>
+<script type="text/javascript">
+document.getElementById("content_code").innerHTML = document.getElementById("content_temp").innerHTML;
+var _ucUrl = 'https://ucenter.51cto.com/',
+user_id='',
+user_name='',
+coupon_code = '',
+coupon_price = '0'
+</script>
+
+<script type="text/javascript">
+function sendCodeDjs(dom){
+  var t = 60
+  zTime = setInterval(function(){
+    t--;
+    dom.html(t+'s')
+    if( t == 0) {
+      dom.html('<a class="blue" href="javascript:void(0);">重新发送</a>')
+      clearInterval(zTime)
+    }
+  },1000)
+  dom.html(t+'s')
+}
+
+$('.buyBtn').hover(function(){
+  console.log(111,$(this).parent().find('.quickPay'))
+  $(this).parent().find('.quickPay').addClass('show')
+},function(){
+  $('#quickPay').removeClass('show')
+})
+
+$(".buyVip").click(function(){
+  window.open('http://home.51cto.com/members/in-fo')
+})
+$(".SignUp").click(function(){
+  if(user_id==''){
+    goLoginPage()
+    return false;
+  }
+  $.post(_centerURL+'common/api/get-login-mobile',{user_id:user_id},function(res){
+    if(res.status==1){
+      asul()
+      return false
+    }
+    var _pReg = /^0?1[3|4|5|6|7|8][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/;
+    var bindMobile = $('<div style="width:330px;padding:10px 30px 0 30px;" class="tc"><p class="f16">绑定手机号</p><p class="color81 f12 mb30">为了保障您的账户安全，请绑定手机号</p></div>')
+    var _pn = $('<input type="text" placeholder="手机号" style="border:none;border-bottom:1px solid #DDD;width:100%;height:30px;line-height:30px;margin-bottom:20px;">')
+    var _code=$('<input type="text" placeholder="输入验证码" style="border:none;border-bottom:1px solid #DDD;width:100%;height:30px;line-height:30px;">')
+    var _codeT=$('<p class="fr" style="line-height:30px;top:144px;position:absolute;right:35px;z-index:10;"><a class="blue" href="javascript:void(0);">短信验证</a></p>')
+    var _no = $('<button class="mr10" style="background:#FFF;border:1px solid #00baf2;color:#00baf2;height:30px;line-height:1">跳过</button>')
+    var _yes= $('<button class="ml10" style="border:1px solid #00baf2;height:30px;line-height:1;">提交</button>')
+    var btns = $('<div style="margin:20px auto 10px auto;"></div>')
+    .append(_no).append(_yes)
+    bindMobile.append(_pn).append(_code).append(_codeT).append(btns);
+    _codeT.find('a').click(function(e){
+      if(e.target.tagName!='A') return false;
+      if(!_pReg.test(_pn.val())){
+        new AutoBox({content:'请输入正确的手机号',img:'remind',autoClose:2})
+        return false
+      }
+      $.post(_centerURL+'common/api/send-code',{mobile:_pn.val(),is_check:1},function(e){
+        if(e.status == 1){
+          sendCodeDjs(_codeT);
+          new AutoBox({content:e.msg,mask:true,autoClose:2})
+        }else{
+          new AutoBox({content:e.msg,img:'remind',autoClose:2})
+          return false
+        }
+      },'json')
+    })
+    _no.click(function(){
+      asul()
+    })
+    _yes.click(function(){
+      if(!_pReg.test(_pn.val())){
+        new AutoBox({content:'请输入正确的手机号',img:'remind',autoClose:2})
+        return false
+      }
+      if(_code.val().length<5){
+        new AutoBox({content:'请输入正确的验证码',img:'remind',autoClose:2})
+        return false
+      }
+      Introduce.show()
+      $.post(_centerURL+'common/api/bind-mobile',{mobile:_pn.val(),verify_code:_code.val()},function(e){
+        if(e.status == 1){
+          asul()
+        }else{
+          Introduce.hide()
+          new AutoBox({content:e.msg,mask:true,autoClose:2,img:'remind'})
+        }
+      },'json')
+    })
+    new AutoBox({
+      noCBtn:true,
+      noCon:true,
+      W:390,
+      mask:"#000",
+      ADD:bindMobile
+    })
+    return false
+  },'json')
+})
+function asul(){
+  $.get(_centerURL+'course/index/add-sign-up-log',{course_id:'7207',source_type:'course'},function(res){
+    if(res.status==-9){
+      goLoginPage()
+      return false
+    }
+    if(res.status==1){
+                location.href="http://edu.51cto.com/index.php?do=course&m=recommend&course_ids=7207&from=sign_up"
+        //location.href="http://edu.51cto.com/index.php?do=course&m=recommend&course_ids=7207&from=sign_up_old"
+        
+    }
+    Introduce.hide()
+  },'json')
+}
+function setGoCat(){
+  if(user_id==''){
+    goLoginPage()
+    return false;
+  }
+  if(coupon_code==false){
+    $('body').html('<form action="/center/course/index/confirm" method="post" id="buyForm"><input type="hidden" name="course_id[]" value="7207"></form>');
+    $('#buyForm').submit();
+  }else{
+    $('body').html('<form action="/center/course/index/coupon" method="get" id="buyForm"><input type="hidden" name="id" value=""></form>');
+    $('#buyForm').submit();    
+  }
+}
+$('.play').click(function(){
+  location.href="/videoplayer/{{news.id}}/"
+})
+var lecID = "3050674";
+var _price = 0;
+_price = parseInt('399');
+var course_price = parseInt('399');
+</script>
+<script>
+window._bd_share_config={
+  "common":{
+    "bdText":"Openstack从入门到放弃视频课程",
+    "bdPic":"https://s1.51cto.com/images/201609/651212277ce4c2a828f005d7b943f091279e88.png",
+    'bdUrl':"http://edu.51cto.com/course/7207.html"
+  },
+  "share":{}
+};
+with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+    <script src="/statics/images/videodetail/nice_select.js"></script><script src="/statics/images/videodetail/course.js"></script>    
+<!--div class="footer_bg">
+  <div class="footer">
+    <ul class="footer_list">
+      <li><h2>新手指南</h2></li>
+      <li><a href="http://edu.51cto.com/center/about/index/help" target="_blank">如何购买</a></li>
+      <li><a href="http://edu.51cto.com/center/about/index/help" target="_blank">如何使用优惠券</a></li>
+      <li><a href="http://edu.51cto.com/center/about/index/help" target="_blank">如何开发票</a></li>
+      <li><a href="http://edu.51cto.com/center/about/index/help" target="_blank">退款政策</a></li>
+    </ul>
+    <ul class="footer_list">
+      <li><h2>关于课程</h2></li>
+      <li><a href="http://edu.51cto.com/center/about/index/help" target="_blank">手机上如何看课程</a></li>
+      <li><a href="http://edu.51cto.com/center/about/index/help" target="_blank">如何下载资料</a></li>
+      <li><a href="http://edu.51cto.com/contactqq.html" target="_blank">视频卡顿反馈</a></li>
+      <li><a href="http://bbs.51cto.com/thread-1113045-1.html" target="_blank">课程登记</a></li>
+    </ul>
+    <ul class="footer_list">
+      <li><h2>互动交流</h2></li>
+      <li><a href="http://51edu.blog.51cto.com/8899635/1862738" target="_blank">学员QQ群</a></li>
+      <li><a href="http://edu.51cto.com/center/about/index/feedback" target="_blank">意见反馈</a></li>
+      <li><a href="http://bbs.51cto.com/" target="_blank">论坛交流</a></li>
+      <li><a href="http://down.51cto.com/" target="_blank">资料下载</a></li>
+    </ul>
+    <ul class="footer_list">
+      <li><h2>关于我们</h2></li>
+      <li><a href="http://edu.51cto.com/center/about/index/about" target="_blank">关于我们</a></li>
+      <li><a href="http://edu.51cto.com/center/about/index/contactus" target="_blank">联系我们</a></li>
+      <li><a href="http://edu.51cto.com/lecturer/lectopics" target="_blank">内容合作</a></li>
+      <li><a href="http://edu.51cto.com/friendlink" target="_blank">友情链接</a></li>
+    </ul>
+    <ul class="footer_last">
+      <li><h2>客服热线</h2>09:00-19:00</li>
+      <li><h3>400-851-9651</h3></li>
+      <li>
+        <div class="sbox_more">
+          <a class="sina fl" href="http://weibo.com/51ctoedu?refer_flag=1001030101_&is_hot=1" target="_blank"></a>
+          <div class="wechat_bg fl" style="z-index:2;">
+            <a class="wechat" href="javascript:;"></a>
+            <div class="wechat_box">
+              <img src="/statics/images/videodetail/qrcode2.png" alt="官方二维码">
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+      </li>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="footer_company">
+    <a href="http://edu.51cto.com/" target="_blank" title="51CTO学院_中国最大的IT技能学习平台"><img src="/statics/images/videodetail/logo_f2.png" alt="51CTO学院_中国最大的IT技能学习平台"></a>
+    <div>Copyright © 2005-2017 <a href="http://www.51cto.com/" target="_blank">51CTO.com</a></div>
+  </div>
+</div>
+<div class="qqbm_bs_box" style="position: fixed;right:10px;top:42%;width: 60px;z-index: 999;cursor: pointer;opacity: .8;filter: opacity(80);">
+  <a href="http://edu.51cto.com/activity/lists/id-32.html?ycxt" style="display: block;" target="_blank"><img src="/statics/images/videodetail/1a462b7e409d220b47e8f1608cba8a51.png" style="display: block;"></a>
+  <img src="/statics/images/videodetail/slider_02.png" onclick="$(&#39;#AdviceMask&#39;).show();$(&#39;#Advice&#39;).show();" style="display: block;margin-top: 6px;">
+  <a href="http://edu.51cto.com/activity/lists/id-10.html" style="display: block;margin-top: 2px;" target="_blank">
+    <p onmousemove="$(this).children().eq(1).show();" onmouseout="$(this).children().eq(1).hide();" style="position: relative;width: 58px;height: 58px;">
+      <img src="/statics/images/videodetail/slider_05.png" style="position: absolute;left: 0;top: 0;display: block;">
+      <img src="/statics/images/videodetail/slider_05s.png" style="position: absolute;left: 0;top: 0;display: none;">
+    </p>
+  </a>
+  <div onmousemove="$(this).children().eq(1).show();" onmouseout="$(this).children().eq(1).hide();" onclick="$(window).scrollTop(0);" style="position: relative;width: 58px;height: 58px;margin-top: 2px;">
+      <img src="/statics/images/videodetail/slider_03.png" style="position: absolute;left: 0;top: 0;display: block;">
+      <img src="/statics/images/videodetail/slider_03s.png" style="position: absolute;left: 0;top: 0;display: none;">
+  </div>
+</div>
+<div class="mask disp-n" id="AdviceMask"></div>
+<div class="Advice disp-n" id="Advice">
+    <div class="Main">
+        <button class="close" onclick="$(&#39;#AdviceMask&#39;).hide();$(&#39;#Advice&#39;).hide();">&nbsp;</button>
+        <h3>可以开发票么？</h3>
+        <p>可以的，购买课程或者充值余额后都是可以开具发票的，具体详情点击：<a href="http://bbs.51cto.com/thread-1472105-1.html" target="_blank">我要开发票</a></p>
+        <h3>购买的课程可以下载么？</h3>
+        <p>目前PC端暂不支持下载课程视频，请手机或者平板电脑下载“51CTO学院”APP后再下载视频哦！</p>
+        <h3>优惠券如何使用？</h3>
+        <p>非折扣课程（不包含1元课程/套餐）可使用，一个订单（可包含多个课程）只可使用一张；优惠券一经使用，不再返还；若被冻结请在PC端删除订单即可返还。</p>
+        <p class="mt20">更多问题查询点击 <a href="http://edu.51cto.com/center/about/index/help" target="_blank">帮助中心</a></p>
+        <p class="mt10">欢迎您提供宝贵意见，对于您的意见我们都会认真、慎重的讨论，每一个意见都是我们更好为您服务的鞭策和激励，感谢您帮助学院成长，<a href="http://edu.51cto.com/center/about/index/feedback" target="_blank">我要反馈意见</a></p>
+        <button id="bizQQ_WPA">&nbsp;</button>
+    </div>
+</div>
+<script type="text/javascript">
+$("#bizQQ_WPA,#qqwaps").click(function(){
+    window.open('http://edu.51cto.com/contactqq.html')
+})
+//百度统计代码
+var _hmt = _hmt || [];
+(function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?8c8abdb71d78d33dfdb885e0bc71dae0";
+    var s = document.getElementsByTagName("script")[0]; 
+    s.parentNode.insertBefore(hm, s);
+
+})();
+
+
+</script>
+<span style="display:none;">
+<script src="/statics/images/videodetail/count.js"></script><script src="/statics/images/videodetail/count.php"></script>
+</span><div style="position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 10000000; display: none; background: url(https://static1.51cto.com/edu/center/images/bg50.png);"><div style="z-index:10000001;width:200px;height:100px;background:#FFF url(https://static1.51cto.com/edu/images/whitestyle/../../center/images/loading.gif) no-repeat center;position:absolute;left:50%;top:50%;margin-left:-100px;margin-top:-50px;"></div></div>
+<script type="text/javascript"> document.write(unescape("%3Cscript src='https://tongji.51cto.com/cto.js/b57176900a4805e17afc7b8e25a43abf' type='text/javascript'%3E%3C/script%3E")); </script><script src="/statics/images/videodetail/b57176900a4805e17afc7b8e25a43abf" type="text/javascript"></script>
+
+<div style="display:none">
+    <iframe frameborder="0" scrolling="no" width="0" height="0" src="/statics/images/videodetail/pageview.html"></iframe>
+</div>    <script type="text/javascript"> document.write(unescape("%3Cscript src='https://tongji.51cto.com/cto.js/d54cb05adfc38c1804f9ee1cf9ade6e0' type='text/javascript'%3E%3C/script%3E")); </script><script src="/statics/images/videodetail/d54cb05adfc38c1804f9ee1cf9ade6e0" type="text/javascript"></script>
+
+{% endblock %}
+</body></html-->

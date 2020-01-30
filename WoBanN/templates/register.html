@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!-- saved from url=(0021)http://ui.cn/reg.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>{{web_name}}</title>
+		
+    <meta name="Keywords" content="{{web_name}}">
+<meta name="Description" content="{{web_name}}">
+        <link rel="stylesheet" href="/statics/css/base.css">
+        <link rel="stylesheet" href="/statics/css/iconfont.css">
+		<link rel="stylesheet" href="/statics/css/login-fluid.css">
+        <script type="text/javascript" src="/statics/js/jquery.js"></script>
+        <script type="text/javascript" src="/statics/js/msgTip.js"></script>
+        <script type="text/javascript" src="/statics/js/reg.js"></script>
+        <script type="text/javascript" src="/statics/js/agree.js"></script>
+        <script type="text/javascript" src="/statics/js/placeholder.js"></script>
+        <script type="text/javascript" src="/statics/js/Validform_v5.3.2.js"></script>
+        <style type="text/css">.regForm label{cursor:default;}</style>
+	</head>
+	<body>
+        <div id="ajax-hook"></div>
+		<div class="wp cl">
+            <div class="log-wrap cl">
+               <div class="log-hd">
+    <div class="wpl cl">
+        <div class="log-row cl">
+            <div class="log-logo"><a href="/"> <img src="/statics/images/mao.jpg" > </a></div>
+            <div class="log-title">
+                <strong>欢迎来到580资讯网</strong>
+
+            </div>
+
+           <ul class="log-nav">
+               <li><a href="/" target="_blank">首页</a> </li>
+               {% for cate in category %}
+               <li><a href="/category/{{ cate.id }}/" target="_blank">{{cate.name}}</a> </li>
+                     {%endfor%}
+            </ul>
+        </div>
+    </div>
+</div>
+                <div class="log-content cl">
+                    <div class="wpl pos cl">
+                        <div class="log-row-cx cl">
+                        	<div class="reg_left pos">
+                            	<div class="lr_title_txt">
+                                	<h2>输入注册信息</h2>
+                                	<span>已有账号？<a href="/login">马上登录</a></span>
+                                </div>
+                            <form id="LoginForm" action="/register/" method="post">
+                                <div class="reg_cont_input">
+                                	<label class="login-icon pos">
+
+                                        <input type="text" name="username" autocomplete="off" class="log-input mls" datatype="username" errormsg="用户名应由3~20个字符组成!" nullmsg="用户名不能为空!"  placeholder="用户名(3~20个字符,包含字母/中文/数字/下划线)">
+                                        <div class="Validform_checktip"></div>
+									</label>
+                                    <label class="login-icon pos">
+
+                                        <input type="text" name="placeholderpwd" class="log-input mls" value="设置密码" style="display: none;">
+                                        <input type="password" name="password" datatype="*6-20" errormsg="密码范围在6~20位之间!" autocomplete="off" class="log-input mls" nullmsg="请输入您的账号密码!" placeholder="设置密码">
+                                        <div class="Validform_checktip"></div>
+									</label>
+
+                                    <label class="login-icon pos">
+
+                                        <input type="email" name="email" datatype="e" autocomplete="on" nullmsg="邮箱不能为空!" class="log-input mls"  placeholder="设置邮箱">
+
+                                        <div class="Validform_checktip"></div>
+									</label>
+                                    <!--div class="reg_checkboxline pos">
+                                            <span class="z"><i class="icon-ok-sign" nullmsg="请同意!"></i></span>
+                                            <input type="hidden" name="agree" value="0">
+                                            <div class="Validform_checktip"></div>
+                                            <p>我已阅读并接受 <a href="http://www.ui.cn/about.php#section-2" target="_brack">《版权声明》</a> 和 <a href="http://www.ui.cn/about.php#section-3" target="_brack">《隐私保护》</a></p>
+                                            <div id="errormsg" class="hide"><i class="icon-warn"></i><span class="spanTip">请接受 《版权声明》 和 《隐私保护》</span></div>
+                                    </div-->
+                                        <br>
+                                    <button  type="submit" class="lang-btn">
+                                    	<span>注 册</span>
+
+                                    </button>
+                                    <label style="color:#FF0000">{{message}} </label>
+
+                                </div>
+
+                               </form>
+                            </div><!-- .reg_left -->
+                            <br><br>
+                            <!--<div class="login-wrap-party z">-->
+
+                                <!--<a href="/videodetail/{{news_list.id}}/"  title="大话手游项目作品">-->
+                                    <!--<img width="280" height="210" src="/statics/upload_imgss/20171106081307_CloudCollege.jpg"  class="imgloadinglater" alt="大话手游项目作品" rel="nofollow" style="display: inline;">-->
+                                <!--</a>-->
+
+                            <!--</div>-->
+                            <!--div class="login-wrap-party z">
+                                <h2 class="h2">也可使用以下账号简单注册快人一步</h2>
+                                <div class="login-party cl">
+																	<a href="http://ui.cn/oauth/qq/" class="log-qq" onclick="toQzoneLogin()">
+																			<span><i class="icon-qq"></i><p>QQ帐号登录</p></span>
+																	</a>
+																	<a href="https://open.weixin.qq.com/connect/qrconnect?appid=wx35a49bedd2f3b4fa&redirect_uri=http://ui.cn/oauth/weixin/index.php&scope=snsapi_login&response_type=code&state=STATE#wechat_redirect" class="log-weixin">
+																			<span><i class="icon-weixin1"></i><p>微信帐号登录</p></span>
+																	</a>
+                                    <a href="http://ui.cn/oauth/sina/" class="log-sina">
+                                        <span><i class="icon-sina"></i><p>新浪微博登录</p></span>
+                                    </a>
+                                    <a href="http://ui.cn/oauth/mi/" class="log-mi">
+                                        <span><i class="icon-mi"></i><p>小米帐号登录</p></span>
+                                    </a>
+                                </div>
+                            </div-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="log-footer cl">
+    <div class="wpl cl">
+        <div class="log-row cl">
+            <p style="display:block;width:100%;text-align:center;">580网创建于2018年06月06日，推荐的项目100%免费。
+联系ais580com@foxmail.com，不接任何非正规擦边广告，仅限正规公司合作（个人项目请勿联系）！
+备案号：闽ICP备19017760号</p>
+        </div>
+    </div>
+</div>
+<div style="display:none">
+<a href="http://www.cnzz.com/stat/website.php?web_id=5726673" target="_blank" title="站长统计">站长统计</a>
+</div>
+		</div>
+	
+</body></html>

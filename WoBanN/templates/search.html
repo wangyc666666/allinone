@@ -1,0 +1,63 @@
+{% extends 'index.html' %}
+{% block page-content %}
+
+<div style="margin-top: 80px">
+</div>
+<div class="wpn" id="project">
+        <!--  -->
+        <div class="cl pos">
+            <ul class="h-screen">
+                <li class="on"><a href="javascript:;" title="首页推荐">搜索结果</a></li></ul>
+            <!--  -->
+
+        </div>
+  <ul class="post post-works mtw cl">
+             {% for news_list in data  %}
+                        <li>
+                            <!--  -->
+
+                            <div class="shade" style="opacity: 0;"></div>
+                            <!--  -->
+
+                            <!--<div class="cover pos">-->
+                                <!--<a href="/{{type}}/{{news_list.id}}/"  title="大话手游项目作品">-->
+                                    <!--<img width="280" height="210" src="/medias/{{news_list.newpic}}"  class="imgloadinglater" alt="大话手游项目作品" rel="nofollow" style="display: inline;">-->
+                                <!--</a>-->
+                            <!--</div>-->
+                            <div class="info"  href="/docdetail/{{news_list.id}}/">
+                                <a href="/docdetail/{{news_list.id}}">
+                                <h4 class="title ellipsis download">
+                                	                                   {{news_list.title}}                              </h4>
+
+                                                                <div class="msg mtn cl">
+                                    <span><em>关注:{{news_list.focususer.count}}</em></span>
+                        <span><em>点赞:{{ news_list.favor_count}}</em></span>
+                                </div>
+                                                     </a>
+                                <p class="user cl">
+                                    <a >
+                                        <img src="/medias/{{news_list.user.userpic}}" onerror="this.src='/statics/images/userpic.jpg'" >
+                                        <strong class="name">
+                                        <em>{{news_list.user.username}}</em>
+                                        </strong></a>
+                                </p>
+                            </div>
+                            <!--  分隔线  -->
+                            <div class="line"></div>
+                        </li>
+                		{% endfor %}
+                        <li>
+                        </li>
+  </ul>
+</div>
+
+            <div class="h_page mtn mbw">
+                <ul class="cl">
+                   {{ page }}
+                    <!--li><a href="/list.html?r=main&p=2" target="_blank">...</a></li-->
+                </ul>
+
+{% endblock %}
+
+            </div>
+

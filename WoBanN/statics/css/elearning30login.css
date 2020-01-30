@@ -1,0 +1,376 @@
+﻿body { font: 12px/1.5 Tahoma,Arial,'微软雅黑',sans-serif;color: #333;background-color:#FFF;}
+.floatleft {float:left;}
+.floatright {float:right;}
+.clearfix:after { content:"."; display:block; height:0; clear:both; visibility:hidden; } 
+.clearfix { display:inline-block; }
+.clearfix {display:block;} 
+/*登录公共样式*/
+.login30area {width:100%; font: 12px/1.5 Tahoma,Arial,'微软雅黑',sans-serif; height:505px;}
+.login30area .loginrightarea {width:1200px; margin:0 auto 0; position:relative;}
+.login30area .loginrightarea .loginbox {position:absolute; top:65px; right:20px; width:300px; height:auto; z-index:50;}
+.login30area .loginpanellist .loginitem {min-height:459px; height:459px;}
+.login30area .loginpanellist .loginbottom {width:1200px; margin:-30px auto 0; height:13px;}
+.login30area .loginpanellist .loginbottom .changearea {text-align:center; width:600px; height:20px; overflow:hidden;white-space:nowrap;}
+.login30area .loginpanellist .loginbottom .changearea .item {display:inline-block; background:url('images/login/login_comp.png') no-repeat -7px -29px; width:19px; height:19px; margin:0 6px; cursor:pointer; line-height:19px; color:#666666;}
+.login30area .loginpanellist .loginbottom .changearea .itemselect {display:inline-block; background:url('images/login/login_comp.png') no-repeat -7px 0px; width:19px; height:19px; margin:0 6px; cursor:pointer; line-height:19px; color:#FFFFFF;}
+
+.login30area .loginrightarea .loginbox .bg {background-color:#fff; filter: Alpha(Opacity=100);Opacity:1; position:absolute; width:302px; height:100%; z-index:-1;left:0;top:0;}
+.login30area .loginrightarea .loginbox .border {width:300px;font-family:微软雅黑; position:relative;border:solid 1px #e4e4e4;}
+.login30area .loginrightarea .loginbox .border .head {padding:0; height:50px; line-height:50px; font-size:18px; color:#333;}
+.login30area .loginrightarea .loginbox .border .errormsg {font-size: 12px;color:#FF0000;padding-left: 30px;margin-top:10px; position:absolute; top:40px;}
+.login30area .loginrightarea .loginbox .border .body {padding:20px 34px 15px 34px;}
+.login30area .loginrightarea .loginbox .border .body .row {padding:0px 0px 20px 0px;}
+.login30area .loginrightarea .loginbox .border .body .row .left {float:left;}
+.login30area .loginrightarea .loginbox .border .body .row .right {float:right;}
+.login30area .loginrightarea .loginbox .border .body .row .txtloginname {background:url('images/login/login_comp.png') no-repeat -70px -131px;width:190px; height:20px; line-height:20px;  background-color:#FFFFFF; border:solid 1px #ccc; padding: 10px 0px 9px 40px; font-size:14px; font-family:微软雅黑; color:#666666;}
+.login30area .loginrightarea .loginbox .border .body .row .txtloginpwd {background:url('images/login/login_comp.png') no-repeat -70px -190px;width:190px; height:20px; line-height:20px;  background-color:#FFFFFF; border:solid 1px #ccc; padding: 10px 0px 9px 40px; font-size:14px; font-family:微软雅黑; color:#666666;}
+.login30area .loginrightarea .loginbox .border .body .row .txtcheckcode {width:81px; height:39px; line-height:39px;  background-color:#FFFFFF; border:0px; padding:0px 0px 0px 10px; font-size:16px; color:#666666; float:left;border:solid 1px #ccc;}
+.login30area .loginrightarea .loginbox .border .body .row .btnlogin {width:231px; height:41px; color:#FFFFFF; background-color:#E4510F; border:0px; cursor:pointer; font-size:18px; font-family:微软雅黑; margin-top:10px;}
+.login30area .loginrightarea .loginbox .border .body .row .btnlogin:hover {background-color:#b34305;}
+.login30area .loginrightarea .loginbox .border .body .row .forgetpwd {color:#666666; text-decoration:none;}
+.login30area .loginrightarea .loginbox .border .body .row .forgetpwd:hover {color:#666666; text-decoration:none;}
+a.validateimg {display:block; float:left; padding:7px 0 0 10px;}
+ 
+
+/*登录面板用户自定义样式*/
+.login30area .userCustomLogin {height:459px;}
+.login30area .userCustomLogin .loginitem {width:1200px; margin:0px auto 0;}
+.login30area .userCustomLogin .loginitem img.imglogin {margin:60px 0px 0px 50px;}
+
+/*系统登录面板0*/
+.login30area .loginrightarea .LoginSys0Box .bg {background-color:#fff;filter: Alpha(Opacity=100);Opacity:1;}
+.login30area .loginrightarea .LoginSys0Box {top:65px;}
+.login30area .loginrightarea .LoginSys0Box .border .head {color:#f2f2f2;}
+.login30area .loginrightarea .LoginSys0Box .border {color:#666666;}
+.login30area .loginrightarea .LoginSys0Box .border .body .row .forgetpwd {color:#666666;}
+.login30area .loginrightarea .LoginSys0Box .border .body .row .forgetpwd:hover {color:#EA6103;}
+.login30area .LoginSys0 {background:url('images/login/sysloginbg2.jpg') repeat; height:459px;}
+.login30area .LoginSys0 .loginitem {width:1200px; margin:0 auto 0;}
+.login30area .LoginSys0 .loginitem .body {width:620px; height:400px; position:relative;}
+.login30area .LoginSys0 .loginitem .body .head {font-size:18px; color:#fff; font-weight:normal; padding-top:20px; padding-bottom:10px;}
+.login30area .LoginSys0 .loginitem .body .head .big {font-size:22px; color:#FFFF00; padding-right:5px;}
+.login30area .LoginSys0 .loginitem .body .head .order {float:left; padding:4px 5px 0px 5px;}
+.login30area .LoginSys0 .loginitem .body .head .headlast {float:left; padding-top:4px;}
+.login30area .LoginSys0 .loginitem .body .head .numl {background:url('images/login/login_comp.png') no-repeat -40px top; width:15px; height:26px; float:left;}
+.login30area .LoginSys0 .loginitem .body .head .numc {background:url('images/login/loginc_c.png'); height:26px; float:left; font-size:22px; line-height:26px; color:#3780c2; font-family:Tahoma;}
+.login30area .LoginSys0 .loginitem .body .head .numr {background:url('images/login/login_comp.png') no-repeat -40px -52px; width:15px; height:26px; float:left;}
+.login30area .LoginSys0 .loginitem .body .box1 {}
+.login30area .LoginSys0 .loginitem .body .box1 .title {font-size:16px; color:#CCCCCC; font-style:italic; padding:25px 30px 10px 0px;}
+.login30area .LoginSys0 .loginitem .body .box1 .title1 {font-size:14px; color:#555555; padding-top:20px;}
+.login30area .LoginSys0 .loginitem .body .box1 .title .number {color:#999999;}
+.login30area .LoginSys0 .loginitem .body .box1 .title .linkmore {font-size:12px; color:#ccc; background:url('images/login/arrow.png') no-repeat 0px 5px; padding:0px 0px 0px 15px; cursor:pointer; font-style:normal;}
+.login30area .LoginSys0 .loginitem .body .box1 .title .linkmore:hover {color:#EA6103;}
+.login30area .LoginSys0 .loginitem .body .box1 .toleft {float:left; height:64px; width:30px; background:url('images/login/login_comp.png') no-repeat left -120px; margin-top:15px;}
+.login30area .LoginSys0 .loginitem .body .box1 .tolefthover {float:left; height:64px; width:30px; cursor:pointer; background:url('images/login/login_comp.png') no-repeat left -191px; margin-top:15px;}
+.login30area .LoginSys0 .loginitem .body .box1 .toright {float:left; height:64px; width:30px; background:url('images/login/login_comp.png') no-repeat 23px 25px; margin-top:15px;}
+.login30area .LoginSys0 .loginitem .body .box1 .torighthover {float:left; height:64px; width:30px; cursor:pointer; background:url('images/login/login_comp.png') no-repeat 23px -47px; margin-top:15px;}
+
+.login30area .LoginSys0 .loginitem .body .box1 .list {width:760px; height:110px; padding-top:10px; overflow:hidden; float:left; position:relative;}
+.login30area .LoginSys0 .loginitem .body .box1 .itemempty {color:#bbb; padding:30px 0 0 0px;}
+.login30area .LoginSys0 .loginitem .body .box1 .list .item {width:60px; height:60px; border:1px solid #D7D7D7; padding:1px; background-color:#FFFFFF; position:relative; margin-right:35px; margin-bottom:15px; float:left;}
+.login30area .LoginSys0 .loginitem .body .box1 .list .item .itembox {height:60px; position:relative;}
+.login30area .LoginSys0 .loginitem .body .box1 .list .item .headbg {position:absolute; left:-2px; top:-2px; background:url('images/login/login_comp.png') no-repeat -60px top; width:64px; height:64px;}
+.login30area .LoginSys0 .loginitem .body .box1 .list .item img {width:60px; height:60px;}
+.login30area .LoginSys0 .loginitem .body .box1 .list .item .itemname {width:60px; padding-top:7px; text-align:center; color:#fff;}
+
+.login30area .LoginSys0 .loginitem .body .box1 .list .item1 {width:60px; height:80px; padding:1px; margin-right:37px; float:left;}
+.login30area .LoginSys0 .loginitem .body .box1 .list .item1 .itembox {height:60px; position:relative;}
+.login30area .LoginSys0 .loginitem .body .box1 .list .item1 .headbg {position:absolute; left:-2px; top:-2px; background:url('images/login/login_comp.png') no-repeat -60px top; width:64px; height:64px;}
+.login30area .LoginSys0 .loginitem .body .box1 .list .item1 img {width:60px; height:60px;}
+.login30area .LoginSys0 .loginitem .body .box1 .list .item1 .itemname {width:60px; padding-top:7px; text-align:center; color:#fff;}
+.login30area .LoginSys0 .loginitem .body .box1 .list .item1 .itemname a {color:#666666; text-decoration:none;}
+.login30area .LoginSys0 .loginitem .body .box1 .list .item1 .itemname a:hover {color:#3B5998; text-decoration:none;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser {position:absolute; left:0px; top:20px; width:578px; height:388px; border:1px solid #D7D7D7; background-color:#FFFFFF; padding:10px 15px 10px; z-index:10;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .title {font-size:18px; font-style:italic; color:#333333;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .title .number {font-weight:bold; color:#FF9900;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .title .linkhide {font-size:12px; color:#999999; background:url('images/login/arrow.png') no-repeat 0px -30px; padding:0px 0px 0px 15px; cursor:pointer; font-style:normal;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .title .linkhide:hover {color:#3B5998;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .list {margin-top:10px; height:320px; padding-bottom:20px;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .list .head {padding:0px;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .list .head .pic {background:url('images/login/time.png') no-repeat 57px 0px; width:32px; height:32px; padding-left:57px;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .list .headdown {background:url('images/login/line.png') repeat-y 72px top; height:15px;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .list .row {background:url('images/login/line.png') repeat-y 72px top; font-size:12px; color:#999999; line-height:14px; padding-bottom:45px;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .list .rowlast {padding-bottom:0px;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .list .row .time {float:left; font-size:14px; font-family:Tahoma; width:65px;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .list .row .pic {float:left; background:url('images/login/node.png') no-repeat left bottom; width:14px;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .list .row .no {float:left; padding:0px 0px 0px 10px; width:85px;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .list .row .image {float:left; width:70px; position:relative;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .list .row .image img {position:absolute; z-index:11; width:50px; height:50px; left:0px; top:-20px;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .list .row .image .up {position:absolute; z-index:12; background:url('images/login/headbg2.png') no-repeat; width:50px; height:50px; left:0px; top:-20px;}
+.login30area .LoginSys0 .loginitem .body .moreloginuser .list .row .name {float:left; width:200px; color:#666666;}
+/*end系统登录面板0end*/
+
+/*系统登录面板1*/
+.login30area .loginrightarea .LoginSys1Box .bg {background-color:#fff;filter: Alpha(Opacity=100);Opacity:1;}
+.login30area .loginrightarea .LoginSys1Box {top:65px;}
+.login30area .LoginSys1 {background:#435C63 ; height:459px;}
+.login30area .loginrightarea .LoginSys1Box .border .head {color:#CCCCCC;}
+.login30area .loginrightarea .LoginSys1Box .border {color:#666666;}
+.login30area .loginrightarea .LoginSys1Box .border .body .row .forgetpwd {color:#666666;}
+.login30area .loginrightarea .LoginSys1Box .border .body .row .forgetpwd:hover {color:#EA6103;}
+
+.login30area .LoginSys1 .loginitem {width:1200px; margin:0 auto 0;}
+.login30area .LoginSys1 .loginitem .body {width:620px; height:400px; position:relative;}
+.login30area .LoginSys1 .loginitem .body .head {font-size:20px; color:#F0F2F2; font-weight:normal; padding-top:15px; padding-bottom:10px;}
+.login30area .LoginSys1 .loginitem .body .head .big {font-size:28px; color:#FFCC66; font-weight:bold;}
+.login30area .LoginSys1 .loginitem .body .head1 {height:42px; line-height:42px; font-size:14px; margin-bottom:10px; color:#D5DB65; padding-left:10px;}
+.login30area .LoginSys1 .loginitem .body .head1 .numl {width:12px; height:45px; float:left; background:url('images/login/numberbg1.png?v=1') no-repeat right 0px; padding-left:10px;}
+.login30area .LoginSys1 .loginitem .body .head1 .number {height:45px; text-align:center; font-family:Tahoma; font-size:28px; float:left; color:#3F3F3F; background:url('images/login/numberbg1.png?v=1') repeat-x left -45px; padding:0px 5px;}
+.login30area .LoginSys1 .loginitem .body .head1 .numr {width:12px; height:45px; float:left; background:url('images/login/numberbg1.png?v=1') no-repeat left -90px; padding-right:10px;}
+.login30area .LoginSys1 .loginitem .body .userbox {}
+.login30area .LoginSys1 .loginitem .body .box1 {margin-bottom:0px;}
+.login30area .LoginSys1 .loginitem .body .box1 .title {font-size:14px; color:#FFFFFF; padding:17px 0px 10px 10px;}
+.login30area .LoginSys1 .loginitem .body .box1 .title .linkmore {font-size:12px; color:#666666; background:url('images/login/arrow.png') no-repeat 0px 5px; padding:0px 0px 0px 15px; cursor:pointer; font-style:normal;}
+.login30area .LoginSys1 .loginitem .body .box1 .title .linkmore:hover {color:#EA6103;}
+.login30area .LoginSys1 .loginitem .body .box1 .itemempty {color:#212D30; font-size:14px; padding:20px 0px 40px 10px;}
+.login30area .LoginSys1 .loginitem .body .box1 .toleft {float:left; height:64px; width:30px; background:url('images/login/changelr.png') no-repeat center -120px; margin-top:15px;}
+.login30area .LoginSys1 .loginitem .body .box1 .tolefthover {float:left; height:64px; width:30px; cursor:pointer; background:url('images/login/changelr.png') no-repeat center -191px; margin-top:15px;}
+.login30area .LoginSys1 .loginitem .body .box1 .toright {float:left; height:64px; width:30px; background:url('images/login/changelr.png') no-repeat center 25px; margin-top:15px;}
+.login30area .LoginSys1 .loginitem .body .box1 .torighthover {float:left; height:64px; width:30px; cursor:pointer; background:url('images/login/changelr.png') no-repeat center -47px; margin-top:15px;}
+
+.login30area .LoginSys1 .loginitem .body .box1 .list {width:560px; height:110px; padding-top:10px; overflow:hidden; float:left; position:relative;}
+.login30area .LoginSys1 .loginitem .body .box1 .list .itemempty {color:#555555; padding:30px 0 0 0px;}
+.login30area .LoginSys1 .loginitem .body .box1 .list .item {width:60px; height:60px; border:1px solid #D7D7D7; padding:1px; background-color:#FFFFFF; position:relative; margin-right:35px; margin-bottom:15px; float:left;}
+.login30area .LoginSys1 .loginitem .body .box1 .list .item .itembox {height:60px; position:relative;}
+.login30area .LoginSys1 .loginitem .body .box1 .list .item .headbg {position:absolute; left:-2px; top:-2px; background:url('images/login/headbg1.png') no-repeat; width:64px; height:64px;}
+.login30area .LoginSys1 .loginitem .body .box1 .list .item img {width:60px; height:60px;}
+.login30area .LoginSys1 .loginitem .body .box1 .list .item .itemname {width:60px; padding-top:7px; text-align:center; color:#212D30;}
+
+.login30area .LoginSys1 .loginitem .body .box2 .title {font-size:14px; color:#FFFFFF; font-style:italic; padding:0px 30px 10px 10px;}
+.login30area .LoginSys1 .loginitem .body .box2 .title .linkmore {font-size:12px; color:#CCCCCC; background:url('images/login/change.png') no-repeat 0px 2px; padding:0px 0px 0px 15px; cursor:pointer; font-style:normal;}
+.login30area .LoginSys1 .loginitem .body .box2 .title .linkmore:hover {font-size:12px; color:#EA6103; background:url('images/login/change.png') no-repeat 0px -40px; padding:0px 0px 0px 15px; cursor:pointer; font-style:normal;}
+.login30area .LoginSys1 .loginitem .body .box2 .list {padding:5px 20px 5px 20px; width:550px; overflow:hidden; position:relative;}
+.login30area .LoginSys1 .loginitem .body .box2 .nodata {padding:20px 0 10px 10px; font-size:14px; color:#212D30;}
+.login30area .LoginSys1 .loginitem .body .box2 .list .item1 {width:60px; height:90px; padding:1px; margin-right:37px; float:left;}
+.login30area .LoginSys1 .loginitem .body .box2 .list .item1 .itembox {height:60px; position:relative;}
+.login30area .LoginSys1 .loginitem .body .box2 .list .item1 .circleimg {width:60px; height:60px; border-radius:30px; overflow:hidden; padding:0px; background-color:#FFFFFF; border:1px solid #D7D7D7;}
+.login30area .LoginSys1 .loginitem .body .box2 .list .item1 .headbg {position:absolute; left:-2px; top:-2px; background:url('images/login/headbg1.png') no-repeat; width:64px; height:64px;}
+.login30area .LoginSys1 .loginitem .body .box2 .list .item1 img {width:60px; height:60px;}
+.login30area .LoginSys1 .loginitem .body .box2 .list .item1 .itemname {width:60px; padding-top:7px; text-align:center;}
+.login30area .LoginSys1 .loginitem .body .box2 .list .item1 .itemname a {color:#666666; text-decoration:none;}
+.login30area .LoginSys1 .loginitem .body .box2 .list .item1 .itemname a:hover {color:#3B5998; text-decoration:none;}
+
+
+/*end系统登录面板1end*/
+
+/*系统登录面板2*/
+.login30area .loginrightarea .LoginSys2Box .bg {background-color:#fff;filter: Alpha(Opacity=100);Opacity:1;}
+.login30area .loginrightarea .LoginSys2Box {top:65px;}
+.login30area .LoginSys2 {background-color:#435C63; height:459px;}
+.login30area .loginrightarea .LoginSys2Box .border .head {color:#CCCCCC;}
+.login30area .loginrightarea .LoginSys2Box .border {border:solid 1px #e4e4e4;}
+.login30area .loginrightarea .LoginSys2Box .border .body .row .forgetpwd {color:#666666;}
+.login30area .loginrightarea .LoginSys2Box .border .body .row .forgetpwd:hover {color:#EA6103;}
+/*系统登录面板2*/
+
+/*系统登录面板2*/
+.login30area .loginrightarea .LoginSys3Box .bg {background-color:#fff;filter: Alpha(Opacity=100);Opacity:1;}
+.login30area .loginrightarea .LoginSys3Box {top:65px;}
+.login30area .LoginSys3 {background-color:#435C63; height:459px;}
+.login30area .loginrightarea .LoginSys3Box .border .head {color:#FFFFFF;}
+.login30area .loginrightarea .LoginSys3Box .border {color:#666666;}
+.login30area .loginrightarea .LoginSys3Box .border .body .row .forgetpwd {color:#666666;}
+.login30area .loginrightarea .LoginSys3Box .border .body .row .forgetpwd:hover {color:#EA6103;}
+/*系统登录面板2*/
+
+
+div.login30area {margin:0px auto;overflow:hidden;background: url("images/login/footbg.png") repeat-x left 455px; position:absolute; margin-top:70px; z-index:500; height:480px;min-width:1200px;}
+.loginpanellist{}
+.pageheader {background: url("images/login/top_bg2.png") repeat-x bottom; height:80px !important; position:absolute; z-index:1000; width:100%;}
+#divPageFooter{position:absolute; top:530px; width:100%}
+
+
+/*登录框改版 2015-5-21*/
+.head-tab .tab-item{font-size:16px;float: left;color:#999;cursor: pointer;border-top:solid 2px transparent;width:50%;text-align:center;box-sizing:border-box;height:50px;line-height:48px;border-bottom:solid 1px #ccc;background-color:#efefef;}
+.head-tab .tab-item + .tab-item {border-right:0;border-left:solid 1px #ccc;}
+.head-tab .tab-item.active{margin-top:-1px;font-size:16px;float: left;color: #F60;cursor: pointer;border-top-color:#f60;border-bottom-color:transparent;background-color:#fff;}
+.head-tab .seperator {padding: 0 8px;float: left;font-size: 12px;color: #999999;}
+.login30area .loginrightarea .loginbox .border .body .row .phone-number {background:url('images/login/login_comp.png') no-repeat -70px -250px;width:190px; height:20px; line-height:20px;  background-color:#FFFFFF; border:solid 1px #ccc; padding: 10px 0px 9px 40px; font-size:14px; font-family:微软雅黑; color:rgb(170, 170, 170);}
+.login30area .loginrightarea .loginbox .border .body .row .code-input {background:url('images/login/login_comp.png') no-repeat -70px -68px;width:93px; height:20px; line-height:20px;  background-color:#FFFFFF; border:solid 1px #ccc; padding: 10px 0px 9px 40px; font-size:14px; font-family:微软雅黑; color:rgb(170, 170, 170);float: left;}
+.login30area .loginrightarea .loginbox .border .body .row .btn-getcode {border: none;color: #FFF;font-size: 14px;text-align: center;float: right;width: 92px;height: 41px;cursor: pointer;background-color:#F39A2E;}
+
+
+.el-loginbox{
+	position:absolute; 
+	top:65px; 
+	right:20px; 
+	width:325px; 
+	height:auto; 
+	z-index:50;
+	background-color: #fff;
+	padding: 20px 30px;
+	box-sizing: border-box;
+	font-family: 微软雅黑;
+	border:solid 1px #e6e6e6;
+}
+
+.el-loginbox * {
+	font-family: 微软雅黑;
+}
+
+.el-login-text{
+	width: 100%;
+	box-sizing: border-box;
+	font-size: 14px;
+	margin-top:25px;
+}
+
+.el-login-code{
+	position: relative;
+	margin:35px auto 0;
+	width: 150px;
+}
+
+.el-login-overlay{
+	position: absolute;
+	height: 150px;
+	width: 100%;
+	left:0;
+	top:0;
+	font-size:14px;
+	box-sizing: border-box;
+	padding:26px 0;
+}
+
+.el-loginbox-filter{
+	position: absolute;
+	background-color: #fff;
+	opacity: 0.9;
+	filter:alpha(opacity=90);
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.el-login-refresh{
+	width: 80px;
+	height: 30px;
+	color: #fff;
+	cursor: pointer;
+	background-color: #E4510F;
+	font-size:14px;
+	border:0;
+}
+
+.el-loginbox-ftext{
+	position: relative;
+	z-index: 1;
+	border-radius: 3px;
+}
+
+.el-login-row{
+	margin-top: 35px;
+}
+
+.el-login-input{
+	border:solid 1px #CBCBCB!important;
+	height: 40px!important;
+	width: 100%!important;
+	padding:10px 10px 10px 40px!important;
+	box-sizing: border-box;
+	color:#999!important;
+	font-size:14px!important;
+}
+
+.el-login-account{
+	background: url('images/account/new/admin.png') no-repeat 10px center;
+}
+
+.el-login-pwd{
+	background: url('images/account/new/password.png') no-repeat 10px center!important;
+}
+
+.el-login-phone{
+	background: url('images/account/new/phone.png') no-repeat 10px center;
+}
+
+.el-login-dcode{
+	background: url('images/account/new/Verification.png') no-repeat 10px center;
+}
+
+.el-login-verification{
+	background: url('images/account/new/text_Verification.png') no-repeat 10px center;
+}
+
+.el-btn-login{
+	border:0;
+	width: 100%;
+	background-color: #E4510F;
+	height: 40px;
+	color:#fff;
+	font-size: 16px;
+	margin-top: 28px;
+	cursor: pointer;
+}
+
+.el-btn-login:hover{
+	background-color: #b34305;
+}
+
+.el-method-code{
+	position: absolute;
+	right: 0;
+	top:0;
+	background: url('images/account/new/code.png') no-repeat center center;
+	width: 61px;
+	height: 61px;
+	cursor: pointer;
+}
+
+.el-code-area div{
+	width: 155px;
+}
+
+.el-code-area div + div {
+	width: 100px;
+}
+
+.el-get-code{
+	width: 100%;
+	height: 40px;
+	border:solid 1px #CBCBCB;
+	background-color: #F4F4F4;
+	font-size: 14px;
+	color:#666;
+}
+
+.el-icon-scan{
+	display: block;
+	width: 24px;
+	height: 24px;
+	background: url('images/account/new/scanning.png') no-repeat center center;
+	margin-top:5px;
+}
+
+.el-login-color{
+	color: #E4510F;
+}
+
+.el-method-desktop{
+	position: absolute;
+	right: 0;
+	top:0;
+	background: url('images/account/new/cpu.png') no-repeat center center;
+	width: 61px;
+	height: 61px;
+	cursor: pointer;
+}
+
+.el-login-success{
+	display: inline-block;
+	width: 60px;
+	height: 86px;
+	background: url('images/account/new/succeed.png') no-repeat center center;
+}
+
+.el-loginbox-err{
+	background:url('images/account/new/tip.png') no-repeat 10px 7px #fef2f2;
+	border:solid 1px #ffb4a8;
+	padding:5px 10px 5px 35px;
+	position: relative;
+	top:25px;
+	color: #e4510f;
+	font-size: 12px;
+	margin-top: -10px;
+}

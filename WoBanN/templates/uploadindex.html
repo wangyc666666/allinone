@@ -1,0 +1,453 @@
+{% extends 'index.html' %}
+{% block page-content %}
+
+
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>
+         {{web_name}}上传分享</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="Keywords" content="{{web_name}}">
+<meta name="Description" content="{{web_name}}">
+
+    <link rel="stylesheet" href="/statics/css/uploadindex/uicn.v1.css">
+
+    <link rel="stylesheet" href="/statics/css/uploadindex/iconfont.css">
+    <link rel="stylesheet" href="/statics/css/uploadindex/header.v1.css">
+    <link rel="stylesheet" href="/statics/css/uploadindex/footer.v1.css">
+
+    <link rel="stylesheet" href="/statics/css/uploadindex/upload.min.css">
+    <link rel="stylesheet" href="/statics/css/uploadindex/up-form.min.css">
+    <link rel="stylesheet" href="/statics/css/uploadindex/home.v1.css">
+    <link rel="stylesheet" href="/statics/css/uploadindex/user-hd.css">
+    <script src="/statics/js/uploadindex/hm.js"></script><script src="/statics/js/uploadindex/jquery.js"></script>
+    <script src="/statics/js/uploadindex/footer.v1.js"></script>
+ <style type="text/css">
+progress {
+    width: 160px;
+    border: 1px solid #0064B4;
+    background-color:#e6e6e6;
+    color: #0064B4; /*IE10*/
+}
+
+progress::-moz-progress-bar { background: #0064B4; }
+progress::-webkit-progress-bar { background: #e6e6e6; }
+progress::-webkit-progress-value  { background: #0064B4; }
+	  </style>
+
+</head>
+
+
+	<script src="/statics/js/cloudcollege/common.js"></script>
+
+<body>
+<div style="margin-top: 60px"></div>
+
+    <div id="ajax-hook"></div>
+    <div class="teachlist" style="display:none;width: 100%;height: 100%;position: fixed;background-color: #000;z-index: 110; opacity: 0.6;"></div>
+    <div id="roul" style="width: 800px;height: 550px;background-color: #fff;z-index: 10000;position: fixed;margin: 0 auto;margin-top: 5%;margin-left: 25%;display:none">
+        <span id="teach_close" class="icon-close" style="position: absolute;right: 10px;top: 10px;cursor: pointer;"></span>
+        <div style="width: 640px;height: 270px;margin: 8% 10%;">
+            
+                
+                <p style="font-size: 18px">想不想让你的经验/文章被推荐上首页？</p>
+            <p style="font-size: 14px;color:#95a5a6;margin-top:14px">小U妹悄悄告诉你们一些秘籍，听说这么发帖，被推荐几率会更大！</p>
+            <ul style="color: #3498db;font-size: 14px;margin:45px 0 45px">
+                <li> 1）用心做封面</li>
+                <li> 2）除个人原创外，如是“好文转载”，必须注明原作者</li>
+                <li> 3）经验的内容与互联网领域设计相关：图标、界面、字体、规范、用户体验、交互设计、动效等等方面</li>
+                <li> 4）经验内文排版合理，图文并茂，版式清晰，比较易于阅读</li>
+            </ul>            <p style="font-size:14px;color:#95a5a6">做到以上这些方面，会增加作品上首页的几率哦！</p> 
+            <p style="font-size:14px;color:#e74c3c;padding-top: 20px;">特别注意：<br>
+1）若作品有明显抄袭痕迹，则小U妹有权不对作品做任何推荐，已推荐的作品做取消推荐处理。你可以提供相关资料进行申诉，证明你对作品的归属权和原创性。<br>
+2）若作品为各种类型的软广、硬广，文章内外链过多均会被认为是垃圾内容，小U妹会直接将他们删除哦，若发布垃圾内容数量过多，则会进一步封禁账户。维护平台环境，从我做起！</p> 
+            
+        </div>
+    </div>
+
+
+
+	
+<script>
+	//动态默认显示 
+	var nav_loc='';
+	//var navuid='1061130';		
+	//以下兼容个人中心 立即激活
+	  $(".jsemailverify").parent('div').parent('li').css("background","#fff7e7").find('a').addClass('f14').css('display','block');
+</script><nav class="up-nav">
+    <div class="wpn cl">
+        <span class="list-title">上传列表</span>
+        <ul>
+
+            <li class="on"> <a href="#">分享</a></li>
+
+                </ul>
+    </div>
+</nav>  
+
+<div id="myForm" >
+
+		<div class="up-wrap">
+		<div class="wpn cl">
+			
+			<style type="text/css">
+.up-thumb-add { float: left; height: 210px; width: 248px; border: 2px dashed #b8c4ce;  margin: 17px; background: #FFF; padding-top: 40px; transition:border-color 0.2s ease-out; cursor: pointer; position: relative; }
+.upload-icon { display: block; width: 50px; height: 50px; margin: 0 auto;}
+.upload-icon .upload-icon-file { opacity: 0; filter: alpha(opacity=0); display: block; width: 244px; height: 206px; cursor: pointer; position: absolute; top: 0; left: 0; }
+.upload-icon i { width: 50px; height: 50px; display: block; margin: 0 auto; font-size: 50px; color: #1abc9c;}
+.up-file-bar{width:0px;height: 49px; background-color: #1abc9c;}
+.up-cover-bar { position: absolute; left: 0; top: 0; width: 0px; height: 40px; background-color: #26b49c;  border-radius: 2px;}
+.up-cover-bar + span { position: relative; z-index: 1;}
+</style>
+
+<div class="cover mtw z">
+	<p class="up-cover-user">
+		<a class="avatar" href="#">
+			<!--img src="/statics/images/uploadindex/small.png" alt="{{ username }}"-->
+			<img src="/medias/{{username.userpic}}" alt="{{ username }}">
+
+			<span class="user">{{ username }}</span>
+		</a>
+	</p>
+
+
+    <img id="preview" style="width:100% ;height:100%" />
+    <br />
+    <input id= 'imgage_file_id' type="file" name="file" onchange="imgPreview(this)" placeholder="请上传PNG格式的图像(大小在1M之内)"/>
+    <!--进度条标签-->
+
+
+	<div class="mtw">
+		<h3 style="float:left">封面图片上传(必选)</h3>
+		<span style="float:right;color:#3499da;cursor: pointer; height:24px; line-height:24px;" id="teach">(请上传PNG格式的图像(大小在1M之内,必选项)</span>
+		<p class="mtw" style="float:left">
+			<em class="up-cover-num">1</em>
+		如果你拥有该作品的“原创著作权”请选择原创分类, 并建议在作品上打上“水印”
+		<!-- 如果你拥有该作品的“原创著作权”请选择原创分类，并建议在作品上打“水印”。 --></p>
+		<p class="mtw" style="float:left">
+			<em class="up-cover-num">2</em>
+			如果分享他人作品或经验，请一定注明原作者姓名或昵称，尊重其劳动成功。
+		</p>
+				<p class="mtw" style="float:left">
+			<em class="up-cover-num">3</em>
+			上传视频格式为.mp4或者将所有视频命名排序好压缩成.rar文件上传，会自动生成课程列表。
+		</p>
+	</div>
+</div><!-- .up-ws -->
+
+			<div style="width: 880px;height: auto;float: right;">
+				<div class="up-wn up-from  ptw z">
+
+					
+					<div class="form-group cl">
+	<label class="control-label" for="">类型(必选):<small><!-- 选择分类与属性可以被其他设计师更容易找到 --></small></label>
+	<div class="select-box up-ws z" >
+		<input class="control-input" type="hidden"   name="typeid" id="select_value_tit_id" >
+		<a class="select-value">
+							<span class="select-value-tit"  >请选择分类</span>			<i class="icon-down"></i>
+			<!--em class="mus"></em--><!-- 必填项 -->
+		</a>
+		<ol class="select-option up-ws"  >
+			<!--li><a rel="0" onclick="show_video_url()"  >视频教程</a></li-->
+            <li><a onclick="hiden_video_url()" rel="1" href="javascript:;">文档资料</a></li>
+
+        </ol>
+	</div>
+	<div class="select-box up-ws y" id="selectBox-attribute" >
+		<input class="control-input" type="hidden"  name="attribute"  id="upload_categrory_id">
+		<a class="select-value" href="javascript:;">
+							<span class="select-value-tit">资料类别</span>
+			<i class="icon-down "></i>
+			<!--em class="mus"></em-->
+		</a>
+		<ol class="select-option up-ws">
+            {% for cate in category %}
+			<li><a rel="{{cate.name}}" href="javascript:;">{{cate.name}}</a></li>
+            {%endfor%}
+        </ol>
+	</div>
+</div>
+
+<div id="upSource" class="form-group cl">
+	<label class="control-label" for="">原作者/来源:<small><!-- 填写原作者/来源尊重版权 --></small></label>
+	<input class="control-input up-ws z" type="text" name="author" value="" placeholder="原作者">
+	<input class="control-input up-ws y" type="text" name="source" value="" placeholder="来源地址">
+</div><!-- .form-group 原作者/来源 -->
+					
+					
+					<div class="form-group cl">
+	<label class="control-label" for="title">标题(必选):<small class="y">3-30 字</small></label>
+	<input class="control-input" name="title" maxlength="30" id="title" type="text" value=""> 
+	<!--span class="mus"></span><!-- 必填项 ---->
+	<!-- <span class="tit-num" style='float:right' id='charcount'>0/30</span> -->
+</div><!-- .form-group 标题 --> 
+					
+					
+					<div class="form-group">
+	<label class="control-label" for="copyright">价格(选填):
+		<small><!-- 附上版权尊重原作者也是给自己的保障 --></small>
+		<a class="more y" href="http://www.baike.com/wiki/CC%E5%8D%8F%E8%AE%AE" target="_blank">默认为免费</a>
+	</label>
+	<div class="select-box" id="selectBox-copyrig">
+		<input class="control-input"  id="course_price_id" type="number" name="points" min="1" max="10" >
+
+	</div>
+</div><!-- .form-group 版权 -->
+					
+					
+					<style type="text/css">
+	.form-group .ui-theme.froala-editor{background: #ffffff;border: solid 1px #bdc3c7;border-top: solid 0px #bdc3c7;}
+</style>
+<div class="form-group pos cl">
+	<label class="control-label" for="infowarn">简介(选填):</label>
+	<div class="froala-box ui-theme" data-chars="0/80"><div class="froala-editor f-basic ui-theme" style="z-index: 2000;">
+        <div class="bttn-wrapper cl" style="width: 730px;margin: 0 auto" id="bttn-wrapper-2"></div></div>
+        </div>
+    <textarea class="control-input hs" id="introductions" name="infowarn" placeholder="简单介绍下它的内容,方便大家了解" ></textarea>
+	<!-- <span class="up-info-warn"><em>0</em>/80</span> -->
+</div><!-- .form-group 介绍 -->
+
+				</div>
+
+<div class="up-ws up-from  ptw y">
+	<div class="form-group cl" id="video_share_id">
+	<label class="control-label" for="">上传(必选):
+
+		<!--label class="up-atta" for="prosupload">
+			<input id="upAttaFile" name="upfile-choose" onclick="video_hidden_url()"  type="radio" value="local"> 本地上传
+
+		</label-->
+		<label class="up-atta" for="prosurl">
+			<input id="upAttaUrl" name="upfile-choose" type="radio" checked="checked" value="sky" onclick="video_show_url()"> 网盘地址
+		</label>
+				<label class="multiupload" for="prosurl">
+
+		</label>
+		<small class="y">超过30M的附件请使用网盘地址</small>
+	</label>
+	<!-- 本地上传 -->
+	<div class="up-atta-file" id="zippro" style="display: none;">
+		<p class="default">
+			<i class="icon-attachment"></i>
+			<span>点击上传视频 ( mp4 )( rar )</span>
+
+		</p>
+
+		    <!--进度条标签-->
+    <progress value="0" max="100" id="progress" style="height: 20px; width: 100%"></progress>
+
+    <br />
+
+
+
+		<p class="finish" style="display:none">
+			<i class="icon-gift"></i>
+			<a class="text" href="http://upload.ui.cn/exp.html?attname=" target="_blank"><span class="ellipsis"></span></a>
+			<i class="icon-ok"></i>
+		</p>
+
+		<div class="up-file-bar"></div>
+		<input id="video_file_id" onchange="upload_video(this)" type="file" name="video" accept="application/x-rar-compressed,audio/mp4, video/mp4" class="control-input" style="position: absolute; cursor: pointer; top: 41px; width: 50%; left: 0px; z-index: 80; opacity: 0;">
+	</div>
+	<!-- 网盘地址 -->
+
+</div><!-- .form-group 上传 -->
+
+
+<script type="text/javascript">
+				
+</script>
+
+
+	<div class="form-group cl" id="video_share_2" >
+	<label class="control-label pos" for="video">视频分享:<small><!-- 添加视频链接分享给大家(支持优酷、土豆、腾讯) --></small>
+	</label>
+	<div class="up-video-help">
+		<a href="javascript:;">帮助</a>
+		<img src="/statics/images/uploadindex/video-help.png" alt="视频帮助">
+	</div>
+	<input id="videourl_id" class="control-input" type="text" name="videourl" placeholder="支持flash视频分享格式地址（B站地址前需要手动添加 http://）" value="">
+</div><!-- .form-group 视频分享 -->
+
+
+					<!-- 标签 -->
+<style>
+	.tagsinput { display: block; width: 100%; padding: 13px 15px 8px; font-size: 14px; height: auto; min-height: 50px; line-height: 1.5; color: #5d6d7e; background-color: #fff; background-image: none; border: 1px solid #b8c4ce;}
+	.tagsinput .tag  { height: 24px; background-color: #e4ebee; font-size: 12px; padding: 4px 8px; border-radius: 2px; color: #34495e; margin-right: 5px; margin-bottom: 5px; float: left; line-height: 16px;}
+	.tagsinput div { float: left; }
+	.tagsinput input { width: 80px; border: 1px solid transparent; font-size: 12px; padding: 4px; height: 24px; line-height: 16px; margin-bottom: 5px;}
+	.tagsinput input:focus { box-shadow: none; }
+	.tags_msg{position: absolute;float: right;text-align: right;display: none;color:#b8c4ce;right: 0px;bottom: 2px;right: 15px;bottom: 5px}
+</style>
+
+<div class="form-group cl">
+	<label class="control-label mus" for="tags">标签(必选):<small class="y">只允许一个标签</small></label>
+
+	<input id="tags" type="text" class="tags " name="tags"  style="display: none;">
+	<!--span class="mus"></span--><!-- 必填项 -->
+    <div id="tags_addTag">
+        </div><div class="tags_msg" style="float: right">作品页可能显示不下所有标签</div></div>
+	<div class="up-hot-tag cl">
+{% for newtype_content in newtype %}
+<a class="cl" href="javascript:;"><i class="icon-tag-mini"></i><span>{{ newtype_content }}</span></a>
+
+{% endfor %}
+	</div>
+
+</div>
+					
+				</div>
+			</div>
+		</div><!-- wpn cl -->
+
+		<div class="wpn up-from mtw cl">
+
+			
+			<!--  -->
+
+<style type="text/css">			
+	.ui-theme .froala-wrapper table {display: table;border-collapse: separate;border-spacing: 2px;}
+	.ui-theme .froala-wrapper tbody {display: table-row-group;vertical-align: middle;border-color: inherit;}
+	.ui-theme .froala-wrapper td, 
+	.ui-theme .froala-wrapper th {display: table-cell;vertical-align: inherit;}
+	.ui-theme .froala-wrapper th {font-weight: bold;}
+	.ui-theme .froala-wrapper tr {display: table-row;vertical-align: inherit;border-color: inherit;}
+	.ui-theme .froala-wrapper ul, 
+	.ui-theme .froala-wrapper menu, 
+	.ui-theme .froala-wrapper dir {display: block;list-style-type: disc;-webkit-padding-start: 40px;-moz-padding-start: 40px;-ms-padding-start: 40px;-o-padding-start: 40px;padding-start: 40px;}
+	.ui-theme .froala-wrapper ol {display: block;list-style-type: decimal;-webkit-padding-start: 40px;-moz-padding-start: 40px; -ms-padding-start: 40px;-o-padding-start: 40px;padding-start: 40px;}
+	.ui-theme .froala-wrapper li {display: list-item;text-align: -webkit-match-parent;text-align:-moz-match-parent;text-align:-ms-match-parent;text-align:-o-match-parent;text-align:match-parent;}
+	.ui-theme .froala-wrapper dd {display: block;-webkit-margin-start: 40px;-moz-margin-start: 40px;-ms-margin-start: 40px;-o-margin-start: 40px;margin-start: 40px;}
+	.ui-theme .froala-wrapper dl {display: block;}
+	.ui-theme .froala-wrapper strong, 
+	.ui-theme .froala-wrapper b {font-weight: bold;}
+	.ui-theme .froala-wrapper i, 
+	.ui-theme .froala-wrapper cite, 
+	.ui-theme .froala-wrapper em, 
+	.ui-theme .froala-wrapper var, 
+	.ui-theme .froala-wrapper address, 
+	.ui-theme .froala-wrapper dfn {font-style: italic;}
+	#edt-main{display: none}
+	.form-group .ui-theme .froala-view p{width: 404px!important;}
+	.form-group .ui-theme .froala-wrapper span{width: 409px!important;margin-top: 10px!important;}
+	#edt-editor #edt-main .fr-placeholder{width: 600px!important;margin: 10px auto 0;}
+	#edt-editor .ui-theme.froala-box .froala-wrapper.f-basic{border-color: #e7ebeb}
+	#edt-editor .ui-theme.froala-editor{border-color: #e7ebeb}
+	#edt-editor .froala-editor.f-basic.f-scroll{border-bottom-color: #e7ebeb!important;}
+	.fr-fullscreen .froala-editor{border-color: #eff3f5!important;}
+	.fr-fullscreen .froala-wrapper{border-top-color:#eff3f5!important;}
+	.cont_z{margin-right: 20px}
+	.up-submit span:nth-of-type(2){display: inline-block;width: 220px;font-size: 14px;color: #cdd5dd;line-height: 35px;text-align: center}
+	#edt-editor .f-basic{border-top: 0}
+	.h_14{height: 14px;background-color: white;width: 938px;border-left: 1px solid #e7ebeb;border-right:1px solid #e7ebeb}
+	.edt-empaty{height: 460px;width: 938px;border: 1px solid #e7ebeb;border-top: 0;background-color: white;overflow: hidden}
+	.edt-empaty img{width: 80px;height: 80px;margin: 145px auto 0;display: block}
+	.edt-empaty p{text-align: center}
+</style>
+<label class="control-label">文章正文(必选):<small>在这里填写详细的文章内容分享给大家</small></label>
+            <!DOCTYPE html>
+
+ <script type="text/javascript" src="/statics/ckeditor/ckeditor-init.js" data-ckeditor-basepath="/statics/ckeditor/ckeditor/" id="ckeditor-init-script"></script>
+<script type="text/javascript" src="/statics/ckeditor/ckeditor/ckeditor.js"></script>
+
+<textarea name="editor1"  class="ckeditor" id="create_content_id" ></textarea>
+<script>
+    CKEDITOR.replace( 'editor1' , {uiColor: '#9AB8F3'});
+</script>
+
+
+	<div class="box-sign box z">
+
+		<div class="up-submit mtv" style="width: 220px;margin-top: 20px;" >
+
+            <input  class="btn btn-primary btn-big btn-fixed-w" style="font-size: 20px;width:220px;height: 50px;line-height: 50px;padding:0;font-weight: bold" type="button" onClick='add_topic(this);' value="立即发布" />
+			<span>发布后，其他用户可看到您的经验!</span>
+		</div>
+	</div>
+
+</div>
+
+	</div><!-- up-wrap -->
+</div>
+
+
+	<!---->
+	    <div id="ajax-hook"></div>
+    <footer class="us-footer">
+        <i class="iconfont icon-ui3"></i>
+        <p>Powered by © 2008-2017 UI.CN</p>
+    </footer>
+    <!---->
+  <!--   <div id="scrollUp" class="scrollup">
+        <a class="arrows" title="返回顶部" href="javascript:;"></a>
+        <a class="feedback" title="反馈" href="http://qa.ui.cn/">反馈</a>
+    </div>
+    -->
+    <div style="display:none">
+        <script src="/statics/images/uploadindex/stat.php" language="JavaScript"></script><script src="/statics/images/uploadindex/core.php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=1256782987" target="_blank" title="站长统计">站长统计</a>
+        <script src="/statics/images/uploadindex/stat(1).php" language="JavaScript"></script><script src="/statics/images/uploadindex/core(1).php" charset="utf-8" type="text/javascript"></script><a href="http://www.cnzz.com/stat/website.php?web_id=5726673" target="_blank" title="站长统计">站长统计</a>
+        <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?3dbf7ea73bf8a681b848dc7f906b4b07";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
+        </script>
+
+    </div>
+<script>
+        $(function(){
+            if(window.FormData===undefined){
+                alert("该浏览器不支持上传插件,将无法使用上传功能!");
+            }
+        })
+</script>
+	
+
+	<!--[if lt IE9]>
+	<script src="js/html5.js"></script>
+	<![endif]-->
+	<script src="/statics/js/uploadindex/jquery(1).js"></script>
+	<script src="/statics/js/uploadindex/migrate.js"></script>
+	<script src="/statics/js/uploadindex/msgTip.js"></script>
+	<script src="/statics/js/uploadindex/up-form.js"></script>
+	<script src="/statics/js/uploadindex/file_del.js"></script>
+    <script src="/statics/js/uploadindex/dmuploader.min.js"></script>
+
+	<script src="/statics/js/uploadindex/pic_fileupload.js"></script>
+    <script src="/statics/js/uploadindex/jquery-ui.min.js"></script>
+	<script src="/statics/js/uploadindex/jquery.tagsinput.js"></script>
+	<script src="/statics/js/uploadindex/tag_input.js"></script><tester id="tags_tag_autosize_tester" style="position: absolute; top: -9999px; left: -9999px; width: auto; font-size: 14px; font-family: &#39;Microsoft Yahei&#39;, &#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif; font-weight: 400; letter-spacing: 0px; white-space: nowrap;"></tester>
+	<script src="/statics/js/uploadindex/check.min.js"></script>
+
+	<script src="/statics/js/uploadindex/froala_editor.min.js"></script>
+	<script src="/statics/js/uploadindex/teach.js"></script>
+	<!--[if lt IE 9]>
+	    <script src="/Public/edit/js/froala_editor_ie8.min.js"></script>
+	<![endif]-->
+	<script src="/statics/js/uploadindex/urls.min.js"></script>
+	<script src="/statics/js/uploadindex/lists.min.js"></script>
+	<script src="/statics/js/uploadindex/colors.min.js"></script>
+	<script src="/statics/js/uploadindex/font_family.min.js"></script>
+	<script src="/statics/js/uploadindex/font_size.min.js"></script>
+	<script src="/statics/js/uploadindex/block_styles.min.js"></script>
+	<script src="/statics/js/uploadindex/media_manager.min.js"></script>
+	<script src="/statics/js/uploadindex/video.min.js"></script>
+	<script src="/statics/js/uploadindex/entities.min.js"></script>
+	<script src="/statics/js/uploadindex/urls.min.js"></script>
+	<script src="/statics/js/uploadindex/fullscreen.min.js"></script>
+	<!-- <script src="/Public/edit/js/plugins/image.min.js"></script> -->
+	<script src="/statics/js/uploadindex/zh_cn.js"></script>
+	<script src="/statics/js/uploadindex/char_counter.min.js"></script>
+	<link href="/statics/css/uploadindex/font-awesome.min.css" rel="stylesheet">
+	<link href="/statics/css/uploadindex/froala_editor.min.css" rel="stylesheet" type="text/css">
+  	<link href="/statics/css/uploadindex/ui-theme.css" rel="stylesheet" type="text/css">
+	<script src="/statics/js/uploadindex/auto_save.min.js"></script>
+
+
+
+</body></html>
+
+{% endblock %}

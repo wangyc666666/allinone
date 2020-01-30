@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html itemscope="" itemtype="#">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="Keywords" content="{{web_name}}">
+<meta name="Description" content="{{web_name}}">
+
+        <meta name="viewport" content="width=device-width, height=device-height, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+        <meta name="format-detection" content="telephone=no">
+	<link rel="stylesheet" href="/statics/mobile_index/base.css">
+	<link rel="stylesheet" href="/statics/mobile_index/iconfont.css">
+    <link rel="stylesheet" href="/statics/mobile_index/wap-work.css">
+
+        <link href="/statics/mobile_user_center/base.css" rel="stylesheet">
+
+    <link href="/statics/mobile_user_center/home.css" rel="stylesheet">
+    <script src="/statics/js/cart/jquery.min.js"></script>
+
+<script type="text/javascript">
+function redicturl(url) {
+    console.log(url)
+    window.location.href=url;
+}
+    
+function user_pic_change(fileDom){
+    //判断是否支持FileReader
+    if (window.FileReader) {
+        var reader = new FileReader();
+    } else {
+        alert("您的设备不支持图片预览功能，如需该功能请升级您的设备！");
+    }
+
+    //获取文件
+    var file = fileDom.files[0];
+    var imageType = /^image\//;
+    //是否是图片
+    if (!imageType.test(file.type)) {
+        alert("请选择图片！");
+        return;
+    }
+    //读取完成
+    reader.onload = function(e) {
+        //获取图片dom
+        var img = document.getElementById("userpic_preview");
+        //图片路径设置为读取的图片
+        img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+    //上传图片
+    //var callback = jQuery.parseJSON(callback);
+    var imgageFileId = document.getElementById('user_pic_change').files[0];
+    var fd = new FormData();
+    fd.append('username','root');
+    fd.append('imgage_file_id',imgageFileId);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/uploadimg/',true);
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4){
+            // 接收完毕
+            var obj = JSON.parse(xhr.responseText);
+            var image_url_now = obj.image_url
+            console.log(image_url_now);
+            document.getElementById("userpic_preview").src=image_url_now;
+            console.log('ok');
+            base_info_change(fileDom,'mobile_base_save')
+        }
+    };
+    xhr.send(fd);
+
+
+}
+
+function base_info_change(doc,type){
+        var userpicPreview = document.getElementById("userpic_preview").src;
+        var type = type;
+        var usernameIdNum = $('#username-id').attr("value");
+        console.log('user_save');
+        console.log(type);
+
+        $.ajax({
+                url:'/user_save/',
+                data:{
+                    userpicPreview:userpicPreview,
+                    type:type,
+                    usernameIdNum:usernameIdNum,
+                },
+
+                type:'POST',
+
+		success:function(callback) {
+                    console.log('user_save2');
+            var callback = jQuery.parseJSON(callback);
+
+            console.log(callback.status)
+            if(callback.status==1){
+
+                 alert(callback.message+"信息填写不完整");
+                 document.getElementById("userpicPreview").src="";
+
+
+					}
+            if(callback.status==0 && callback.message=="Title already exist"){
+
+                 alert("发布标题已存在,请修改标题名称");
+
+					}
+             if(callback.status==0 && callback.message=="ok"){
+
+                 alert("更新成功");
+
+					}
+
+
+        }
+
+        });
+	}
+
+
+function showTime(){
+  var now = new Date(),hours = now.getHours(),x = '';
+  if(hours<9){x = '早上'}
+  else if(hours<12){x = '上午'}
+  else if(hours<18){x = '下午'}
+  else{x = '晚上'}
+  return x;
+}
+$("#signToday").click(function(){
+  var dom = $(this)
+  Introduce.show()
+  $.get(_centerURL+'user/sign/index',function(res){
+    Introduce.hide()
+    if(res.status==1){
+      dom.html('已签到')
+      var closeBtn = $('<button style="width:100px;height:32px;line-height:1;display:block;margin:auto;margin-top:20px;">确定</button>')
+      var main = $('<div style="padding:20px;padding-bottom:0;"></div>').append('<p>亲爱的段子乔布斯，'+showTime()+'好！</p>')
+      .append('你已连续签到 '+res.data.join_sign+' 天，获得 '+res.data.crd+' 学分').append('<p class="red">会员领双倍学分</p>')
+      .append(closeBtn)
+      var signMsg = new AutoBox({
+        noCon:true,
+        ADD:main,
+        W:400,
+        mask:"#000"
+      })
+      closeBtn.click(function(){
+        signMsg.close()
+      })
+      $("#crd").html(parseInt($("#crd").html())+res.data.crd)
+    }else{
+      new AutoBox({content:res.msg,img:'remind',autoClose:2,mask:"#000"})
+    }
+  },'json')
+})
+
+
+</script>
+
+    </head>
+                        <div style="margin-top: 46px"></div>
+    <body ontouchstart="">
+        
+        
+        <input type="hidden" value="154953089" data-name="sam" id="user">
+
+        
+    
+    <div id="TalionNav">
+        <header class="TalionNav">
+            <div class="TalionNav-primary">
+
+       		<a href="/mobile_index">
+				<img height="35" width="70" src="/statics/images/logo_01.png" >
+				</a>
+
+    </div>
+     </header></div>
+
+
+
+        <div class="page">
+
+    <div class="profile" data-uid="154953089">
+        <div class="bd">
+
+
+                 <img  id="userpic_preview"   src="/medias/{{username.userpic}}" >
+            <!--<div class="div1">-->
+
+
+                <!--<div class="div2">修改头像</div>-->
+
+
+            <!--</div>-->
+
+<style>
+
+.inputstyle{
+
+    width: 70px;
+    height: 10px;
+margin-left: -85px;
+    padding-bottom: 20px;
+    /*cursor: pointer;*/
+    /*font-size: 30px;*/
+    /*outline: medium none;*/
+    /*filter:alpha(opacity=0);*/
+    /*-moz-opacity:0;*/
+    /*opacity:0;*/
+    /*z-index: 9999;*/
+}
+
+</style>
+
+
+            <div class="detail">
+                <div class="basic-info">
+                    <span class="uid" >{{username}}</span>
+                    <span class="id" id="username-id" value="{{username.id}}">ID:20015{{username.id}}</span>
+                    <a href="/mobile_logout">退出</a>
+                </div>
+                <div class="relationship">
+                    <!--<a href="/collectbox">我的收藏 {{collect_count}}</a>-->
+                    <br>
+  <input  class="inputstyle" id='user_pic_change' type="file" name="file" value="修改头像" onchange="user_pic_change(this)" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <ul class="collection">
+         <li class="item"><a href="/mobile_user_center"><img src="/statics/mobile_user_center/favourite.png"><span> {{collect_count}}收藏</span></a></li>
+        <!--<li class="item"><a href="/mobile_index"><img src="/statics/mobile_user_center/movie.png"><span>视频教程</span></a></li>-->
+    <li class="item"><a href="/mobile_docindex"><img src="/statics/mobile_user_center/read.png"><span>开始阅读文章</span></a></li>
+
+        <!--<li class="item"><a href="/uploadindex"><img src="/statics/mobile_user_center/activity.png"><span>我要发布</span></a></li>-->
+    </ul>
+
+<div class=" body line" style="margin-top: 30px">
+		{% for news_list in show_collect_docs  %}
+                <div style="background: #fff;border-radius: 20px" onclick="redicturl('/mobile_docdetail/{{news_list.id}}')" >
+                    <ul class="study-list cl" >
+                        <li >
+                                <div class="img">
+                                    <a href="/mobile_docdetail/{{news_list.id}}">
+                                    <img height="100" src="/medias/{{news_list.newpic}}" title="{{news_list.title}}"></a></div>
+                                <div class="det" style="margin-top: 10px">
+
+                                    <h3><a href="/mobile_docdetail/{{news_list.id}}">{{news_list.title}}</a></h3>
+                                    <!--<p>-->
+                                        <!--<a href="/mobile_docdetail/{{news_list.id}}" target="_blank">{{news_list.summary}}</a>-->
+                                        <div style="float: left;color: #8e8e8e">{{ news_list.create_date|date:"Y-m-d H:i:s" }}</div>
+                                    <!--</p>-->
+
+                                </div>
+                            </li>
+
+                    </ul>
+
+                </div>
+                        <div style="margin-top: 12px"></div>
+		{% endfor %}
+       <br>
+    	<div class="page cl">
+
+		{{page}}
+
+
+		</div>
+
+
+</div>
+            <br>            <br>
+
+                <div style="background:#222; color:#FFF;padding: 10px;margin-top:a20px;bottom:0;">
+		<div style="margin-left: 20px;margin-right: 20px">580网创建于2018年06月06日，推荐的项目100%免费。
+联系ais580com@foxmail.com，不接任何非正规擦边广告，仅限正规公司合作（个人项目请勿联系）！
+备案号：闽ICP备19017760号</div>
+</div>
+        </div>
+
+
+
+
+        <div id="toast"><span></span></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- 先隐藏 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

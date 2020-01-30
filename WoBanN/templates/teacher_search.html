@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block page-content %}
+
+
+ <div class="wpn" id="project">
+        <!--  -->
+        <div class="cl pos">
+            <ul class="h-screen">
+                <li class="on"><a href="javascript:;" title="首页推荐">搜索结果</a></li></ul>
+            <!--  -->
+
+        </div>
+  <ul class="post post-works mtw cl">
+
+
+
+                             <div class="h-member-box">
+            <ul class="h-member cl" style="display: block;">
+                   {% for teacher in data  %}
+                <li class="cl">
+                    <a class="avatar-sm" title="" href="http://i.ui.cn/ucenter/93876.html" target="_blank">
+                        <img rel="nofollow" src="/{{teacher.userpic}}" alt="{{teacher.username}}">
+                    </a>
+                    <div class="cont">
+                        <h5 class="user"><a target="_blank" href="http://i.ui.cn/ucenter/93876.html">{{teacher.username}}</a></h5>
+                        <p class="text">{{teacher.signature}}</p>
+                        <p class="text">{{teacher.email}}</p>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+
+                             </div>
+ <div class="h_page mtn mbw">
+                <ul class="cl">
+                   {{ page }}
+
+                </ul>
+
+{% endblock %}
+
+ </div>

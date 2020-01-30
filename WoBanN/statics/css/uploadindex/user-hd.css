@@ -1,0 +1,108 @@
+/* 头部 */
+.hd { min-width: 1180px; width: 100%; position: relative; }
+
+/* 个人中心头部 */
+.tin-hd { background: #b8c5ce; }
+
+/* 上传以及个人中心头部导航 */
+.tin-nav { position: absolute; left: 3.1746031%; top: 0; height: 40px; width: 160px; }/*40/1260*/
+.tin-nav .nav-inx { height: 26px; width: 100px; display: block; margin: 7px 0; }
+.tin-nav .nav-inx:hover{text-decoration: none;}
+.tin-nav .nav-inx i {height: 26px; line-height: 26px; margin: 0 5px;}
+
+/* 下拉 */
+#tin-nav-menu { position: absolute; left: 0; top: 0; z-index: 1; width: 160px;  visibility: hidden;}
+#tin-nav-menu li a { padding: 7px 35px; }
+.tin-nav:hover #tin-nav-menu { visibility: visible; }
+
+/* 面包屑 */
+.tin-sub-nav { display: table; margin: 0 auto; }
+.tin-sub-nav a { height: 40px; line-height: 40px; color: #FFF; font-size: 16px; text-decoration: none; }
+
+/* 用户资料 */
+
+/* 新消息提醒 */
+.msg i.new {position: absolute; top: 0px; right: 5px; font-size: 12px; line-height: 15px; color: #ee4b4b; transform:scale(0.875);}
+
+.tin-msg { position: absolute; right: 3.1746031%; top: 0; height: 40px; }/*40/1260*/
+.tin-msg dd { float: left; height: 40px; position: relative; }
+.tin-msg .msg { display: block; width: 47px; float: left; height: 40px;}
+.tin-msg .msg:hover { background-color: #34495e; }
+
+/* 会员头像 */
+.msg-avatar-small { width: 20px; height: 20px; border-radius: 10px; margin: 10px 14px; }
+
+/* 动态 */
+.tin-msg dd ul.u-box-2 {width:275px;position:absolute;/*margin-left:-230px;margin-top:40px;*/z-index: 2;}
+.tin-msg dd ul.u-box-2 li {border-bottom: 1px solid #34495E;float:left;clear:both;text-align:left;font-size:12px;width:235px;height:47px;height:auto;padding:0 20px;z-index: 1;}
+.tin-msg dd ul.u-box-2 i{background:#34495e;opacity: 0.95;filter: alpha(opacity=95);-moz-opacity: 0.95;
+-khtml-opacity: 0.95;display: block;position: absolute;top: 0;left: 0;right: 0;bottom: 0;z-index: 0;}
+.tin-msg dd ul.u-box-2 li p {float:left;width:205px;padding:15px 0 15px 30px;color:#FFF;font-size:12px;line-height:18px;color:#b8c4ce;}
+.tin-msg dd ul.u-box-2 li p a {font-size:12px;background:none;font-weight:bold;display:inline;padding:0 3px;height:auto;line-height:18px;width:auto;text-indent:0px;float:none;}
+.tin-msg dd ul.u-box-2 li p span.nametit{font-weight:bold; color:#fff;font-size:12px;} 
+.tin-msg dd ul.u-box-2 li .Dynamic{ width:100%; padding-left:0;padding-right:0; text-align:center;}
+.tin-msg dd ul.u-box-2 li p strong {width:205px;clear:both;margin-top:5px;color:#4d657d;float:left;font-weight:normal;}
+.tin-msg dd ul.u-box-2 li p i{background: none; font-size: 18px; line-height: 0; text-indent: 0; display: inline-block; position: relative;float: left;
+margin-top: 12px; margin-left: -22px;}
+
+/*对勾图标*/
+.tin-msg dd ul.u-box-2 i.guanzhu:before { content: "\e627"; color: #1abc9c; }
+/*星星图标*/
+.tin-msg dd ul.u-box-2 i.shoucang:before { content: "\e638"; color: #1abc9c;}
+/*叶子图标*/
+.tin-msg dd ul.u-box-2 i.zan:before { content: "\e63d"; color: #1abc9c; }
+/*评论图标*/
+.tin-msg dd ul.u-box-2 i.pinglun:before,
+.tin-msg dd ul.u-box-2 i.liuyan:before,
+.tin-msg dd ul.u-box-2 i.xitong:before,
+.tin-msg dd ul.u-box-2 i.tuijian:before{ content: "\e647"; color: #3498db;}
+.udc{background-color:#2c3e50;}
+
+/* 上传 */
+.msg i { color: #eff2f5; font-size: 26px; line-height: 40px; display: block; text-align: center;}
+
+
+/* 下拉样式 */
+.pop { position: absolute; display: none; right: 0; top: 40px; z-index: 2; width: 140px; /*padding-bottom: 10px;*/ background: url("../img/opacity.png") repeat 0 0; }
+.pop li { display: block; position: relative; z-index: 2; height: 40px;  border-bottom: 1px solid #34495E; }
+.pop li a { display: block; color: #FFF; text-decoration: none; line-height: 26px; height: 26px; padding: 7px 24px; font-size: 14px; }
+.pop li a i { margin-right: 15px; }
+.pop li a:hover { background: #34495e; }
+
+.pop li a.letter{ position:relative;}
+.pop li a.letter .new{position: absolute;right: -9px;top: 5px;color:#ee4b4b; font-size: 12px;}
+
+
+/* 面包屑 */
+.sub-tin-nav { background: #eff4f5; height: 60px; }
+.sub-tin-nav ul { display: table; margin: 0 auto; }
+.sub-tin-nav li { float: left; display: block; height: 60px; }
+.sub-tin-nav li a { height: 58px; line-height: 58px; display: block; padding: 0 25px; color: #576F81; font-size: 16px; }
+.sub-tin-nav li a:hover { text-decoration: none; background: #e4ebee; border-bottom: 2px solid #e4ebee; color: #2d3e50;}
+.sub-tin-nav .a a { border-bottom: 2px solid #b8c4ce; color: #2d3e50; }
+.sub-tin-nav .a a:hover { border-bottom: 2px solid #b8c4ce; }
+
+
+/* 上传附件进度条 */
+#process .uploadify-progress-bar{background: #00bd9c; height: 48px; position: relative; z-index: -1;}
+#process .uploadify-progress-bar span{ position: absolute; left:130px;}
+
+/* 图标颜色 大小 iconfont.css文件内容 2015-04-01*/
+.fsv {font-size: 18px!important;}
+.fsc {font-size: 19px!important;}/*灵感和工具图标字号*/
+
+.fsi {font-size: 20px!important;}
+.fsn {font-size: 22px!important;}
+.fss {font-size: 24px!important;}
+.fsm {font-size: 32px!important;}
+
+/*图标颜色*/
+.white {color: #fff!important; }
+.gray {color: #b8c5cf!important;}
+.dimgray {color: #6B7B8A!important;}
+.blue {color: #3498db!important;}  /*页面主色*/
+.navy {color: #369!important;}  /*深蓝色-链接a*/
+.green {color: #1abc9c!important;}  /*评论*/
+.yellow {color: #fcab2b!important;}  /*收藏*/
+.black {color: #34495e!important;} /*回复*/
+.red {color: #D52F17!important;} /*错误*/

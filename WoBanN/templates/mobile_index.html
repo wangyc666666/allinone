@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://m.ecloucollge.cn/?page=1 -->
+{% load seo %}
+<html><head>
+  {% get_metadata as my_meta %}
+  {{ my_meta }}
+		<meta name="baidu-site-verification" content="MpNz3dx7EI" />
+	    <link rel="icon" href="/statics/images/logo_01.png" type="img/x-ico" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>{{web_name}}—移动版</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="/statics/mobile_index/base.css">
+	<link rel="stylesheet" href="/statics/mobile_index/iconfont.css">
+    <link rel="stylesheet" href="/statics/mobile_index/wap-work.css">
+    
+    <script src="/statics/mobile_index/jquery.js"></script>
+    <script src="/statics/mobile_index/wap-work.js"></script>
+    <script src="/statics/mobile_index/touchslider.dev.js"></script>
+
+<script src="/statics/js/cloudcollege/doccloudcollege.js"></script>
+	<script src="/statics/js/cloudcollege/videocloudcollege.js"></script>
+	<script src="/statics/js/cloudcollege/index.js"></script>
+
+</head>
+<body class="has-panel" style="height: 826px;">
+<!-- 先隐藏 -->
+		<div class="header">
+			<i id="panelSwitch" class="icon-nav"></i>
+			<h1><a href="/mobile_index"><img height="50" width="100" src="/statics/images/logo_02.png" onerror="this.onerror=null;this.src='/statics/images/logo_02.png'" ></a>
+
+			</h1>
+
+
+			<a class="avatar" href="/mobile_user_center" >
+			<img class="avatar" src="/medias/{{ username.userpic }}" onerror="this.onerror=null;this.src='/statics/mobile_index/user.png'" alt="">
+			</a>
+		</div>
+
+		{% block page-all %}
+
+<script>
+	function submit_message(data) {
+	    document.getElementById("myform").submit();
+        }
+
+</script>
+
+<link href="/statics/css/mobile_search/search.css" rel="stylesheet">
+
+
+        <header class="search-hd">
+        <form id="myform" method="get" action="/mobile_search/" id="search_form">
+	<input type="text" class="search-val" placeholder="请输入您要查找的内容" autocomplete="off" value="" name="keywords" id="keywords">
+<input type="hidden" name="type" value="video" id="sType">
+		 <img  onclick="submit_message(this)" class="search-hd-btn icon-search" height="30" width="30" src="/statics/images/sou.jpg">
+        </form>
+      </header>
+
+		<header>今日头条</header>
+	<!-- 轮播图 -->
+	<div class="swipe" style="overflow: hidden; visibility: visible; list-style: none; position: relative;">
+	    <ul id="slider" style="position: relative; overflow: hidden; transition: left 0ms ease; width: 8550px; left: -1330.37px;">
+{% for carousel in carousel_data  %}
+	<li style="float: left; display: block; width: 1425px;"><a href="{{carousel.newlink}}">
+	<img height="200" src="/medias/{{carousel.newpic}}" title="{{carousel.title}}"></a></li>
+{% endfor %}
+<!--li style="float: left; display: block; width: 1425px;"><a href="http://wxdd.ecloudcollege.com/zhishi.html">
+                                <img src="/statics/mobile_index/1510207879_222.jpeg" title="10000个知识点"></a></li>
+<li style="float: left; display: block; width: 1425px;">
+<a href="http://www.zigeer.com/Comm/Allproductlist?producttype=5600009&amp;from=41">
+<img src="/statics/mobile_index/1512702584_478.jpeg" title="用你的设计创造独一无二的手机壳"></a>
+</li>
+
+
+<li style="float: left; display: block; width: 1425px;"><a href="http://study.ecloudcollege.com/detail/176.html"><img src="/statics/mobile_index/1513049075_901.jpeg" title="每周临摹-炫彩PhoneX music app设计"></a></li><li style="float: left; display: block; width: 1425px;"><a href="http://study.ecloudcollege.com/detail/175.html"><img src="/statics/mobile_index/1512700623_172.jpeg" title="每周临摹-扁平插画"></a></li><li style="float: left; display: block; width: 1425px;"><a href="http://wxdd.ecloudcollege.com/dongdian.html"><img src="/statics/mobile_index/1512644633_507.png" title="懂点设计"></a></li><li style="float: left; display: block; width: 1425px;"><a href="http://peixun.ecloudcollege.com/detail/376.html"><img src="/statics/mobile_index/1511949064_176.png" title="没有实战的python都是假python"></a></li>	   
+<-->
+
+ </ul>
+
+	    <div id="pagenavi">
+	    	<a href="javascript:;" class="" id="782"></a><a href="javascript:;" id="771" class=""></a><a href="javascript:;" id="795" class=""></a><a href="javascript:;" id="794" class=""></a><a href="javascript:;" id="793" class="active"></a><a href="javascript:;" id="767"></a>		</div>
+	</div>
+	<script>
+
+
+
+
+		console=window.console || {dir:new Function(),log:new Function()};
+		var active=0,
+		as=document.getElementById('pagenavi').getElementsByTagName('a');
+		for(var i=0;i<as.length;i++){
+			(function(){
+				var j=i;
+				as[i].onclick=function(){
+					t4.slide(j);
+					return false;
+				}
+			})();
+		}
+
+		var t4=new TouchSlider({id:'slider', speed:600, timeout:6000, before:function(index){
+			as[active].className='';
+			active=index;
+			as[active].className='active';
+		}});
+	</script>
+	<!-- 轮播图 END -->
+
+	<div class="body line">
+		<ul class="nav">
+			<!--<li><a class="{{video_selected}}" href="/mobile_index/">视频教程</a></li>-->
+			<li><a class="{{doc_selected}}" href="/mobile_docindex/">文章</a></li>
+
+		</ul>
+	</div>
+
+
+
+	<div class="body pos">
+		
+		<ul class="list cl">
+			    {% for news_list in data  %}
+			<li><a href="/mobile_videodetail/{{news_list.id}}/"><img style="width:95%;height:120px" src="/medias/{{news_list.newpic_webp}}" onerror="this.onerror=null;this.src='/medias/{{news_list.newpic}}'" title="mobile_new">{{news_list.title}}</a></li>
+
+
+				{% endfor %}
+		</ul>
+		
+		<div class="page cl">
+
+		{{page}}
+
+
+
+		</div>
+	</div>
+	
+	<div class="footer">
+		<p class="cl">
+			<!-- <a href="http://www.ecloudcollege.com/">电脑版</a>
+			<em></em> -->
+			<a href="#">反馈 官方QQ群:717527289</a>
+		</p>
+		<p>Powered by © 2008-2015 ais580.com</p>
+	</div>
+	
+
+	<!-- 侧边栏 END -->
+<div style="display:none;">
+	<img src="/statics/mobile_index/wapstat.php" width="0" height="0">
+</div>
+
+{% endblock %}
+			<!-- 侧边栏 -->
+<!-- 先隐藏 -->
+	<div class="side" >
+		<i ><img height="50" width="100" src="/statics/images/logo_02.png" alt=""></i>
+		<ul class="main-nav cl">
+			<li><a class="{{index_video_selected}}" href="/mobile_index/"><i class="icon-home-line"></i><span>首页</span></a></li>
+			  {% for cate in category %}
+			{% ifequal cate_id cate.id %}
+			<li><a  class="active" href="/mobile_category/{{ cate.id }}/"><i class="icon-home-line"></i><span>{{cate.name}}</span></a></li>
+			{% else %}
+			<li><a  class="" href="/mobile_category/{{ cate.id }}/"><i class="icon-home-line"></i><span>{{cate.name}}</span></a></li>
+			{% endifequal %}
+			   {%endfor%}
+			<!--li><a class="" href="/uploadindex/"><i class="icon-home-line"></i><span>上传</span></a></li>
+			<li><a class="" href="/collectbox/"><i class="icon-home-line"></i><span>我的收藏</span></a></li>
+
+			<li><a class="" href="/mobile_logout/"><i class="icon-home-line"></i><span>退出</span></a></li-->
+		</ul>
+		<!-- <a class="mark" href="http://www.ecloudcollege.cn/">电脑版</a> -->
+	</div>
+
+</body></html>

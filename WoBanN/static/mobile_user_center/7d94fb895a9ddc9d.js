@@ -1,0 +1,21 @@
+
+  ;(function() {
+
+    "use strict";function _defineProperty(e,o,n){return o in e?Object.defineProperty(e,o,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[o]=n,e}var _extends=Object.assign||function(e){for(var o=1;o<arguments.length;o++){var n=arguments[o];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(e,o){"function"==typeof define&&define.amd?define([],o):"object"===("undefined"==typeof exports?"undefined":_typeof(exports))?module.exports=o():(e.SWCache&&e.console&&console.warn&&console.warn("window.Lazify already exists! Skipped"),e.SWCache=e.SWCache||o())}(window,function(){function e(e){var o=0;for(var n in e)o=(o<<5)-o+e.charCodeAt(n),o|=0;return o}function o(e,n){var r=void 0;n&&(o.state[e]=!0);var t=e in o.state?o.state[e]:o.defaultState;if(t===!1)r=o.noop;else{var i=o.selectColor(e);r=function(){for(var o,n=arguments.length,r=Array(n),t=0;t<n;t++)r[t]=arguments[t];(o=console).log.apply(o,["%c"+e+"%c","color: "+i+";","color: inherit;"].concat(r))},r.isEnable=!0}return r}function n(e){return Object.keys(e).reduce(function(o,n){var r=_typeof(e[n]);return"function"!==r&&(o[n]=e[n]),o},{})}function r(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{},r=navigator,a=r.serviceWorker;a&&(s=_extends({},s,e),s.debug&&(i=o("pwa:cache",!0)),i("settings",s),a.register(s.serviceWorkerUrl,{scope:s.scope}).then(function(e){if(i("register",e),t.isFrodo()||t.isWeixin()||t.isWeibo()||t.isXiaomi()||t.isBaidu()||"undefined"!=typeof DISABLE_SERVICE_WORKER)return e.unregister().then(function(e){return i("Unregister Service Worker["+s.serviceWorkerUrl+"]: "+e)});var o=e.installing||e.active||a.controller;o.postMessage({action:"set-settings",settings:n(s)})}).catch(o.logErr))}var t=function(){function e(e){return function(){return e.test(o)}}var o=navigator.userAgent||"";return{isWeixin:e(/micromessenger/i),isWeibo:e(/weibo/i),isXiaomi:e(/xiaomi/i),isBaidu:e(/baiduboxapp|baidubrowser/i),isIOS:e(/iphone|ipad|ipod/i),isAndroid:e(/android/i),isMobile:e(/(iphone|ipod|((?:android)?.*?mobile)|blackberry|nokia)/i),isFrodo:e(/com\.douban\.frodo/i)}}();o.noop=function(){},o.noop.isEnable=!0,o.state={},o.defaultState=!1,o.enable=function(e){if("object"===("undefined"==typeof e?"undefined":_typeof(e)))o.state=_extends({},o.state,e);else{if("string"==typeof e)return o.state=_extends({},o.state,_defineProperty({},e,!0)),o(e);o.defaultState=e}},o.selectColor=function(n){return o.colors[Math.abs(e(n))%o.colors.length]},o.colors=["lightseagreen","forestgreen","goldenrod","dodgerblue","darkorchid","crimson","yellow"],o.logErr=function(){if("undefined"!=typeof console&&console.error){var e;(e=console).error.apply(e,arguments)}};var i=o.noop,a={serviceWorkerUrl:"/pwa/cache_worker",scope:"/",debug:!1,precache:[],currentPath:location.pathname,offlineUrl:"/pwa/offline",onNetworkChange:null},s=_extends({},a);return{start:r}});
+
+    SWCache.start({
+      // debug: false,
+      currentPath: location.pathname,
+      precache: [
+        'https://img3.doubanio.com/f/talion/f8b8fa66f110083144daf3f89367db3ef5a0bee1/pics/card/offline/ic_offline.png',
+        'https://img3.doubanio.com/f/talion/6cd76c90e48131ae42f06eaa7026efaf8e741758/pics/card/offline/ic_refresh.png',
+        'https://img3.doubanio.com/f/talion/081c0eb66c87f15598d7ffb5e42e62b4449b8dfc/css/card/base.css',
+        'https://img3.doubanio.com/f/talion/ee8e0c54293aefb5709ececbdf082f8091ad5e49/js/lib/zepto/zepto.min.js',
+        'https://img3.doubanio.com/f/talion/4ca44cd18b26fd8f7b96a0db1b62077049808bef/js/card/main.js',
+        'https://img3.doubanio.com/f/talion/edb4a934937733a0163b69e6cc3ad3f689c92d1c/pics/card/defaults/cover.png',
+        'https://img3.doubanio.com/f/talion/9c85529e7a0fbe585a2091edd8b9751a1db10ca9/pics/card/defaults/avatar.jpg',
+      ],
+      offlineUrl: '/pwa/offline',
+    })
+  }());
+  

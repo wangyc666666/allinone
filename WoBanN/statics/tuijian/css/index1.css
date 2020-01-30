@@ -1,0 +1,67 @@
+
+	@media (min-width: 321px) and (max-width:375px){
+	#alltuijian{
+		
+		width:25%;
+		position:absolute;
+		right:0px;
+		border-right:0px;
+		}
+				#Sty a{
+			font-size:16px;
+						
+				}
+		#collpse{
+		font-size:3px;
+		}
+		#action a{
+		font-size:16px;
+		}
+		
+		
+	}	
+		@media (min-width: 376px) and (max-width:414px){
+		#Sty a{
+			font-size:18px;
+						
+				}
+		#collpse{
+		font-size:13px;
+		}
+		#action a{
+		font-size:16px;
+		}
+			#alltuijian{
+	
+		width:25%;
+		position:absolute;
+		right:0%;
+		border-right:0px;
+		}
+
+		}
+	
+		.alltuijian{
+		
+		width:25%;
+		position:absolute;
+		right:0px;
+		border-right:0px;
+		border:#EEEEEE 1px solid;
+		
+		top:20%;
+	
+		}
+
+	.odiv{position:absobute;width:100%; display:block;}
+	.odiv ul li{width:100%;  height:100px; background:white;  }
+	.odiv ul li a{ margin-top:10px;}
+
+		.collpse{
+		font-size:13px;
+		}
+		
+
+.wrap ul li{height:500px; width:100%;  }
+
+.body{ margin:0px;  font-size:13px;}

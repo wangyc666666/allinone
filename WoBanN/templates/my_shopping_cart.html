@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>{{web_name}}清单列表</title>
+
+<link rel="stylesheet" href="/statics/css/cart/reset.css">
+<link rel="stylesheet" href="/statics/css/cart/carts.css">
+<script type="text/javascript">
+
+goods_arr=[]
+function select_all(obj,all) {
+	goods_arr=all;
+}
+ function ban(obj)
+       {
+		if(obj.checked){
+		    goods_arr.push(obj.id.split("checkbox_")[1])
+		}
+       }
+
+function settlement(sum){
+
+	var newIdList = goods_arr
+	var TotalGoods = document.getElementById("total_goods_num").innerText;
+	var TotalPrice = document.getElementById("total_money").innerText;
+
+
+
+    $.ajax({
+        url: '/goods_list/',
+        data: {
+            newIdList: JSON.stringify(newIdList),
+			TotalGoods:TotalGoods,
+			TotalPrice:TotalPrice,
+
+        },
+
+        type:'POST',
+
+    success:function(callback) {
+        var callback = jQuery.parseJSON(callback);
+        console.log(callback.message);
+        if (callback.message=='ok'){
+            var list_uuid = callback.list_uuid
+
+            alert("成功");
+            window.location.href = "/webpay?list_uuid="+list_uuid
+
+        };
+        if(callback.message=='already del from cart'){
+
+             alert('已移除');
+        };
+        if(callback.message=='not login'){
+
+             alert('请先登入');
+        };
+
+    }
+
+    });
+
+
+}
+
+function del_from_cart(add,new_id ) {
+    if(confirm('确定要删除吗?'))
+  	{
+    newId = new_id
+    $.ajax({
+        url: '/del_from_cart/',
+        data: {
+            newId: newId,
+
+        },
+
+        type:'POST',
+
+    success:function(callback) {
+        var callback = jQuery.parseJSON(callback);
+        console.log(callback.message);
+        if (callback.message=='ok'){
+            alert('移除成功');
+            window.location.reload();
+
+            $("#order_lists_id").remove();
+
+        };
+        if(callback.message=='already del from cart'){
+
+             alert('已移除');
+
+        };
+        if(callback.message=='not login'){
+
+             alert('请先登入');
+        };
+
+    }
+
+    });
+
+
+  	}
+  	return false;
+}
+</script>
+</head>
+
+{% extends 'index.html' %}
+{% block page-content %}
+<body>
+<section class="cartMain">
+	<div class="cartMain_hd">
+		<ul class="order_lists cartTop">
+			<li class="list_chk">
+				<!--所有商品全选-->
+				<input type="checkbox" id="all" onclick="select_all(this,{{ids}})" class="whole_check">
+				<label for="all"></label>
+				全选
+			</li>
+			<li class="list_con">商品信息</li>
+			<li class="list_info">商品参数</li>
+			<li class="list_price">单价</li>
+			<li class="list_amount">数量</li>
+			<li class="list_sum">金额</li>
+			<li class="list_op">操作</li>
+		</ul>
+	</div>
+
+	<div class="cartBox">
+
+
+
+		<div class="order_content">
+			   {% for product in data %}
+			<ul class="order_lists" id="order_lists_id" >
+
+				<li class="list_chk" >
+					<input type="checkbox" id="checkbox_{{product.id}}" onclick="ban(this)" class="son_check">
+					<label class ="data_sent" for="checkbox_{{product.id}}"></label>
+				</li>
+				<li class="list_con">
+					<div class="list_img"><a href="javascript:;"><img src="/{{product.newpic}}" alt=""></a></div>
+					<div class="list_text"><a href="javascript:;">{{product.title}}</a></div>
+				</li>
+				<li class="list_info">
+					<p>类别：{{product.news_type}}</p>
+					<p>收藏数：{{product.focususer.count}}</p>
+					<p>讲师：{{product.user}}</p>
+				</li>
+				<li class="list_price">
+					<p class="price">￥{{product.course_price}}</p>
+				</li>
+				<li class="list_amount">
+					<div class="amount_box">
+						<a href="javascript:;" class="reduce reSty">-</a>
+						<input type="text" value="1" class="sum">
+						<a href="javascript:;" class="plus">+</a>
+					</div>
+				</li>
+				<li class="list_sum">
+					<p class="sum_price">￥{{product.course_price}}</p>
+				</li>
+				<li class="list_op">
+					<p class="del"><a href="javascript:;" onclick="del_from_cart(this,{{product.id}})" class="delBtn2">移除商品</a></p>
+				</li>
+			</ul>
+			{%endfor%}
+
+
+
+		</div>
+	</div>
+
+
+	<!--底部-->
+	<div class="bar-wrapper">
+		<div class="bar-right">
+			<div class="piece" >已选商品<strong class="piece_num" id = "total_goods_num">0</strong>件</div>
+			<div class="totalMoney" >共计: <strong class="total_text" id = "total_money">0.00</strong></div>
+			<div class="calBtn"><a onclick="settlement(this)">结算</a></div>
+		</div>
+	</div>
+</section>
+<section class="model_bg"></section>
+<!--section class="my_model">
+	<p class="title">删除宝贝<span class="closeModel">X</span></p>
+	<p>您确认要删除该宝贝吗？</p>
+	<div class="opBtn"><a href="javascript:;" class="dialog-sure">确定</a><a href="javascript:;" class="dialog-close">关闭</a></div>
+</section-->
+
+<script src="/statics/js/cart/jquery.min.js"></script>
+<script src="/statics/js/cart/carts.js"></script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">Cloud 学院</a></p>
+</div>
+</body>
+{%endblock%}
+</html>

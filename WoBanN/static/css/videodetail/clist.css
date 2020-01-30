@@ -1,0 +1,44 @@
+.condition {line-height: 30px;margin-top: 30px;margin-bottom: 36px;}
+  .condition dl {padding: 4px 0;}
+  .condition dt {float: left;width: 50px;font-weight: bold;}
+  .condition dd {float: left;width: 1150px;overflow: hidden;}
+    .condition dd a {position: relative;float: left;padding: 0 10px;line-height: 18px;margin: 6px 6px 6px 0; color:#333;}
+    .condition dd a.cur,.condition dd a:hover {background: #00baf2;color: #FFF;}
+
+.cList {margin: 20px -10px;font-size: 12px;}
+  .cList_Item {float: left;width: 224px;margin: 10px;}
+  .cList_Item:hover {box-shadow: 0px 0px 4px #BBB;transition: all .5s;}
+    .cList_Item .pic  {width: 224px;height: 134px;overflow: hidden;position: relative;}
+    .cList_Item:hover .pic  {overflow: visible;transition: all 1s;}
+      .cList_Item .pic img  {display: block;width: 100%;background: #EEE;left:0;}
+      .cList_Item:hover .pic img  {position: absolute;bottom:0;transition: all 1s;}
+      .cList_Item .pic p.type {position: absolute;top:0px;right: 0px;background: url(../images/bg70.png);color:#FFF;padding: 0 5px;font-size: 12px;}
+    .cList_Item .main {padding:10px;color:#818181}
+      .cList_Item .main h3  {line-height:20px;height: 40px;font-size: 14px;font-weight: normal;overflow: hidden;margin-bottom: 25px;}
+      .cList_Item .main .stars02  {margin-bottom: 10px;line-height: 14px;height:14px;font-size: 14px;}
+      .cList_Item .main .price  {overflow: hidden;line-height: 1;margin-top: 8px;color:#333;height: 18px;}
+        .cList_Item .main .price h4 {float: left;font-size: 16px;font-weight: normal;margin-right: 5px;overflow: hidden;}
+        .cList_Item .main .price p {float: left;text-decoration: line-through;margin-top: 4px;font-size: 12px;}
+
+.CourseList {}
+.CourseList .condition dl {overflow: hidden;margin-bottom:10px;}
+  .CourseList .condition dl input {width: 60px;height: 28px;border:1px solid #DDD;padding: 0 10px;line-height: 28px;}
+  .CourseList .condition dl span  {margin: 0 10px;line-height: 30px;}
+  .CourseList .condition dl input.priceBtn  {height: 30px;border:none;background: #00baf2;color: #FFF;margin-left: 20px;cursor: pointer;line-height: 1;}
+  .CourseList .condition dl input.priceBtn:hover  {opacity: 0.8;}
+.subCate  {background: #F5F5F5;}
+  .subCate dd a  {color: #666;}
+
+.CourseList.Sort  {background: #F5F5F5;line-height: 50px;font-size: 16px;height: 50px;}
+  .CourseList.Sort a  {float: left;margin-right: 50px;color: #818181;position: relative;}
+  .CourseList.Sort a:hover  {color: #000;}
+  .CourseList.Sort a.cur  {border-bottom: 2px solid #00baf2;height: 48px;color: #00baf2;}
+  .CourseList.Sort i.icon {display: block;position: absolute;right: -15px;top:19px;width: 9px;height: 12px;}
+  .CourseList.Sort i.icon.check {width: 16px;height: 16px;left:0px;top: 17px;}
+  .CourseList.Sort i.icon.arrow_d {background-position: -150px -350px}
+  .CourseList.Sort i.icon.arrow_u {background-position: -150px -400px}
+  .CourseList.Sort i.icon.new {background-position: -450px -250px;width: 33px;height: 16px;top: 10px;right: -35px;}
+
+.condition dd a span {position: absolute;top: -6px;right: -20px;}
+.condition dd a .video_new_icon {width: 22px;height: 10px;background: url(../images/new.jpg) no-repeat;}
+.condition dd a .video_hot_icon {width: 22px;height: 10px;background: url(../images/hot.jpg) no-repeat;}

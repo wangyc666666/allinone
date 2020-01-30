@@ -1,0 +1,597 @@
+﻿body {font: 12px/1.5 Tahoma,Arial,'宋体',sans-serif;margin:0px;padding:0px;color:#333333;}
+#login_con {width:965px;margin:auto;}
+/*清除浮动*/
+.clearfix:after { content:"."; display:block; height:0; clear:both; visibility:hidden; } 
+.clearfix { display:inline-block; }
+.clearfix {display:block;} 
+input[type=text] {outline:none;}
+input[type=password] {outline:none;}
+/*页面顶部通知区域-开始***************************/
+div.headernotice {font-size:12px;}
+div.headernotice div.noticemsg {color:Red;width:965px;margin:auto;} 
+/*****************页面顶部通知区域-结束***************************/
+
+/**** 登录页头 开始 ***/
+div.pageheader {margin:0px auto; height:auto;}
+div.pageheader div.content {margin:0px auto;width:965px;height:66px;display:block;float:none;}
+div.pageheader div.content a{ cursor:hand;}
+div.pageheader div.content span.leftarea {float:left;display:inline; width:500px; height:60px; background-repeat:no-repeat;background-position:left center;padding-top:10px;}
+div.pageheader div.content span.rightarea {float:right;display:inline; height:60px;padding-top:10px; }
+/**** 登录页头 结束 ***/
+
+div.nonavbar_default {border-top:#E2E2E2 1px solid;width:965px;height:1px;margin:0px auto;margin-top:5px;margin-bottom:5px;clear:both;}
+div.nonavbar_depblue {border-top:#0e436b 2px solid;width:965px;height:1px;margin:0px auto;margin-top:5px;margin-bottom:5px;}
+div.nonavbar_lightblue {border-top:#448acf 2px solid;width:965px;height:1px;margin:0px auto;margin-top:5px;margin-bottom:5px;clear:both;}
+div.nonavbar_whitered {border-top:#e9333f 2px solid;width:965px;height:1px;margin:0px auto;margin-top:5px;margin-bottom:5px;}
+div.nonavbar_red {border-top:#ad2f00 2px solid;width:965px;height:1px;margin:0px auto;margin-top:5px;margin-bottom:5px;}
+div.nonavbar_yellow {border-top:#cc5906 2px solid;width:965px;height:1px;margin:0px auto;margin-top:5px;margin-bottom:5px;}
+div.nonavbar_green {border-top:#32851b 2px solid;width:965px;height:1px;margin:0px auto;margin-top:5px;margin-bottom:5px;}
+div.nonavbar_blue {border-top:#104c80 2px solid;width:965px;height:1px;margin:0px auto;margin-top:5px;margin-bottom:5px;}
+/**** 登录页尾 开始 ***/
+div.pagefooter{clear:both;padding-top:10px;}
+div.pagefooter div.footermenu1{width:985px;margin:5px auto;line-height:30px;clear:both;text-align: -moz-center;text-align:center; }
+div.pagefooter div.footermenu1 span.color9{ color:#999999;}
+div.pagefooter div.footermenu1 span.color6{ color:#666666;}
+div.pagefooter div.footermenu1 a{line-height: 22px;color: #666666;text-decoration: none;}
+div.pagefooter div.footermenu1 a:hover{line-height: 22px;color: #cc0000;text-decoration: underline;}
+div.pagefooter div.footermenu1 div.menuitem{display:inline;}
+div.pagefooter div.footermenu1 div.menuitem span.fengexian{color: #D7D7D7;}
+div.pagefooter div.footermenu1 div.menuitem span.reg{font-size:14px;}
+div.pagefooter div.copyright1{clear:both;text-align: center;padding-top:5px;padding-bottom:5px;}
+div.pagefooter div.usebrower1{clear:both;text-align: center;padding-bottom:5px;color:#666666; width:985px;margin:5px auto;}
+div.pagefooter div.usebrower1 a{color:#666666;text-decoration: none;}
+div.pagefooter div.usebrower1 a:hover{color: #cc0000;text-decoration: underline;}
+div.pagefooter div.usebrower1 span.tahoma{ font-family:Tahoma;}
+div.nonavbar_footer{border-top:#DDDDDD 1px solid;width:965px;height:1px;margin:0px auto;padding-top:5px;padding-bottom:10px;}
+/**** 登录页尾 结束 ***/
+/**** 登录区域中的 登录 ***/
+div.loginarea{width: 531px;height: 280px;overflow: hidden;background-image: url('images/login/login_login.jpg');background-repeat: no-repeat;float: left;}
+div.loginarea div.loginmain{width: 315px;border: 0px;margin: 60px auto;}
+div.loginarea div.row{height: 30px;clear: both;}
+div.loginarea div.errormsg{font-size: 12px;color: Red;padding-left: 60px;margin-top:5px;}
+div.loginarea div.autologin{color: #555555;padding-left: 60px;}
+
+div.loginarea div.row div
+{
+    height: 30px;
+    float: left;
+}
+div.loginarea div.label
+{
+    width: 60px;
+    color: #555555;
+    text-align: right;
+    padding-top: 7px;
+    font-size:14px;
+}
+div.loginarea div.submit
+{
+    width: 220px;
+    vertical-align: bottom;
+    margin-top:10px;
+}
+div.loginarea input.textbox
+{
+    width: 220px;
+    height: 22px;
+    line-height: 22px;
+    border: 1px solid #c9c6c9;
+}
+div.loginarea input.validatecode
+{
+    width: 100px;
+    height: 22px;
+    line-height: 22px;
+    border: 1px solid #c9c6c9;
+    float:left;
+}
+
+div.loginarea a.validateimg
+{
+	margin-left:10px;
+    float:left;
+}
+
+div.loginarea input.btnlogin
+{
+    background-image: url('images/login/loginbtn.png');
+    background-repeat: no-repeat;
+    width: 103px;
+    height: 35px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+    border: 0px;
+    float:left;
+    cursor:pointer;
+}
+div.loginarea a.forgetpwd
+{
+    padding-top: 10px;
+    color: #1e51d1;
+    text-decoration: underline;
+    margin-bottom: 5px;
+    float: right;
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/**** 登录区域中的 注册链接 ***/
+div.portallogin {background-color:#FFF;}
+div.portallogin .login_default {float:left;}
+div.portallogin div.loginheader {margin: 0 auto;width: 965px;}
+div.portallogin div.loginheader span.logo {width: 100%;height: 60px;overflow: hidden;background-repeat: no-repeat;display:block;cursor:hand;margin-top:5px;margin-bottom:5px;}
+div.portallogin div.content {width: 965px;margin: 40px auto;overflow: hidden;}
+div.portallogin div.register { width: 375px;height: 220px;overflow: hidden;background-image: url('images/login/login_registerbg.jpg'); background-repeat: no-repeat; padding-top: 60px; float:right;}
+div.portallogin div.register div {width: auto; margin-left: 48px;display: block;margin-bottom:15px;}
+div.portallogin div.register a { display: block;color: #1e51d1;text-decoration: none; height: 30px;background-repeat: no-repeat;font-size: 14px;}
+div.portallogin div.register a:hover {text-decoration: underline; }
+div.portallogin div.register a.personal {background-image: url('images/login/personal_register.jpg'); padding-left: 35px; padding-top: 12px;}
+div.portallogin div.register a.enterprise { background-image: url('images/login/personal_enterprise.jpg');    padding-left: 35px;    padding-top: 10px;}
+div.portallogin div.register a.teacher { background-image: url('images/login/personal_teacher.jpg');    padding-left: 35px;    padding-top: 10px;    display:none;}
+div.portallogin div.register a.university { background-image: url('images/login/personal_university.jpg');    padding-left: 35px;   padding-top: 8px;}
+div.portallogin div.register a.trainingorg { background-image: url('images/login/personal_trainingorg.jpg');padding-left: 35px;padding-top: 8px;}
+/**** 登录样式结束 **************************/
+
+div.testuser
+{ 
+ padding-top: 15px;
+	padding-left: 60px;
+	BORDER-BOTTOM: #c9c9c9 1px solid; 
+	BORDER-LEFT: #c9c9c9 1px solid; 
+	MARGIN: 5px auto; 
+	WIDTH: 890px; 
+	HEIGHT: 170px; 
+	BORDER-TOP: #c9c9c9 1px solid; 
+	BORDER-RIGHT: #c9c9c9 1px solid;
+}
+div.testuser DIV.u1
+{
+	WIDTH: 890px; 
+	HEIGHT: 60px; 
+	background:url('imgs/login/usertitle.gif') no-repeat;
+}
+div.testuser Div.ll
+{
+	WIDTH: 480px;
+	float:left;
+}
+div.testuser Div.ll div.clear
+{
+clear:both;
+}
+
+
+div.testuser Div.ll span
+{
+	padding-left: 15px;
+	
+	text-align:right;
+	float:left;
+	COLOR: #EC8F3D; 
+	FONT-SIZE: 16px;
+	height:35px;
+	width:130px;
+	display:block;
+	font-weight:bold;
+}
+div.testuser Div.ll a i.in
+{COLOR: #3136EB; 
+	FONT-SIZE: 12px;
+	cursor:hand;
+	float:left;
+	font-weight:bold;
+	margin-right:20px;
+}
+div.testuser Div.rr
+{
+	margin-top:-70px;
+	WIDTH:250px; 
+	height:156px;
+	background:url('imgs/login/userright.gif') no-repeat;
+}
+
+/**** 完善新 登录区域中的登录 by 胡兵林 2011-07-06 ***/
+div.newloginarea
+{
+    width: 320px;
+    height: 280px;
+    overflow: hidden;
+    background-image: url('images/login/login_new.jpg');
+    background-repeat: no-repeat;
+    float: left;
+}
+div.newloginarea div.loginmain
+{
+    width: 275px;
+    border: 0px;
+    margin: 70px auto 0px auto;
+}
+div.newloginarea div.row
+{
+    height: 30px;
+    clear: both;
+}
+div.newloginarea div.errormsg
+{
+    font-size: 12px;
+    color: Red;
+    padding-left: 60px;
+    margin-top:5px;
+}
+div.newloginarea div.autologin
+{
+    color: #555555;
+    padding-left: 60px;
+}
+
+div.newloginarea div.row div
+{
+    height: 30px;
+    float: left;
+}
+div.newloginarea div.label
+{
+    width: 60px;
+    color: #555555;
+    text-align: right;
+    padding-top: 7px;
+    font-size:14px;
+}
+div.newloginarea div.submit
+{
+    width: 210px;
+    vertical-align: bottom;
+    margin-top:10px;
+	float:left;
+}
+div.newloginarea input.textbox
+{
+    width: 190px;
+    height: 22px;
+    line-height: 22px;
+    border: 1px solid #c9c6c9;
+}
+div.newloginarea input.validatecode
+{
+    width: 80px;
+    height: 22px;
+    line-height: 22px;
+    border: 1px solid #c9c6c9;
+    float:left;
+}
+
+div.newloginarea a.validateimg
+{
+	margin-left:10px;
+    float:left;
+}
+
+div.newloginarea input.btnlogin
+{
+    background-image: url('images/login/loginbtn.png');
+    background-repeat: no-repeat;
+    width: 103px;
+    height: 35px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 15px;
+    border: 0px;
+    float:left;
+    cursor:pointer;
+}
+div.newloginarea a.forgetpwd
+{
+    padding-top: 10px;
+    color: #1e51d1;
+    text-decoration: underline;
+    margin-bottom: 5px;
+    float: right;
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+	margin-right:17px;
+}
+
+.login_box { width:965px; margin:40px auto 40px auto; clear:both;}
+.login_box .login_Image { width:540px;min-height:290px; float:left;text-align:center}
+.login_box .login_form { width:325px;height:290px; float:right;margin-right:90px;}
+
+
+form{ width:100%}
+div.loginpage{width:965px; margin:0px auto; clear:both;padding:0px;}
+div.loginpage div.content{background-repeat:no-repeat;}
+
+/**********登录区域样式——开始*********************************************/
+
+/**********默认登录区域样式1(有验证码)——开始*********************************************/
+div.loginright_default{ padding:30px 0px 0px 550px;}
+div.loginright_default div.login_default{width: 360px;height: 320px;*height: 300px;padding:50px 0px 0px 0px;font-size:14px;background-image: url('images/login/login_new1.jpg');background-repeat: no-repeat; background-position:left top;}
+div.loginright_default div.login_default a {color: #3366cc;text-decoration:none;font-size:12px;}
+div.loginright_default div.login_default a.yunxuetang { font-size:12px; color:#666666; background: url('images/login/yunxuetang.jpg') no-repeat left top; padding-left:22px; line-height:16px; padding-top:2px;*padding-top:3px;_padding-top:2px;padding-bottom:2px;}
+div.loginright_default div.login_default a.tuijian { font-size:12px; color:#666666; background: url('images/login/tuijian.jpg') no-repeat left top; padding-left:23px; line-height:16px; padding-top:2px;*padding-top:3px;_padding-top:2px;padding-bottom:2px;}
+div.loginright_default div.login_default a.guanzhu { font-size:12px; color:#666666; background: url('images/login/guanzhu.gif') no-repeat left top; padding-left:23px; line-height:16px; padding-top:2px;*padding-top:3px;_padding-top:2px;padding-bottom:2px;}
+div.loginright_default div.login_default a.shequ { font-size:12px; color:#666666; background: url('images/login/shequ.png') no-repeat left top; padding-left:23px; line-height:16px; padding-top:2px;*padding-top:3px;_padding-top:2px;padding-bottom:2px;}
+div.loginright_default div.login_default div.divbottom{padding-top:30px; padding-left:33px; line-height:16px; }
+div.loginright_default div.login_default div.divbottom a:hover{color: #cc0000;text-decoration: underline;}
+
+div.loginright_default div.collect{padding-left:170px; padding-top:10px; }
+div.loginright_default div.collect a{ width:150px; font-size:12px; color:#666666; background: url('images/login/star.png') no-repeat left top;text-decoration:none; padding-left:20px;  }
+div.loginright_default div.collect a:hover{color: #cc0000;text-decoration: underline;}
+
+div.loginright_default div.login_default div.row{height: 50px;clear: both;padding:auto;padding-left:35px;}
+div.loginright_default div.login_default div.row div{height: 36px;float: left;}
+div.loginright_default div.login_default div.rowValidate{height: 40px;clear: both;padding:auto;padding-left:35px;}
+div.loginright_default div.login_default div.rowValidate div{height: 36px;float: left;}
+div.loginright_default div.login_default div.rowpassword{height: 45px;clear: both;padding:auto;padding-left:35px;}
+div.loginright_default div.login_default div.rowpassword div{height: 36px;float: left;}
+div.loginright_default div.login_default div.rowsubmit{height: 50px;clear: both;padding:auto;padding-left:35px;}
+div.loginright_default div.login_default div.rowsubmit div{height: 36px;float: left;}
+
+div.loginright_default div.login_default div.label{width: 60px;color: #555555;text-align: right;padding-top: 7px;}
+div.loginright_default div.login_default div.textboxout{width: 190px; float:left; padding-top:5px; height: 22px;line-height: 22px;background-image: url('images/login/login_moren.gif');background-repeat: no-repeat;width: 220px;height: 50px;}
+div.loginright_default div.login_default div.textboxin{width: 190px;height: 22px; padding-top:5px;line-height: 22px;background-image: url('images/login/login_over.gif');background-repeat: no-repeat;width: 220px;height: 50px;}
+div.loginright_default div.login_default div.textboxout input.textbox{width: 195px;margin-left:12px;  height: 24px;line-height: 24px;border: 0px solid #c9c6c9;}
+div.loginright_default div.login_default div.textboxin input.textbox{width: 195px;margin-left:12px; height: 24px;line-height: 24px;border: 0px solid #c9c6c9;}
+
+div.loginright_default div.login_default div.textboxout1{width: 90px; float:left; height: 22px;line-height: 22px;background-image: url('images/login/login_small_moren.gif');background-repeat: no-repeat;width: 220px;height: 50px;}
+div.loginright_default div.login_default div.textboxin1{width: 90px;height: 22px;line-height: 22px;background-image: url('images/login/login_small_over.gif');background-repeat: no-repeat;width: 220px;height: 50px;}
+
+
+div.loginright_default div.login_default div.textboxout1 input.validatecode{width: 70px;margin-left:10px;margin-top:5px; height: 22px;line-height: 22px;border: 0px solid #c9c6c9;float:left;}
+div.loginright_default div.login_default div.textboxin1 input.validatecode{width: 70px;margin-left:10px;margin-top:5px; height: 22px;line-height: 22px;border: 0px solid #c9c6c9;float:left;}
+div.loginright_default div.login_default a.validateimg{margin-left:10px;float:left; padding-top:5px;}
+div.loginright_default div.login_default div.autologin{color: #666666;padding-left: 95px; font-size:13px;line-height:30px;_height:25px; _padding-top:5px;}
+div.loginright_default div.login_default img{border-width:0px;}
+
+div.loginright_default div.login_default div.submit{width: 210px;vertical-align: bottom;margin-top:10px;float:left; padding-left:5px;}
+div.loginright_default div.login_default input.btnlogin{cursor:pointer;float:left;background-image: url('images/login/btn_moren.gif');background-repeat: no-repeat;width: 103px;height: 35px;color: #fff;font-weight: bold;border: 0px;font-size:20px; font-weight:bold;}
+div.loginright_default div.login_default input.btnloginon{cursor:pointer;float:left;background-image: url('images/login/btn_over.gif');background-repeat: no-repeat;width: 103px;height: 35px;color: #fff;font-weight: bold;border: 0px;font-size:20px; font-weight:bold;}
+div.loginright_default div.login_default a.forgetpwd{padding-top: 10px;color: #0055A0;text-decoration: none;margin-bottom: 5px;float: left;display: block;margin-top: 0px;font-size: 12px;padding-left:15px;}
+
+div.loginright_default div.login_default div.errormsg{font-size: 12px;color:Red; padding-top:10px; text-align:center; clear:both; margin-bottom:0px; height:14px; line-height:14px;}
+div.loginright_default div.login_default div.freeregister {clear:both;width:282px;margin:20px auto 0px;text-align:center;border-top:#eaeaea 1px solid;padding-top:5px;}
+div.loginright_default div.login_default div.freeregister span {font-size:12px;color:#333;}
+/**********默认登录区域样式——结束*********************************************/
+
+
+/**********默认登录区域样式2（有验证码，有自动登录）——开始*********************************************/
+div.loginright_defaultall{ padding:0px 0px 0px 550px;}
+div.loginright_defaultall div.login_defaultall{width: 360px;height: 350px;*height: 330px;padding:50px 0px 0px 0px;font-size:14px;background-image: url('images/login/login_new_height.jpg');background-repeat: no-repeat; background-position:left top;}
+div.loginright_defaultall div.login_defaultall a {color: #3366cc;text-decoration:none;font-size:12px;}
+div.loginright_defaultall div.login_defaultall a.yunxuetang { font-size:12px; color:#666666; background: url('images/login/yunxuetang.jpg') no-repeat left top; padding-left:22px; line-height:16px; padding-top:2px;*padding-top:3px;_padding-top:2px;padding-bottom:2px;}
+div.loginright_defaultall div.login_defaultall a.tuijian { font-size:12px; color:#666666; background: url('images/login/tuijian.jpg') no-repeat left top; padding-left:23px; line-height:16px; padding-top:2px;*padding-top:3px;_padding-top:2px;padding-bottom:2px;}
+div.loginright_defaultall div.login_defaultall a.guanzhu { font-size:12px; color:#666666; background: url('images/login/guanzhu.gif') no-repeat left top; padding-left:23px; line-height:16px; padding-top:2px;*padding-top:3px;_padding-top:2px;padding-bottom:2px;}
+div.loginright_defaultall div.login_defaultall a.shequ { font-size:12px; color:#666666; background: url('images/login/shequ.png') no-repeat left top; padding-left:23px; line-height:16px; padding-top:2px;*padding-top:3px;_padding-top:2px;padding-bottom:2px;}
+div.loginright_defaultall div.login_defaultall div.divbottom{padding-top:30px; padding-left:33px; line-height:16px; }
+div.loginright_defaultall div.login_defaultall div.divbottom a:hover{color: #cc0000;text-decoration: underline;}
+
+div.loginright_defaultall div.collect{padding-left:170px; padding-top:10px; }
+div.loginright_defaultall div.collect a{ width:150px; font-size:12px; color:#666666; background: url('images/login/star.png') no-repeat left top;text-decoration:none; padding-left:20px;  }
+div.loginright_defaultall div.collect a:hover{color: #cc0000;text-decoration: underline;}
+
+div.loginright_defaultall div.login_defaultall div.row{height: 50px;clear: both;padding:auto;padding-left:35px;}
+div.loginright_defaultall div.login_defaultall div.row div{height: 36px;float: left;}
+div.loginright_defaultall div.login_defaultall div.rowValidate{height: 40px;clear: both;padding:auto;padding-left:35px;}
+div.loginright_defaultall div.login_defaultall div.rowValidate div{height: 36px;float: left;}
+div.loginright_defaultall div.login_defaultall div.rowpassword{height: 45px;clear: both;padding:auto;padding-left:35px;}
+div.loginright_defaultall div.login_defaultall div.rowpassword div{height: 36px;float: left;}
+div.loginright_defaultall div.login_defaultall div.rowsubmit{height: 50px;clear: both;padding:auto;padding-left:35px;}
+div.loginright_defaultall div.login_defaultall div.rowsubmit div{height: 36px;float: left;}
+
+div.loginright_defaultall div.login_defaultall div.label{width: 60px;color: #555555;text-align: right;padding-top: 7px;}
+div.loginright_defaultall div.login_defaultall div.textboxout{width: 190px; float:left; padding-top:5px; height: 22px;line-height: 22px;background-image: url('images/login/login_moren.gif');background-repeat: no-repeat;width: 220px;height: 50px;}
+div.loginright_defaultall div.login_defaultall div.textboxin{width: 190px;height: 22px; padding-top:5px;line-height: 22px;background-image: url('images/login/login_over.gif');background-repeat: no-repeat;width: 220px;height: 50px;}
+div.loginright_defaultall div.login_defaultall div.textboxout input.textbox{width: 195px;margin-left:12px;  height: 24px;line-height: 24px;border: 0px solid #c9c6c9;}
+div.loginright_defaultall div.login_defaultall div.textboxin input.textbox{width: 195px;margin-left:12px; height: 24px;line-height: 24px;border: 0px solid #c9c6c9;}
+
+div.loginright_defaultall div.login_defaultall div.textboxout1{width: 90px; float:left; height: 22px;line-height: 22px;background-image: url('images/login/login_small_moren.gif');background-repeat: no-repeat;width: 220px;height: 50px;}
+div.loginright_defaultall div.login_defaultall div.textboxin1{width: 90px;height: 22px;line-height: 22px;background-image: url('images/login/login_small_over.gif');background-repeat: no-repeat;width: 220px;height: 50px;}
+
+
+div.loginright_defaultall div.login_defaultall div.textboxout1 input.validatecode{width: 70px;margin-left:10px;margin-top:5px; height: 22px;line-height: 22px;border: 0px solid #c9c6c9;float:left;}
+div.loginright_defaultall div.login_defaultall div.textboxin1 input.validatecode{width: 70px;margin-left:10px;margin-top:5px; height: 22px;line-height: 22px;border: 0px solid #c9c6c9;float:left;}
+div.loginright_defaultall div.login_defaultall a.validateimg{margin-left:10px;float:left; padding-top:5px;}
+div.loginright_defaultall div.login_defaultall div.autologin{color: #666666;padding-left: 95px; font-size:13px;line-height:30px;_height:25px; _padding-top:5px;}
+div.loginright_defaultall div.login_defaultall img{border-width:0px;}
+
+div.loginright_defaultall div.login_defaultall div.submit{width: 210px;vertical-align: bottom;margin-top:10px;float:left; padding-left:5px;}
+div.loginright_defaultall div.login_defaultall input.btnlogin{cursor:pointer;float:left;background-image: url('images/login/btn_moren.gif');background-repeat: no-repeat;width: 103px;height: 35px;color: #fff;font-weight: bold;border: 0px;font-size:20px; font-weight:bold;}
+div.loginright_defaultall div.login_defaultall input.btnloginon{cursor:pointer;float:left;background-image: url('images/login/btn_over.gif');background-repeat: no-repeat;width: 103px;height: 35px;color: #fff;font-weight: bold;border: 0px;font-size:20px; font-weight:bold;}
+div.loginright_defaultall div.login_defaultall a.forgetpwd{padding-top: 10px;color: #0055A0;text-decoration: none;margin-bottom: 5px;float: left;display: block;margin-top: 0px;font-size: 12px;padding-left:15px;}
+
+div.loginright_defaultall div.login_defaultall div.errormsg{font-size: 12px;color:Red; padding-top:10px; text-align:center; clear:both; margin-bottom:0px; height:14px; line-height:14px;}
+div.loginright_defaultall div.login_defaultall div.freeregister {clear:both;width:282px;margin:20px auto 0px;text-align:center;border-top:#eaeaea 1px solid;padding-top:5px;}
+div.loginright_defaultall div.login_defaultall div.freeregister span {font-size:12px;color:#333;}
+/**********默认登录区域样式——结束*********************************************/
+
+/**********默认登录区域样式3（无验证码，无自动登录）——开始*********************************************/
+div.loginright_defaultnull{ padding:30px 0px 0px 550px;}
+div.loginright_defaultnull div.login_defaultnull{width: 360px;height: 320px;*height: 300px;padding:50px 0px 0px 0px;font-size:14px;background-image: url('images/login/login_new1.jpg');background-repeat: no-repeat; background-position:left top;}
+div.loginright_defaultnull div.login_defaultnull a {color: #3366cc;text-decoration:none;font-size:12px;}
+div.loginright_defaultnull div.login_defaultnull a.yunxuetang { font-size:12px; color:#666666; background: url('images/login/yunxuetang.jpg') no-repeat left top; padding-left:22px; line-height:16px; padding-top:2px;*padding-top:3px;_padding-top:2px;padding-bottom:2px;}
+div.loginright_defaultnull div.login_defaultnull a.tuijian { font-size:12px; color:#666666; background: url('images/login/tuijian.jpg') no-repeat left top; padding-left:23px; line-height:16px; padding-top:2px;*padding-top:3px;_padding-top:2px;padding-bottom:2px;}
+div.loginright_defaultnull div.login_defaultnull a.guanzhu { font-size:12px; color:#666666; background: url('images/login/guanzhu.gif') no-repeat left top; padding-left:23px; line-height:16px; padding-top:2px;*padding-top:3px;_padding-top:2px;padding-bottom:2px;}
+div.loginright_defaultnull div.login_defaultnull a.shequ { font-size:12px; color:#666666; background: url('images/login/shequ.png') no-repeat left top; padding-left:23px; line-height:16px; padding-top:2px;*padding-top:3px;_padding-top:2px;padding-bottom:2px;}
+div.loginright_defaultnull div.login_defaultnull div.divbottom{padding-top:40px; padding-left:33px; line-height:16px; }
+div.loginright_defaultnull div.login_defaultnull div.divbottom a:hover{color: #cc0000;text-decoration: underline;}
+
+div.loginright_defaultnull div.collect{padding-left:170px; padding-top:10px; }
+div.loginright_defaultnull div.collect a{ width:150px; font-size:12px; color:#666666; background: url('images/login/star.png') no-repeat left top;text-decoration:none; padding-left:20px;  }
+div.loginright_defaultnull div.collect a:hover{color: #cc0000;text-decoration: underline;}
+
+div.loginright_defaultnull div.login_defaultnull div.row{height: 50px;clear: both;padding:auto;padding-left:35px;}
+div.loginright_defaultnull div.login_defaultnull div.row div{height: 36px;float: left;}
+div.loginright_defaultnull div.login_defaultnull div.rowValidate{height: 35px;*height: 40px;clear: both;padding:auto;padding-left:35px;}
+div.loginright_defaultnull div.login_defaultnull div.rowValidate div{height: 36px;float: left;}
+div.loginright_defaultnull div.login_defaultnull div.rowpassword{height: 45px;clear: both;padding:auto;padding-left:35px;}
+div.loginright_defaultnull div.login_defaultnull div.rowpassword div{height: 36px;float: left;}
+div.loginright_defaultnull div.login_defaultnull div.rowsubmit{height: 50px;clear: both;padding:auto;padding-left:35px;}
+div.loginright_defaultnull div.login_defaultnull div.rowsubmit div{height: 36px;float: left;}
+
+div.loginright_defaultnull div.login_defaultnull div.label{width: 60px;color: #555555;text-align: right;padding-top: 7px;}
+div.loginright_defaultnull div.login_defaultnull div.textboxout{width: 190px; float:left; padding-top:5px; height: 22px;line-height: 22px;background-image: url('images/login/login_moren.gif');background-repeat: no-repeat;width: 220px;height: 50px;}
+div.loginright_defaultnull div.login_defaultnull div.textboxin{width: 190px;height: 22px; padding-top:5px;line-height: 22px;background-image: url('images/login/login_over.gif');background-repeat: no-repeat;width: 220px;height: 50px;}
+div.loginright_defaultnull div.login_defaultnull div.textboxout input.textbox{width: 195px;margin-left:12px;  height: 24px;line-height: 24px;border: 0px solid #c9c6c9;}
+div.loginright_defaultnull div.login_defaultnull div.textboxin input.textbox{width: 195px;margin-left:12px; height: 24px;line-height: 24px;border: 0px solid #c9c6c9;}
+
+div.loginright_defaultnull div.login_defaultnull div.textboxout1{width: 90px; float:left; height: 22px;line-height: 22px;background-image: url('images/login/login_small_moren.gif');background-repeat: no-repeat;width: 220px;height: 50px;}
+div.loginright_defaultnull div.login_defaultnull div.textboxin1{width: 90px;height: 22px;line-height: 22px;background-image: url('images/login/login_small_over.gif');background-repeat: no-repeat;width: 220px;height: 50px;}
+
+
+div.loginright_defaultnull div.login_defaultnull div.textboxout1 input.validatecode{width: 70px;margin-left:10px;margin-top:5px; height: 22px;line-height: 22px;border: 0px solid #c9c6c9;float:left;}
+div.loginright_defaultnull div.login_defaultnull div.textboxin1 input.validatecode{width: 70px;margin-left:10px;margin-top:5px; height: 22px;line-height: 22px;border: 0px solid #c9c6c9;float:left;}
+div.loginright_defaultnull div.login_defaultnull a.validateimg{margin-left:10px;float:left; padding-top:5px;}
+div.loginright_defaultnull div.login_defaultnull div.autologin{color: #666666;padding-left: 95px; font-size:13px;line-height:30px;_height:25px; _padding-top:5px;}
+div.loginright_defaultnull div.login_defaultnull img{border-width:0px;}
+
+div.loginright_defaultnull div.login_defaultnull div.submit{width: 210px;vertical-align: bottom;margin-top:10px;float:left; padding-left:5px;}
+div.loginright_defaultnull div.login_defaultnull input.btnlogin{cursor:pointer;float:left;background-image: url('images/login/btn_moren.gif');background-repeat: no-repeat;width: 103px;height: 35px;color: #fff;font-weight: bold;border: 0px;font-size:20px; font-weight:bold;}
+div.loginright_defaultnull div.login_defaultnull input.btnloginon{cursor:pointer;float:left;background-image: url('images/login/btn_over.gif');background-repeat: no-repeat;width: 103px;height: 35px;color: #fff;font-weight: bold;border: 0px;font-size:20px; font-weight:bold;}
+div.loginright_defaultnull div.login_defaultnull a.forgetpwd{padding-top: 10px;color: #0055A0;text-decoration: none;margin-bottom: 5px;float: left;display: block;margin-top: 0px;font-size: 12px;padding-left:15px;}
+
+div.loginright_defaultnull div.login_defaultnull div.errormsg{font-size: 12px;color:Red; padding-top:10px; text-align:center; clear:both; margin-bottom:0px; height:14px; line-height:14px;}
+div.loginright_defaultnull div.login_defaultnull div.freeregister {clear:both;width:282px;margin:20px auto 0px;text-align:center;border-top:#eaeaea 1px solid;padding-top:5px;}
+div.loginright_defaultnull div.login_defaultnull div.freeregister span {font-size:12px;color:#333;}
+/**********默认登录区域样式——结束*********************************************/
+
+/**********默认登录区域样式4（有验证码，无自动登录）——开始*********************************************/
+div.loginright_defaultnullother{ padding:30px 0px 0px 550px;}
+div.loginright_defaultnullother div.login_defaultnullother{width: 360px;height: 320px;*height: 300px;padding:50px 0px 0px 0px;font-size:14px;background-image: url('images/login/login_new1.jpg');background-repeat: no-repeat; background-position:left top;}
+div.loginright_defaultnullother div.login_defaultnullother a {color: #3366cc;text-decoration:none;font-size:12px;}
+div.loginright_defaultnullother div.login_defaultnullother a.yunxuetang { font-size:12px; color:#666666; background: url('images/login/yunxuetang.jpg') no-repeat left top; padding-left:22px; line-height:16px; padding-top:2px;*padding-top:3px;_padding-top:2px;padding-bottom:2px;}
+div.loginright_defaultnullother div.login_defaultnullother a.tuijian { font-size:12px; color:#666666; background: url('images/login/tuijian.jpg') no-repeat left top; padding-left:23px; line-height:16px; padding-top:2px;*padding-top:3px;_padding-top:2px;padding-bottom:2px;}
+div.loginright_defaultnullother div.login_defaultnullother a.guanzhu { font-size:12px; color:#666666; background: url('images/login/guanzhu.gif') no-repeat left top; padding-left:23px; line-height:16px; padding-top:2px;*padding-top:3px;_padding-top:2px;padding-bottom:2px;}
+div.loginright_defaultnullother div.login_defaultnullother a.shequ { font-size:12px; color:#666666; background: url('images/login/shequ.png') no-repeat left top; padding-left:23px; line-height:16px; padding-top:2px;*padding-top:3px;_padding-top:2px;padding-bottom:2px;}
+div.loginright_defaultnullother div.login_defaultnullother div.divbottom{padding-top:25px; padding-left:33px; line-height:16px; }
+div.loginright_defaultnullother div.login_defaultnullother div.divbottom a:hover{color: #cc0000;text-decoration: underline;}
+
+div.loginright_defaultnullother div.collect{padding-left:170px; padding-top:10px; }
+div.loginright_defaultnullother div.collect a{ width:150px; font-size:12px; color:#666666; background: url('images/login/star.png') no-repeat left top;text-decoration:none; padding-left:20px;  }
+div.loginright_defaultnullother div.collect a:hover{color: #cc0000;text-decoration: underline;}
+
+div.loginright_defaultnullother div.login_defaultnullother div.row{height: 50px;clear: both;padding:auto;padding-left:35px;}
+div.loginright_defaultnullother div.login_defaultnullother div.row div{height: 36px;float: left;}
+div.loginright_defaultnullother div.login_defaultnullother div.rowValidate{height: 40px;*height: 40px;clear: both;padding:auto;padding-left:35px;}
+div.loginright_defaultnullother div.login_defaultnullother div.rowValidate div{height: 36px;float: left;}
+div.loginright_defaultnullother div.login_defaultnullother div.rowpassword{height: 50px;clear: both;padding:auto;padding-left:35px;}
+div.loginright_defaultnullother div.login_defaultnullother div.rowpassword div{height: 36px;float: left;}
+div.loginright_defaultnullother div.login_defaultnullother div.rowsubmit{height: 47px;*height: 50px;clear: both;padding:auto;padding-left:35px;}
+div.loginright_defaultnullother div.login_defaultnullother div.rowsubmit div{height: 36px;float: left;}
+
+div.loginright_defaultnullother div.login_defaultnullother div.label{width: 60px;color: #555555;text-align: right;padding-top: 7px;}
+div.loginright_defaultnullother div.login_defaultnullother div.textboxout{width: 190px; float:left; padding-top:5px; height: 22px;line-height: 22px;background-image: url('images/login/login_moren.gif');background-repeat: no-repeat;width: 220px;height: 50px;}
+div.loginright_defaultnullother div.login_defaultnullother div.textboxin{width: 190px;height: 22px; padding-top:5px;line-height: 22px;background-image: url('images/login/login_over.gif');background-repeat: no-repeat;width: 220px;height: 50px;}
+div.loginright_defaultnullother div.login_defaultnullother div.textboxout input.textbox{width: 195px;margin-left:12px;  height: 24px;line-height: 24px;border: 0px solid #c9c6c9;}
+div.loginright_defaultnullother div.login_defaultnullother div.textboxin input.textbox{width: 195px;margin-left:12px; height: 24px;line-height: 24px;border: 0px solid #c9c6c9;}
+
+div.loginright_defaultnullother div.login_defaultnullother div.textboxout1{width: 90px; float:left; height: 22px;line-height: 22px;background-image: url('images/login/login_small_moren.gif');background-repeat: no-repeat;width: 220px;height: 50px;}
+div.loginright_defaultnullother div.login_defaultnullother div.textboxin1{width: 90px;height: 22px;line-height: 22px;background-image: url('images/login/login_small_over.gif');background-repeat: no-repeat;width: 220px;height: 50px;}
+
+
+div.loginright_defaultnullother div.login_defaultnullother div.textboxout1 input.validatecode{width: 70px;margin-left:10px;margin-top:5px; height: 22px;line-height: 22px;border: 0px solid #c9c6c9;float:left;}
+div.loginright_defaultnullother div.login_defaultnullother div.textboxin1 input.validatecode{width: 70px;margin-left:10px;margin-top:5px; height: 22px;line-height: 22px;border: 0px solid #c9c6c9;float:left;}
+div.loginright_defaultnullother div.login_defaultnullother a.validateimg{margin-left:10px;float:left; padding-top:5px;}
+div.loginright_defaultnullother div.login_defaultnullother div.autologin{color: #666666;padding-left: 95px; font-size:13px;line-height:30px;_height:25px; _padding-top:5px;}
+div.loginright_defaultnullother div.login_defaultnullother img{border-width:0px;}
+
+div.loginright_defaultnullother div.login_defaultnullother div.submit{width: 210px;vertical-align: bottom;margin-top:10px;float:left; padding-left:5px;}
+div.loginright_defaultnullother div.login_defaultnullother input.btnlogin{cursor:pointer;float:left;background-image: url('images/login/btn_moren.gif');background-repeat: no-repeat;width: 103px;height: 35px;color: #fff;font-weight: bold;border: 0px;font-size:20px; font-weight:bold;}
+div.loginright_defaultnullother div.login_defaultnullother input.btnloginon{cursor:pointer;float:left;background-image: url('images/login/btn_over.gif');background-repeat: no-repeat;width: 103px;height: 35px;color: #fff;font-weight: bold;border: 0px;font-size:20px; font-weight:bold;}
+div.loginright_defaultnullother div.login_defaultnullother a.forgetpwd{padding-top: 10px;color: #0055A0;text-decoration: none;margin-bottom: 5px;float: left;display: block;margin-top: 0px;font-size: 12px;padding-left:15px;}
+
+div.loginright_defaultnullother div.login_defaultnullother div.errormsg{font-size: 12px;color:Red; padding-top:10px; text-align:center; clear:both; margin-bottom:0px; height:14px; line-height:14px;}
+div.loginright_defaultnullother div.login_defaultnullother div.freeregister {clear:both;width:282px;margin:20px auto 0px;text-align:center;border-top:#eaeaea 1px solid;padding-top:5px;}
+div.loginright_defaultnullother div.login_defaultnullother div.freeregister span {font-size:12px;color:#333;}
+/**********默认登录区域样式——结束*********************************************/
+
+
+/**********横排登录区域样式——开始*********************************************/
+div.login_horizontal{font-size:14px;}
+div.login_horizontal div.row{float:left;margin:0px;}
+div.login_horizontal div.row div{float: left;}
+div.login_horizontal div.label{color: #555555;padding-top:6px;}
+div.login_horizontal input.textbox{width: 100px;height: 22px;line-height: 22px;border: 1px solid #c9c6c9;}
+div.login_horizontal input.validatecode{width: 40px;height: 22px;line-height: 22px;border: 1px solid #c9c6c9;float:left;}
+div.login_horizontal a.validateimg{margin-left:5px;float:left;}
+div.login_horizontal div.autologin{float:left;color: #555555; padding-top:2px; font-size: 12px;}
+div.login_horizontal div.autologin input{ margin-top:0px;}
+div.login_horizontal img{border-width:0px;}
+
+div.login_horizontal div.submit{float:left; margin-left:15px;}
+div.login_horizontal input.btnlogin{cursor:pointer;float:left;background-image: url('images/login/loginbtn.png');background-repeat: no-repeat;width: 103px;height: 35px;border: 0px; font-weight:bold;color:#fff; cursor:hand;}
+div.login_horizontal a.forgetpwd{color: #1e51d1;text-decoration: underline;float: left;display:block;font-size: 12px; margin:5px 0px 0px 10px; }
+
+div.login_horizontal div.errormsg{font-size: 12px;color:Red;padding-left:0px; clear:both; margin-bottom:5px; height:20px; line-height:20px; width:100%;}
+/**********横排登录区域样式——结束*********************************************/
+
+/**********登录区域样式——结束*********************************************/
+/***胡娜 交易登陆窗口***/
+
+#transLoginLayer
+{
+     margin-left:-4px;
+margin-top:0px;
+background:url('images/buyLoginBg.png')scrollno-repeat00;
+height:233px;
+width:368px;
+font-size:12px;
+position:absolute;
+}
+.transLoginBackgroud
+{
+	background: url('images/buyLoginBg.png') no-repeat 0 0;
+	height: 233px;
+	width: 368px;
+}
+#transLoginLayer-close
+{ background:url('images/buyLoginClose.png')no-repeat00;
+height:10px;
+width:11px;
+position:absolute;
+right:14px;
+top:10px;
+}
+#transLoginLayer-main
+{
+	margin-top: 60px;
+	margin-right: 10px;
+	width: 220px;
+	height: 160px;
+	float: right;
+}
+.translogin
+{
+	height: 24px;
+	width: 57px;
+	background: url('images/buyLoginButton.gif') no-repeat 0 0;
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	background-color: #f6f6f6;
+}
+.transforget
+{
+	height: 33px;
+	width: 81px;
+	background: url('images/command_forget2.gif') no-repeat 0 0;
+	background-repeat: no-repeat;
+	background-position: center center;
+	border: 0px;
+	margin: 0px;
+	padding: 0px;
+	background-color: #f6f6f6;
+}
+/*** 交易登陆窗口end***/
+/*页脚区域 start*********************/
+div.pagefooter{clear:both;}
+div.pagefooter div.footermenu{width:965px;margin:5px auto;border-top:#F27B04 2px solid;line-height:30px;text-align:center;border-top: 1px #2f699b solid;background-image: url(images/footerbg.jpg);background-repeat: repeat-x;height: 30px;padding-top: 3px;clear:both;}
+div.pagefooter div.footermenu a{line-height: 22px;color: #535353;text-decoration: none;}
+div.pagefooter div.footermenu a:hover{line-height: 22px;color: #FF6600;text-decoration: underline;}
+div.pagefooter div.footermenu div.menuitem{display:inline;}
+div.pagefooter div.copyright{clear:both;text-align: center;padding-top:5px;padding-bottom:5px;}
+div.pagefooter div.usebrower{clear:both;text-align: center;padding-top:0px;padding-bottom:5px;}
+/**************页脚区域 end*********************/

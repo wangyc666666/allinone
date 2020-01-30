@@ -1,0 +1,16 @@
+django-ckeditor
+pymysql
+qrcode
+DjangoSEO
+django==1.8
+Pillow
+itsdangerous
+bs4==0.0.1
+requests==2.18.4
+rarfile==3.0
+lxml==4.1.1
+django-webp==1.0.11
+django-werkzeug-debugger-runserver==0.3.1
+django-extensions==2.2.1
+jwt
+python-weixin

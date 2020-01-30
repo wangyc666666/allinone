@@ -1,0 +1,17 @@
+html,body,.page{height:100%}.page{box-sizing:border-box;background-color:#f7f7f7}
+.profile{height:140px;margin-bottom:15px;background:rgba(0,0,0,0.5) no-repeat center/cover}
+.profile .bd{height:100%;background:rgba(0,0,0,0.25)}
+.profile img{float:left;width:70px;height:70px;margin:20px 0 0 20px;border-radius:100%;border:2px solid #fff}
+.profile .detail{height:100%;margin-left:106px;color:#fff;font-size:13px}
+.profile .detail .basic-info{position:relative;padding-top:29px}
+.profile .detail .basic-info a{color:#fff;position:absolute;right:0;bottom:0;padding:30px 10px 8px 20px}
+.profile .detail .basic-info a:after{width:20px;height:20px;display:inline-block;content:'') no-repeat 0px 5px/20px}
+.profile .detail .basic-info span{display:block}.profile .detail .basic-info .uid{font-size:19px;line-height:1}
+.profile .detail .basic-info .id{font-size:12px;line-height:1.65}
+.profile .detail .basic-info:after{content:'';width:100%;height:1px;background:rgba(255,255,255,0.3);display:block;transform:scaleY(0.5);margin-top:5px}
+.profile .detail .relationship{margin-top:15px}.profile .detail .relationship a{color:#fff}
+.profile .detail .relationship a:first-child{margin-right:20px}
+.collection{font-size:0;background:#fff}.collection .item{display:inline-block;width:24.99%;height:100px;text-align:center}
+.collection .item a{font-size:13px;color:#9b9b9b}.collection .item img{display:block;margin:30px auto 10px;width:26px;height:26px}
+.collection .hr:after{content:'';width:100%;height:1px;background:#dfdfdf;display:block;transform:scaleY(0.5)}
+

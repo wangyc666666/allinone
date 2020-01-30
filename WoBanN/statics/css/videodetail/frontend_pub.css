@@ -1,0 +1,8 @@
+.boxTitle {border-bottom: 1px solid #DDD;padding-bottom: 10px;line-height: 1;margin: 20px 0;}
+  .boxTitle p  {padding-left: 15px;line-height: 1;font-size: 16px;}
+  .boxTitle p.bu {border-left: 5px solid #00baf2;padding-left: 10px;}
+
+.acts>* i.icon {width: 18px;height: 18px;position: absolute;left: 0;top:1px;}
+.acts .share i.icon  {background-position: -450px 0;}
+.acts .fav i.icon  {background-position: -350px 0;}
+.acts .faved i.icon  {background-position: -400px 0;}

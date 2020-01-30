@@ -1,0 +1,257 @@
+{% extends 'mobile_index.html' %}
+{% block page-all %}
+
+<link rel="stylesheet" href="/statics/mobile_detail/video-js.css">
+<script src="/statics/mobile_detail/video.js"></script>
+ <style type="text/css"> img{max-width:100% !important; height:auto !important;} .contents{ width:auto; }
+ .wrap{word-wrap:break-word;word-break:break-all; overflow: hidden;width: 100%; height: auto; } </style>
+
+
+<body id='body-id' class="has-panel" style="height: 1058px;">
+	<div id="ajax-hook"></div>
+	<div class="wp cl pos">
+		<div class="pos">
+			<div class="hd-user">
+				<a class="avatar" href="#" target="_blank"><img src="/medias/{{news.user.userpic}}" onerror="this.src='/medias/images/yonhu.jpg'"></a>
+				<div class="hd-user-t">
+					<h2 id="p-author"><a href="##" target="_blank">{{news.user.username}}</a></h2>
+					<p>{{news.create_date|date:"Y-m-d H:i:s" }}</p>
+				</div>
+
+				<a onclick="iconfont(this)" class="tag y">播放列表</a>
+				
+			</div>
+			<div id='display-id' class="hd-info"style="position:absolute;z-index:1"  element hidden>
+				<!--div class="hd-info-i">
+					<p><i class="iconfont icon-eye"></i><span>5</span></p>
+					<p><i class="iconfont icon-comment"></i><span class="comnum">6</span></p>
+					<p id="likenum"><i class="iconfont icon-leaf"></i><span>0</span></p>
+				</div-->
+				<div class="hd-info-t">
+					{% for course_name,video_link in course_list.items %}
+
+					<li><a id="01" style="font-size: 18px" onclick="video_src_chage('{{video_link}}','{{course_name}}')">{{course_name}}</a></li>
+
+
+						{% endfor %}
+
+										</div>
+			</div>
+		</div>
+		<div class="cont">
+
+				<p></p>
+
+			<a id="videoplayer_new_id" href="/mobile_videodetail/{{news.id}}/">{{news.title}}</a>
+
+			<p></p>
+
+
+
+
+  <script type="text/javascript">
+function iconfont(thing) {
+    $('#display-id').toggle();
+
+}
+
+function video_src_chage(source,title) {
+
+    $('#example_video_1').attr('src',source);
+
+    var obj;
+	obj=document.getElementById("videoplayer_new_id");
+	obj.innerHTML=title;
+
+	$('#display-id').toggle();
+
+}
+
+    // Must come after the video.js library
+
+    // Add VideoJS to all video tags on the page when the DOM is ready
+    VideoJS.setupAllWhenReady();
+
+    /* ============= OR ============ */
+
+    // Setup and store a reference to the player(s).
+    // Must happen after the DOM is loaded
+    // You can use any library's DOM Ready method instead of VideoJS.DOMReady
+
+  /*
+    VideoJS.DOMReady(function(){
+
+      // Using the video's ID or element
+      var myPlayer = VideoJS.setup("example_video_1");
+
+      // OR using an array of video elements/IDs
+      // Note: It returns an array of players
+      var myManyPlayers = VideoJS.setup(["example_video_1", "example_video_2", video3Element]);
+
+      // OR all videos on the page
+      var myManyPlayers = VideoJS.setup("All");
+
+      // After you have references to your players you can...(example)
+      myPlayer.play(); // Starts playing the video for this player.
+    });
+  */
+
+    /* ========= SETTING OPTIONS ========= */
+
+    // Set options when setting up the videos. The defaults are shown here.
+
+    /*
+    VideoJS.setupAllWhenReady({
+      controlsBelow: false, // Display control bar below video instead of in front of
+      controlsHiding: true, // Hide controls when mouse is not over the video
+      defaultVolume: 0.85, // Will be overridden by user's last volume if available
+      flashVersion: 9, // Required flash version for fallback
+      linksHiding: true // Hide download links when video is supported
+    });
+    */
+
+    // Or as the second option of VideoJS.setup
+
+    /*
+    VideoJS.DOMReady(function(){
+      var myPlayer = VideoJS.setup("example_video_1", {
+        // Same options
+      });
+    });
+    */
+
+  </script>
+
+
+  <!-- Begin VideoJS -->
+  <div class="video-js-box">
+    <!-- Using the Video for Everybody Embed Code http://camendesign.com/code/video_for_everybody -->
+    <video  controls="controls" loop   id="example_video_1" class="video-js" width="100%" height="100%" preload="auto" poster="/medias/{{ news.newpic }}">
+      <source id="video_player" src="{{ news.videourl }}" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+      <source src="{{ news.videourl }}" type='video/webm; codecs="vp8, vorbis"' />
+      <source src="{{ news.videourl }}" type='video/ogg; codecs="theora, vorbis"' />
+      <!-- Flash Fallback. Use any flash video player here. Make sure to keep the vjs-flash-fallback class. -->
+      <object id="flash_fallback_1" class="vjs-flash-fallback" width="640" height="264" type="application/x-shockwave-flash"
+        data="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf">
+        <param name="movie" value="http://releases.flowplayer.org/swf/flowplayer-3.2.1.swf" />
+        <param name="allowfullscreen" value="true" />
+        <param name="flashvars" value='config={"playlist":["http://video-js.zencoder.com/oceans-clip.png", {"url": "http://video-js.zencoder.com/oceans-clip.mp4","autoPlay":false,"autoBuffering":true}]}' />
+        <!-- Image Fallback. Typically the same as the poster image. -->
+        <img src="http://video-js.zencoder.com/oceans-clip.png" width="640" height="264" alt="Poster Image"
+          title="No video playback capabilities." />
+      </object>
+    </video>
+
+  </div>
+
+
+
+		<div class="share cl">
+
+            <ul class="cl">
+			<!--li class="ishare"><a href="javascript:;"><i class="iconfont icon-share"></i>分享</a></li>
+			<li class="icomment">
+
+				<a href="javascript:;"><i class="iconfont icon-comment"></i>评论</a>			</li-->
+							<li class="istar" data="addfav">
+					<a onclick="collection_video_news({{news.id}})" id="fav" rel="301730" _rel="1071158"><i class="iconfont icon-star"></i>
+						收藏(<span id="favNum">{{news.focususer.count}}</span>)
+
+					</a>
+				</li>							<li class="iheart" data="like" id="like" rel="301730" _rel="1071158">
+					<a onclick="Favor(this,{{news.id}});"><i class="iconfont icon-heart"></i>赞(<span id="favorNum">{{news.favor_count}}</span>)</a>
+
+
+
+
+				</li>
+				<!--<li class="iheart" data="like" id="like2" rel="301730" _rel="1071158">-->
+			<!--<a onclick="zanshan()"><i class="iconfont icon-heart"></i>打赏</a>-->
+				<!--</li>-->
+			</ul>
+		</div>
+
+			   <!--<script>-->
+	<!--function zanshan() {-->
+		<!--$('#modal-pay2').toggle();-->
+    <!--}-->
+
+	<!--</script>-->
+
+
+
+
+
+      	<!--&lt;!&ndash; 支付弹出框 &ndash;&gt;-->
+<!--&lt;!&ndash; 打开弹框按钮  data-target="#modal-pay" &ndash;&gt;-->
+<!--<div id="modal-pay2" class="modal2" element hidden>-->
+	<!--<div class="modal-effect">-->
+		<!--<div class="modal-pay">-->
+            <!--<br>-->
+			<!--<p>你的打赏就是我的动力！</p>-->
+			<!--<p class="word-warn">悄悄说，听说打赏的人收入都比我高，不信你试试。 </p>-->
+			<!--<div class="mtm cl">-->
+				<!--<img  height="50" width="50" src="/statics/images/docdetail/zhifupay.jpg" class="z">-->
+				<!--<img  height="50" width="50" src="/statics/images/docdetail/weixinpay.jpg" class="y">-->
+			<!--</div>-->
+			<!--<p>注: 打赏金额随意，完成后，请再次点击打赏关闭本窗口。</p>-->
+		<!--</div>-->
+	<!--</div>-->
+<!--</div>-->
+
+
+		<div class="more">
+
+				<!--div class="cl">
+					<a href="http://m.ui.cn/details/288417"><img src="/statics/mobile_detail/1413180.jpg"></a>
+
+				</div-->
+			</div>	</div><!-- .wp -->
+
+
+
+	<!-- 遮罩层 -->
+	<div class="shade"></div>
+
+	<!-- 评论 -->
+	<div class="comment-pop">
+		<h1>发表评论</h1>
+		<textarea></textarea>
+		<div class="btn">
+			<a class="cancel" href="javascript:;">取消</a>
+			<button id="c-submit">评论</button>
+		</div>
+	</div>
+
+	<!-- 分享弹出 微信下 -->
+	<div class="share-pop-w">
+		<p>点击右上角<br>分享给朋友吧</p>
+	</div>
+
+
+<script>
+
+	var uid = "";
+	var ownerid = "1071158";
+	
+
+</script>
+
+
+<!--div style="display:none;">
+	<img src="/statics/mobile_detail/wapstat.php" width="0" height="0">
+</div-->
+		<div class="contents wrap" >
+			<div style="padding-left:2em;padding-right:2em;font-size:16px">
+			<p>{{news.content|safe}}</p>
+			</div>
+</div>
+
+
+
+		<div class="footer">
+
+		<p>Powered by © 2008-2018 www.ais580.com 官方QQ群:717527289</p>
+	</div>
+{% endblock %}
+
