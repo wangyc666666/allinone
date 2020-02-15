@@ -21,7 +21,9 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "小飞侠",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+        "enablePullDownRefresh": true,
+     "onReachBottomDistance": 50
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -78,11 +78,22 @@ Page({
             }
         })
     },
+    onPullDownRefresh: function() {
+        // 显示顶部刷新图标
+        wx.showNavigationBarLoading();
+        var that = this;
+        that.commonIndex()
+        // 隐藏导航栏加载框
+        wx.hideNavigationBarLoading();
+        // 停止下拉动作
+        wx.stopPullDownRefresh();
 
-  onLoad: function () {    
-    var that = this;
-   let token = wx.getStorageSync('token');
-    if(!wx.getStorageSync('userInfo')){
+    },
+  commonIndex:function(){
+      var that = this;
+       var token = wx.getStorageSync('token');
+   var userInfo = wx.getStorageSync('userInfo');
+    if(!userInfo){
       //获取用户信息
         wx.redirectTo({
       url: '/pages/auth/index',
@@ -94,8 +105,8 @@ Page({
             img: wx.getStorageSync('userInfo').avatarUrl,
             username:wx.getStorageSync('userInfo').nickName
           })
-        console.log('token',token,'userinfo',wx.getStorageSync('userInfo'))
-        if (!token || !userInfo){
+        console.log('token',token,'userInfo',wx.getStorageSync('userInfo'))
+      if (!token || !userInfo){
       //第一次登录，获取登录状态
         templates_js.getToken().then(function (res) {
             that.get_index()
@@ -112,6 +123,10 @@ Page({
           }
         });
     }
+  },
+  onLoad: function () {
+    var that = this;
+    that.commonIndex()
     // wx.getLocation({
     //   type: 'gcj02',
     //   success: function (res) {
