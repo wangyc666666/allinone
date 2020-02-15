@@ -1,14 +1,15 @@
 {
-  "pages":[
-    "pages/index/index",    
-    "pages/search/search",  
+  "pages": [
+    "pages/index/index",
+    "pages/auth/index",
+    "pages/search/search",
     "pages/addAddress/addAddress",
     "pages/applyRefund/applyRefund",
-    "pages/test/test",   
+    "pages/test/test",
     "pages/orderDetail/orderDetail",
     "pages/refundDetail/refundDetail",
     "pages/orderMap/orderMap",
-    "pages/detail/detail", 
+    "pages/detail/detail",
     "pages/editAddress/editAddress",
     "pages/address/address",
     "pages/submitOrder/submitOrder",
@@ -16,10 +17,11 @@
     "pages/allEvaluate/allEvaluate",
     "pages/myPackage/myPackage"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#000",
-    "navigationBarTitleText": "外卖",
-    "navigationBarTextStyle":"white"
-  }  
+    "navigationBarTitleText": "小飞侠",
+    "navigationBarTextStyle": "white"
+  },
+  "sitemapLocation": "sitemap.json"
 }

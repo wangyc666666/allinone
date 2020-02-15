@@ -30,7 +30,7 @@ def send_mail(content):
 
 def monitor_cloud(filter_time):
     print(filter_time)
-    cmd = "cat /var/www/WoBanN/UWSGI.log |awk -F ' ' '{print $5 \" \" $10 \" \" $11 $12   " \
+    cmd = "cat /var/www/xfx_server/UWSGI.log |awk -F ' ' '{print $5 \" \" $10 \" \" $11 $12   " \
         "$13 \" \" $14 \" \" $15 \" \" $16 \" \" $17}'|grep bytes|sort -k 1,1 -u|grep '%s'"%(filter_time)
 
     output = os.popen(cmd).read()

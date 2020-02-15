@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.http import Http404
 from django.core.mail import send_mass_mail
 import qrcode
-from WoBanN import settings
+from xfx_server import settings
 from django.core.mail import send_mail
 from django.core.mail.utils import DNS_NAME, CachedDnsName
 from django.shortcuts import render, render_to_response, redirect
@@ -51,6 +51,11 @@ import operator
 import markdown
 from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
+from jwt_auth.jwt_auth import Auth
+from weixin import WXAPPAPI
+from weixin.lib.wxcrypt import WXBizDataCrypt
+from django.http import JsonResponse
+from django.core import serializers
 
 def outer(main_func):
     '''预先判断是否登入控制访问权限,登入则访问
@@ -2574,3 +2579,276 @@ def test(request):
     print('requst',request) 
     print(request.POST)
     return HttpResponse('Hello,World!')
+
+#####微信小程序
+def get_token(request, uername=None):
+    response = {'code': 200, 'data': None}
+    login_time = int(time.time())
+    user_id=request.GET.get('user_id') or uername
+    jwt_token=Auth
+    try:
+        token=jwt_token.encode_auth_token(user_id, login_time).decode('utf-8')
+    except Exception as e:
+        print(e)
+    response['data'] = {'token':token}
+
+    return HttpResponse(json.dumps(response))
+
+def auth_token(request):
+    data={ 'code': ''}
+    jwt_token=Auth
+    auth_token = request.GET.get('token')  or request.META.get('HTTP_TOKEN')
+    payload = jwt_token.decode_auth_token(auth_token)
+    if ('data' in payload and 'id' in payload['data']):
+        data['code'] = 0
+        return HttpResponse(json.dumps(data))
+    else:
+        data['code'] = 403
+        data['msg'] = payload
+        return HttpResponse(json.dumps(data))
+
+APP_ID = 'wx8cbbd9528e25d378'
+APP_SECRET = '99eede95323383fbc1933c40856e75f6'
+
+def wx_auth(request):
+    code = request.GET.get('code')
+    userInfo = request.GET.get('userInfo')
+    userInfo=json.loads(userInfo)
+    api = WXAPPAPI(appid=APP_ID,
+                   app_secret=APP_SECRET)
+
+    session_info = api.exchange_code_for_session_key(code=code)
+
+    # 获取session_info 后
+    session_key = session_info.get('session_key')
+    openid = session_info.get('openid')
+    userInfo['nickName']=userInfo['nickName']
+    username=userInfo['nickName']
+    #crypt = WXBizDataCrypt(APP_ID, session_key)
+    data=get_token(request, username).content.decode('utf-8')
+    data=json.loads(data)
+    key = data['data']['token']
+    #import uuid
+    #user_uuid = str(uuid.uuid4())
+    value = session_key + username
+    request.session[key] = value
+   # uid = user_uuid
+    total = models.Admin.objects.filter(username__username=username).count()
+    if total > 0:
+        data={'token':key,'code':0,'msg':'已注册','registryStatus':1}
+        return HttpResponse(json.dumps(data))
+    else:
+        try:
+            debug = wx_registry(userInfo)
+            data = {'token': key, 'code': 0, 'msg': '已注册','registryStatus':1}
+        except Exception as e:
+            data = {'token': key, 'code': 500, 'msg': '注册失败', 'errorMsg': str(e),'registryStatus':0}
+        return HttpResponse(json.dumps(data))
+
+    # data={'token':key,'code':1000,'msg':'未注册'}
+    #
+    # return HttpResponse(json.dumps(data))
+    # encrypted_data 包括敏感数据在内的完整用户信息的加密数据
+    # iv 加密算法的初始向量
+    # 这两个参数需要js获取
+    # user_info = crypt.decrypt(encrypted_data, iv)
+    # print(user_info)
+def bindMobile(request):
+    iv = request.GET.get('iv')
+    code = request.GET.get('code')
+    encrypted_data = request.GET.get('encryptedData')
+    api = WXAPPAPI(appid=APP_ID,
+                   app_secret=APP_SECRET)
+
+    session_info = api.exchange_code_for_session_key(code=code)
+
+    # 获取session_info 后
+    session_key = session_info.get('session_key')
+    openid = session_info.get('openid')
+
+    crypt = WXBizDataCrypt(APP_ID, session_key)
+    phone_info = crypt.decrypt(encrypted_data, iv)
+    return HttpResponse(phone_info)
+
+def wx_registry(userInfo):
+    ret={}
+    # iv = request.GET.get('iv')
+    # code = request.GET.get('code')
+    # encrypted_data = request.GET.get('encryptedData')
+    # api = WXAPPAPI(appid=APP_ID,
+    #                app_secret=APP_SECRET)
+    #
+    # session_info = api.exchange_code_for_session_key(code=code)
+    #
+    # # 获取session_info 后
+    # session_key = session_info.get('session_key')
+    # openid = session_info.get('openid')
+    #
+    # crypt = WXBizDataCrypt(APP_ID, session_key)
+    # user_info = crypt.decrypt(encrypted_data, iv)
+    #username = user_info.get('openId')
+    username=userInfo['nickName']
+    password = '123456'
+    email=''
+    if username == "":
+        ret['message'] = '用户名不能为空'
+        return HttpResponse(json.dumps(ret))
+
+    if password == "":
+        ret['message'] = '密码不能为空'
+        return HttpResponse(json.dumps(ret))
+
+    if username:
+        for filterspace in username:
+            if filterspace.isspace():
+                ret['message'] = '账户禁止输入空格'
+                return HttpResponse(json.dumps(ret))
+    if password:
+        for passwdspace in password:
+            if passwdspace.isspace():
+                ret['message'] = '密码禁止输入空格'
+                return HttpResponse(json.dumps(ret))
+
+    total = models.Admin.objects.filter(username__username=username).count()
+    if total > 0:
+        ret['message'] = '用户名已存在'
+        ret['code'] = 200
+        HttpResponse.status_code = 200
+        return ret
+
+    # if email == "":
+    #     ret['message'] = '邮箱不能为空'
+    #     return render_to_response('register.html', ret)
+    # if email:
+    #     total = models.Admin.objects.filter(email=email).count()
+    #     if total > 0:
+    #         ret['message'] = '邮箱已存在'
+    #         return render_to_response('register.html', ret, context_instance=RequestContext(request))
+
+    count = models.UserType.objects.filter(dispaly='普通用户').count()
+    if count < 1:
+        usertype = models.UserType.objects.create(dispaly='普通用户')
+
+    user_type = models.UserType.objects.get(dispaly='普通用户')
+    user = User.objects.create(username=username, password=password, email=email)
+    user.set_password(password)
+    user.save()
+    username2 = User.objects.get(username=username)
+    add_new = Permission.objects.get(codename='add_news')
+    # change_newtype= Permission.objects.get(codename='change_newtype')
+
+    username2.user_permissions.add(add_new)  # 增加权限
+    # username2.user_permissions.add(change_newtype) #增加权限
+
+    model_user = models.Admin.objects.create(
+        username=username2,
+        email=email,
+        user_type=user_type,
+    )
+
+    model_user.save()
+
+    buy_cart_init = models.BuyCart.objects.create(
+        cart_owner=model_user
+    )
+    buy_cart_init.save()
+
+    GotVideo_init = models.GotVideo.objects.create(
+        buyers=username
+    )
+    GotVideo_init.save()
+
+
+    #return HttpResponse(json.dumps('200'))
+    HttpResponse.status_code=200
+    ret['message'] = '用户名注册成功'
+    ret['code'] = 200
+    return ret
+
+def outer_token_auth(main_func):
+    def wrapper(request, *args, **kwargs):
+        #if request.session.get('is_login'):
+        result_auth = auth_token(request).content.decode('utf-8')
+        result_auth = json.loads(result_auth)
+        if result_auth.get('code') == 0:
+            return main_func(request, *args, **kwargs)
+        else:
+            data={'code':'403'}
+            return HttpResponse(json.dumps(data))
+    return wrapper
+
+@outer_token_auth
+def wx_docindex(request,**kwargs):
+    '''渲染字典返回微信小程序index
+    :param request:
+    :param kwargs:
+    :param indexpage:主页当前page
+    :param docpage: 当前文档教程page页码
+    :return: response
+    '''
+    ret = { 'document_data': '', 'code': 0,  'category': '', 'message': '','carousel_data':''}
+    # 导航分类
+    category = models.Category.objects.all().values()
+    #文档教程数据渲染
+    document_data = models.DocumentData.objects.filter(check_enable=True).order_by("-create_date").values('id',
+                                                                                                          'title',
+                                                                                                          "category",
+                                                                                                          "newpic")
+    carousel_data = models.Carousel.objects.all().values('id','title','newlink','newpic','create_date')
+    document_data = json.dumps(list(document_data),ensure_ascii=False)
+    category = json.dumps(list(category), ensure_ascii=False)
+    carousel_data = json.dumps(list(carousel_data), cls=CjsonEncoder,ensure_ascii=False)
+    ret['carousel_data'] = carousel_data
+    ret['document_data'] = document_data
+    ret['category'] = category
+    ret['detail_url'] ='mobile_docdetail/'
+    ret['category_url'] = 'mobile_doccategory'
+
+    ret = json.dumps(ret,ensure_ascii=False)
+    response = HttpResponse(ret,content_type="application/json, charset=utf-8")
+
+    return response
+
+
+@outer_token_auth
+def wx_goodsdetail(request):
+    '''渲染字典返回微信小程序index
+    :param request:
+    :param kwargs:
+    :param indexpage:主页当前page
+    :param docpage: 当前文档教程page页码
+    :return: response
+    '''
+    ret = {'docnews': '','code':''}
+    id = request.GET.get('id')
+    docnews = models.DocumentData.objects.filter(id=id).values()
+    docnews = json.dumps(list(docnews), cls=CjsonEncoder,ensure_ascii=False)
+    ret['docnews'] = docnews
+    ret['code'] = 0
+    ret = json.dumps(ret,ensure_ascii=False)
+    response = HttpResponse(ret,content_type="application/json, charset=utf-8")
+
+    return response
+
+@outer_token_auth
+def wx_categrory(request):
+    ret = {'docnews': '', 'code': ''}
+    cate_id = request.GET.get('categoryId')
+    if cate_id == '0':
+        docnews = models.DocumentData.objects.filter(check_enable=True).order_by("-create_date").values('id',
+                                                                                                          'title',
+                                                                                                          "category",
+                                                                                                           "newpic")
+    else:
+        docnews = models.DocumentData.objects.filter(category__id=cate_id, check_enable=True).\
+            order_by("-create_date").values('id',
+                                              'title',
+                                              "category",
+                                              "newpic")
+    docnews = json.dumps(list(docnews),cls=CjsonEncoder, ensure_ascii=False)
+    ret['docnews'] = docnews
+    ret['code'] = 0
+    ret = json.dumps(ret, ensure_ascii=False)
+    response = HttpResponse(ret, content_type="application/json, charset=utf-8")
+
+    return response

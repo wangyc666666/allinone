@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.27, for Linux (x86_64)
 --
--- Host: localhost    Database: WoBanN
+-- Host: localhost    Database: xfx_server
 -- ------------------------------------------------------
 -- Server version	5.7.27
 

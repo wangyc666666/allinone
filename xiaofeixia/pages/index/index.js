@@ -1,5 +1,8 @@
 //index.js
 var app = getApp()
+var templates_js = require('../../templates/components.js');
+const api = require('../../config/api.js');
+
 Page({
   data: {
     pageType: 1,
@@ -61,51 +64,84 @@ Page({
       { id: 4, img: "../../img/food2.jpg", name: "五花肉石锅拌饭", num: "3", price: "81", selected: false }
     ],
     arr3: [
-      { id: 0, img: "../../img/food2.jpg", name: "五花肉石锅拌饭", num: "0", price: "51", message: "配米饭一份哦", message2: "月售330｜好评率100%", message3: [{ id: 0, value: "香辣味" }, { id: 1, value: "盐焗味" }, { id: 2, value: "蒜香味" }, { id: 3, value: "姜葱味" },] },
-      { id: 1, img: "../../img/food2.jpg", name: "五花肉石锅拌饭", num: "0", price: "51", message: "配米饭一份哦", message2: "月售330｜好评率100%", message3: '' },
-      { id: 2, img: "../../img/food2.jpg", name: "五花肉石锅拌饭", num: "0", price: "51", message: "配米饭一份哦", message2: "月售330｜好评率100%", message3: [{ id: 0, value: "香辣味2" }, { id: 1, value: "盐焗味2" }, { id: 2, value: "蒜香味2" }, { id: 3, value: "姜葱味2" },] },
-      { id: 3, img: "../../img/food2.jpg", name: "五花肉石锅拌饭", num: "0", price: "51", message: "配米饭一份哦", message2: "月售330｜好评率100%", message3: [{ id: 0, value: "香辣味3" }, { id: 1, value: "盐焗味3" }, { id: 2, value: "蒜香味3" }, { id: 3, value: "姜葱味3" },] },
-      { id: 4, img: "../../img/food2.jpg", name: "五花肉石锅拌饭", num: "0", price: "51", message: "配米饭一份哦", message2: "月售330｜好评率100%", message3: [{ id: 0, value: "香辣味4" }, { id: 1, value: "盐焗味4" }, { id: 2, value: "蒜香味4" }, { id: 3, value: "姜葱味4" },] },
+      { id: 0, 
+      img: "../../img/food2.jpg",
+       name: "五花肉石锅拌饭0", num: "0",
+        price: "51", message: "配米饭一份哦",
+         message2: "月售330｜好评率100%",
+       message3: [
+      { id: 0, value: "香辣味" }, 
+       { id: 1, value: "盐焗味" }, 
+       { id: 2, value: "蒜香味" }, 
+       { id: 3, value: "姜葱味" },
+       ] 
+       },
+      
+      { id: 1, img: "../../img/food2.jpg", name: "五花肉石锅拌饭1", num: "0", price: "51", message: "配米饭一份哦", message2: "月售330｜好评率100%", message3: '' },
+      { id: 2, img: "../../img/food2.jpg", name: "五花肉石锅拌饭2", num: "0", price: "51", message: "配米饭一份哦", message2: "月售330｜好评率100%", message3: [{ id: 0, value: "香辣味2" }, { id: 1, value: "盐焗味2" }, { id: 2, value: "蒜香味2" }, { id: 3, value: "姜葱味2" },] },
+      { id: 3, img: "../../img/food2.jpg", name: "五花肉石锅拌饭3", num: "0", price: "51", message: "配米饭一份哦", message2: "月售330｜好评率100%", message3: [{ id: 0, value: "香辣味3" }, { id: 1, value: "盐焗味3" }, { id: 2, value: "蒜香味3" }, { id: 3, value: "姜葱味3" },] },
+      { id: 4, img: "../../img/food2.jpg", name: "五花肉石锅拌饭4", num: "0", price: "51", message: "配米饭一份哦", message2: "月售330｜好评率100%", message3: [{ id: 0, value: "香辣味4" }, { id: 1, value: "盐焗味4" }, { id: 2, value: "蒜香味4" }, { id: 3, value: "姜葱味4" },] },
     ],
     // order
     orderOk: false,
     // me
     img: ''
   },
-  onLoad: function () {    
-    var that = this
-    wx.getLocation({
-      type: 'gcj02',
-      success: function (res) {
-        var latitude = res.latitude
-        var longitude = res.longitude
+    get_cates: function() {
+        var that = this
         wx.request({
-          url: 'http://api.map.baidu.com/geocoder/v2/?ak=LClVsCTaW2aH8MzuviP1YMymrHWOIVvg&coordtype=gcj02ll&location=' + latitude + ',' + longitude + '&output=json&pois=0',
-          method: "get",
-          success: function (res) {
-            var address = res.data.result.formatted_address;
-            address = address.split('省')[1].split('市')[1];
-            that.setData({
-              map_address: address
-            }) 
-            console.log(that.data.map_address)
-          }
+            url: "http://ais580.com:8443/wx_docindex",
+            header: {
+                'content-type': 'application/json',
+                'token': wx.getStorageSync('token')
+            },
+            method: "GET",
+            success: function(res) {
+                console.log('data', res)
+
+            },
+            fail: function(e) {
+                console.log('主页刷新失败', e)
+            }
         })
-      }
+    },
+
+  onLoad: function () {    
+    var that = this;
+    if(!wx.getStorageSync('userInfo')){
+        wx.redirectTo({
+      url: '/pages/auth/index',
     })
-    app.getUserInfo(function (userInfo) {
-      that.setData({
-        userInfo: userInfo,
-        img: userInfo.avatarUrl
-      })
-    })
+    }
     wx.getSystemInfo({
       success: function (res) {
-        that.setData({ 
+        that.setData({
           height: (res.windowHeight*.57)+'px'
         })
       }
     });
+   // templates_js.getToken(that);
+    that.get_cates()
+    // wx.getLocation({
+    //   type: 'gcj02',
+    //   success: function (res) {
+    //     var latitude = res.latitude
+    //     var longitude = res.longitude
+    //     wx.request({
+    //       url: 'http://api.map.baidu.com/geocoder/v2/?ak=LClVsCTaW2aH8MzuviP1YMymrHWOIVvg&coordtype=gcj02ll&location=' + latitude + ',' + longitude + '&output=json&pois=0',
+    //       method: "get",
+    //       success: function (res) {
+    //         var address = res.data.result.formatted_address;
+    //         address = address.split('省')[1].split('市')[1];
+    //         that.setData({
+    //           map_address: address
+    //         })
+    //         console.log(that.data.map_address)
+    //       }
+    //     })
+    //   }
+    // })
+
   },
   turnMenu: function(e) {
     var type = e.target.dataset.index;

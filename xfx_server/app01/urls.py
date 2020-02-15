@@ -14,7 +14,7 @@ Including another URLconf
     1. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import include, url
-from WoBanN import settings
+from xfx_server import settings
 from django.contrib import admin
 from app01.views import *
 from django.contrib.auth import views as auth_views
@@ -79,6 +79,14 @@ urlpatterns = [
     url(r'^test/$', test),
     url(r'^mobile_tag_serach/(?P<page>\d*)$', mobile_tag_serach),
 
+    url(r'^get_token/$', get_token),
+    url(r'^auth_token/.*', auth_token),
+    url(r'^wx_auth/.*', wx_auth),
+    url(r'^wx_registry/.*', wx_registry),
+    url(r'^bindMobile/.*', bindMobile),
+    url(r'^wx_docindex/$', wx_docindex),
+    url(r'^wx_goodsdetail/$', wx_goodsdetail),
+    url(r'^wx_categrory/$', wx_categrory),
 
 ]
 handler404 = page_not_found

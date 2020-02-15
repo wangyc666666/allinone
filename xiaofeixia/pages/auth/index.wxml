@@ -1,0 +1,11 @@
+<view class="container">
+    <form bindsubmit="bindSave">
+     <view class="auth_logo">
+    <image class="auth_logo_img" src="/img/qishou.png">
+    </image>
+        <view>小飞侠</view>
+    </view>
+    
+    <button  open-type="getUserInfo"  bindgetuserinfo="bindGetUserInfo" class="save-btn">授权登录</button>
+    </form>
+</view>

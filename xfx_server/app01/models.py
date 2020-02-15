@@ -79,11 +79,11 @@ class News(models.Model):
 
 class DocumentData(models.Model):
     class Meta:
-        verbose_name = '发布文章'
-        verbose_name_plural = '发布文章'
+        verbose_name = '发布商品'
+        verbose_name_plural = '发布商品'
         ordering = ["favor_count","focus_count"]
     category = models.ForeignKey('Category', blank=True, null=True,on_delete=models.CASCADE)
-    title = models.CharField('标题', max_length=30)
+    title = models.CharField('名称', max_length=30)
     summary = models.CharField('简介', max_length=256, blank=True, null=True)
     #content = RichTextField('内容', blank=True, null=True)
     content = MDTextField(verbose_name='内容')
@@ -169,8 +169,8 @@ class Reply(models.Model):
 
 class Category(models.Model):
     class Meta:
-        verbose_name = '导航栏'
-        verbose_name_plural = '导航栏'
+        verbose_name = '分类'
+        verbose_name_plural = '分类'
 
     name = models.CharField('类别', max_length=32, unique=True, blank=True, null=True)
     administrator = models.ForeignKey('Admin',on_delete=models.CASCADE)

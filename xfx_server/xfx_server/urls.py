@@ -18,7 +18,7 @@ from django.contrib import admin
 import app01
 from app01.views import *
 from app01 import urls
-from WoBanN import settings
+from xfx_server import settings
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
