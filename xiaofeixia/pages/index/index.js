@@ -23,20 +23,20 @@ Page({
     duration: 500,
     vertical: true,
     circular: true,
-    
-    menu: [
-      { id: 0, name: "热销" },
-      { id: 1, name: "新品" },
-      { id: 2, name: "下午茶" },
-      { id: 3, name: "滋味盖饭" },
-      { id: 4, name: "日式小食" },
-      { id: 5, name: "系列套餐" },
-      { id: 6, name: "特色炖汤" },
-      { id: 7, name: "下午茶" },
-      { id: 8, name: "日式小食" },
-      { id: 9, name: "滋味盖饭" },
-      { id: 10, name: "系列套餐" },
-    ],
+    menu:[],
+    // menu: [
+    //   { id: 0, name: "热销" },
+    //   { id: 1, name: "新品" },
+    //   { id: 2, name: "下午茶" },
+    //   { id: 3, name: "滋味盖饭" },
+    //   { id: 4, name: "日式小食" },
+    //   { id: 5, name: "系列套餐" },
+    //   { id: 6, name: "特色炖汤" },
+    //   { id: 7, name: "下午茶" },
+    //   { id: 8, name: "日式小食" },
+    //   { id: 9, name: "滋味盖饭" },
+    //   { id: 10, name: "系列套餐" },
+    // ],
     arr2: [
       { id: 0, value: "香辣味" },
       { id: 1, value: "盐焗味" },
@@ -87,7 +87,7 @@ Page({
     // me
     img: ''
   },
-    get_cates: function() {
+    get_index: function() {
         var that = this
         wx.request({
             url: "http://ais580.com:8443/wx_docindex",
@@ -97,8 +97,13 @@ Page({
             },
             method: "GET",
             success: function(res) {
-                console.log('data', res)
 
+              let menu = JSON.parse(res['data']['category']);
+              console.log('data', menu,typeof(menu))
+              that.setData({
+             menu: menu
+            })
+            console.log('11',menu)
             },
             fail: function(e) {
                 console.log('主页刷新失败', e)
@@ -113,15 +118,30 @@ Page({
       url: '/pages/auth/index',
     })
     }
-    wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          height: (res.windowHeight*.57)+'px'
-        })
+    else {
+       let token = wx.getStorageSync('token');
+        if (token == ''){
+      //第一次登录，获取登录状态
+        templates_js.getToken().then(function (res) {
+            that.get_index()
+      })
+      }else{
+        //有token的情况直接获取数据
+           that.get_index()
       }
-    });
+        //   templates_js.getToken(that);
+        // that.get_index()
+        wx.getSystemInfo({
+          success: function (res) {
+            that.setData({
+              height: (res.windowHeight*.57)+'px'
+            })
+          }
+        });
+    }
+
    // templates_js.getToken(that);
-    that.get_cates()
+
     // wx.getLocation({
     //   type: 'gcj02',
     //   success: function (res) {

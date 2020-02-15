@@ -76,8 +76,6 @@ bindGetUserInfo:function(e){
             userInfo: userInfo,
             img: userInfo.avatarUrl
           })
-    templates_js.getToken(that);
-
     wx.redirectTo({
       url: '/pages/index/index',
     })

@@ -13,7 +13,7 @@ class Auth():
         """
         try:
             payload = {
-                'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=1800),
+                'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=7200),
                 'iat': datetime.datetime.utcnow(),
                 'iss': 'ken',
                 'data': {
@@ -48,7 +48,9 @@ class Auth():
                 'require_iat': False,
                 'require_nbf': False
             }
-            payload = jwt.decode(auth_token, config.SECRET_KEY,
+            payload = jwt.decode(
+                                 auth_token,
+                                 config.SECRET_KEY,
                                  algorithms=['HS512', 'HS256'],
                                  options=options,
                                  leeway=datetime.timedelta(seconds=0))

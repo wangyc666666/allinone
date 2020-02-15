@@ -1,4 +1,5 @@
 const api = require('../config/api.js');
+const Promise = require('../utils/promise.js');
 var app = getApp();
 
 function getcomments(contentId, target, token, page = 1) {
@@ -688,52 +689,116 @@ function checkIfLogin(target, myCenter = false) {
         }
 }
 
-function getToken(target) {
-    var that = target
-   var url = app.globalData.serverDomin + 'wx_auth'
-   console.log(url)
-    wx.login({
-        success: function (res) {
-            console.log('code', res.code,wx.getStorageSync('userInfo'))
-            wx.request({
-                url: url,
-                method: 'GET',
-                data: {
-                    code: res.code,
-                    userInfo:wx.getStorageSync('userInfo')
+function getToken(){
+    let _this = this;
+    var url = app.globalData.serverDomin + 'wx_auth'
+    return new Promise(function(resolve, reject){
+        wx.checkSession({
+            success: function (res) {
+                console.log(res)
+                resolve(res);
                 },
-                success: function (res) {
-                    if (res.data['code'] == 0) {
-                        if (res.data['token']) {
-                            console.log('token', res.data['token'])
-                            wx.setStorageSync('token', res.data['token'])
-                            wx.setStorageSync('registryStatus', res.data['registryStatus'])
-                        }
-                    } else {
+            fail: function (res) {
+                console.log('11',res)
+                wx.login({
+                success: res => {
+                  if (res.code) {
+                    wx.request({
+                      url:url,
+                     data: {
+                            code: res.code,
+                            userInfo:wx.getStorageSync('userInfo')
+                                },
+                      method: 'GET',
+                      success: res => {
+                                console.log(res)
+                                if (res.data['code'] == 0) {
+                                        if (res.data['token']) {
+                                            console.log('token', res.data['token'])
+                                            wx.setStorageSync('token', res.data['token'])
+                                            resolve(res);
+                                            wx.setStorageSync('registryStatus', res.data['registryStatus'])
+                                        }
+                                    } else {
+                                        wx.showModal({
+                                            title: '提示',
+                                            content: res['errorMsg'],
+                                            showCancel: false,
+                                            success(res) {
+                                                console.log('logout')
+                                                wx.removeStorageSync('userInfo')
+                                                wx.removeStorageSync('token')
+                                                wx.removeStorageSync('registryStatus')
+                                            }
+                                        })
+                                    }
+                      },
+                    fail: function (res) {
+                        console.log(res)
                         wx.showModal({
-                            title: '提示',
-                            content: res['errorMsg'],
-                            showCancel: false,
-                            success(res) {
-                                console.log('logout')
-                                wx.removeStorageSync('userInfo')
-                                wx.removeStorageSync('token')
-                                wx.removeStorageSync('registryStatus')
-                            }
+                            title: '程序异常',
+                            content: res,
                         })
+                        reject('error');
                     }
-                },
-                fail: function (res) {
-                  console.log(res)
-                    wx.showModal({
-                        title: '程序异常',
-                        content: res,
-                    })
-                }
-            })
+                })
+              } else {
+                    console.log('获取用户登录态失败！' + res.errMsg);
+                    reject('error');
+              }
+            }
+          })
         }
-    });
-}
+      })
+    })
+    }
+
+// function getToken(target) {
+//     var that = target
+//    var url = app.globalData.serverDomin + 'wx_auth'
+//    console.log(url)
+//     wx.login({
+//         success: function (res) {
+//             console.log('code', res.code,wx.getStorageSync('userInfo'))
+//             wx.request({
+//                 url: url,
+//                 method: 'GET',
+//                 data: {
+//                     code: res.code,
+//                     userInfo:wx.getStorageSync('userInfo')
+//                 },
+//                 success: function (res) {
+//                     if (res.data['code'] == 0) {
+//                         if (res.data['token']) {
+//                             console.log('token', res.data['token'])
+//                             wx.setStorageSync('token', res.data['token'])
+//                             wx.setStorageSync('registryStatus', res.data['registryStatus'])
+//                         }
+//                     } else {
+//                         wx.showModal({
+//                             title: '提示',
+//                             content: res['errorMsg'],
+//                             showCancel: false,
+//                             success(res) {
+//                                 console.log('logout')
+//                                 wx.removeStorageSync('userInfo')
+//                                 wx.removeStorageSync('token')
+//                                 wx.removeStorageSync('registryStatus')
+//                             }
+//                         })
+//                     }
+//                 },
+//                 fail: function (res) {
+//                   console.log(res)
+//                     wx.showModal({
+//                         title: '程序异常',
+//                         content: res,
+//                     })
+//                 }
+//             })
+//         }
+//     });
+// }
 
 function previewCurImage(e) {
     var imgs = e.currentTarget.dataset.imgs;
