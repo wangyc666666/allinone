@@ -435,57 +435,57 @@ function remoteLogin(func = false, target = false, index = true) {
 /**
  * token检查
  */
-function checksession(target, token, func = false) {
-    console.log('token检查', token, func)
-    if (token) {
-        wx.request({
-            url: app.globalData.serverDomin + 'auth/verify_token',
-            data: {
-                "token": token
-            },
-            method: 'Post',
-            success: function (res) {
-                if (res['data']['data'] == 0) {
-                    console.log('token有效')
-                    wx.removeStorageSync('token')
-                    if (func == 'flushIndex') {
-                        remoteLogin(func, target, false)
-                    } else {
-                        remoteLogin(func, target)
-                    }
-                } else {
-                    console.log(res, 'remote token未过期')
-                }
-                console.log(res)
-            }
-        })
-        wx.checkSession({
-            success: function (res) {
-                console.log(res, '登录未过期')
-                if (func == 'flushIndex') {
-                    flushIndexData(target, true)
-                }
-            },
-            fail: function (res) {
-                console.log(res, '微信登录过期了')
-                wx.removeStorageSync('token')
-                if (func == 'flushIndex') {
-                    remoteLogin(func, target, false)
-                } else {
-                    remoteLogin(func, target)
-                }
-
-            }
-        })
-    } else {
-        if (func == 'flushIndex') {
-            remoteLogin(func, target, false)
-        } else {
-            remoteLogin(func, target)
-        }
-    }
-
-}
+// function checksession(target, token, func = false) {
+//     console.log('token检查', token, func)
+//     if (token) {
+//         wx.request({
+//             url: app.globalData.serverDomin + 'auth/verify_token',
+//             data: {
+//                 "token": token
+//             },
+//             method: 'Post',
+//             success: function (res) {
+//                 if (res['data']['data'] == 0) {
+//                     console.log('token有效')
+//                     wx.removeStorageSync('token')
+//                     if (func == 'flushIndex') {
+//                         remoteLogin(func, target, false)
+//                     } else {
+//                         remoteLogin(func, target)
+//                     }
+//                 } else {
+//                     console.log(res, 'remote token未过期')
+//                 }
+//                 console.log(res)
+//             }
+//         })
+//         wx.checkSession({
+//             success: function (res) {
+//                 console.log(res, '登录未过期')
+//                 if (func == 'flushIndex') {
+//                     flushIndexData(target, true)
+//                 }
+//             },
+//             fail: function (res) {
+//                 console.log(res, '微信登录过期了')
+//                 wx.removeStorageSync('token')
+//                 if (func == 'flushIndex') {
+//                     remoteLogin(func, target, false)
+//                 } else {
+//                     remoteLogin(func, target)
+//                 }
+//
+//             }
+//         })
+//     } else {
+//         if (func == 'flushIndex') {
+//             remoteLogin(func, target, false)
+//         } else {
+//             remoteLogin(func, target)
+//         }
+//     }
+//
+// }
 
 function getDetail(target, token, id, flush = false) {
     var that = target
@@ -660,7 +660,6 @@ function logout() {
     wx.removeStorageSync('token')
     wx.removeStorageSync('registryStatus')
     wx.removeStorageSync('phoneRegistryStatus')
-    wx.removeStorageSync('phoneUserInfo')
     wx.redirectTo({
         url: '/pages/index/index',
     })
@@ -692,14 +691,11 @@ function checkIfLogin(target, myCenter = false) {
 function getToken(){
     let _this = this;
     var url = app.globalData.serverDomin + 'wx_auth'
+    console.log('getToken',url)
     return new Promise(function(resolve, reject){
         wx.checkSession({
             success: function (res) {
-                console.log(res)
-                resolve(res);
-                },
-            fail: function (res) {
-                console.log('11',res)
+                console.log('success checkSession',res)
                 wx.login({
                 success: res => {
                   if (res.code) {
@@ -711,13 +707,13 @@ function getToken(){
                                 },
                       method: 'GET',
                       success: res => {
-                                console.log(res)
+                                console.log('登入过期',url,res)
                                 if (res.data['code'] == 0) {
                                         if (res.data['token']) {
                                             console.log('token', res.data['token'])
                                             wx.setStorageSync('token', res.data['token'])
-                                            resolve(res);
                                             wx.setStorageSync('registryStatus', res.data['registryStatus'])
+                                            resolve(res);
                                         }
                                     } else {
                                         wx.showModal({
@@ -731,6 +727,60 @@ function getToken(){
                                                 wx.removeStorageSync('registryStatus')
                                             }
                                         })
+                                        reject('error');
+                                    }
+                      },
+                    fail: function (res) {
+                        console.log(res)
+                        wx.showModal({
+                            title: '程序异常',
+                            content: res,
+                        })
+                        reject('error');
+                    }
+                })
+              } else {
+                    console.log('获取用户登录态失败！' + res.errMsg);
+                    reject('error');
+              }
+            }
+          })
+                },
+            fail: function (res) {
+                console.log('fail getToken',res)
+                wx.login({
+                success: res => {
+                  if (res.code) {
+                    wx.request({
+                      url:url,
+                     data: {
+                            code: res.code,
+                            userInfo:wx.getStorageSync('userInfo')
+                                },
+                      method: 'GET',
+                      success: res => {
+                                console.log('登入过期',url,res)
+                                if (res.data['code'] == 0) {
+                                        if (res.data['token']) {
+                                            console.log('token', res.data['token'])
+                                            wx.setStorageSync('token', res.data['token'])
+                                            wx.setStorageSync('registryStatus', res.data['registryStatus'])
+                                            resolve(res);
+                                        }
+                                    } else {
+                                        wx.showModal({
+                                            title: '提示',
+                                            content: res['errorMsg'],
+                                            showCancel: false,
+                                            success(res) {
+                                                console.log('logout')
+                                                wx.removeStorageSync('userInfo')
+                                                wx.removeStorageSync('token')
+                                                wx.removeStorageSync('registryStatus')
+                                            }
+
+                                        })
+                                        reject('error');
                                     }
                       },
                     fail: function (res) {
@@ -822,11 +872,12 @@ module.exports = {
     putcomment: putcomment,
     contentFavor: contentFavor,
     requestUserinfo: requestUserinfo,
-    checksession: checksession,
+    // checksession: checksession,
     replyComments: replyComments,
     getDetail:getDetail,
     putReplyComment: putReplyComment,
     touerCommentSave: touerCommentSave,
     flushIndexData: flushIndexData,
-    previewCurImage: previewCurImage
+    previewCurImage: previewCurImage,
+    logout:logout
 }

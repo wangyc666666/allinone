@@ -2790,16 +2790,34 @@ def wx_docindex(request,**kwargs):
     # 导航分类
     category = models.Category.objects.all().values()
     #文档教程数据渲染
-    document_data = models.DocumentData.objects.filter(check_enable=True).order_by("-create_date").values('id',
-                                                                                                          'title',
-                                                                                                          "category",
-                                                                                                          "newpic")
+    # document_data = models.DocumentData.objects.filter(check_enable=True).order_by("-create_date").values('id',
+    #                                                                                                       'title',
+    #                                                                                                       "category",
+    #                                                                                                       "newpic")
+    index_data={}
+
+    for cate in category:
+        result = models.DocumentData.objects.filter(category__id=cate['id'], check_enable=True).order_by("-create_date")
+        data = []
+        for obj in result:
+            arr=[]
+            news_types = obj.news_type.all()
+            for news_type in news_types:
+                arr.append({'id':news_type.id,'value':news_type.display})
+            data.append({'id':obj.id,'sale_content':obj.sale_content,
+                         'course_price':obj.course_price,'num':obj.num,
+                         'title':obj.title,"category":obj.category.name,
+                         "newpic":obj.newpic.name,'news_type':arr})
+
+        result=list(data)
+        index_data[cate['id']] = result
+
     carousel_data = models.Carousel.objects.all().values('id','title','newlink','newpic','create_date')
-    document_data = json.dumps(list(document_data),ensure_ascii=False)
     category = json.dumps(list(category), ensure_ascii=False)
     carousel_data = json.dumps(list(carousel_data), cls=CjsonEncoder,ensure_ascii=False)
+    index_data = json.dumps(index_data, ensure_ascii=False)
     ret['carousel_data'] = carousel_data
-    ret['document_data'] = document_data
+    ret['index_data'] = index_data
     ret['category'] = category
     ret['detail_url'] ='mobile_docdetail/'
     ret['category_url'] = 'mobile_doccategory'

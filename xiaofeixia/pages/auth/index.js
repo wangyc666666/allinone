@@ -72,12 +72,8 @@ bindGetUserInfo:function(e){
        var that = this
        var userInfo = e.detail.userInfo
        wx.setStorageSync('userInfo', userInfo)
-       that.setData({
-            userInfo: userInfo,
-            img: userInfo.avatarUrl
-          })
-    wx.redirectTo({
-      url: '/pages/index/index',
-    })
+        wx.redirectTo({
+          url: '/pages/index/index',
+        })
   }
 })

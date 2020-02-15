@@ -41,7 +41,7 @@
     <scroll-view class="orderPage-sideBar" bindscrolltolower="lower" scroll-y="true" style="height:{{height}};overflow-y:scroll">
       <block wx:for="{{menu}}" wx:key="">
         <view class="menuList">
-          <view class="{{index==orderType?'selected':''}}" data-index="{{index}}" bindtap="turnMenu">{{item.name}}</view>
+          <view class="{{item.id==orderType?'selected':''}}" data-index="{{item.id}}" bindtap="turnMenu">{{item.name}}</view>
         </view>
       </block>
     </scroll-view>  
@@ -49,22 +49,22 @@
    <scroll-view class="orderPage-sideBar2" bindscrolltolower="lower" scroll-y="true" style="height:{{height}};overflow-y:scroll">
       <block wx:for="{{arr3}}" wx:key="">
         <view class="menuList menuList2" bindtap="toFoodDetail">
-          <image src="{{item.img}}"></image>
+          <image src="{{serverImg}}{{item.newpic}}"></image>
           <view class="P_message">
-            <view>{{item.name}}</view>
-            <view class="P_small">{{item.message}}</view>
-            <view class="P_small" catchtap="donothing">{{item.message2}}</view>
+            <view>{{item.title}}</view>
+            <view class="P_small">{{item.summary}} </view>
+            <view class="P_small" catchtap="donothing">{{item.sale_content}}</view>
             <view class="P_bottom" catchtap="donothing">
               <view>
-                <text class="price">¥{{item.price}} </text>
-                <text class="line_t">¥{{item.price}}</text> 
+                <text class="price">¥{{item.course_price}} </text>
+                <text class="line_t">¥{{item.course_price}}</text>
               </view>
               <view catchtap="noTo">
-                <text class="iconfont icon-reduce" data-id="{{index}}" bindtap="reduce2" wx:if="{{item.message3===''}}"></text>
-                <text class="iconfont icon-reduce" data-id="{{index}}" bindtap="reduce" wx:if="{{item.message3!==''}}"></text>
+                <text class="iconfont icon-reduce" data-id="{{index}}" bindtap="reduce2" wx:if="{{item.news_type===''}}"></text>
+                <text class="iconfont icon-reduce" data-id="{{index}}" bindtap="reduce" wx:if="{{item.news_type!==''}}"></text>
                 <text> {{item.num}} </text>
-                <text class="iconfont icon-add" data-id="{{index}}" bindtap="add2"  wx:if="{{item.message3===''}}"></text>
-                <text class="iconfont icon-add" data-id="{{index}}" bindtap="add"  wx:if="{{item.message3!==''}}"></text>
+                <text class="iconfont icon-add" data-id="{{index}}" bindtap="add2"  wx:if="{{item.news_type===''}}"></text>
+                <text class="iconfont icon-add" data-id="{{index}}" bindtap="add"  wx:if="{{item.news_type!==''}}"></text>
               </view>
             </view> 
           </view>
@@ -256,7 +256,9 @@
 <view class="container page4" wx:if="{{pageType==4}}">
   <view class="mePic">
     <image src="{{img}}"></image>
+
   </view>
+
   <view class="mePag" bindtap="toMyPackage">
     <view>
       <text class="iconfont icon-pag2">  我的红包</text>
@@ -267,6 +269,11 @@
     <view class="meMap">
       <text class="iconfont icon-map">  我的地址</text>
       <text class="iconfont icon-more"></text>
+    </view>
+  </view>
+    <view class="mePag" bindtap="logout">
+    <view class="meMap">
+      <text > 退出 </text>
     </view>
   </view>
   <view class="calling" bindtap="calling">
