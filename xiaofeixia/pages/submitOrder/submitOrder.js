@@ -3,6 +3,9 @@ var templates_js = require('../../templates/components.js');
 Page({
   data: {
     block: false,
+    send_price:3,
+    youhui_price:0,
+    canhei_price:1,
     restaurant: false,
     check: true,
     buyInfo:[],
@@ -22,9 +25,14 @@ Page({
   onLoad:function(){
     var that=this;
     var buyInfo = wx.getStorageSync('buyInfo');
+    var buycar_num = wx.getStorageSync('buycar_num');
+    var totalMoney = wx.getStorageSync('totalMoney')+that.data.send_price-
+        that.data.youhui_price+that.data.canhei_price*buycar_num;
     console.log('buyInfo',buyInfo);
     that.setData({
-      buyInfo:buyInfo
+      buyInfo:buyInfo,
+      buycar_num:buycar_num,
+      totalMoney:totalMoney
     })
   },
   Block: function() {

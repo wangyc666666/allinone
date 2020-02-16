@@ -288,8 +288,9 @@ Page({
       console.log('12',this.data.arr[i2]['id'])
        if(this.data.arr[i2]['id'] == r_id){
             console.log('r_id in',r_id)
-            var status=true
-            this.data.arr[i2].num = parseInt(this.data.arr[i2].num)+1
+            var status=true;
+             arr3[i].num = parseInt(arr3[i].num)+1;
+            //this.data.arr[i2].num = parseInt(this.data.arr[i2].num)+1
 
        }
     }
@@ -302,7 +303,7 @@ Page({
         })
     }else{
         arr3[i]['selected']=false;
-        arr3[i].num = parseInt(arr3[i].num)+1
+        arr3[i].num = parseInt(arr3[i].num)+1;
         console.log(' arr3[i]', arr3[i])
         this.data.arr.push(arr3[i])
         this.setData({
@@ -420,10 +421,20 @@ Page({
           that.data.buyInfo.push(that.data.arr[i])
         }
     }
+    wx.setStorageSync('totalMoney',that.data.totalMoney)
+    wx.setStorageSync('buycar_num',that.data.buycar_num)
     wx.setStorageSync('buyInfo',that.data.buyInfo)
-    wx.navigateTo({
-      url: '../submitOrder/submitOrder'
-    })
+    if (that.data.buycar_num<=0){
+          wx.showToast({
+                    title: '请先选择购买的商品',
+                    icon: 'none',
+                    duration: 2000
+                })
+    }else {
+      wx.navigateTo({
+        url: '../submitOrder/submitOrder'
+      })
+    }
   },
   numAdd: function(e) {
     var index = parseInt(e.currentTarget.dataset.id);
