@@ -487,29 +487,28 @@ function remoteLogin(func = false, target = false, index = true) {
 //
 // }
 
-function getDetail(target, token, id, flush = false) {
+function getDetail(target, token, id, category_id) {
     var that = target
     wx.request({
-        url: app.globalData.serverDomin + 'feed/' + id,
+        url: app.globalData.serverDomin + 'wx_goodsdetail/',
         header: {
             'content-type': 'application/json',
-            'Authorization': token
+            'token': token
         },
+         data: {
+                "id": id,
+                "category_id": category_id,
+             },
         success: function (res) {
-            var taskContent = res['data']['data']
-            console.log(taskContent)
+            var foodDetail = JSON.parse(res['data']['data']);
+            console.log(foodDetail,typeof (foodDetail));
             if (res['data']['code'] == 0) {
                 that.setData({
-                    taskDetail: taskContent,
+                    foodDetail: foodDetail,
                 });
             }
-            var userId = wx.getStorageSync('requestUserinfo')['userId']
-            console.log('6666', userId, wx.getStorageSync('requestUserinfo'), taskContent['userId'])
-            if (flush) {
-                flush_task_status(that, userId, taskContent)
-            }
+            console.log('res', res)
 
-            //WxParse.wxParse('article', 'html', res['data']['content'], that, 5);
         }
     })
 }

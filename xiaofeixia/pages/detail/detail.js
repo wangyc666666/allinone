@@ -1,8 +1,11 @@
 var app = getApp();
+var templates_js = require('../../templates/components.js');
+const api = require('../../config/api.js');
 Page({
   data: {
     foodtype: 0,
     num: 0,
+    serverImg: app.globalData.serverDomin +'medias/',
     buycar_num: 0,
     totalMoney: 0,
     block: false,
@@ -14,7 +17,11 @@ Page({
       { id: 3, value: "姜葱味"},
     ]
   },
-  onLoad: function() {
+  onLoad: function(e) {
+    var that = this;
+    var category_id =e.category_id;
+    var id = e.id;
+    templates_js.getDetail(that, wx.getStorageSync('token'), id, category_id,);
     this.setData({
       buycar_num: app.globalData.buycar_num,
       totalMoney: app.globalData.totalMoney

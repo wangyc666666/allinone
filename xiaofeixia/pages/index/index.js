@@ -91,8 +91,8 @@ Page({
     },
   commonIndex:function(){
       var that = this;
-       var token = wx.getStorageSync('token');
-   var userInfo = wx.getStorageSync('userInfo');
+      var token = wx.getStorageSync('token');
+      var userInfo = wx.getStorageSync('userInfo');
     if(!userInfo){
       //获取用户信息
         wx.redirectTo({
@@ -243,9 +243,11 @@ Page({
       }
     })
   },
-  toFoodDetail: function() {
+  toFoodDetail: function(e) {
+    var id = e.currentTarget.dataset.id
+    var category_id = e.currentTarget.dataset.category_id
     wx.navigateTo({
-      url: '../detail/detail',
+      url: '../detail/detail?id=' +id + '&category_id='+category_id,
     })
   },
   reduce: function (e) {

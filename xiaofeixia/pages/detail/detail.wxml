@@ -1,12 +1,12 @@
 <view class="detailPic">
-  <image src="../../img/food2.jpg"></image>
+  <image src="{{serverImg}}{{foodDetail.newpic}} "></image>
 </view>
 <view class="messageBlock">
   <view class="Message">
     <view class="detailMessage">
-      <text class="name">黄焖鸡米饭 </text>
-      <text class="monthsell">月售330</text>
-      <text class="price">¥12.43 <text>¥14.43</text></text>
+      <text class="name">{{foodDetail.title}} </text>
+      <text class="monthsell">{{foodDetail.sale_content}}</text>
+      <text class="price">{{foodDetail.course_price}} <text>{{foodDetail.course_price}}</text></text>
     </view>
     <view class="addReduce">
       <text class="iconfont icon-reduce" bindtap="reduce"></text>
@@ -19,12 +19,13 @@
       商品信息
     </view>
     <view>
-      配米饭一份哦
+     {{foodDetail.content}}
     </view>
   </view>
 </view>
 
 <!--评价  -->
+<!-- 
 <view class="saySomething">
   <view class="sayTitle">
     <text>外卖评价（好评率100%）</text>
@@ -66,7 +67,7 @@
       2017/06/05
     </view>
   </view>
-</view>
+</view> -->
 
 <!--加入购物车，立即购买  -->
 <view class="addBuy">

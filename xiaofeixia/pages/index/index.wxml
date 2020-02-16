@@ -48,7 +48,7 @@
 
    <scroll-view class="orderPage-sideBar2" bindscrolltolower="lower" scroll-y="true" style="height:{{height}};overflow-y:scroll">
       <block wx:for="{{arr3}}" wx:key="">
-        <view class="menuList menuList2" bindtap="toFoodDetail">
+        <view class="menuList menuList2" data-id="{{item.id}}" data-category_id='{{item.category_id}}' bindtap="toFoodDetail">
           <image src="{{serverImg}}{{item.newpic}}"></image>
           <view class="P_message">
             <view>{{item.title}}</view>

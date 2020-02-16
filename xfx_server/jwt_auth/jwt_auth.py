@@ -13,7 +13,7 @@ class Auth():
         """
         try:
             payload = {
-                'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=7200),
+                'exp': datetime.datetime.utcnow() + datetime.timedelta(days=0, seconds=172800),
                 'iat': datetime.datetime.utcnow(),
                 'iss': 'ken',
                 'data': {
@@ -40,7 +40,7 @@ class Auth():
         try:
             options = {
                 'verify_signature': True,
-                'verify_exp': True,
+                'verify_exp': False,
                 'verify_nbf': True,
                 'verify_iat': True,
                 'verify_aud': True,

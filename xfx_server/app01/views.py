@@ -2806,7 +2806,7 @@ def wx_docindex(request,**kwargs):
                 arr.append({'id':news_type.id,'value':news_type.display})
             data.append({'id':obj.id,'sale_content':obj.sale_content,
                          'course_price':obj.course_price,'num':obj.num,
-                         'title':obj.title,"category":obj.category.name,
+                         'title':obj.title,"category":obj.category.name,"category_id":obj.category.id,
                          "newpic":obj.newpic.name,'news_type':arr})
 
         result=list(data)
@@ -2839,9 +2839,14 @@ def wx_goodsdetail(request):
     '''
     ret = {'docnews': '','code':''}
     id = request.GET.get('id')
-    docnews = models.DocumentData.objects.filter(id=id).values()
-    docnews = json.dumps(list(docnews), cls=CjsonEncoder,ensure_ascii=False)
-    ret['docnews'] = docnews
+    category_id = request.GET.get('category_id')
+    docnews = models.DocumentData.objects.filter(id=id,category__id=category_id).values()
+    if docnews:
+        docnews=list(docnews)[0]
+    else:
+        docnews={}
+    docnews = json.dumps(docnews, cls=CjsonEncoder,ensure_ascii=False)
+    ret['data'] = docnews
     ret['code'] = 0
     ret = json.dumps(ret,ensure_ascii=False)
     response = HttpResponse(ret,content_type="application/json, charset=utf-8")
