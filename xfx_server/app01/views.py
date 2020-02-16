@@ -2798,19 +2798,19 @@ def wx_docindex(request,**kwargs):
 
     for cate in category:
         result = models.DocumentData.objects.filter(category__id=cate['id'], check_enable=True).order_by("-create_date")
-        data = []
+        data = {}
         for obj in result:
             arr=[]
             news_types = obj.news_type.all()
             for news_type in news_types:
                 arr.append({'id':news_type.id,'value':news_type.display})
-            data.append({'id':obj.id,'sale_content':obj.sale_content,
+            data[obj.id]={'id':obj.id,'sale_content':obj.sale_content,
                          'course_price':obj.course_price,'num':obj.num,
                          'title':obj.title,"category":obj.category.name,"category_id":obj.category.id,
-                         "newpic":obj.newpic.name,'news_type':arr})
+                         "newpic":obj.newpic.name,'news_type':arr}
 
-        result=list(data)
-        index_data[cate['id']] = result
+        # result=list(data)
+        index_data[cate['id']] = data
 
     carousel_data = models.Carousel.objects.all().values('id','title','newlink','newpic','create_date')
     category = json.dumps(list(category), ensure_ascii=False)

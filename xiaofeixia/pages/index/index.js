@@ -39,9 +39,9 @@ Page({
     bindId: 0,
     totalMoney: 0,
     chooseAll: false,
-    arr: [
+    arr: {
       //{id:0,img:"../../img/food2.jpg",name:"五花肉",num:"3",price:"11.2",selected:false}
-    ],
+    },
     arr3:[],
     orderOk: false,
     // me
@@ -258,7 +258,7 @@ Page({
     }else{
       if (arr3[i].num > 0) {
         arr3[i].num = parseInt(arr3[i].num) - 1;
-        this.data.arr.pop(arr3[i])
+        delete this.data.arr[i]
         this.setData({
           arr3: arr3,
           arr:this.data.arr
@@ -279,21 +279,20 @@ Page({
   },
   add: function (e) {
     console.log('add')
+       this.setData({
+          arr3: wx.getStorageSync('index_data')[this.data.orderType]
+      })
     var i = e.currentTarget.dataset.id;
     var arr3 = this.data.arr3;
     var arr_new_type = arr3[i].news_type;
-    var r_id = e.currentTarget.dataset.r_id;
-    var status=false
-    for(var i2=0;i2<this.data.arr.length;i2++){
-      console.log('12',this.data.arr[i2]['id'])
-       if(this.data.arr[i2]['id'] == r_id){
-            console.log('r_id in',r_id)
-            var status=true;
-             arr3[i].num = parseInt(arr3[i].num)+1;
-            //this.data.arr[i2].num = parseInt(this.data.arr[i2].num)+1
+    var status=false;
 
-       }
-    }
+     if(this.data.arr[i]){
+          console.log('i in',i)
+          var status=true;
+           arr3[i].num = parseInt(arr3[i].num)+1;
+          this.data.arr[i].num = parseInt(this.data.arr[i].num)+1
+     }
     if (status){
          this.setData({
           block: true,
@@ -301,17 +300,23 @@ Page({
           bindId: i,
           arr:this.data.arr
         })
+      var index_data = wx.getStorageSync('index_data')
+      index_data[this.data.orderType]=arr3
+      wx.setStorageSync('index_data',index_data)
     }else{
         arr3[i]['selected']=false;
         arr3[i].num = parseInt(arr3[i].num)+1;
         console.log(' arr3[i]', arr3[i])
-        this.data.arr.push(arr3[i])
+        this.data.arr[i]=(arr3[i])
         this.setData({
           block: true,
           arr2: arr_new_type,
           bindId: i,
           arr:this.data.arr
         })
+        var index_data = wx.getStorageSync('index_data')
+        index_data[this.data.orderType]=arr3
+        wx.setStorageSync('index_data',index_data)
         console.log('this.data.arr',this.data.arr)
     }
 
@@ -374,6 +379,7 @@ Page({
         if (res.confirm) {
           var index = parseInt(e.currentTarget.dataset.id);
           var arr = that.data.arr;
+          that.data.arr[index].num=0
           var totalMoney = that.data.totalMoney;
           var buycar_num = that.data.buycar_num;
           if (arr[index].selected) {
@@ -383,6 +389,7 @@ Page({
           arr.splice(index, 1);
           that.setData({
             arr: arr,
+            arr3:that.data.arr3,
             totalMoney: totalMoney,
             buycar_num: buycar_num
           });
@@ -443,6 +450,9 @@ Page({
     var totalMoney = this.data.totalMoney;
     var buycar_num = this.data.buycar_num;
     arr[index].num = Number(arr[index].num) + 1;
+
+    this.data.arr3[index].num = parseInt(this.data.arr3[index].num)+1;
+
     if(selected==true){
       totalMoney += Number(arr[index].course_price);
       buycar_num += 1;
@@ -450,6 +460,7 @@ Page({
     totalMoney = Number(totalMoney).toFixed(2);
     this.setData({
       arr: arr,
+      arr3:this.data.arr3,
       totalMoney: Number(totalMoney),
       buycar_num: buycar_num
     });
@@ -462,6 +473,7 @@ Page({
       var totalMoney = this.data.totalMoney;
       var buycar_num = this.data.buycar_num;
       arr[index].num = Number(arr[index].num) - 1;
+       this.data.arr3[index].num = parseInt(this.data.arr3[index].num)-1;
       if (selected == true) {
         totalMoney -= Number(arr[index].course_price);
         buycar_num -= 1;
@@ -469,6 +481,7 @@ Page({
       totalMoney = Number(totalMoney).toFixed(2);
       this.setData({
         arr: arr,
+         arr3:this.data.arr3,
         totalMoney: Number(totalMoney),
         buycar_num: buycar_num
       });

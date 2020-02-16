@@ -63,8 +63,8 @@
                 <text class="iconfont icon-reduce" data-id="{{index}}" bindtap="reduce2" wx:if="{{item.news_type===''}}"></text>
                 <text class="iconfont icon-reduce" data-id="{{index}}" bindtap="reduce" wx:if="{{item.news_type!==''}}"></text>
                 <text> {{item.num}} </text>
-                <text class="iconfont icon-add" data-id="{{index}}" bindtap="add2"  wx:if="{{item.news_type===''}}"></text>
-                <text class="iconfont icon-add" data-id="{{index}}" data-r_id="{{item.id}}" bindtap="add"  wx:if="{{item.news_type!==''}}"></text>
+                <text class="iconfont icon-add" data-id="{{item.id}}" bindtap="add2"  wx:if="{{item.news_type===''}}"></text>
+                <text class="iconfont icon-add" data-id="{{item.id}}" bindtap="add"  wx:if="{{item.news_type!==''}}"></text>
               </view>
             </view> 
           </view>
@@ -128,7 +128,7 @@
         </view>
         <view class="totalMoney">
           <view class="price">合计：{{totalMoney}}元</view>
-          <view class="otherMoney">另需5元配送费</view>  
+          <view class="otherMoney">另需3元配送费</view>
         </view>
       </view>      
       <view class="toPay" bindtap="toSubmit">
@@ -146,11 +146,11 @@
       </view>      
       <view>
         <view class="classname" catchtap="donothing">
-          <text class="numBorder" data-id="{{index}}" catchtap="numReduce">-</text>
+          <text class="numBorder" data-id="{{item.id}}" catchtap="numReduce">-</text>
           <text class="numMiddle">{{item.num}}</text>
-          <text class="numBorder" data-id="{{index}}" catchtap="numAdd">+</text>
+          <text class="numBorder" data-id="{{item.id}}" catchtap="numAdd">+</text>
         </view>
-        <text class="iconfont .icon-del" catchtap="del" data-id="{{index}}"></text>
+        <text class="iconfont .icon-del" catchtap="del" data-id="{{item.id}}"></text>
       </view> 
     </view>   
   </view>  
