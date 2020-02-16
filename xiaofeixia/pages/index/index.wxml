@@ -64,7 +64,7 @@
                 <text class="iconfont icon-reduce" data-id="{{index}}" bindtap="reduce" wx:if="{{item.news_type!==''}}"></text>
                 <text> {{item.num}} </text>
                 <text class="iconfont icon-add" data-id="{{index}}" bindtap="add2"  wx:if="{{item.news_type===''}}"></text>
-                <text class="iconfont icon-add" data-id="{{index}}" bindtap="add"  wx:if="{{item.news_type!==''}}"></text>
+                <text class="iconfont icon-add" data-id="{{index}}" data-r_id="{{item.id}}" bindtap="add"  wx:if="{{item.news_type!==''}}"></text>
               </view>
             </view> 
           </view>

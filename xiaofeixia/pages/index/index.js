@@ -7,6 +7,7 @@ Page({
     pageType: 1,
     // index
     userInfo: {},
+    buyInfo:[],
     open: false,   //是否打开红包
     page: true,   //红包是否显示 
     orderOrBusiness: 'order',
@@ -67,7 +68,6 @@ Page({
                 arr3:index_data[that.data.orderType]
             })
               wx.setStorageSync('index_data',index_data)
-            console.log('11',menu)
             },
             fail: function(e) {
                 console.log('主页刷新失败', e)
@@ -278,21 +278,42 @@ Page({
     }
   },
   add: function (e) {
-       console.log('add')
+    console.log('add')
     var i = e.currentTarget.dataset.id;
     var arr3 = this.data.arr3;
-    var arr = arr3[i].news_type;
-    arr3[i]['selected']=false;
-    arr3[i].num = parseInt(arr3[i].num)+1
-    console.log(' arr3[i]', arr3[i])
-    this.data.arr.push(arr3[i])
-    this.setData({
-      block: true,
-      arr2: arr,
-      bindId: i,
-      arr:this.data.arr
-    })
-    console.log('this.data.arr',this.data.arr)
+    var arr_new_type = arr3[i].news_type;
+    var r_id = e.currentTarget.dataset.r_id;
+    var status=false
+    for(var i2=0;i2<this.data.arr.length;i2++){
+      console.log('12',this.data.arr[i2]['id'])
+       if(this.data.arr[i2]['id'] == r_id){
+            console.log('r_id in',r_id)
+            var status=true
+            this.data.arr[i2].num = parseInt(this.data.arr[i2].num)+1
+
+       }
+    }
+    if (status){
+         this.setData({
+          block: true,
+          arr2: arr_new_type,
+          bindId: i,
+          arr:this.data.arr
+        })
+    }else{
+        arr3[i]['selected']=false;
+        arr3[i].num = parseInt(arr3[i].num)+1
+        console.log(' arr3[i]', arr3[i])
+        this.data.arr.push(arr3[i])
+        this.setData({
+          block: true,
+          arr2: arr_new_type,
+          bindId: i,
+          arr:this.data.arr
+        })
+        console.log('this.data.arr',this.data.arr)
+    }
+
   },
   add2: function (e) {
     console.log('add2')
@@ -390,8 +411,16 @@ Page({
     });
   },
   toSubmit: function() {
-    var that=this
-    wx.setStorageSync('buyInfo',that.data.arr)
+    var that=this;
+    that.setData({
+      buyInfo:[]
+    });
+    for(var i=0;i<that.data.arr.length;i++){
+        if (that.data.arr[i]['selected']){
+          that.data.buyInfo.push(that.data.arr[i])
+        }
+    }
+    wx.setStorageSync('buyInfo',that.data.buyInfo)
     wx.navigateTo({
       url: '../submitOrder/submitOrder'
     })
