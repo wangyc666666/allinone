@@ -203,7 +203,7 @@ class BuyCart(models.Model):
     cart_owner = models.OneToOneField(Admin, blank=True, null=True)  # 相同cart_id的CartItem是同一个购物车里的
     date_added = models.DateTimeField(auto_now_add=True)
     quantity = models.IntegerField(default=1)
-    product = models.ManyToManyField('News',blank=True, null=True, unique=False)
+    product = models.ManyToManyField('DocumentData',blank=True, null=True, unique=False)
     total_price = models.IntegerField('总价格', blank=True, default=0)
     def __str__(self):
         return self.cart_owner.username.username
@@ -226,9 +226,9 @@ class GoodsList(models.Model):
     list_uuid = models.UUIDField(default=uuid.uuid4, null=False,
                            verbose_name=u'list uuid',
                            help_text="app uuid")
-    total_num = models.IntegerField('已选商品数', blank=True, default=0)
-    total_price = models.IntegerField('已选商品合计', blank=True, default=0)
-    total_goods = models.ManyToManyField('News',blank=True, null=True, unique=False)
+    total_num = models.IntegerField('购买商品数', blank=True, default=0)
+    total_price = models.IntegerField('价格合计', blank=True, default=0)
+    total_goods = models.ManyToManyField('DocumentData',blank=True, null=True, unique=False)
     create_date = models.DateTimeField('购买时间', auto_now_add=True)
     buyers = models.CharField('购买者', max_length=100)
     ifpay = models.BooleanField('是否付款', default=False)

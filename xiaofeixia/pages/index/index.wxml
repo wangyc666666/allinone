@@ -138,11 +138,11 @@
   </view>
   <view class="pro" wx:for="{{arr}}" wx:key="" data-id="{{index}}" bindtap="choose">
     <i class="{{item.selected==true?'iconfont .icon-true active':'iconfont .icon-true'}}"></i>
-    <image src="{{item.img}}"></image>
+    <image src="{{serverImg}}{{item.newpic}}"></image>
     <view class="message">
       <view>
-        <text>{{item.name}}</text>
-        <text class="orderNum price">¥{{item.price}}</text>        
+        <text>{{item.title}}</text>
+        <text class="orderNum price">¥{{item.course_price}}</text>
       </view>      
       <view>
         <view class="classname" catchtap="donothing">

@@ -1,8 +1,12 @@
+var app = getApp()
+var templates_js = require('../../templates/components.js');
 Page({
   data: {
     block: false,
     restaurant: false,
-    check: true
+    check: true,
+    buyInfo:[],
+    serverImg:app.globalData.serverDomin +'medias/',
   },
   calling: function() {
     wx.makePhoneCall({
@@ -13,6 +17,14 @@ Page({
       fail: function () {
         console.log("拨打电话失败！")
       }
+    })
+  },
+  onLoad:function(){
+    var that=this;
+    var buyInfo = wx.getStorageSync('buyInfo');
+    console.log('buyInfo',buyInfo);
+    that.setData({
+      buyInfo:buyInfo
     })
   },
   Block: function() {

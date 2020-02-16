@@ -1,7 +1,6 @@
 //index.js
 var app = getApp()
 var templates_js = require('../../templates/components.js');
-const api = require('../../config/api.js');
 
 Page({
   data: {
@@ -26,10 +25,7 @@ Page({
     circular: true,
     menu:[],
     arr2: [
-      { id: 0, value: "香辣味" },
-      { id: 1, value: "盐焗味" },
-      { id: 2, value: "蒜香味" },
-      { id: 3, value: "姜葱味" },
+
     ],
 
     height: 0,
@@ -43,7 +39,7 @@ Page({
     totalMoney: 0,
     chooseAll: false,
     arr: [
-
+      //{id:0,img:"../../img/food2.jpg",name:"五花肉",num:"3",price:"11.2",selected:false}
     ],
     arr3:[],
     orderOk: false,
@@ -251,23 +247,27 @@ Page({
     })
   },
   reduce: function (e) {
+    console.log('reduce')
     var i = e.currentTarget.dataset.id;
     var arr3 = this.data.arr3;
     if (arr3[i].num > 1) { 
       wx.showToast({
-        title: '多规格商品只能去购物车删除哦',
-        duration: 2000
+        title: '请去购物车删除',
+        duration: 3000
       })
     }else{
       if (arr3[i].num > 0) {
         arr3[i].num = parseInt(arr3[i].num) - 1;
+        this.data.arr.pop(arr3[i])
         this.setData({
-          arr3: arr3
+          arr3: arr3,
+          arr:this.data.arr
         })
       }      
     }
   },
   reduce2: function (e) {
+    console.log('reduce2')
     var i = e.currentTarget.dataset.id;
     var arr3 = this.data.arr3;
     if (arr3[i].num > 0) {      
@@ -278,16 +278,24 @@ Page({
     }
   },
   add: function (e) {
+       console.log('add')
     var i = e.currentTarget.dataset.id;
     var arr3 = this.data.arr3;
     var arr = arr3[i].news_type;
+    arr3[i]['selected']=false;
+    arr3[i].num = parseInt(arr3[i].num)+1
+    console.log(' arr3[i]', arr3[i])
+    this.data.arr.push(arr3[i])
     this.setData({
       block: true,
       arr2: arr,
-      bindId: i
+      bindId: i,
+      arr:this.data.arr
     })
+    console.log('this.data.arr',this.data.arr)
   },
   add2: function (e) {
+    console.log('add2')
     var i = e.currentTarget.dataset.id;
     var arr3 = this.data.arr3;
     arr3[i].num = parseInt(arr3[i].num) + 1;
@@ -305,11 +313,11 @@ Page({
     this.setData({
       foodtype: type
     })
+    console.log('foodtype',type)
   },
   submit: function() {
     var i = this.data.bindId;
     var arr3 = this.data.arr3;
-    arr3[i].num = parseInt(arr3[i].num)+1
     this.setData({
       block: false,
       arr3: arr3
@@ -347,7 +355,7 @@ Page({
           var totalMoney = that.data.totalMoney;
           var buycar_num = that.data.buycar_num;
           if (arr[index].selected) {
-            totalMoney -= Number(arr[index].price * arr[index].num);
+            totalMoney -= Number(arr[index].course_price * arr[index].num);
             buycar_num -= Number(arr[index].num);
           }
           arr.splice(index, 1);
@@ -368,10 +376,10 @@ Page({
     var buycar_num = this.data.buycar_num;
     arr[index].selected = !selected;
     if (arr[index].selected) {
-      totalMoney += Number(arr[index].price * arr[index].num);
+      totalMoney += Number(arr[index].course_price * arr[index].num);
       buycar_num += Number(arr[index].num);
     } else {
-      totalMoney -= Number(arr[index].price * arr[index].num);
+      totalMoney -= Number(arr[index].course_price * arr[index].num);
       buycar_num -= Number(arr[index].num);
     }
     totalMoney = Number(totalMoney).toFixed(2);
@@ -382,8 +390,10 @@ Page({
     });
   },
   toSubmit: function() {
+    var that=this
+    wx.setStorageSync('buyInfo',that.data.arr)
     wx.navigateTo({
-      url: '../submitOrder/submitOrder',
+      url: '../submitOrder/submitOrder'
     })
   },
   numAdd: function(e) {
@@ -394,7 +404,7 @@ Page({
     var buycar_num = this.data.buycar_num;
     arr[index].num = Number(arr[index].num) + 1;
     if(selected==true){
-      totalMoney += Number(arr[index].price);
+      totalMoney += Number(arr[index].course_price);
       buycar_num += 1;
     }
     totalMoney = Number(totalMoney).toFixed(2);
@@ -413,7 +423,7 @@ Page({
       var buycar_num = this.data.buycar_num;
       arr[index].num = Number(arr[index].num) - 1;
       if (selected == true) {
-        totalMoney -= Number(arr[index].price);
+        totalMoney -= Number(arr[index].course_price);
         buycar_num -= 1;
       }
       totalMoney = Number(totalMoney).toFixed(2);

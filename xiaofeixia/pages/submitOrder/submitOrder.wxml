@@ -27,34 +27,23 @@
     </view>
     <view class="iconfont icon-phone" bindtap="calling">联系商家</view>
   </view>
-  <view class="list">
+
+  <view class="list"  wx:for="{{buyInfo}}" wx:key="" >
     <view class="listLeft">
       <view class="foodPic">
-        <image src="../../img/food.jpg"></image>
+        <image src="{{serverImg}}{{item.newpic}}"></image>
       </view>
       <view class="message">
-        <text>黄焖鸡米饭</text>
-        <text class="price">¥12.43 <text class="oldPrice">¥14.43</text></text>
+        <text>{{item.title}}</text>
+        <text class="price">{{item.course_price}} <text class="oldPrice">{{item.course_price}}</text></text>
       </view>
     </view>
     <view class="listRight">
       X1
     </view>
   </view>
-  <view class="list">
-    <view class="listLeft">
-      <view class="foodPic">
-        <image src="../../img/food.jpg"></image>
-      </view>
-      <view class="message">
-        <text>黄焖鸡米饭</text>
-        <text class="price">¥12.43 <text class="oldPrice">¥14.43</text></text>
-      </view>
-    </view>
-    <view class="listRight">
-      X1
-    </view>
-  </view>
+
+
   <view class="orherPrice">
     <text>餐盒费</text>
     <text>¥1</text>
