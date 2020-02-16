@@ -380,13 +380,14 @@ Page({
           var index = parseInt(e.currentTarget.dataset.id);
           var arr = that.data.arr;
           that.data.arr[index].num=0
+          that.data.arr3[index].num=0
           var totalMoney = that.data.totalMoney;
           var buycar_num = that.data.buycar_num;
           if (arr[index].selected) {
             totalMoney -= Number(arr[index].course_price * arr[index].num);
             buycar_num -= Number(arr[index].num);
           }
-          arr.splice(index, 1);
+          delete arr[index];
           that.setData({
             arr: arr,
             arr3:that.data.arr3,
