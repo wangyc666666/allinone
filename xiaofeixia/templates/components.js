@@ -507,7 +507,7 @@ function getDetail(target, token, id, category_id) {
                     foodDetail: foodDetail,
                 });
             }
-            console.log('res', res)
+            console.log('foodDetail', foodDetail)
 
         }
     })

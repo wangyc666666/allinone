@@ -10,6 +10,7 @@ Page({
     totalMoney: 0,
     block: false,
     price: 12.43,
+    buyCar:{},
     arr: [
       { id: 0, value: "香辣味"},
       { id: 1, value: "盐焗味"},
@@ -33,11 +34,19 @@ Page({
       foodtype: type
     })
   },
-  reduce: function() {
+  reduce: function(e) {
+    var id = parseInt(e.currentTarget.dataset.id);
+    var category_id = parseInt(e.currentTarget.dataset.category_id);
     if(this.data.num>0){
       app.globalData.buycar_num--;
-      app.globalData.totalMoney -= this.data.price;
-      var totalMoney = app.globalData.totalMoney.toFixed(2)
+      app.globalData.totalMoney -= this.data.foodDetail['course_price'];
+      var totalMoney = app.globalData.totalMoney.toFixed(2);
+      this.data.foodDetail['num'] = this.data.num-1;
+      if (this.data.foodDetail['num']==0){
+
+      }
+
+      this.data.buyCar[id]=this.data.foodDetail;
       this.setData({
         num: this.data.num-1,
         buycar_num: app.globalData.buycar_num,
@@ -45,10 +54,16 @@ Page({
       })
     }
   },
-  add: function () {
+  add: function (e) {
+    var id = parseInt(e.currentTarget.dataset.id);
+    var category_id = parseInt(e.currentTarget.dataset.category_id);
     app.globalData.buycar_num++;
-    app.globalData.totalMoney += this.data.price;
-    var totalMoney = app.globalData.totalMoney.toFixed(2)
+    app.globalData.totalMoney += this.data.foodDetail['course_price'];
+    var totalMoney = app.globalData.totalMoney.toFixed(2);
+    this.data.foodDetail['num'] = this.data.num+1;
+    this.data.foodDetail['selected']=true;
+    this.data.buyCar[id]=this.data.foodDetail;
+    console.log(this.data.foodDetail);
     this.setData({
       num: this.data.num+1,
       buycar_num: app.globalData.buycar_num,
@@ -94,6 +109,9 @@ Page({
     })
   },
   toSubmit: function() {
+    var buyInfo = wx.setStorageSync('buyInfo',this.data.buyCar);
+    var buycar_num = wx.setStorageSync('buycar_num',this.data.buycar_num);
+    var totalMoney = wx.setStorageSync('totalMoney',this.data.totalMoney);
     wx.navigateTo({
       url: '../submitOrder/submitOrder',
     })

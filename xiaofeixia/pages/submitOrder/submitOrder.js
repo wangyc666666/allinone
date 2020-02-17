@@ -26,9 +26,9 @@ Page({
     var that=this;
     var buyInfo = wx.getStorageSync('buyInfo');
     var buycar_num = wx.getStorageSync('buycar_num');
-    var totalMoney = wx.getStorageSync('totalMoney')+that.data.send_price-
-        that.data.youhui_price+that.data.canhei_price*buycar_num;
-    console.log('buyInfo',buyInfo);
+    var totalMoney = parseInt(wx.getStorageSync('totalMoney'))+that.data.send_price - that.data.youhui_price+
+        that.data.canhei_price*buycar_num;
+    console.log('buyInfo',buyInfo,'totalMoney',totalMoney,that.data.send_price,that.data.youhui_price,that.data.canhei_price*buycar_num);
     that.setData({
       buyInfo:buyInfo,
       buycar_num:buycar_num,

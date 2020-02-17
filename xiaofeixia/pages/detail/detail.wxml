@@ -106,9 +106,9 @@
     </view>
     <view class="num">数量</view>
     <view class="add2">
-      <text class="iconfont icon-add" bindtap="add"></text>
+      <text class="iconfont icon-add" data-id="{{item.id}}" data-category_id='{{item.category_id}}' bindtap="add"></text>
       <text class="chooseNum"> {{num}} </text>
-      <text class="iconfont icon-reduce" bindtap="reduce"></text>
+      <text class="iconfont icon-reduce" data-id="{{item.id}}" data-category_id='{{item.category_id}}' bindtap="reduce"></text>
     </view>
     <view class="ok" bindtap="submit">
       确定

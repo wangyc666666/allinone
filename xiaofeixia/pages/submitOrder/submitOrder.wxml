@@ -46,7 +46,7 @@
 
   <view class="orherPrice">
     <text>餐盒费</text>
-    <text>¥{{canhei_price}}</text>
+    <text>¥{{canhei_price}} X {{buycar_num}}</text>
   </view>
   <view class="smallBorder">
     <view class="orherPrice">
