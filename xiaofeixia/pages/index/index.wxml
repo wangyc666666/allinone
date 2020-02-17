@@ -150,7 +150,7 @@
           <text class="numMiddle">{{item.num}}</text>
           <text class="numBorder" data-id="{{item.id}}"  data-category_id="{{item.category_id}}" catchtap="numAdd">+</text>
         </view>
-        <text class="iconfont .icon-del" catchtap="del" data-id="{{item.id}}"></text>
+        <text class="iconfont .icon-del" catchtap="del" data-id="{{item.id}}"  data-category_id="{{item.category_id}}" ></text>
       </view> 
     </view>   
   </view>  

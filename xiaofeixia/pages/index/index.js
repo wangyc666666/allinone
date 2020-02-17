@@ -396,9 +396,11 @@ Page({
       success: function (res) {
         if (res.confirm) {
           var index = parseInt(e.currentTarget.dataset.id);
+          var category_id = parseInt(e.currentTarget.dataset.category_id);
           var arr = that.data.arr;
-          that.data.arr[index].num=0
-          that.data.arr3[index].num=0
+          var index_data=wx.getStorageSync('index_data');
+          index_data[category_id][index].num=0
+          wx.setStorageSync('index_data',index_data);
           var totalMoney = that.data.totalMoney;
           var buycar_num = that.data.buycar_num;
           if (arr[index].selected) {
@@ -408,7 +410,6 @@ Page({
           delete arr[index];
           that.setData({
             arr: arr,
-            arr3:that.data.arr3,
             totalMoney: totalMoney,
             buycar_num: buycar_num
           });
