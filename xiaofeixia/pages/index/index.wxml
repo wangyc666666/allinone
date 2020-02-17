@@ -60,11 +60,11 @@
                 <text class="line_t">¥{{item.course_price}}</text>
               </view>
               <view catchtap="noTo">
-                <text class="iconfont icon-reduce" data-id="{{index}}" bindtap="reduce2" wx:if="{{item.news_type===''}}"></text>
-                <text class="iconfont icon-reduce" data-id="{{index}}" bindtap="reduce" wx:if="{{item.news_type!==''}}"></text>
+                <text class="iconfont icon-reduce" data-id="{{item.id}}" data-category_id="{{item.category_id}}"  bindtap="reduce2" wx:if="{{item.news_type===''}}"></text>
+                <text class="iconfont icon-reduce" data-id="{{item.id}}" data-category_id="{{item.category_id}}"  bindtap="reduce" wx:if="{{item.news_type!==''}}"></text>
                 <text> {{item.num}} </text>
-                <text class="iconfont icon-add" data-id="{{item.id}}" bindtap="add2"  wx:if="{{item.news_type===''}}"></text>
-                <text class="iconfont icon-add" data-id="{{item.id}}" bindtap="add"  wx:if="{{item.news_type!==''}}"></text>
+                <text class="iconfont icon-add" data-id="{{item.id}}"  data-category_id="{{item.category_id}}"   bindtap="add2"  wx:if="{{item.news_type===''}}"></text>
+                <text class="iconfont icon-add" data-id="{{item.id}}"  data-category_id="{{item.category_id}}"   bindtap="add"  wx:if="{{item.news_type!==''}}"></text>
               </view>
             </view> 
           </view>
@@ -146,9 +146,9 @@
       </view>      
       <view>
         <view class="classname" catchtap="donothing">
-          <text class="numBorder" data-id="{{item.id}}" catchtap="numReduce">-</text>
+          <text class="numBorder" data-id="{{item.id}}"  data-category_id="{{item.category_id}}"   catchtap="numReduce">-</text>
           <text class="numMiddle">{{item.num}}</text>
-          <text class="numBorder" data-id="{{item.id}}" catchtap="numAdd">+</text>
+          <text class="numBorder" data-id="{{item.id}}"  data-category_id="{{item.category_id}}" catchtap="numAdd">+</text>
         </view>
         <text class="iconfont .icon-del" catchtap="del" data-id="{{item.id}}"></text>
       </view> 

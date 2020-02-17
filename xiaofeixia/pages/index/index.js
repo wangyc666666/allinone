@@ -164,6 +164,9 @@ Page({
     if (type == 1 && this.data.restaurant == true) {
       wx.setNavigationBarTitle({ title: '点餐' })
     } else if (type == 1 && this.data.restaurant != true) {
+           this.setData({
+          arr3: wx.getStorageSync('index_data')[this.data.orderType]
+      })
       wx.setNavigationBarTitle({ title: '外卖' })
     } else if (type == 2) {
       wx.setNavigationBarTitle({ title: '购物车' })
@@ -249,6 +252,7 @@ Page({
   reduce: function (e) {
     console.log('reduce')
     var i = e.currentTarget.dataset.id;
+    var category_id = e.currentTarget.dataset.category_id;
     var arr3 = this.data.arr3;
     if (arr3[i].num > 1) { 
       wx.showToast({
@@ -257,10 +261,16 @@ Page({
       })
     }else{
       if (arr3[i].num > 0) {
-        arr3[i].num = parseInt(arr3[i].num) - 1;
+
+        var index_data=wx.getStorageSync('index_data');
+          var cache=index_data[category_id]
+          cache[i].num = parseInt(cache[i].num)-1;
+          index_data[category_id]=cache
+         wx.setStorageSync('index_data',index_data)
+        //arr3[i].num = parseInt(arr3[i].num) - 1;
         delete this.data.arr[i]
         this.setData({
-          arr3: arr3,
+          arr3: index_data[category_id],
           arr:this.data.arr
         })
       }      
@@ -279,44 +289,52 @@ Page({
   },
   add: function (e) {
     console.log('add')
-       this.setData({
-          arr3: wx.getStorageSync('index_data')[this.data.orderType]
-      })
+     //  this.setData({
+    //      arr3: wx.getStorageSync('index_data')[this.data.orderType]
+     // })
     var i = e.currentTarget.dataset.id;
+    var category_id= e.currentTarget.dataset.category_id;
     var arr3 = this.data.arr3;
     var arr_new_type = arr3[i].news_type;
     var status=false;
 
      if(this.data.arr[i]){
-          console.log('i in',i)
           var status=true;
-           arr3[i].num = parseInt(arr3[i].num)+1;
-          this.data.arr[i].num = parseInt(this.data.arr[i].num)+1
-     }
-    if (status){
-         this.setData({
+          var index_data=wx.getStorageSync('index_data');
+          var cache=index_data[category_id];
+          console.log('i0 in',i,cache[i].num)
+          cache[i].num = parseInt(cache[i].num)+1;
+          index_data[category_id]=cache;
+          wx.setStorageSync('index_data',index_data)
+          console.log('index_data[category_id]',index_data[category_id])
+          console.log('i in',i,cache[i].num)
+          this.data.arr[i]=index_data[category_id][i]
+          this.setData({
           block: true,
           arr2: arr_new_type,
           bindId: i,
+            arr3:index_data[category_id],
           arr:this.data.arr
         })
-      var index_data = wx.getStorageSync('index_data')
-      index_data[this.data.orderType]=arr3
-      wx.setStorageSync('index_data',index_data)
-    }else{
-        arr3[i]['selected']=false;
-        arr3[i].num = parseInt(arr3[i].num)+1;
+     }
+
+    else{
+          var index_data=wx.getStorageSync('index_data');
+          var cache=index_data[category_id]
+          cache[i].num = parseInt(cache[i].num)+1;
+          cache[i]['selected']=false;
+          index_data[category_id]=cache
+          wx.setStorageSync('index_data',index_data)
+
         console.log(' arr3[i]', arr3[i])
-        this.data.arr[i]=(arr3[i])
+        this.data.arr[i]=index_data[category_id][i]
         this.setData({
           block: true,
           arr2: arr_new_type,
+          arr3:index_data[category_id],
           bindId: i,
           arr:this.data.arr
         })
-        var index_data = wx.getStorageSync('index_data')
-        index_data[this.data.orderType]=arr3
-        wx.setStorageSync('index_data',index_data)
         console.log('this.data.arr',this.data.arr)
     }
 
@@ -424,7 +442,7 @@ Page({
     that.setData({
       buyInfo:[]
     });
-    for(var i=0;i<that.data.arr.length;i++){
+    for(var i in that.data.arr){
         if (that.data.arr[i]['selected']){
           that.data.buyInfo.push(that.data.arr[i])
         }
@@ -447,41 +465,51 @@ Page({
   numAdd: function(e) {
     var index = parseInt(e.currentTarget.dataset.id);
     var selected = this.data.arr[index].selected;
-    var arr = this.data.arr;
     var totalMoney = this.data.totalMoney;
     var buycar_num = this.data.buycar_num;
-    arr[index].num = Number(arr[index].num) + 1;
-
-    this.data.arr3[index].num = parseInt(this.data.arr3[index].num)+1;
-
+    //arr[index].num = Number(arr[index].num) + 1;
+    var category_id = parseInt(e.currentTarget.dataset.category_id);
+    var index_data=wx.getStorageSync('index_data');
+    var cache=index_data[category_id]
+    cache[index].num = parseInt(cache[index].num)+1;
+    this.data.arr[index]=index_data[category_id][index]
+    index_data[category_id]=cache
+    wx.setStorageSync('index_data',index_data);
     if(selected==true){
       totalMoney += Number(arr[index].course_price);
       buycar_num += 1;
     }
     totalMoney = Number(totalMoney).toFixed(2);
     this.setData({
-      arr: arr,
+      arr: this.data.arr,
       arr3:this.data.arr3,
       totalMoney: Number(totalMoney),
       buycar_num: buycar_num
     });
   },
   numReduce: function (e) {
-    var index = parseInt(e.currentTarget.dataset.id);    
+    var index = parseInt(e.currentTarget.dataset.id);
+    var category_id = parseInt(e.currentTarget.dataset.category_id);
     var arr = this.data.arr;
     if (arr[index].num > 1) {
       var selected = arr[index].selected;
       var totalMoney = this.data.totalMoney;
       var buycar_num = this.data.buycar_num;
-      arr[index].num = Number(arr[index].num) - 1;
-       this.data.arr3[index].num = parseInt(this.data.arr3[index].num)-1;
+      //arr[index].num = Number(arr[index].num) - 1;
+      var index_data=wx.getStorageSync('index_data');
+      var cache=index_data[category_id];
+      cache[index].num = parseInt(cache[index].num)-1;
+      index_data[category_id]=cache;
+      this.data.arr[index]=index_data[category_id][index]
+        wx.setStorageSync('index_data',index_data);
+      //this.data.arr3[index].num = parseInt(this.data.arr3[index].num)-1;
       if (selected == true) {
         totalMoney -= Number(arr[index].course_price);
         buycar_num -= 1;
       }
       totalMoney = Number(totalMoney).toFixed(2);
       this.setData({
-        arr: arr,
+        arr: this.data.arr,
          arr3:this.data.arr3,
         totalMoney: Number(totalMoney),
         buycar_num: buycar_num
