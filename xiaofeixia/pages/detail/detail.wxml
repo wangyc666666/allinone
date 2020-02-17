@@ -8,11 +8,11 @@
       <text class="monthsell">{{foodDetail.sale_content}}</text>
       <text class="price">{{foodDetail.course_price}} <text>{{foodDetail.course_price}}</text></text>
     </view>
-    <view class="addReduce">
+    <!-- <view class="addReduce">
       <text class="iconfont icon-reduce" bindtap="reduce"></text>
       <text class="orderNum"> {{num}} </text>
       <text class="iconfont icon-add" bindtap="add"></text>
-    </view>
+    </view> -->
   </view>
   <view class="otherMessage">
     <view class="S_M">
@@ -70,7 +70,7 @@
 </view> -->
 
 <!--加入购物车，立即购买  -->
-<view class="addBuy">
+<!-- <view class="addBuy">
   <view class="settlement">
     <view class="tlement">
       <view class="orderLeft">
@@ -88,9 +88,9 @@
       </view>
     </view>
   </view> 
-  <!-- <view class="add" bindtap="open">加入购物车</view>
-  <view class="buy" bindtap="buyNow">立即购买</view> -->
-</view>
+  <view class="add" bindtap="open">加入购物车</view>
+  <view class="buy" bindtap="buyNow">立即购买</view>
+</view> -->
 
 <view class="Block" wx:if="{{block}}">
   <view class="total">
